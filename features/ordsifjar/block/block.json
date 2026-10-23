@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "vasaskrimsli/ordsifjar",
+	"title": "Orðsifjafræði",
+	"category": "widgets",
+	"icon": "book-alt",
+	"description": "Gagnvirk tafla yfir uppruna Vasaskrímslanafna, með leit og síum. Færslum er breytt undir Orðsifjar í stjórnborðinu.",
+	"keywords": [ "orðsifjar", "vasaskrímsli", "tafla" ],
+	"textdomain": "vasaskrimsli",
+	"supports": { "html": false, "multiple": false, "align": [ "wide", "full" ] },
+	"editorScript": "file:./editor.js"
+}
