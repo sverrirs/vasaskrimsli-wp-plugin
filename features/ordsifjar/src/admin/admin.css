@@ -1,0 +1,306 @@
+/* Orðsifjar editing grid in wp-admin. Uses wp-admin's own colours and controls where possible. */
+
+.vs-oa-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 8px 0 16px;
+}
+
+.vs-oa-head .wp-heading-inline {
+	margin-right: 4px;
+}
+
+.vs-oa-spacer {
+	flex: 1;
+}
+
+.vs-oa-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 16px;
+	margin-bottom: 12px;
+}
+
+.vs-oa-search {
+	width: 280px;
+}
+
+.vs-oa-count {
+	font-weight: 600;
+}
+
+.vs-oa-scroll {
+	overflow-x: auto;
+}
+
+.vs-oa-grid {
+	table-layout: fixed;
+	min-width: 1280px;
+}
+
+.vs-oa-grid td {
+	vertical-align: top;
+	padding: 4px;
+}
+
+.vs-oa-grid .col-numer { width: 64px; }
+.vs-oa-grid .col-kyn { width: 56px; }
+.vs-oa-grid .col-nafn { width: 130px; }
+.vs-oa-grid .col-uppruni { width: 150px; }
+.vs-oa-grid .col-thyding { width: auto; }
+.vs-oa-grid .col-enska { width: 120px; }
+.vs-oa-grid .col-flokkar { width: 150px; }
+.vs-oa-grid .col-athugasemdir { width: 180px; }
+.vs-oa-grid .col-actions { width: 120px; }
+
+.vs-oa-grid tr.is-fresh td {
+	background: #fcf9e8;
+}
+
+.vs-oa-cell {
+	min-height: 1.5em;
+	padding: 4px 6px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	cursor: text;
+	overflow-wrap: anywhere;
+}
+
+.vs-oa-cell:hover {
+	border-color: #c3c4c7;
+	background: #fff;
+}
+
+.vs-oa-cell:focus-visible {
+	outline: 2px solid var(--wp-admin-theme-color, #2271b1);
+	outline-offset: -2px;
+}
+
+.vs-oa-cell.is-empty::after {
+	content: "+";
+	color: #a7aaad;
+}
+
+.vs-oa-cell a {
+	pointer-events: none; /* clicking a link in a cell starts editing; Ctrl+click is handled in JS */
+}
+
+.vs-oa-cell.is-editing {
+	padding: 0;
+	border-color: var(--wp-admin-theme-color, #2271b1);
+	background: #fff;
+	box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #2271b1);
+}
+
+.vs-oa-rich {
+	background: #fff;
+}
+
+.vs-oa-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	padding: 2px;
+	border-bottom: 1px solid #dcdcde;
+	background: #f6f7f7;
+}
+
+.vs-oa-tool {
+	min-width: 28px;
+	padding: 2px 6px;
+	font-size: 12px;
+	line-height: 18px;
+	color: #1d2327;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.vs-oa-tool:hover {
+	border-color: #c3c4c7;
+}
+
+.vs-oa-tool[aria-pressed='true'] {
+	color: #fff;
+	background: #1d2327;
+}
+
+.vs-oa-editor {
+	min-height: 3em;
+	padding: 6px;
+	outline: none;
+	overflow-wrap: anywhere;
+}
+
+.vs-oa-editor a {
+	color: var(--wp-admin-theme-color, #2271b1);
+	text-decoration: underline;
+}
+
+.vs-oa-input {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.vs-oa-flokkar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.vs-oa-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 0 2px 0 8px;
+	font-size: 12px;
+	background: #f0f0f1;
+	border-radius: 999px;
+}
+
+.vs-oa-chip button {
+	padding: 0 4px;
+	font-size: 14px;
+	line-height: 18px;
+	color: #50575e;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.vs-oa-input--chip {
+	min-width: 0;
+	border-style: dashed !important;
+}
+
+.vs-oa-grid .col-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 10px;
+}
+
+.vs-oa-status {
+	flex-basis: 100%;
+	min-height: 1.2em;
+	font-size: 12px;
+	color: #50575e;
+}
+
+.vs-oa-status.is-saved { color: #00a32a; }
+.vs-oa-status.is-error { color: #d63638; }
+
+/* Dialogs */
+
+.vs-oa-dialog {
+	width: min(640px, calc(100vw - 32px));
+	max-height: calc(100vh - 64px);
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.vs-oa-dialog.is-wide {
+	width: min(1100px, calc(100vw - 32px));
+}
+
+.vs-oa-dialog::backdrop {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.vs-oa-dialog__head {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 20px;
+	background: #fff;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.vs-oa-dialog__head h2 {
+	margin: 0;
+}
+
+.vs-oa-dialog__body {
+	padding: 4px 20px 20px;
+}
+
+.vs-oa-rev {
+	margin: 12px 0;
+	padding: 8px 12px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.vs-oa-rev summary {
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.vs-oa-rev dl > div {
+	display: grid;
+	grid-template-columns: 120px 1fr;
+	gap: 8px;
+	padding: 4px 0;
+}
+
+.vs-oa-rev dl > div.is-different {
+	background: #fcf9e8;
+}
+
+.vs-oa-rev dt {
+	font-weight: 600;
+}
+
+.vs-oa-rev dd {
+	margin: 0;
+}
+
+.vs-oa-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-oa-badge {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 0 6px;
+	font-size: 11px;
+	color: #fff;
+	background: #dba617;
+	border-radius: 999px;
+}
+
+.vs-oa-changes td {
+	vertical-align: top;
+}
+
+.vs-oa-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.vs-oa-kyn td {
+	vertical-align: top;
+}
+
+.vs-oa-kyn .vs-oa-rich {
+	border: 1px solid #c3c4c7;
+}
+
+.vs-oa-backups {
+	margin-top: 16px;
+}
