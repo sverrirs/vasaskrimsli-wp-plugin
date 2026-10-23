@@ -1,0 +1,55 @@
+# Push a tag like v0.2.0 (matching the Version in vasaskrimsli.php) to publish a release.
+# WordPress sites with the plugin installed then show "Update available".
+name: Release
+
+on:
+  push:
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - uses: shivammathur/setup-php@2.40.0
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: |
+          npm test
+          php tests/run.php
+          python3 migration/verify.py
+
+      - name: Build
+        run: npm run build
+
+      - name: Package
+        run: python3 scripts/package.py ${{ startsWith(github.ref, 'refs/tags/') && format('--expect-version {0}', github.ref_name) || '' }}
+
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: vasaskrimsli
+          path: dist/vasaskrimsli.zip
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v3.0.3
+        with:
+          files: dist/vasaskrimsli.zip
+          generate_release_notes: true
