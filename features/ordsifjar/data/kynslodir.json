@@ -1,0 +1,26 @@
+[
+  {
+    "kynslod": 1,
+    "akkeri": "fyrsta-kynslod",
+    "heiti_html": "Fyrsta kynslóð",
+    "skyring_html": ""
+  },
+  {
+    "kynslod": 2,
+    "akkeri": "onnur-kynslod",
+    "heiti_html": "Önnur kynslóð",
+    "skyring_html": ""
+  },
+  {
+    "kynslod": 3,
+    "akkeri": "thridja-kynslod",
+    "heiti_html": "<em>Þriðja kynslóð</em>",
+    "skyring_html": ""
+  },
+  {
+    "kynslod": 4,
+    "akkeri": "fjorda-kynslod",
+    "heiti_html": "<em>Fjórða kynslóð</em> (óstaðfest)",
+    "skyring_html": "<em>Kynslóð fjögur er í vinnslu, áætluð útgáfa um mitt ár 2027</em>"
+  }
+]
