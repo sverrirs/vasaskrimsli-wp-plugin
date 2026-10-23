@@ -190,6 +190,11 @@ final class Store {
 			'post_content' => wp_slash( $json ),
 		);
 		if ( $id ) {
+			// Entries created by import or seeding have no revision yet. Store the current state
+			// first, so the very first edit can still be undone from the history.
+			if ( ! wp_get_post_revisions( $id, array( 'fields' => 'ids', 'posts_per_page' => 1 ) ) ) {
+				wp_save_post_revision( $id );
+			}
 			$post['ID'] = $id;
 			$result     = wp_update_post( $post, true );
 		} else {

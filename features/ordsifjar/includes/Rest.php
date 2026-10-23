@@ -16,18 +16,17 @@ final class Rest {
 		$auth = static function () {
 			return current_user_can( Store::CAPABILITY );
 		};
-		$id   = array( 'id' => array( 'validate_callback' => 'is_numeric' ) );
 
 		register_rest_route( self::NS, self::BASE, array(
 			array( 'methods' => 'GET', 'permission_callback' => $auth, 'callback' => array( self::class, 'list' ) ),
 			array( 'methods' => 'POST', 'permission_callback' => $auth, 'callback' => array( self::class, 'create' ) ),
 		) );
 		register_rest_route( self::NS, self::BASE . '/(?P<id>\d+)', array(
-			array( 'methods' => 'POST, PUT, PATCH', 'permission_callback' => $auth, 'callback' => array( self::class, 'update' ), 'args' => $id ),
-			array( 'methods' => 'DELETE', 'permission_callback' => $auth, 'callback' => array( self::class, 'trash' ), 'args' => $id ),
+			array( 'methods' => 'POST, PUT, PATCH', 'permission_callback' => $auth, 'callback' => array( self::class, 'update' ) ),
+			array( 'methods' => 'DELETE', 'permission_callback' => $auth, 'callback' => array( self::class, 'trash' ) ),
 		) );
 		register_rest_route( self::NS, self::BASE . '/(?P<id>\d+)/saga', array(
-			'methods' => 'GET', 'permission_callback' => $auth, 'callback' => array( self::class, 'revisions' ), 'args' => $id,
+			'methods' => 'GET', 'permission_callback' => $auth, 'callback' => array( self::class, 'revisions' ),
 		) );
 		register_rest_route( self::NS, self::BASE . '/(?P<id>\d+)/saga/(?P<rid>\d+)', array(
 			'methods' => 'POST', 'permission_callback' => $auth, 'callback' => array( self::class, 'restore' ),
