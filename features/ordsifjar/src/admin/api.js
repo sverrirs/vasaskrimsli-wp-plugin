@@ -2,6 +2,13 @@ const config = JSON.parse( document.getElementById( 'vs-ordsifjar-admin-config' 
 
 export { config };
 
+/** Download link for a saved backup file. */
+export function backupUrl( name ) {
+	const url = new URL( config.csv.afrit, window.location.href );
+	url.searchParams.set( 'afrit', name );
+	return url.toString();
+}
+
 /** Calls the plugin's REST API. Throws an Error with the server's Icelandic message on failure. */
 export async function api( path = '', { method = 'GET', body, form } = {} ) {
 	const res = await fetch( config.rest + path, {

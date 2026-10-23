@@ -1,0 +1,25 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-login.php",
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "permalink_structure": "/%postname%/",
+        "blogname": "Vasaskrímsli (prófun)"
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "vasaskrimsli/vasaskrimsli.php"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; flush_rewrite_rules(); wp_insert_post(['post_type'=>'page','post_status'=>'publish','post_title'=>'Orðsifjafræði','post_name'=>'ordsifjafraedi','post_content'=>'<!-- wp:paragraph --><p>Inngangur. <a href=\"#fyrsta-kynslod\">Fyrsta</a> | <a href=\"#onnur-kynslod\">Önnur</a></p><!-- /wp:paragraph --><!-- wp:vasaskrimsli/ordsifjar /-->']);"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; $r = wp_insert_user(['user_login'=>'ritstjori','user_pass'=>'pg-test-927a617a03e8','role'=>'editor','display_name'=>'Prófunarritstjóri','user_email'=>'ritstjori@example.com']); file_put_contents('/wordpress/wp-content/plugins/vasaskrimsli/.setup-result.txt', is_wp_error($r) ? 'ERROR: '.$r->get_error_message() : 'user id '.$r);"
+    }
+  ]
+}

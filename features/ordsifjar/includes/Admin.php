@@ -51,7 +51,10 @@ final class Admin {
 	}
 
 	private static function csv_url( array $args ): string {
-		return wp_nonce_url( add_query_arg( array( 'action' => 'vs_ordsifjar_csv' ) + $args, admin_url( 'admin-post.php' ) ), 'vs_ordsifjar_csv' );
+		// Not wp_nonce_url(): that HTML-escapes "&" to "&amp;", which breaks the URL once it is in JSON.
+		// $args go last: the admin app appends a backup file name to the "afrit=" parameter.
+		$args = array( 'action' => 'vs_ordsifjar_csv', '_wpnonce' => wp_create_nonce( 'vs_ordsifjar_csv' ) ) + $args;
+		return add_query_arg( $args, admin_url( 'admin-post.php' ) );
 	}
 
 	/** Streams a CSV export, or a saved backup when ?afrit= names one. */

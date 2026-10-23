@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { api, config } from './api.js';
+import { api, backupUrl } from './api.js';
 import RichEditor from './RichEditor.jsx';
 import { htmlToText } from '../../../../shared/js/search.js';
 
@@ -221,7 +221,7 @@ export function ImportDialog( { backups, onClose, onImported } ) {
 					{ result.failed.length > 0 && <ul>{ result.failed.map( ( f ) => <li key={ f }>{ f }</li> ) }</ul> }
 					<p>
 						Afrit af gögnunum eins og þau voru fyrir innflutninginn:{ ' ' }
-						<a href={ config.csv.afrit + encodeURIComponent( result.backup ) }>{ result.backup }</a>. Til að afturkalla, flyttu þá skrá inn.
+						<a href={ backupUrl( result.backup ) }>{ result.backup }</a>. Til að afturkalla, flyttu þá skrá inn.
 					</p>
 				</div>
 			) }
@@ -231,7 +231,7 @@ export function ImportDialog( { backups, onClose, onImported } ) {
 					<summary>Eldri afrit ({ backups.length })</summary>
 					<ul>
 						{ backups.map( ( b ) => (
-							<li key={ b }><a href={ config.csv.afrit + encodeURIComponent( b ) }>{ b }</a></li>
+							<li key={ b }><a href={ backupUrl( b ) }>{ b }</a></li>
 						) ) }
 					</ul>
 				</details>
