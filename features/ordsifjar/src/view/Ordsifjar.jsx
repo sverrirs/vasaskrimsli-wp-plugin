@@ -1,5 +1,6 @@
-import { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
+import { SpriteTooltip, Thumb } from './Sprite.jsx';
 
 const PARAMS = { q: 'leit', gen: 'kynslod', flokkur: 'flokkur' };
 
@@ -28,6 +29,9 @@ export default function Ordsifjar( { data } ) {
 	const [ gen, setGen ] = useState( initial.gen );
 	const [ flokkur, setFlokkur ] = useState( initial.flokkur );
 	const query = useDeferredValue( q );
+	const [ tip, setTip ] = useState( null );
+	const showTip = useCallback( ( entry, rect ) => setTip( { entry, rect } ), [] );
+	const hideTip = useCallback( () => setTip( null ), [] );
 
 	useEffect( () => writeUrl( { q, gen, flokkur } ), [ q, gen, flokkur ] );
 
@@ -157,7 +161,7 @@ export default function Ordsifjar( { data } ) {
 										{ rows.map( ( e, i ) => (
 											<tr key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
 												<td className="vs-of__img">
-													{ e.mynd && <img src={ e.mynd } width="48" height="48" alt="" loading="lazy" decoding="async" /> }
+													<Thumb entry={ e } onShow={ showTip } onHide={ hideTip } />
 												</td>
 												<td data-label="Númer" className="vs-of__num">
 													{ e.numer }
@@ -193,6 +197,7 @@ export default function Ordsifjar( { data } ) {
 					</section>
 				);
 			} ) }
+			<SpriteTooltip tip={ tip } onHide={ hideTip } />
 		</div>
 	);
 }

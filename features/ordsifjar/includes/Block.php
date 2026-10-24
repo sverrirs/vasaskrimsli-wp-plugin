@@ -31,8 +31,11 @@ final class Block {
 				return basename( $f, '.webp' );
 			}, glob( VASASKRIMSLI_DIR . 'features/ordsifjar/assets/sprites/*.webp' ) ?: array() ) );
 		}
-		$n         = preg_match( '/^\d+/', (string) $e['numer'], $m ) ? (string) (int) $m[0] : '';
-		$e['mynd'] = ( '' !== $n && isset( $have[ $n ] ) ) ? VASASKRIMSLI_URL . 'features/ordsifjar/assets/sprites/' . $n . '.webp' : '';
+		$n              = preg_match( '/^\d+/', (string) $e['numer'], $m ) ? (string) (int) $m[0] : '';
+		$found          = '' !== $n && isset( $have[ $n ] );
+		$base           = VASASKRIMSLI_URL . 'features/ordsifjar/assets/sprites/';
+		$e['mynd']      = $found ? $base . $n . '.webp' : '';
+		$e['mynd_stor'] = $found ? $base . 'large/' . $n . '.webp' : ''; // Hover tooltip.
 		return $e;
 	}
 

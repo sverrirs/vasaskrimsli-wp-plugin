@@ -151,6 +151,75 @@
 	margin: 0 auto;
 }
 
+.vs-of__thumb {
+	display: block;
+	margin: 0 auto;
+	padding: 0;
+	background: none;
+	border: 0;
+	border-radius: 4px;
+	cursor: zoom-in;
+}
+
+.vs-of__thumb:focus-visible {
+	outline: 2px solid var(--wp--preset--color--pokemon-2, #2162aa);
+	outline-offset: 2px;
+}
+
+/* Hover card with the larger image. Lives in <body>, so it uses its own colour fallbacks. */
+.vs-of-tip {
+	position: fixed;
+	z-index: 100000;
+	box-sizing: border-box;
+	padding: 16px 16px 12px;
+	text-align: center;
+	color: var(--wp--preset--color--contrast, #1c2930);
+	background: var(--wp--preset--color--base, #ebebef);
+	border: 1px solid var(--wp--preset--color--contrast-3, #96a5b2);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(28, 41, 48, 0.18);
+	pointer-events: none;
+	animation: vs-of-tip-in 120ms ease-out;
+}
+
+.vs-of-tip img {
+	display: block;
+	width: 256px;
+	height: 256px;
+	max-width: calc(100vw - 64px);
+	max-height: calc(100vw - 64px);
+	margin: 0 auto 8px;
+}
+
+.vs-of-tip p {
+	margin: 0;
+	line-height: 1.3;
+}
+
+.vs-of-tip__name {
+	font-weight: 600;
+}
+
+.vs-of-tip__num {
+	font-weight: 400;
+	font-variant-numeric: tabular-nums;
+	color: var(--wp--preset--color--contrast-2, #37505d);
+}
+
+.vs-of-tip__en {
+	font-size: 0.875rem;
+	color: var(--wp--preset--color--contrast-2, #37505d);
+}
+
+@keyframes vs-of-tip-in {
+	from { opacity: 0; transform: translateY(4px); }
+	to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vs-of-tip { animation: none; }
+}
+
 .vs-of .screen-reader-text {
 	position: absolute;
 	width: 1px;

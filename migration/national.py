@@ -3,9 +3,13 @@
 Reads the saved page snapshot (migration/source/pokemondb-national-*.html) and:
   1. writes features/ordsifjar/data/national.json  [{numer, kynslod, slug, enska}] for all 1025 entries
   2. downloads each sprite ONCE into .sprite-cache/ (skips files already there), honouring the
-     site's robots.txt Crawl-delay of 2 seconds
-  3. converts them to small transparent WebP files in features/ordsifjar/assets/sprites/<numer>.webp,
-     which the plugin serves from your own site (no requests to pokemondb.net from visitors)
+     site's robots.txt Crawl-delay of 2 seconds. Source: img.pokemondb.net/sprites/home/normal/<slug>.png,
+     the transparent PNG of the same render the national list shows. (The list's own .avif/.jpg files
+     have a solid white background baked in.)
+  3. checks every image really is transparent, then writes two WebP sizes the plugin serves from your
+     own site (no requests to pokemondb.net from visitors):
+       features/ordsifjar/assets/sprites/<numer>.webp        96 px, the thumbnail column
+       features/ordsifjar/assets/sprites/large/<numer>.webp  256 px (full size), the hover tooltip
 
 Run:  python -X utf8 migration/national.py [--no-download]
 """
@@ -25,7 +29,8 @@ OUT = ROOT / "features" / "ordsifjar" / "assets" / "sprites"
 DATA = ROOT / "features" / "ordsifjar" / "data" / "national.json"
 UA = "Mozilla/5.0 (vasaskrimsli.is one-time sprite copy; contact sverrirs@gmail.com)"
 CRAWL_DELAY = 2.0
-SIZE = 96  # px; shown at 48 px, so sharp on high-density screens
+SIZES = {"": 96, "large": 256}  # sub-folder -> px; thumbnails show at 48 px, the tooltip at the full 256 px
+SOURCE = "https://img.pokemondb.net/sprites/home/normal/{slug}.png"
 
 
 def parse():
@@ -35,30 +40,22 @@ def parse():
         for card in re.findall(r'<div class="infocard ">(.*?)</div>', section, re.S):
             num = int(re.search(r"<small>#(\d+)</small>", card).group(1))
             name = re.search(r'<a class="ent-name" href="/pokedex/([^"]+)">([^<]+)</a>', card)
-            avif = re.search(r'srcset="([^"]+\.avif)"', card)
-            jpg = re.search(r'<img[^>]+src="([^"]+)"', card)
-            entries.append({
-                "numer": num, "kynslod": int(gen), "slug": name.group(1), "enska": html.unescape(name.group(2)),
-                "avif": avif.group(1) if avif else None, "jpg": jpg.group(1) if jpg else None,
-            })
+            entries.append({"numer": num, "kynslod": int(gen), "slug": name.group(1), "enska": html.unescape(name.group(2))})
     return entries
 
 
 def download(entries):
     CACHE.mkdir(exist_ok=True)
-    todo = [e for e in entries if not any(CACHE.glob(f"{e['numer']:04d}.*"))]
+    todo = [e for e in entries if not (CACHE / f"{e['numer']:04d}.png").exists()]
     print(f"{len(entries) - len(todo)} cached, {len(todo)} to download (~{len(todo) * CRAWL_DELAY / 60:.0f} min)", flush=True)
     for i, e in enumerate(todo, 1):
-        for url in filter(None, (e["avif"], e["jpg"])):
-            try:
-                req = urllib.request.Request(url, headers={"User-Agent": UA})
-                data = urllib.request.urlopen(req, timeout=30).read()
-                (CACHE / f"{e['numer']:04d}.{url.rsplit('.', 1)[1]}").write_bytes(data)
-                break
-            except Exception as err:  # try the JPG if the AVIF fails
-                print(f"  #{e['numer']} {url}: {err}", flush=True)
-            finally:
-                time.sleep(CRAWL_DELAY)
+        url = SOURCE.format(slug=e["slug"])
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            (CACHE / f"{e['numer']:04d}.png").write_bytes(urllib.request.urlopen(req, timeout=30).read())
+        except Exception as err:
+            print(f"  #{e['numer']} {url}: {err}", flush=True)
+        time.sleep(CRAWL_DELAY)
         if i % 50 == 0:
             print(f"  {i}/{len(todo)}", flush=True)
 
@@ -66,19 +63,30 @@ def download(entries):
 def convert(entries):
     from PIL import Image
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    missing = []
+    for sub in SIZES:
+        (OUT / sub).mkdir(parents=True, exist_ok=True)
+    missing, opaque = [], []
     for e in entries:
-        src = next(iter(sorted(CACHE.glob(f"{e['numer']:04d}.*"))), None)
-        if not src:
+        src = CACHE / f"{e['numer']:04d}.png"
+        if not src.exists():
             missing.append(e["numer"])
             continue
         img = Image.open(src).convert("RGBA")
-        img.thumbnail((SIZE, SIZE), Image.LANCZOS)
-        img.save(OUT / f"{e['numer']}.webp", "WEBP", quality=82, method=6)
-    total = sum(f.stat().st_size for f in OUT.glob("*.webp"))
-    print(f"sprites: {len(entries) - len(missing)} written, {total // 1024} KB total; missing: {missing or 'none'}")
-    return missing
+        if img.getchannel("A").getextrema()[0] == 255:  # no transparent pixel at all
+            opaque.append(e["numer"])
+            continue
+        for sub, px in SIZES.items():
+            out = img.copy()
+            out.thumbnail((px, px), Image.LANCZOS)
+            out.save(OUT / sub / f"{e['numer']}.webp", "WEBP", quality=85, method=4)
+            check = Image.open(OUT / sub / f"{e['numer']}.webp")
+            if check.mode != "RGBA" or check.getchannel("A").getextrema()[0] == 255:
+                opaque.append(e["numer"])
+    for sub in SIZES:
+        files = list((OUT / sub).glob("*.webp"))
+        print(f"sprites/{sub or '.'}: {len(files)} files, {sum(f.stat().st_size for f in files) // 1024} KB")
+    print(f"missing: {missing or 'none'}; not transparent: {sorted(set(opaque)) or 'none'}")
+    return missing or opaque
 
 
 def main():
