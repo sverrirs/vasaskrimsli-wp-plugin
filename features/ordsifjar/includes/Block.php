@@ -51,11 +51,12 @@ final class Block {
 			if ( $k['skyring_html'] ) {
 				$html .= '<p>' . wp_kses( $k['skyring_html'], Sanitize::allowed_html() ) . '</p>';
 			}
-			$html .= '<figure class="wp-block-table"><table><thead><tr><th>Númer</th><th>Nafn</th><th>Upprunaorð</th><th>Þýðing</th><th>Enska</th></tr></thead><tbody>';
+			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__num">Númer</th><th>Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
+			$cols  = array( 'nafn' => '', 'uppruni' => ' class="vs-of__origin"', 'thyding' => '', 'enska' => ' class="vs-of__en"' );
 			foreach ( $rows as $e ) {
-				$html .= '<tr><td>' . esc_html( $e['numer'] ) . '</td>';
-				foreach ( array( 'nafn', 'uppruni', 'thyding', 'enska' ) as $f ) {
-					$html .= '<td>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
+				$html .= '<tr><td class="vs-of__num">' . esc_html( $e['numer'] ) . '</td>';
+				foreach ( $cols as $f => $class ) {
+					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
 				}
 				$html .= '</tr>';
 			}
@@ -64,6 +65,6 @@ final class Block {
 
 		return '<div class="vs-ordsifjar alignwide">'
 			. '<script type="application/json" class="vs-ordsifjar__data">' . wp_json_encode( $data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE ) . '</script>'
-			. '<div class="vs-ordsifjar__app">' . $html . '</div></div>';
+			. '<div class="vs-ordsifjar__app"><div class="vs-of">' . $html . '</div></div></div>';
 	}
 }

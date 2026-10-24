@@ -143,11 +143,11 @@ export default function Ordsifjar( { data } ) {
 								<table>
 									<thead>
 										<tr>
-											<th scope="col">Númer</th>
+											<th scope="col" className="vs-of__num">Númer</th>
 											<th scope="col">Nafn</th>
-											<th scope="col">Upprunaorð</th>
+											<th scope="col" className="vs-of__origin">Upprunaorð</th>
 											<th scope="col">Þýðing</th>
-											<th scope="col">Enska</th>
+											<th scope="col" className="vs-of__en">Enska</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -168,14 +168,14 @@ export default function Ordsifjar( { data } ) {
 														</span>
 													) }
 												</td>
-												<td data-label="Upprunaorð">
+												<td data-label="Upprunaorð" className="vs-of__origin">
 													<Html html={ e.uppruni } />
 												</td>
 												<td data-label="Þýðing">
 													<Html html={ e.thyding } />
 													{ e.athugasemdir && <Html as="div" className="vs-of__note" html={ e.athugasemdir } /> }
 												</td>
-												<td data-label="Enska">
+												<td data-label="Enska" className="vs-of__en">
 													<Html html={ e.enska } />
 												</td>
 											</tr>

@@ -113,18 +113,42 @@
 	scroll-margin-top: 160px;
 }
 
-.vs-of__table td {
-	vertical-align: top;
+/*
+ * Table look of the original page. WordPress only loads its Table block CSS when a core Table block
+ * is on the page, so the same rules (wp-includes/blocks/table) are carried here.
+ */
+.vs-of__table {
+	margin: 0 0 var(--wp--style--block-gap, 1.5rem);
+	overflow-x: auto;
+}
+
+.vs-of__table table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.vs-of__table thead {
+	border-bottom: 3px solid;
+}
+
+.vs-of__table td,
+.vs-of__table th {
+	padding: 0.5em;
+	border: 1px solid;
+}
+
+.vs-of__num,
+.vs-of__origin {
+	text-align: right;
+}
+
+.vs-of__en {
+	text-align: left;
 }
 
 .vs-of__num {
-	text-align: right;
 	font-variant-numeric: tabular-nums;
 	white-space: nowrap;
-}
-
-.vs-of__name {
-	font-weight: 600;
 }
 
 .vs-of__tags {
