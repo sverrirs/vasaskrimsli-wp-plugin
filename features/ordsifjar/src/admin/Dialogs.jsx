@@ -8,14 +8,25 @@ const LABELS = { numer: 'Númer', kynslod: 'Kynslóð', nafn: 'Nafn', uppruni: '
 /** Native <dialog>, opened as a modal on mount. */
 function Dialog( { title, onClose, children, wide = false } ) {
 	const ref = useRef( null );
+	const closed = useRef( onClose );
+	closed.current = onClose;
 	useEffect( () => {
-		ref.current?.showModal();
+		// Closing goes through the app's state (onClose unmounts the dialog) instead of relying on the
+		// dialog's own "close" event, which is not always delivered. Esc arrives as "cancel".
+		const el = ref.current;
+		const cancel = ( e ) => {
+			e.preventDefault();
+			closed.current();
+		};
+		el.addEventListener( 'cancel', cancel );
+		el.showModal();
+		return () => el.removeEventListener( 'cancel', cancel );
 	}, [] );
 	return (
-		<dialog ref={ ref } className={ 'vs-oa-dialog' + ( wide ? ' is-wide' : '' ) } onClose={ onClose } aria-label={ title }>
+		<dialog ref={ ref } className={ 'vs-oa-dialog' + ( wide ? ' is-wide' : '' ) } aria-label={ title }>
 			<header className="vs-oa-dialog__head">
 				<h2>{ title }</h2>
-				<button type="button" className="button-link" onClick={ () => ref.current?.close() } aria-label="Loka">
+				<button type="button" className="button-link" onClick={ () => closed.current() }>
 					Loka
 				</button>
 			</header>

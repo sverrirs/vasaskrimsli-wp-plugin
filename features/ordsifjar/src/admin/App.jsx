@@ -177,7 +177,7 @@ export default function App() {
 				</table>
 			</div>
 
-			{ dialog?.type === 'history' && <HistoryDialog entry={ dialog.entry } onClose={ () => setDialog( null ) } onRestored={ replace } /> }
+			{ dialog?.type === 'history' && <HistoryDialog key={ dialog.entry.id } entry={ dialog.entry } onClose={ () => setDialog( null ) } onRestored={ replace } /> }
 			{ dialog?.type === 'import' && <ImportDialog backups={ data.afrit } onClose={ () => setDialog( null ) } onImported={ load } /> }
 			{ dialog?.type === 'kynslodir' && (
 				<KynslodirDialog kynslodir={ data.kynslodir } onClose={ () => setDialog( null ) } onSaved={ ( k ) => setData( ( d ) => ( { ...d, kynslodir: k } ) ) } />
