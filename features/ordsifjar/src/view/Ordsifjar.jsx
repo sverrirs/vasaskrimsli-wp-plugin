@@ -143,6 +143,9 @@ export default function Ordsifjar( { data } ) {
 								<table>
 									<thead>
 										<tr>
+											<th scope="col" className="vs-of__img">
+												<span className="screen-reader-text">Mynd</span>
+											</th>
 											<th scope="col" className="vs-of__num">Númer</th>
 											<th scope="col">Nafn</th>
 											<th scope="col" className="vs-of__origin">Upprunaorð</th>
@@ -153,6 +156,9 @@ export default function Ordsifjar( { data } ) {
 									<tbody>
 										{ rows.map( ( e, i ) => (
 											<tr key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
+												<td className="vs-of__img">
+													{ e.mynd && <img src={ e.mynd } width="48" height="48" alt="" loading="lazy" decoding="async" /> }
+												</td>
 												<td data-label="Númer" className="vs-of__num">
 													{ e.numer }
 												</td>

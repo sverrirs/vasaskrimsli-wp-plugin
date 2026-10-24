@@ -20,10 +20,26 @@ final class Block {
 		add_shortcode( 'ordsifjar', array( self::class, 'render' ) );
 	}
 
+	/**
+	 * Adds 'mynd': the URL of the entry's sprite, served from this plugin (assets/sprites/<n>.webp),
+	 * or '' when there is none. "351a" uses 351.
+	 */
+	public static function with_sprite( array $e ): array {
+		static $have = null;
+		if ( null === $have ) {
+			$have = array_flip( array_map( static function ( $f ) {
+				return basename( $f, '.webp' );
+			}, glob( VASASKRIMSLI_DIR . 'features/ordsifjar/assets/sprites/*.webp' ) ?: array() ) );
+		}
+		$n         = preg_match( '/^\d+/', (string) $e['numer'], $m ) ? (string) (int) $m[0] : '';
+		$e['mynd'] = ( '' !== $n && isset( $have[ $n ] ) ) ? VASASKRIMSLI_URL . 'features/ordsifjar/assets/sprites/' . $n . '.webp' : '';
+		return $e;
+	}
+
 	public static function render(): string {
 		\Vasaskrimsli\Assets::module( 'view' );
 
-		$entries   = array_values( Store::all() );
+		$entries   = array_map( array( self::class, 'with_sprite' ), array_values( Store::all() ) );
 		$kynslodir = Store::kynslodir();
 		$data      = array(
 			'entries'   => array_map( static function ( $e ) {
@@ -51,10 +67,11 @@ final class Block {
 			if ( $k['skyring_html'] ) {
 				$html .= '<p>' . wp_kses( $k['skyring_html'], Sanitize::allowed_html() ) . '</p>';
 			}
-			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__num">Númer</th><th>Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
+			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__img"><span class="screen-reader-text">Mynd</span></th><th class="vs-of__num">Númer</th><th>Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
 			$cols  = array( 'nafn' => '', 'uppruni' => ' class="vs-of__origin"', 'thyding' => '', 'enska' => ' class="vs-of__en"' );
 			foreach ( $rows as $e ) {
-				$html .= '<tr><td class="vs-of__num">' . esc_html( $e['numer'] ) . '</td>';
+				$html .= '<tr><td class="vs-of__img">' . ( $e['mynd'] ? '<img src="' . esc_url( $e['mynd'] ) . '" width="48" height="48" alt="" loading="lazy" decoding="async">' : '' ) . '</td>';
+				$html .= '<td class="vs-of__num">' . esc_html( $e['numer'] ) . '</td>';
 				foreach ( $cols as $f => $class ) {
 					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
 				}

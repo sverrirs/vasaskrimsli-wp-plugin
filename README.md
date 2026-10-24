@@ -14,6 +14,14 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   links, line breaks (Enter), superscript and subscript. Saves when you leave the cell; Esc cancels.
   Each entry has a full history with restore. Delete moves an entry to the trash (restorable).
 - **Flokkar** (categories) and **Kynslóðir** (generation headings and notes) are editable in wp-admin.
+- **Generations 4 to 9**: every national Pokédex number from 387 to 1025, with the English name linked to
+  pokemondb.net, is added on update (Icelandic name, Upprunaorð and Þýðing start as "–" to fill in).
+  Numbers that already exist, including entries in the trash, are never added again.
+- **Sprites**: a small image of each entry on the far left, served from this plugin
+  (`features/ordsifjar/assets/sprites/<number>.webp`), so visitors never load images from pokemondb.net.
+  Refresh them with `python -X utf8 migration/national.py` (downloads once, 2 s apart, per pokemondb.net's robots.txt).
+- **Upprunaorð separators** are always em dashes (—): hyphens and en dashes between word parts are converted
+  on save and on import; link addresses are never changed.
 - **CSV**: *Sækja CSV með sniði* (formatting as HTML, for exact backups and re-import) and
   *Sækja CSV án sniðs* (plain text). Both open correctly in Excel (UTF-8 with BOM).
 - **CSV import** with a preview before anything changes. Rows with an `id` update that entry, rows

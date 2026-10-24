@@ -1,0 +1,6152 @@
+[
+ {
+  "numer": 1,
+  "kynslod": 1,
+  "slug": "bulbasaur",
+  "enska": "Bulbasaur"
+ },
+ {
+  "numer": 2,
+  "kynslod": 1,
+  "slug": "ivysaur",
+  "enska": "Ivysaur"
+ },
+ {
+  "numer": 3,
+  "kynslod": 1,
+  "slug": "venusaur",
+  "enska": "Venusaur"
+ },
+ {
+  "numer": 4,
+  "kynslod": 1,
+  "slug": "charmander",
+  "enska": "Charmander"
+ },
+ {
+  "numer": 5,
+  "kynslod": 1,
+  "slug": "charmeleon",
+  "enska": "Charmeleon"
+ },
+ {
+  "numer": 6,
+  "kynslod": 1,
+  "slug": "charizard",
+  "enska": "Charizard"
+ },
+ {
+  "numer": 7,
+  "kynslod": 1,
+  "slug": "squirtle",
+  "enska": "Squirtle"
+ },
+ {
+  "numer": 8,
+  "kynslod": 1,
+  "slug": "wartortle",
+  "enska": "Wartortle"
+ },
+ {
+  "numer": 9,
+  "kynslod": 1,
+  "slug": "blastoise",
+  "enska": "Blastoise"
+ },
+ {
+  "numer": 10,
+  "kynslod": 1,
+  "slug": "caterpie",
+  "enska": "Caterpie"
+ },
+ {
+  "numer": 11,
+  "kynslod": 1,
+  "slug": "metapod",
+  "enska": "Metapod"
+ },
+ {
+  "numer": 12,
+  "kynslod": 1,
+  "slug": "butterfree",
+  "enska": "Butterfree"
+ },
+ {
+  "numer": 13,
+  "kynslod": 1,
+  "slug": "weedle",
+  "enska": "Weedle"
+ },
+ {
+  "numer": 14,
+  "kynslod": 1,
+  "slug": "kakuna",
+  "enska": "Kakuna"
+ },
+ {
+  "numer": 15,
+  "kynslod": 1,
+  "slug": "beedrill",
+  "enska": "Beedrill"
+ },
+ {
+  "numer": 16,
+  "kynslod": 1,
+  "slug": "pidgey",
+  "enska": "Pidgey"
+ },
+ {
+  "numer": 17,
+  "kynslod": 1,
+  "slug": "pidgeotto",
+  "enska": "Pidgeotto"
+ },
+ {
+  "numer": 18,
+  "kynslod": 1,
+  "slug": "pidgeot",
+  "enska": "Pidgeot"
+ },
+ {
+  "numer": 19,
+  "kynslod": 1,
+  "slug": "rattata",
+  "enska": "Rattata"
+ },
+ {
+  "numer": 20,
+  "kynslod": 1,
+  "slug": "raticate",
+  "enska": "Raticate"
+ },
+ {
+  "numer": 21,
+  "kynslod": 1,
+  "slug": "spearow",
+  "enska": "Spearow"
+ },
+ {
+  "numer": 22,
+  "kynslod": 1,
+  "slug": "fearow",
+  "enska": "Fearow"
+ },
+ {
+  "numer": 23,
+  "kynslod": 1,
+  "slug": "ekans",
+  "enska": "Ekans"
+ },
+ {
+  "numer": 24,
+  "kynslod": 1,
+  "slug": "arbok",
+  "enska": "Arbok"
+ },
+ {
+  "numer": 25,
+  "kynslod": 1,
+  "slug": "pikachu",
+  "enska": "Pikachu"
+ },
+ {
+  "numer": 26,
+  "kynslod": 1,
+  "slug": "raichu",
+  "enska": "Raichu"
+ },
+ {
+  "numer": 27,
+  "kynslod": 1,
+  "slug": "sandshrew",
+  "enska": "Sandshrew"
+ },
+ {
+  "numer": 28,
+  "kynslod": 1,
+  "slug": "sandslash",
+  "enska": "Sandslash"
+ },
+ {
+  "numer": 29,
+  "kynslod": 1,
+  "slug": "nidoran-f",
+  "enska": "Nidoran♀"
+ },
+ {
+  "numer": 30,
+  "kynslod": 1,
+  "slug": "nidorina",
+  "enska": "Nidorina"
+ },
+ {
+  "numer": 31,
+  "kynslod": 1,
+  "slug": "nidoqueen",
+  "enska": "Nidoqueen"
+ },
+ {
+  "numer": 32,
+  "kynslod": 1,
+  "slug": "nidoran-m",
+  "enska": "Nidoran♂"
+ },
+ {
+  "numer": 33,
+  "kynslod": 1,
+  "slug": "nidorino",
+  "enska": "Nidorino"
+ },
+ {
+  "numer": 34,
+  "kynslod": 1,
+  "slug": "nidoking",
+  "enska": "Nidoking"
+ },
+ {
+  "numer": 35,
+  "kynslod": 1,
+  "slug": "clefairy",
+  "enska": "Clefairy"
+ },
+ {
+  "numer": 36,
+  "kynslod": 1,
+  "slug": "clefable",
+  "enska": "Clefable"
+ },
+ {
+  "numer": 37,
+  "kynslod": 1,
+  "slug": "vulpix",
+  "enska": "Vulpix"
+ },
+ {
+  "numer": 38,
+  "kynslod": 1,
+  "slug": "ninetales",
+  "enska": "Ninetales"
+ },
+ {
+  "numer": 39,
+  "kynslod": 1,
+  "slug": "jigglypuff",
+  "enska": "Jigglypuff"
+ },
+ {
+  "numer": 40,
+  "kynslod": 1,
+  "slug": "wigglytuff",
+  "enska": "Wigglytuff"
+ },
+ {
+  "numer": 41,
+  "kynslod": 1,
+  "slug": "zubat",
+  "enska": "Zubat"
+ },
+ {
+  "numer": 42,
+  "kynslod": 1,
+  "slug": "golbat",
+  "enska": "Golbat"
+ },
+ {
+  "numer": 43,
+  "kynslod": 1,
+  "slug": "oddish",
+  "enska": "Oddish"
+ },
+ {
+  "numer": 44,
+  "kynslod": 1,
+  "slug": "gloom",
+  "enska": "Gloom"
+ },
+ {
+  "numer": 45,
+  "kynslod": 1,
+  "slug": "vileplume",
+  "enska": "Vileplume"
+ },
+ {
+  "numer": 46,
+  "kynslod": 1,
+  "slug": "paras",
+  "enska": "Paras"
+ },
+ {
+  "numer": 47,
+  "kynslod": 1,
+  "slug": "parasect",
+  "enska": "Parasect"
+ },
+ {
+  "numer": 48,
+  "kynslod": 1,
+  "slug": "venonat",
+  "enska": "Venonat"
+ },
+ {
+  "numer": 49,
+  "kynslod": 1,
+  "slug": "venomoth",
+  "enska": "Venomoth"
+ },
+ {
+  "numer": 50,
+  "kynslod": 1,
+  "slug": "diglett",
+  "enska": "Diglett"
+ },
+ {
+  "numer": 51,
+  "kynslod": 1,
+  "slug": "dugtrio",
+  "enska": "Dugtrio"
+ },
+ {
+  "numer": 52,
+  "kynslod": 1,
+  "slug": "meowth",
+  "enska": "Meowth"
+ },
+ {
+  "numer": 53,
+  "kynslod": 1,
+  "slug": "persian",
+  "enska": "Persian"
+ },
+ {
+  "numer": 54,
+  "kynslod": 1,
+  "slug": "psyduck",
+  "enska": "Psyduck"
+ },
+ {
+  "numer": 55,
+  "kynslod": 1,
+  "slug": "golduck",
+  "enska": "Golduck"
+ },
+ {
+  "numer": 56,
+  "kynslod": 1,
+  "slug": "mankey",
+  "enska": "Mankey"
+ },
+ {
+  "numer": 57,
+  "kynslod": 1,
+  "slug": "primeape",
+  "enska": "Primeape"
+ },
+ {
+  "numer": 58,
+  "kynslod": 1,
+  "slug": "growlithe",
+  "enska": "Growlithe"
+ },
+ {
+  "numer": 59,
+  "kynslod": 1,
+  "slug": "arcanine",
+  "enska": "Arcanine"
+ },
+ {
+  "numer": 60,
+  "kynslod": 1,
+  "slug": "poliwag",
+  "enska": "Poliwag"
+ },
+ {
+  "numer": 61,
+  "kynslod": 1,
+  "slug": "poliwhirl",
+  "enska": "Poliwhirl"
+ },
+ {
+  "numer": 62,
+  "kynslod": 1,
+  "slug": "poliwrath",
+  "enska": "Poliwrath"
+ },
+ {
+  "numer": 63,
+  "kynslod": 1,
+  "slug": "abra",
+  "enska": "Abra"
+ },
+ {
+  "numer": 64,
+  "kynslod": 1,
+  "slug": "kadabra",
+  "enska": "Kadabra"
+ },
+ {
+  "numer": 65,
+  "kynslod": 1,
+  "slug": "alakazam",
+  "enska": "Alakazam"
+ },
+ {
+  "numer": 66,
+  "kynslod": 1,
+  "slug": "machop",
+  "enska": "Machop"
+ },
+ {
+  "numer": 67,
+  "kynslod": 1,
+  "slug": "machoke",
+  "enska": "Machoke"
+ },
+ {
+  "numer": 68,
+  "kynslod": 1,
+  "slug": "machamp",
+  "enska": "Machamp"
+ },
+ {
+  "numer": 69,
+  "kynslod": 1,
+  "slug": "bellsprout",
+  "enska": "Bellsprout"
+ },
+ {
+  "numer": 70,
+  "kynslod": 1,
+  "slug": "weepinbell",
+  "enska": "Weepinbell"
+ },
+ {
+  "numer": 71,
+  "kynslod": 1,
+  "slug": "victreebel",
+  "enska": "Victreebel"
+ },
+ {
+  "numer": 72,
+  "kynslod": 1,
+  "slug": "tentacool",
+  "enska": "Tentacool"
+ },
+ {
+  "numer": 73,
+  "kynslod": 1,
+  "slug": "tentacruel",
+  "enska": "Tentacruel"
+ },
+ {
+  "numer": 74,
+  "kynslod": 1,
+  "slug": "geodude",
+  "enska": "Geodude"
+ },
+ {
+  "numer": 75,
+  "kynslod": 1,
+  "slug": "graveler",
+  "enska": "Graveler"
+ },
+ {
+  "numer": 76,
+  "kynslod": 1,
+  "slug": "golem",
+  "enska": "Golem"
+ },
+ {
+  "numer": 77,
+  "kynslod": 1,
+  "slug": "ponyta",
+  "enska": "Ponyta"
+ },
+ {
+  "numer": 78,
+  "kynslod": 1,
+  "slug": "rapidash",
+  "enska": "Rapidash"
+ },
+ {
+  "numer": 79,
+  "kynslod": 1,
+  "slug": "slowpoke",
+  "enska": "Slowpoke"
+ },
+ {
+  "numer": 80,
+  "kynslod": 1,
+  "slug": "slowbro",
+  "enska": "Slowbro"
+ },
+ {
+  "numer": 81,
+  "kynslod": 1,
+  "slug": "magnemite",
+  "enska": "Magnemite"
+ },
+ {
+  "numer": 82,
+  "kynslod": 1,
+  "slug": "magneton",
+  "enska": "Magneton"
+ },
+ {
+  "numer": 83,
+  "kynslod": 1,
+  "slug": "farfetchd",
+  "enska": "Farfetch'd"
+ },
+ {
+  "numer": 84,
+  "kynslod": 1,
+  "slug": "doduo",
+  "enska": "Doduo"
+ },
+ {
+  "numer": 85,
+  "kynslod": 1,
+  "slug": "dodrio",
+  "enska": "Dodrio"
+ },
+ {
+  "numer": 86,
+  "kynslod": 1,
+  "slug": "seel",
+  "enska": "Seel"
+ },
+ {
+  "numer": 87,
+  "kynslod": 1,
+  "slug": "dewgong",
+  "enska": "Dewgong"
+ },
+ {
+  "numer": 88,
+  "kynslod": 1,
+  "slug": "grimer",
+  "enska": "Grimer"
+ },
+ {
+  "numer": 89,
+  "kynslod": 1,
+  "slug": "muk",
+  "enska": "Muk"
+ },
+ {
+  "numer": 90,
+  "kynslod": 1,
+  "slug": "shellder",
+  "enska": "Shellder"
+ },
+ {
+  "numer": 91,
+  "kynslod": 1,
+  "slug": "cloyster",
+  "enska": "Cloyster"
+ },
+ {
+  "numer": 92,
+  "kynslod": 1,
+  "slug": "gastly",
+  "enska": "Gastly"
+ },
+ {
+  "numer": 93,
+  "kynslod": 1,
+  "slug": "haunter",
+  "enska": "Haunter"
+ },
+ {
+  "numer": 94,
+  "kynslod": 1,
+  "slug": "gengar",
+  "enska": "Gengar"
+ },
+ {
+  "numer": 95,
+  "kynslod": 1,
+  "slug": "onix",
+  "enska": "Onix"
+ },
+ {
+  "numer": 96,
+  "kynslod": 1,
+  "slug": "drowzee",
+  "enska": "Drowzee"
+ },
+ {
+  "numer": 97,
+  "kynslod": 1,
+  "slug": "hypno",
+  "enska": "Hypno"
+ },
+ {
+  "numer": 98,
+  "kynslod": 1,
+  "slug": "krabby",
+  "enska": "Krabby"
+ },
+ {
+  "numer": 99,
+  "kynslod": 1,
+  "slug": "kingler",
+  "enska": "Kingler"
+ },
+ {
+  "numer": 100,
+  "kynslod": 1,
+  "slug": "voltorb",
+  "enska": "Voltorb"
+ },
+ {
+  "numer": 101,
+  "kynslod": 1,
+  "slug": "electrode",
+  "enska": "Electrode"
+ },
+ {
+  "numer": 102,
+  "kynslod": 1,
+  "slug": "exeggcute",
+  "enska": "Exeggcute"
+ },
+ {
+  "numer": 103,
+  "kynslod": 1,
+  "slug": "exeggutor",
+  "enska": "Exeggutor"
+ },
+ {
+  "numer": 104,
+  "kynslod": 1,
+  "slug": "cubone",
+  "enska": "Cubone"
+ },
+ {
+  "numer": 105,
+  "kynslod": 1,
+  "slug": "marowak",
+  "enska": "Marowak"
+ },
+ {
+  "numer": 106,
+  "kynslod": 1,
+  "slug": "hitmonlee",
+  "enska": "Hitmonlee"
+ },
+ {
+  "numer": 107,
+  "kynslod": 1,
+  "slug": "hitmonchan",
+  "enska": "Hitmonchan"
+ },
+ {
+  "numer": 108,
+  "kynslod": 1,
+  "slug": "lickitung",
+  "enska": "Lickitung"
+ },
+ {
+  "numer": 109,
+  "kynslod": 1,
+  "slug": "koffing",
+  "enska": "Koffing"
+ },
+ {
+  "numer": 110,
+  "kynslod": 1,
+  "slug": "weezing",
+  "enska": "Weezing"
+ },
+ {
+  "numer": 111,
+  "kynslod": 1,
+  "slug": "rhyhorn",
+  "enska": "Rhyhorn"
+ },
+ {
+  "numer": 112,
+  "kynslod": 1,
+  "slug": "rhydon",
+  "enska": "Rhydon"
+ },
+ {
+  "numer": 113,
+  "kynslod": 1,
+  "slug": "chansey",
+  "enska": "Chansey"
+ },
+ {
+  "numer": 114,
+  "kynslod": 1,
+  "slug": "tangela",
+  "enska": "Tangela"
+ },
+ {
+  "numer": 115,
+  "kynslod": 1,
+  "slug": "kangaskhan",
+  "enska": "Kangaskhan"
+ },
+ {
+  "numer": 116,
+  "kynslod": 1,
+  "slug": "horsea",
+  "enska": "Horsea"
+ },
+ {
+  "numer": 117,
+  "kynslod": 1,
+  "slug": "seadra",
+  "enska": "Seadra"
+ },
+ {
+  "numer": 118,
+  "kynslod": 1,
+  "slug": "goldeen",
+  "enska": "Goldeen"
+ },
+ {
+  "numer": 119,
+  "kynslod": 1,
+  "slug": "seaking",
+  "enska": "Seaking"
+ },
+ {
+  "numer": 120,
+  "kynslod": 1,
+  "slug": "staryu",
+  "enska": "Staryu"
+ },
+ {
+  "numer": 121,
+  "kynslod": 1,
+  "slug": "starmie",
+  "enska": "Starmie"
+ },
+ {
+  "numer": 122,
+  "kynslod": 1,
+  "slug": "mr-mime",
+  "enska": "Mr. Mime"
+ },
+ {
+  "numer": 123,
+  "kynslod": 1,
+  "slug": "scyther",
+  "enska": "Scyther"
+ },
+ {
+  "numer": 124,
+  "kynslod": 1,
+  "slug": "jynx",
+  "enska": "Jynx"
+ },
+ {
+  "numer": 125,
+  "kynslod": 1,
+  "slug": "electabuzz",
+  "enska": "Electabuzz"
+ },
+ {
+  "numer": 126,
+  "kynslod": 1,
+  "slug": "magmar",
+  "enska": "Magmar"
+ },
+ {
+  "numer": 127,
+  "kynslod": 1,
+  "slug": "pinsir",
+  "enska": "Pinsir"
+ },
+ {
+  "numer": 128,
+  "kynslod": 1,
+  "slug": "tauros",
+  "enska": "Tauros"
+ },
+ {
+  "numer": 129,
+  "kynslod": 1,
+  "slug": "magikarp",
+  "enska": "Magikarp"
+ },
+ {
+  "numer": 130,
+  "kynslod": 1,
+  "slug": "gyarados",
+  "enska": "Gyarados"
+ },
+ {
+  "numer": 131,
+  "kynslod": 1,
+  "slug": "lapras",
+  "enska": "Lapras"
+ },
+ {
+  "numer": 132,
+  "kynslod": 1,
+  "slug": "ditto",
+  "enska": "Ditto"
+ },
+ {
+  "numer": 133,
+  "kynslod": 1,
+  "slug": "eevee",
+  "enska": "Eevee"
+ },
+ {
+  "numer": 134,
+  "kynslod": 1,
+  "slug": "vaporeon",
+  "enska": "Vaporeon"
+ },
+ {
+  "numer": 135,
+  "kynslod": 1,
+  "slug": "jolteon",
+  "enska": "Jolteon"
+ },
+ {
+  "numer": 136,
+  "kynslod": 1,
+  "slug": "flareon",
+  "enska": "Flareon"
+ },
+ {
+  "numer": 137,
+  "kynslod": 1,
+  "slug": "porygon",
+  "enska": "Porygon"
+ },
+ {
+  "numer": 138,
+  "kynslod": 1,
+  "slug": "omanyte",
+  "enska": "Omanyte"
+ },
+ {
+  "numer": 139,
+  "kynslod": 1,
+  "slug": "omastar",
+  "enska": "Omastar"
+ },
+ {
+  "numer": 140,
+  "kynslod": 1,
+  "slug": "kabuto",
+  "enska": "Kabuto"
+ },
+ {
+  "numer": 141,
+  "kynslod": 1,
+  "slug": "kabutops",
+  "enska": "Kabutops"
+ },
+ {
+  "numer": 142,
+  "kynslod": 1,
+  "slug": "aerodactyl",
+  "enska": "Aerodactyl"
+ },
+ {
+  "numer": 143,
+  "kynslod": 1,
+  "slug": "snorlax",
+  "enska": "Snorlax"
+ },
+ {
+  "numer": 144,
+  "kynslod": 1,
+  "slug": "articuno",
+  "enska": "Articuno"
+ },
+ {
+  "numer": 145,
+  "kynslod": 1,
+  "slug": "zapdos",
+  "enska": "Zapdos"
+ },
+ {
+  "numer": 146,
+  "kynslod": 1,
+  "slug": "moltres",
+  "enska": "Moltres"
+ },
+ {
+  "numer": 147,
+  "kynslod": 1,
+  "slug": "dratini",
+  "enska": "Dratini"
+ },
+ {
+  "numer": 148,
+  "kynslod": 1,
+  "slug": "dragonair",
+  "enska": "Dragonair"
+ },
+ {
+  "numer": 149,
+  "kynslod": 1,
+  "slug": "dragonite",
+  "enska": "Dragonite"
+ },
+ {
+  "numer": 150,
+  "kynslod": 1,
+  "slug": "mewtwo",
+  "enska": "Mewtwo"
+ },
+ {
+  "numer": 151,
+  "kynslod": 1,
+  "slug": "mew",
+  "enska": "Mew"
+ },
+ {
+  "numer": 152,
+  "kynslod": 2,
+  "slug": "chikorita",
+  "enska": "Chikorita"
+ },
+ {
+  "numer": 153,
+  "kynslod": 2,
+  "slug": "bayleef",
+  "enska": "Bayleef"
+ },
+ {
+  "numer": 154,
+  "kynslod": 2,
+  "slug": "meganium",
+  "enska": "Meganium"
+ },
+ {
+  "numer": 155,
+  "kynslod": 2,
+  "slug": "cyndaquil",
+  "enska": "Cyndaquil"
+ },
+ {
+  "numer": 156,
+  "kynslod": 2,
+  "slug": "quilava",
+  "enska": "Quilava"
+ },
+ {
+  "numer": 157,
+  "kynslod": 2,
+  "slug": "typhlosion",
+  "enska": "Typhlosion"
+ },
+ {
+  "numer": 158,
+  "kynslod": 2,
+  "slug": "totodile",
+  "enska": "Totodile"
+ },
+ {
+  "numer": 159,
+  "kynslod": 2,
+  "slug": "croconaw",
+  "enska": "Croconaw"
+ },
+ {
+  "numer": 160,
+  "kynslod": 2,
+  "slug": "feraligatr",
+  "enska": "Feraligatr"
+ },
+ {
+  "numer": 161,
+  "kynslod": 2,
+  "slug": "sentret",
+  "enska": "Sentret"
+ },
+ {
+  "numer": 162,
+  "kynslod": 2,
+  "slug": "furret",
+  "enska": "Furret"
+ },
+ {
+  "numer": 163,
+  "kynslod": 2,
+  "slug": "hoothoot",
+  "enska": "Hoothoot"
+ },
+ {
+  "numer": 164,
+  "kynslod": 2,
+  "slug": "noctowl",
+  "enska": "Noctowl"
+ },
+ {
+  "numer": 165,
+  "kynslod": 2,
+  "slug": "ledyba",
+  "enska": "Ledyba"
+ },
+ {
+  "numer": 166,
+  "kynslod": 2,
+  "slug": "ledian",
+  "enska": "Ledian"
+ },
+ {
+  "numer": 167,
+  "kynslod": 2,
+  "slug": "spinarak",
+  "enska": "Spinarak"
+ },
+ {
+  "numer": 168,
+  "kynslod": 2,
+  "slug": "ariados",
+  "enska": "Ariados"
+ },
+ {
+  "numer": 169,
+  "kynslod": 2,
+  "slug": "crobat",
+  "enska": "Crobat"
+ },
+ {
+  "numer": 170,
+  "kynslod": 2,
+  "slug": "chinchou",
+  "enska": "Chinchou"
+ },
+ {
+  "numer": 171,
+  "kynslod": 2,
+  "slug": "lanturn",
+  "enska": "Lanturn"
+ },
+ {
+  "numer": 172,
+  "kynslod": 2,
+  "slug": "pichu",
+  "enska": "Pichu"
+ },
+ {
+  "numer": 173,
+  "kynslod": 2,
+  "slug": "cleffa",
+  "enska": "Cleffa"
+ },
+ {
+  "numer": 174,
+  "kynslod": 2,
+  "slug": "igglybuff",
+  "enska": "Igglybuff"
+ },
+ {
+  "numer": 175,
+  "kynslod": 2,
+  "slug": "togepi",
+  "enska": "Togepi"
+ },
+ {
+  "numer": 176,
+  "kynslod": 2,
+  "slug": "togetic",
+  "enska": "Togetic"
+ },
+ {
+  "numer": 177,
+  "kynslod": 2,
+  "slug": "natu",
+  "enska": "Natu"
+ },
+ {
+  "numer": 178,
+  "kynslod": 2,
+  "slug": "xatu",
+  "enska": "Xatu"
+ },
+ {
+  "numer": 179,
+  "kynslod": 2,
+  "slug": "mareep",
+  "enska": "Mareep"
+ },
+ {
+  "numer": 180,
+  "kynslod": 2,
+  "slug": "flaaffy",
+  "enska": "Flaaffy"
+ },
+ {
+  "numer": 181,
+  "kynslod": 2,
+  "slug": "ampharos",
+  "enska": "Ampharos"
+ },
+ {
+  "numer": 182,
+  "kynslod": 2,
+  "slug": "bellossom",
+  "enska": "Bellossom"
+ },
+ {
+  "numer": 183,
+  "kynslod": 2,
+  "slug": "marill",
+  "enska": "Marill"
+ },
+ {
+  "numer": 184,
+  "kynslod": 2,
+  "slug": "azumarill",
+  "enska": "Azumarill"
+ },
+ {
+  "numer": 185,
+  "kynslod": 2,
+  "slug": "sudowoodo",
+  "enska": "Sudowoodo"
+ },
+ {
+  "numer": 186,
+  "kynslod": 2,
+  "slug": "politoed",
+  "enska": "Politoed"
+ },
+ {
+  "numer": 187,
+  "kynslod": 2,
+  "slug": "hoppip",
+  "enska": "Hoppip"
+ },
+ {
+  "numer": 188,
+  "kynslod": 2,
+  "slug": "skiploom",
+  "enska": "Skiploom"
+ },
+ {
+  "numer": 189,
+  "kynslod": 2,
+  "slug": "jumpluff",
+  "enska": "Jumpluff"
+ },
+ {
+  "numer": 190,
+  "kynslod": 2,
+  "slug": "aipom",
+  "enska": "Aipom"
+ },
+ {
+  "numer": 191,
+  "kynslod": 2,
+  "slug": "sunkern",
+  "enska": "Sunkern"
+ },
+ {
+  "numer": 192,
+  "kynslod": 2,
+  "slug": "sunflora",
+  "enska": "Sunflora"
+ },
+ {
+  "numer": 193,
+  "kynslod": 2,
+  "slug": "yanma",
+  "enska": "Yanma"
+ },
+ {
+  "numer": 194,
+  "kynslod": 2,
+  "slug": "wooper",
+  "enska": "Wooper"
+ },
+ {
+  "numer": 195,
+  "kynslod": 2,
+  "slug": "quagsire",
+  "enska": "Quagsire"
+ },
+ {
+  "numer": 196,
+  "kynslod": 2,
+  "slug": "espeon",
+  "enska": "Espeon"
+ },
+ {
+  "numer": 197,
+  "kynslod": 2,
+  "slug": "umbreon",
+  "enska": "Umbreon"
+ },
+ {
+  "numer": 198,
+  "kynslod": 2,
+  "slug": "murkrow",
+  "enska": "Murkrow"
+ },
+ {
+  "numer": 199,
+  "kynslod": 2,
+  "slug": "slowking",
+  "enska": "Slowking"
+ },
+ {
+  "numer": 200,
+  "kynslod": 2,
+  "slug": "misdreavus",
+  "enska": "Misdreavus"
+ },
+ {
+  "numer": 201,
+  "kynslod": 2,
+  "slug": "unown",
+  "enska": "Unown"
+ },
+ {
+  "numer": 202,
+  "kynslod": 2,
+  "slug": "wobbuffet",
+  "enska": "Wobbuffet"
+ },
+ {
+  "numer": 203,
+  "kynslod": 2,
+  "slug": "girafarig",
+  "enska": "Girafarig"
+ },
+ {
+  "numer": 204,
+  "kynslod": 2,
+  "slug": "pineco",
+  "enska": "Pineco"
+ },
+ {
+  "numer": 205,
+  "kynslod": 2,
+  "slug": "forretress",
+  "enska": "Forretress"
+ },
+ {
+  "numer": 206,
+  "kynslod": 2,
+  "slug": "dunsparce",
+  "enska": "Dunsparce"
+ },
+ {
+  "numer": 207,
+  "kynslod": 2,
+  "slug": "gligar",
+  "enska": "Gligar"
+ },
+ {
+  "numer": 208,
+  "kynslod": 2,
+  "slug": "steelix",
+  "enska": "Steelix"
+ },
+ {
+  "numer": 209,
+  "kynslod": 2,
+  "slug": "snubbull",
+  "enska": "Snubbull"
+ },
+ {
+  "numer": 210,
+  "kynslod": 2,
+  "slug": "granbull",
+  "enska": "Granbull"
+ },
+ {
+  "numer": 211,
+  "kynslod": 2,
+  "slug": "qwilfish",
+  "enska": "Qwilfish"
+ },
+ {
+  "numer": 212,
+  "kynslod": 2,
+  "slug": "scizor",
+  "enska": "Scizor"
+ },
+ {
+  "numer": 213,
+  "kynslod": 2,
+  "slug": "shuckle",
+  "enska": "Shuckle"
+ },
+ {
+  "numer": 214,
+  "kynslod": 2,
+  "slug": "heracross",
+  "enska": "Heracross"
+ },
+ {
+  "numer": 215,
+  "kynslod": 2,
+  "slug": "sneasel",
+  "enska": "Sneasel"
+ },
+ {
+  "numer": 216,
+  "kynslod": 2,
+  "slug": "teddiursa",
+  "enska": "Teddiursa"
+ },
+ {
+  "numer": 217,
+  "kynslod": 2,
+  "slug": "ursaring",
+  "enska": "Ursaring"
+ },
+ {
+  "numer": 218,
+  "kynslod": 2,
+  "slug": "slugma",
+  "enska": "Slugma"
+ },
+ {
+  "numer": 219,
+  "kynslod": 2,
+  "slug": "magcargo",
+  "enska": "Magcargo"
+ },
+ {
+  "numer": 220,
+  "kynslod": 2,
+  "slug": "swinub",
+  "enska": "Swinub"
+ },
+ {
+  "numer": 221,
+  "kynslod": 2,
+  "slug": "piloswine",
+  "enska": "Piloswine"
+ },
+ {
+  "numer": 222,
+  "kynslod": 2,
+  "slug": "corsola",
+  "enska": "Corsola"
+ },
+ {
+  "numer": 223,
+  "kynslod": 2,
+  "slug": "remoraid",
+  "enska": "Remoraid"
+ },
+ {
+  "numer": 224,
+  "kynslod": 2,
+  "slug": "octillery",
+  "enska": "Octillery"
+ },
+ {
+  "numer": 225,
+  "kynslod": 2,
+  "slug": "delibird",
+  "enska": "Delibird"
+ },
+ {
+  "numer": 226,
+  "kynslod": 2,
+  "slug": "mantine",
+  "enska": "Mantine"
+ },
+ {
+  "numer": 227,
+  "kynslod": 2,
+  "slug": "skarmory",
+  "enska": "Skarmory"
+ },
+ {
+  "numer": 228,
+  "kynslod": 2,
+  "slug": "houndour",
+  "enska": "Houndour"
+ },
+ {
+  "numer": 229,
+  "kynslod": 2,
+  "slug": "houndoom",
+  "enska": "Houndoom"
+ },
+ {
+  "numer": 230,
+  "kynslod": 2,
+  "slug": "kingdra",
+  "enska": "Kingdra"
+ },
+ {
+  "numer": 231,
+  "kynslod": 2,
+  "slug": "phanpy",
+  "enska": "Phanpy"
+ },
+ {
+  "numer": 232,
+  "kynslod": 2,
+  "slug": "donphan",
+  "enska": "Donphan"
+ },
+ {
+  "numer": 233,
+  "kynslod": 2,
+  "slug": "porygon2",
+  "enska": "Porygon2"
+ },
+ {
+  "numer": 234,
+  "kynslod": 2,
+  "slug": "stantler",
+  "enska": "Stantler"
+ },
+ {
+  "numer": 235,
+  "kynslod": 2,
+  "slug": "smeargle",
+  "enska": "Smeargle"
+ },
+ {
+  "numer": 236,
+  "kynslod": 2,
+  "slug": "tyrogue",
+  "enska": "Tyrogue"
+ },
+ {
+  "numer": 237,
+  "kynslod": 2,
+  "slug": "hitmontop",
+  "enska": "Hitmontop"
+ },
+ {
+  "numer": 238,
+  "kynslod": 2,
+  "slug": "smoochum",
+  "enska": "Smoochum"
+ },
+ {
+  "numer": 239,
+  "kynslod": 2,
+  "slug": "elekid",
+  "enska": "Elekid"
+ },
+ {
+  "numer": 240,
+  "kynslod": 2,
+  "slug": "magby",
+  "enska": "Magby"
+ },
+ {
+  "numer": 241,
+  "kynslod": 2,
+  "slug": "miltank",
+  "enska": "Miltank"
+ },
+ {
+  "numer": 242,
+  "kynslod": 2,
+  "slug": "blissey",
+  "enska": "Blissey"
+ },
+ {
+  "numer": 243,
+  "kynslod": 2,
+  "slug": "raikou",
+  "enska": "Raikou"
+ },
+ {
+  "numer": 244,
+  "kynslod": 2,
+  "slug": "entei",
+  "enska": "Entei"
+ },
+ {
+  "numer": 245,
+  "kynslod": 2,
+  "slug": "suicune",
+  "enska": "Suicune"
+ },
+ {
+  "numer": 246,
+  "kynslod": 2,
+  "slug": "larvitar",
+  "enska": "Larvitar"
+ },
+ {
+  "numer": 247,
+  "kynslod": 2,
+  "slug": "pupitar",
+  "enska": "Pupitar"
+ },
+ {
+  "numer": 248,
+  "kynslod": 2,
+  "slug": "tyranitar",
+  "enska": "Tyranitar"
+ },
+ {
+  "numer": 249,
+  "kynslod": 2,
+  "slug": "lugia",
+  "enska": "Lugia"
+ },
+ {
+  "numer": 250,
+  "kynslod": 2,
+  "slug": "ho-oh",
+  "enska": "Ho-oh"
+ },
+ {
+  "numer": 251,
+  "kynslod": 2,
+  "slug": "celebi",
+  "enska": "Celebi"
+ },
+ {
+  "numer": 252,
+  "kynslod": 3,
+  "slug": "treecko",
+  "enska": "Treecko"
+ },
+ {
+  "numer": 253,
+  "kynslod": 3,
+  "slug": "grovyle",
+  "enska": "Grovyle"
+ },
+ {
+  "numer": 254,
+  "kynslod": 3,
+  "slug": "sceptile",
+  "enska": "Sceptile"
+ },
+ {
+  "numer": 255,
+  "kynslod": 3,
+  "slug": "torchic",
+  "enska": "Torchic"
+ },
+ {
+  "numer": 256,
+  "kynslod": 3,
+  "slug": "combusken",
+  "enska": "Combusken"
+ },
+ {
+  "numer": 257,
+  "kynslod": 3,
+  "slug": "blaziken",
+  "enska": "Blaziken"
+ },
+ {
+  "numer": 258,
+  "kynslod": 3,
+  "slug": "mudkip",
+  "enska": "Mudkip"
+ },
+ {
+  "numer": 259,
+  "kynslod": 3,
+  "slug": "marshtomp",
+  "enska": "Marshtomp"
+ },
+ {
+  "numer": 260,
+  "kynslod": 3,
+  "slug": "swampert",
+  "enska": "Swampert"
+ },
+ {
+  "numer": 261,
+  "kynslod": 3,
+  "slug": "poochyena",
+  "enska": "Poochyena"
+ },
+ {
+  "numer": 262,
+  "kynslod": 3,
+  "slug": "mightyena",
+  "enska": "Mightyena"
+ },
+ {
+  "numer": 263,
+  "kynslod": 3,
+  "slug": "zigzagoon",
+  "enska": "Zigzagoon"
+ },
+ {
+  "numer": 264,
+  "kynslod": 3,
+  "slug": "linoone",
+  "enska": "Linoone"
+ },
+ {
+  "numer": 265,
+  "kynslod": 3,
+  "slug": "wurmple",
+  "enska": "Wurmple"
+ },
+ {
+  "numer": 266,
+  "kynslod": 3,
+  "slug": "silcoon",
+  "enska": "Silcoon"
+ },
+ {
+  "numer": 267,
+  "kynslod": 3,
+  "slug": "beautifly",
+  "enska": "Beautifly"
+ },
+ {
+  "numer": 268,
+  "kynslod": 3,
+  "slug": "cascoon",
+  "enska": "Cascoon"
+ },
+ {
+  "numer": 269,
+  "kynslod": 3,
+  "slug": "dustox",
+  "enska": "Dustox"
+ },
+ {
+  "numer": 270,
+  "kynslod": 3,
+  "slug": "lotad",
+  "enska": "Lotad"
+ },
+ {
+  "numer": 271,
+  "kynslod": 3,
+  "slug": "lombre",
+  "enska": "Lombre"
+ },
+ {
+  "numer": 272,
+  "kynslod": 3,
+  "slug": "ludicolo",
+  "enska": "Ludicolo"
+ },
+ {
+  "numer": 273,
+  "kynslod": 3,
+  "slug": "seedot",
+  "enska": "Seedot"
+ },
+ {
+  "numer": 274,
+  "kynslod": 3,
+  "slug": "nuzleaf",
+  "enska": "Nuzleaf"
+ },
+ {
+  "numer": 275,
+  "kynslod": 3,
+  "slug": "shiftry",
+  "enska": "Shiftry"
+ },
+ {
+  "numer": 276,
+  "kynslod": 3,
+  "slug": "taillow",
+  "enska": "Taillow"
+ },
+ {
+  "numer": 277,
+  "kynslod": 3,
+  "slug": "swellow",
+  "enska": "Swellow"
+ },
+ {
+  "numer": 278,
+  "kynslod": 3,
+  "slug": "wingull",
+  "enska": "Wingull"
+ },
+ {
+  "numer": 279,
+  "kynslod": 3,
+  "slug": "pelipper",
+  "enska": "Pelipper"
+ },
+ {
+  "numer": 280,
+  "kynslod": 3,
+  "slug": "ralts",
+  "enska": "Ralts"
+ },
+ {
+  "numer": 281,
+  "kynslod": 3,
+  "slug": "kirlia",
+  "enska": "Kirlia"
+ },
+ {
+  "numer": 282,
+  "kynslod": 3,
+  "slug": "gardevoir",
+  "enska": "Gardevoir"
+ },
+ {
+  "numer": 283,
+  "kynslod": 3,
+  "slug": "surskit",
+  "enska": "Surskit"
+ },
+ {
+  "numer": 284,
+  "kynslod": 3,
+  "slug": "masquerain",
+  "enska": "Masquerain"
+ },
+ {
+  "numer": 285,
+  "kynslod": 3,
+  "slug": "shroomish",
+  "enska": "Shroomish"
+ },
+ {
+  "numer": 286,
+  "kynslod": 3,
+  "slug": "breloom",
+  "enska": "Breloom"
+ },
+ {
+  "numer": 287,
+  "kynslod": 3,
+  "slug": "slakoth",
+  "enska": "Slakoth"
+ },
+ {
+  "numer": 288,
+  "kynslod": 3,
+  "slug": "vigoroth",
+  "enska": "Vigoroth"
+ },
+ {
+  "numer": 289,
+  "kynslod": 3,
+  "slug": "slaking",
+  "enska": "Slaking"
+ },
+ {
+  "numer": 290,
+  "kynslod": 3,
+  "slug": "nincada",
+  "enska": "Nincada"
+ },
+ {
+  "numer": 291,
+  "kynslod": 3,
+  "slug": "ninjask",
+  "enska": "Ninjask"
+ },
+ {
+  "numer": 292,
+  "kynslod": 3,
+  "slug": "shedinja",
+  "enska": "Shedinja"
+ },
+ {
+  "numer": 293,
+  "kynslod": 3,
+  "slug": "whismur",
+  "enska": "Whismur"
+ },
+ {
+  "numer": 294,
+  "kynslod": 3,
+  "slug": "loudred",
+  "enska": "Loudred"
+ },
+ {
+  "numer": 295,
+  "kynslod": 3,
+  "slug": "exploud",
+  "enska": "Exploud"
+ },
+ {
+  "numer": 296,
+  "kynslod": 3,
+  "slug": "makuhita",
+  "enska": "Makuhita"
+ },
+ {
+  "numer": 297,
+  "kynslod": 3,
+  "slug": "hariyama",
+  "enska": "Hariyama"
+ },
+ {
+  "numer": 298,
+  "kynslod": 3,
+  "slug": "azurill",
+  "enska": "Azurill"
+ },
+ {
+  "numer": 299,
+  "kynslod": 3,
+  "slug": "nosepass",
+  "enska": "Nosepass"
+ },
+ {
+  "numer": 300,
+  "kynslod": 3,
+  "slug": "skitty",
+  "enska": "Skitty"
+ },
+ {
+  "numer": 301,
+  "kynslod": 3,
+  "slug": "delcatty",
+  "enska": "Delcatty"
+ },
+ {
+  "numer": 302,
+  "kynslod": 3,
+  "slug": "sableye",
+  "enska": "Sableye"
+ },
+ {
+  "numer": 303,
+  "kynslod": 3,
+  "slug": "mawile",
+  "enska": "Mawile"
+ },
+ {
+  "numer": 304,
+  "kynslod": 3,
+  "slug": "aron",
+  "enska": "Aron"
+ },
+ {
+  "numer": 305,
+  "kynslod": 3,
+  "slug": "lairon",
+  "enska": "Lairon"
+ },
+ {
+  "numer": 306,
+  "kynslod": 3,
+  "slug": "aggron",
+  "enska": "Aggron"
+ },
+ {
+  "numer": 307,
+  "kynslod": 3,
+  "slug": "meditite",
+  "enska": "Meditite"
+ },
+ {
+  "numer": 308,
+  "kynslod": 3,
+  "slug": "medicham",
+  "enska": "Medicham"
+ },
+ {
+  "numer": 309,
+  "kynslod": 3,
+  "slug": "electrike",
+  "enska": "Electrike"
+ },
+ {
+  "numer": 310,
+  "kynslod": 3,
+  "slug": "manectric",
+  "enska": "Manectric"
+ },
+ {
+  "numer": 311,
+  "kynslod": 3,
+  "slug": "plusle",
+  "enska": "Plusle"
+ },
+ {
+  "numer": 312,
+  "kynslod": 3,
+  "slug": "minun",
+  "enska": "Minun"
+ },
+ {
+  "numer": 313,
+  "kynslod": 3,
+  "slug": "volbeat",
+  "enska": "Volbeat"
+ },
+ {
+  "numer": 314,
+  "kynslod": 3,
+  "slug": "illumise",
+  "enska": "Illumise"
+ },
+ {
+  "numer": 315,
+  "kynslod": 3,
+  "slug": "roselia",
+  "enska": "Roselia"
+ },
+ {
+  "numer": 316,
+  "kynslod": 3,
+  "slug": "gulpin",
+  "enska": "Gulpin"
+ },
+ {
+  "numer": 317,
+  "kynslod": 3,
+  "slug": "swalot",
+  "enska": "Swalot"
+ },
+ {
+  "numer": 318,
+  "kynslod": 3,
+  "slug": "carvanha",
+  "enska": "Carvanha"
+ },
+ {
+  "numer": 319,
+  "kynslod": 3,
+  "slug": "sharpedo",
+  "enska": "Sharpedo"
+ },
+ {
+  "numer": 320,
+  "kynslod": 3,
+  "slug": "wailmer",
+  "enska": "Wailmer"
+ },
+ {
+  "numer": 321,
+  "kynslod": 3,
+  "slug": "wailord",
+  "enska": "Wailord"
+ },
+ {
+  "numer": 322,
+  "kynslod": 3,
+  "slug": "numel",
+  "enska": "Numel"
+ },
+ {
+  "numer": 323,
+  "kynslod": 3,
+  "slug": "camerupt",
+  "enska": "Camerupt"
+ },
+ {
+  "numer": 324,
+  "kynslod": 3,
+  "slug": "torkoal",
+  "enska": "Torkoal"
+ },
+ {
+  "numer": 325,
+  "kynslod": 3,
+  "slug": "spoink",
+  "enska": "Spoink"
+ },
+ {
+  "numer": 326,
+  "kynslod": 3,
+  "slug": "grumpig",
+  "enska": "Grumpig"
+ },
+ {
+  "numer": 327,
+  "kynslod": 3,
+  "slug": "spinda",
+  "enska": "Spinda"
+ },
+ {
+  "numer": 328,
+  "kynslod": 3,
+  "slug": "trapinch",
+  "enska": "Trapinch"
+ },
+ {
+  "numer": 329,
+  "kynslod": 3,
+  "slug": "vibrava",
+  "enska": "Vibrava"
+ },
+ {
+  "numer": 330,
+  "kynslod": 3,
+  "slug": "flygon",
+  "enska": "Flygon"
+ },
+ {
+  "numer": 331,
+  "kynslod": 3,
+  "slug": "cacnea",
+  "enska": "Cacnea"
+ },
+ {
+  "numer": 332,
+  "kynslod": 3,
+  "slug": "cacturne",
+  "enska": "Cacturne"
+ },
+ {
+  "numer": 333,
+  "kynslod": 3,
+  "slug": "swablu",
+  "enska": "Swablu"
+ },
+ {
+  "numer": 334,
+  "kynslod": 3,
+  "slug": "altaria",
+  "enska": "Altaria"
+ },
+ {
+  "numer": 335,
+  "kynslod": 3,
+  "slug": "zangoose",
+  "enska": "Zangoose"
+ },
+ {
+  "numer": 336,
+  "kynslod": 3,
+  "slug": "seviper",
+  "enska": "Seviper"
+ },
+ {
+  "numer": 337,
+  "kynslod": 3,
+  "slug": "lunatone",
+  "enska": "Lunatone"
+ },
+ {
+  "numer": 338,
+  "kynslod": 3,
+  "slug": "solrock",
+  "enska": "Solrock"
+ },
+ {
+  "numer": 339,
+  "kynslod": 3,
+  "slug": "barboach",
+  "enska": "Barboach"
+ },
+ {
+  "numer": 340,
+  "kynslod": 3,
+  "slug": "whiscash",
+  "enska": "Whiscash"
+ },
+ {
+  "numer": 341,
+  "kynslod": 3,
+  "slug": "corphish",
+  "enska": "Corphish"
+ },
+ {
+  "numer": 342,
+  "kynslod": 3,
+  "slug": "crawdaunt",
+  "enska": "Crawdaunt"
+ },
+ {
+  "numer": 343,
+  "kynslod": 3,
+  "slug": "baltoy",
+  "enska": "Baltoy"
+ },
+ {
+  "numer": 344,
+  "kynslod": 3,
+  "slug": "claydol",
+  "enska": "Claydol"
+ },
+ {
+  "numer": 345,
+  "kynslod": 3,
+  "slug": "lileep",
+  "enska": "Lileep"
+ },
+ {
+  "numer": 346,
+  "kynslod": 3,
+  "slug": "cradily",
+  "enska": "Cradily"
+ },
+ {
+  "numer": 347,
+  "kynslod": 3,
+  "slug": "anorith",
+  "enska": "Anorith"
+ },
+ {
+  "numer": 348,
+  "kynslod": 3,
+  "slug": "armaldo",
+  "enska": "Armaldo"
+ },
+ {
+  "numer": 349,
+  "kynslod": 3,
+  "slug": "feebas",
+  "enska": "Feebas"
+ },
+ {
+  "numer": 350,
+  "kynslod": 3,
+  "slug": "milotic",
+  "enska": "Milotic"
+ },
+ {
+  "numer": 351,
+  "kynslod": 3,
+  "slug": "castform",
+  "enska": "Castform"
+ },
+ {
+  "numer": 352,
+  "kynslod": 3,
+  "slug": "kecleon",
+  "enska": "Kecleon"
+ },
+ {
+  "numer": 353,
+  "kynslod": 3,
+  "slug": "shuppet",
+  "enska": "Shuppet"
+ },
+ {
+  "numer": 354,
+  "kynslod": 3,
+  "slug": "banette",
+  "enska": "Banette"
+ },
+ {
+  "numer": 355,
+  "kynslod": 3,
+  "slug": "duskull",
+  "enska": "Duskull"
+ },
+ {
+  "numer": 356,
+  "kynslod": 3,
+  "slug": "dusclops",
+  "enska": "Dusclops"
+ },
+ {
+  "numer": 357,
+  "kynslod": 3,
+  "slug": "tropius",
+  "enska": "Tropius"
+ },
+ {
+  "numer": 358,
+  "kynslod": 3,
+  "slug": "chimecho",
+  "enska": "Chimecho"
+ },
+ {
+  "numer": 359,
+  "kynslod": 3,
+  "slug": "absol",
+  "enska": "Absol"
+ },
+ {
+  "numer": 360,
+  "kynslod": 3,
+  "slug": "wynaut",
+  "enska": "Wynaut"
+ },
+ {
+  "numer": 361,
+  "kynslod": 3,
+  "slug": "snorunt",
+  "enska": "Snorunt"
+ },
+ {
+  "numer": 362,
+  "kynslod": 3,
+  "slug": "glalie",
+  "enska": "Glalie"
+ },
+ {
+  "numer": 363,
+  "kynslod": 3,
+  "slug": "spheal",
+  "enska": "Spheal"
+ },
+ {
+  "numer": 364,
+  "kynslod": 3,
+  "slug": "sealeo",
+  "enska": "Sealeo"
+ },
+ {
+  "numer": 365,
+  "kynslod": 3,
+  "slug": "walrein",
+  "enska": "Walrein"
+ },
+ {
+  "numer": 366,
+  "kynslod": 3,
+  "slug": "clamperl",
+  "enska": "Clamperl"
+ },
+ {
+  "numer": 367,
+  "kynslod": 3,
+  "slug": "huntail",
+  "enska": "Huntail"
+ },
+ {
+  "numer": 368,
+  "kynslod": 3,
+  "slug": "gorebyss",
+  "enska": "Gorebyss"
+ },
+ {
+  "numer": 369,
+  "kynslod": 3,
+  "slug": "relicanth",
+  "enska": "Relicanth"
+ },
+ {
+  "numer": 370,
+  "kynslod": 3,
+  "slug": "luvdisc",
+  "enska": "Luvdisc"
+ },
+ {
+  "numer": 371,
+  "kynslod": 3,
+  "slug": "bagon",
+  "enska": "Bagon"
+ },
+ {
+  "numer": 372,
+  "kynslod": 3,
+  "slug": "shelgon",
+  "enska": "Shelgon"
+ },
+ {
+  "numer": 373,
+  "kynslod": 3,
+  "slug": "salamence",
+  "enska": "Salamence"
+ },
+ {
+  "numer": 374,
+  "kynslod": 3,
+  "slug": "beldum",
+  "enska": "Beldum"
+ },
+ {
+  "numer": 375,
+  "kynslod": 3,
+  "slug": "metang",
+  "enska": "Metang"
+ },
+ {
+  "numer": 376,
+  "kynslod": 3,
+  "slug": "metagross",
+  "enska": "Metagross"
+ },
+ {
+  "numer": 377,
+  "kynslod": 3,
+  "slug": "regirock",
+  "enska": "Regirock"
+ },
+ {
+  "numer": 378,
+  "kynslod": 3,
+  "slug": "regice",
+  "enska": "Regice"
+ },
+ {
+  "numer": 379,
+  "kynslod": 3,
+  "slug": "registeel",
+  "enska": "Registeel"
+ },
+ {
+  "numer": 380,
+  "kynslod": 3,
+  "slug": "latias",
+  "enska": "Latias"
+ },
+ {
+  "numer": 381,
+  "kynslod": 3,
+  "slug": "latios",
+  "enska": "Latios"
+ },
+ {
+  "numer": 382,
+  "kynslod": 3,
+  "slug": "kyogre",
+  "enska": "Kyogre"
+ },
+ {
+  "numer": 383,
+  "kynslod": 3,
+  "slug": "groudon",
+  "enska": "Groudon"
+ },
+ {
+  "numer": 384,
+  "kynslod": 3,
+  "slug": "rayquaza",
+  "enska": "Rayquaza"
+ },
+ {
+  "numer": 385,
+  "kynslod": 3,
+  "slug": "jirachi",
+  "enska": "Jirachi"
+ },
+ {
+  "numer": 386,
+  "kynslod": 3,
+  "slug": "deoxys",
+  "enska": "Deoxys"
+ },
+ {
+  "numer": 387,
+  "kynslod": 4,
+  "slug": "turtwig",
+  "enska": "Turtwig"
+ },
+ {
+  "numer": 388,
+  "kynslod": 4,
+  "slug": "grotle",
+  "enska": "Grotle"
+ },
+ {
+  "numer": 389,
+  "kynslod": 4,
+  "slug": "torterra",
+  "enska": "Torterra"
+ },
+ {
+  "numer": 390,
+  "kynslod": 4,
+  "slug": "chimchar",
+  "enska": "Chimchar"
+ },
+ {
+  "numer": 391,
+  "kynslod": 4,
+  "slug": "monferno",
+  "enska": "Monferno"
+ },
+ {
+  "numer": 392,
+  "kynslod": 4,
+  "slug": "infernape",
+  "enska": "Infernape"
+ },
+ {
+  "numer": 393,
+  "kynslod": 4,
+  "slug": "piplup",
+  "enska": "Piplup"
+ },
+ {
+  "numer": 394,
+  "kynslod": 4,
+  "slug": "prinplup",
+  "enska": "Prinplup"
+ },
+ {
+  "numer": 395,
+  "kynslod": 4,
+  "slug": "empoleon",
+  "enska": "Empoleon"
+ },
+ {
+  "numer": 396,
+  "kynslod": 4,
+  "slug": "starly",
+  "enska": "Starly"
+ },
+ {
+  "numer": 397,
+  "kynslod": 4,
+  "slug": "staravia",
+  "enska": "Staravia"
+ },
+ {
+  "numer": 398,
+  "kynslod": 4,
+  "slug": "staraptor",
+  "enska": "Staraptor"
+ },
+ {
+  "numer": 399,
+  "kynslod": 4,
+  "slug": "bidoof",
+  "enska": "Bidoof"
+ },
+ {
+  "numer": 400,
+  "kynslod": 4,
+  "slug": "bibarel",
+  "enska": "Bibarel"
+ },
+ {
+  "numer": 401,
+  "kynslod": 4,
+  "slug": "kricketot",
+  "enska": "Kricketot"
+ },
+ {
+  "numer": 402,
+  "kynslod": 4,
+  "slug": "kricketune",
+  "enska": "Kricketune"
+ },
+ {
+  "numer": 403,
+  "kynslod": 4,
+  "slug": "shinx",
+  "enska": "Shinx"
+ },
+ {
+  "numer": 404,
+  "kynslod": 4,
+  "slug": "luxio",
+  "enska": "Luxio"
+ },
+ {
+  "numer": 405,
+  "kynslod": 4,
+  "slug": "luxray",
+  "enska": "Luxray"
+ },
+ {
+  "numer": 406,
+  "kynslod": 4,
+  "slug": "budew",
+  "enska": "Budew"
+ },
+ {
+  "numer": 407,
+  "kynslod": 4,
+  "slug": "roserade",
+  "enska": "Roserade"
+ },
+ {
+  "numer": 408,
+  "kynslod": 4,
+  "slug": "cranidos",
+  "enska": "Cranidos"
+ },
+ {
+  "numer": 409,
+  "kynslod": 4,
+  "slug": "rampardos",
+  "enska": "Rampardos"
+ },
+ {
+  "numer": 410,
+  "kynslod": 4,
+  "slug": "shieldon",
+  "enska": "Shieldon"
+ },
+ {
+  "numer": 411,
+  "kynslod": 4,
+  "slug": "bastiodon",
+  "enska": "Bastiodon"
+ },
+ {
+  "numer": 412,
+  "kynslod": 4,
+  "slug": "burmy",
+  "enska": "Burmy"
+ },
+ {
+  "numer": 413,
+  "kynslod": 4,
+  "slug": "wormadam",
+  "enska": "Wormadam"
+ },
+ {
+  "numer": 414,
+  "kynslod": 4,
+  "slug": "mothim",
+  "enska": "Mothim"
+ },
+ {
+  "numer": 415,
+  "kynslod": 4,
+  "slug": "combee",
+  "enska": "Combee"
+ },
+ {
+  "numer": 416,
+  "kynslod": 4,
+  "slug": "vespiquen",
+  "enska": "Vespiquen"
+ },
+ {
+  "numer": 417,
+  "kynslod": 4,
+  "slug": "pachirisu",
+  "enska": "Pachirisu"
+ },
+ {
+  "numer": 418,
+  "kynslod": 4,
+  "slug": "buizel",
+  "enska": "Buizel"
+ },
+ {
+  "numer": 419,
+  "kynslod": 4,
+  "slug": "floatzel",
+  "enska": "Floatzel"
+ },
+ {
+  "numer": 420,
+  "kynslod": 4,
+  "slug": "cherubi",
+  "enska": "Cherubi"
+ },
+ {
+  "numer": 421,
+  "kynslod": 4,
+  "slug": "cherrim",
+  "enska": "Cherrim"
+ },
+ {
+  "numer": 422,
+  "kynslod": 4,
+  "slug": "shellos",
+  "enska": "Shellos"
+ },
+ {
+  "numer": 423,
+  "kynslod": 4,
+  "slug": "gastrodon",
+  "enska": "Gastrodon"
+ },
+ {
+  "numer": 424,
+  "kynslod": 4,
+  "slug": "ambipom",
+  "enska": "Ambipom"
+ },
+ {
+  "numer": 425,
+  "kynslod": 4,
+  "slug": "drifloon",
+  "enska": "Drifloon"
+ },
+ {
+  "numer": 426,
+  "kynslod": 4,
+  "slug": "drifblim",
+  "enska": "Drifblim"
+ },
+ {
+  "numer": 427,
+  "kynslod": 4,
+  "slug": "buneary",
+  "enska": "Buneary"
+ },
+ {
+  "numer": 428,
+  "kynslod": 4,
+  "slug": "lopunny",
+  "enska": "Lopunny"
+ },
+ {
+  "numer": 429,
+  "kynslod": 4,
+  "slug": "mismagius",
+  "enska": "Mismagius"
+ },
+ {
+  "numer": 430,
+  "kynslod": 4,
+  "slug": "honchkrow",
+  "enska": "Honchkrow"
+ },
+ {
+  "numer": 431,
+  "kynslod": 4,
+  "slug": "glameow",
+  "enska": "Glameow"
+ },
+ {
+  "numer": 432,
+  "kynslod": 4,
+  "slug": "purugly",
+  "enska": "Purugly"
+ },
+ {
+  "numer": 433,
+  "kynslod": 4,
+  "slug": "chingling",
+  "enska": "Chingling"
+ },
+ {
+  "numer": 434,
+  "kynslod": 4,
+  "slug": "stunky",
+  "enska": "Stunky"
+ },
+ {
+  "numer": 435,
+  "kynslod": 4,
+  "slug": "skuntank",
+  "enska": "Skuntank"
+ },
+ {
+  "numer": 436,
+  "kynslod": 4,
+  "slug": "bronzor",
+  "enska": "Bronzor"
+ },
+ {
+  "numer": 437,
+  "kynslod": 4,
+  "slug": "bronzong",
+  "enska": "Bronzong"
+ },
+ {
+  "numer": 438,
+  "kynslod": 4,
+  "slug": "bonsly",
+  "enska": "Bonsly"
+ },
+ {
+  "numer": 439,
+  "kynslod": 4,
+  "slug": "mime-jr",
+  "enska": "Mime Jr."
+ },
+ {
+  "numer": 440,
+  "kynslod": 4,
+  "slug": "happiny",
+  "enska": "Happiny"
+ },
+ {
+  "numer": 441,
+  "kynslod": 4,
+  "slug": "chatot",
+  "enska": "Chatot"
+ },
+ {
+  "numer": 442,
+  "kynslod": 4,
+  "slug": "spiritomb",
+  "enska": "Spiritomb"
+ },
+ {
+  "numer": 443,
+  "kynslod": 4,
+  "slug": "gible",
+  "enska": "Gible"
+ },
+ {
+  "numer": 444,
+  "kynslod": 4,
+  "slug": "gabite",
+  "enska": "Gabite"
+ },
+ {
+  "numer": 445,
+  "kynslod": 4,
+  "slug": "garchomp",
+  "enska": "Garchomp"
+ },
+ {
+  "numer": 446,
+  "kynslod": 4,
+  "slug": "munchlax",
+  "enska": "Munchlax"
+ },
+ {
+  "numer": 447,
+  "kynslod": 4,
+  "slug": "riolu",
+  "enska": "Riolu"
+ },
+ {
+  "numer": 448,
+  "kynslod": 4,
+  "slug": "lucario",
+  "enska": "Lucario"
+ },
+ {
+  "numer": 449,
+  "kynslod": 4,
+  "slug": "hippopotas",
+  "enska": "Hippopotas"
+ },
+ {
+  "numer": 450,
+  "kynslod": 4,
+  "slug": "hippowdon",
+  "enska": "Hippowdon"
+ },
+ {
+  "numer": 451,
+  "kynslod": 4,
+  "slug": "skorupi",
+  "enska": "Skorupi"
+ },
+ {
+  "numer": 452,
+  "kynslod": 4,
+  "slug": "drapion",
+  "enska": "Drapion"
+ },
+ {
+  "numer": 453,
+  "kynslod": 4,
+  "slug": "croagunk",
+  "enska": "Croagunk"
+ },
+ {
+  "numer": 454,
+  "kynslod": 4,
+  "slug": "toxicroak",
+  "enska": "Toxicroak"
+ },
+ {
+  "numer": 455,
+  "kynslod": 4,
+  "slug": "carnivine",
+  "enska": "Carnivine"
+ },
+ {
+  "numer": 456,
+  "kynslod": 4,
+  "slug": "finneon",
+  "enska": "Finneon"
+ },
+ {
+  "numer": 457,
+  "kynslod": 4,
+  "slug": "lumineon",
+  "enska": "Lumineon"
+ },
+ {
+  "numer": 458,
+  "kynslod": 4,
+  "slug": "mantyke",
+  "enska": "Mantyke"
+ },
+ {
+  "numer": 459,
+  "kynslod": 4,
+  "slug": "snover",
+  "enska": "Snover"
+ },
+ {
+  "numer": 460,
+  "kynslod": 4,
+  "slug": "abomasnow",
+  "enska": "Abomasnow"
+ },
+ {
+  "numer": 461,
+  "kynslod": 4,
+  "slug": "weavile",
+  "enska": "Weavile"
+ },
+ {
+  "numer": 462,
+  "kynslod": 4,
+  "slug": "magnezone",
+  "enska": "Magnezone"
+ },
+ {
+  "numer": 463,
+  "kynslod": 4,
+  "slug": "lickilicky",
+  "enska": "Lickilicky"
+ },
+ {
+  "numer": 464,
+  "kynslod": 4,
+  "slug": "rhyperior",
+  "enska": "Rhyperior"
+ },
+ {
+  "numer": 465,
+  "kynslod": 4,
+  "slug": "tangrowth",
+  "enska": "Tangrowth"
+ },
+ {
+  "numer": 466,
+  "kynslod": 4,
+  "slug": "electivire",
+  "enska": "Electivire"
+ },
+ {
+  "numer": 467,
+  "kynslod": 4,
+  "slug": "magmortar",
+  "enska": "Magmortar"
+ },
+ {
+  "numer": 468,
+  "kynslod": 4,
+  "slug": "togekiss",
+  "enska": "Togekiss"
+ },
+ {
+  "numer": 469,
+  "kynslod": 4,
+  "slug": "yanmega",
+  "enska": "Yanmega"
+ },
+ {
+  "numer": 470,
+  "kynslod": 4,
+  "slug": "leafeon",
+  "enska": "Leafeon"
+ },
+ {
+  "numer": 471,
+  "kynslod": 4,
+  "slug": "glaceon",
+  "enska": "Glaceon"
+ },
+ {
+  "numer": 472,
+  "kynslod": 4,
+  "slug": "gliscor",
+  "enska": "Gliscor"
+ },
+ {
+  "numer": 473,
+  "kynslod": 4,
+  "slug": "mamoswine",
+  "enska": "Mamoswine"
+ },
+ {
+  "numer": 474,
+  "kynslod": 4,
+  "slug": "porygon-z",
+  "enska": "Porygon-Z"
+ },
+ {
+  "numer": 475,
+  "kynslod": 4,
+  "slug": "gallade",
+  "enska": "Gallade"
+ },
+ {
+  "numer": 476,
+  "kynslod": 4,
+  "slug": "probopass",
+  "enska": "Probopass"
+ },
+ {
+  "numer": 477,
+  "kynslod": 4,
+  "slug": "dusknoir",
+  "enska": "Dusknoir"
+ },
+ {
+  "numer": 478,
+  "kynslod": 4,
+  "slug": "froslass",
+  "enska": "Froslass"
+ },
+ {
+  "numer": 479,
+  "kynslod": 4,
+  "slug": "rotom",
+  "enska": "Rotom"
+ },
+ {
+  "numer": 480,
+  "kynslod": 4,
+  "slug": "uxie",
+  "enska": "Uxie"
+ },
+ {
+  "numer": 481,
+  "kynslod": 4,
+  "slug": "mesprit",
+  "enska": "Mesprit"
+ },
+ {
+  "numer": 482,
+  "kynslod": 4,
+  "slug": "azelf",
+  "enska": "Azelf"
+ },
+ {
+  "numer": 483,
+  "kynslod": 4,
+  "slug": "dialga",
+  "enska": "Dialga"
+ },
+ {
+  "numer": 484,
+  "kynslod": 4,
+  "slug": "palkia",
+  "enska": "Palkia"
+ },
+ {
+  "numer": 485,
+  "kynslod": 4,
+  "slug": "heatran",
+  "enska": "Heatran"
+ },
+ {
+  "numer": 486,
+  "kynslod": 4,
+  "slug": "regigigas",
+  "enska": "Regigigas"
+ },
+ {
+  "numer": 487,
+  "kynslod": 4,
+  "slug": "giratina",
+  "enska": "Giratina"
+ },
+ {
+  "numer": 488,
+  "kynslod": 4,
+  "slug": "cresselia",
+  "enska": "Cresselia"
+ },
+ {
+  "numer": 489,
+  "kynslod": 4,
+  "slug": "phione",
+  "enska": "Phione"
+ },
+ {
+  "numer": 490,
+  "kynslod": 4,
+  "slug": "manaphy",
+  "enska": "Manaphy"
+ },
+ {
+  "numer": 491,
+  "kynslod": 4,
+  "slug": "darkrai",
+  "enska": "Darkrai"
+ },
+ {
+  "numer": 492,
+  "kynslod": 4,
+  "slug": "shaymin",
+  "enska": "Shaymin"
+ },
+ {
+  "numer": 493,
+  "kynslod": 4,
+  "slug": "arceus",
+  "enska": "Arceus"
+ },
+ {
+  "numer": 494,
+  "kynslod": 5,
+  "slug": "victini",
+  "enska": "Victini"
+ },
+ {
+  "numer": 495,
+  "kynslod": 5,
+  "slug": "snivy",
+  "enska": "Snivy"
+ },
+ {
+  "numer": 496,
+  "kynslod": 5,
+  "slug": "servine",
+  "enska": "Servine"
+ },
+ {
+  "numer": 497,
+  "kynslod": 5,
+  "slug": "serperior",
+  "enska": "Serperior"
+ },
+ {
+  "numer": 498,
+  "kynslod": 5,
+  "slug": "tepig",
+  "enska": "Tepig"
+ },
+ {
+  "numer": 499,
+  "kynslod": 5,
+  "slug": "pignite",
+  "enska": "Pignite"
+ },
+ {
+  "numer": 500,
+  "kynslod": 5,
+  "slug": "emboar",
+  "enska": "Emboar"
+ },
+ {
+  "numer": 501,
+  "kynslod": 5,
+  "slug": "oshawott",
+  "enska": "Oshawott"
+ },
+ {
+  "numer": 502,
+  "kynslod": 5,
+  "slug": "dewott",
+  "enska": "Dewott"
+ },
+ {
+  "numer": 503,
+  "kynslod": 5,
+  "slug": "samurott",
+  "enska": "Samurott"
+ },
+ {
+  "numer": 504,
+  "kynslod": 5,
+  "slug": "patrat",
+  "enska": "Patrat"
+ },
+ {
+  "numer": 505,
+  "kynslod": 5,
+  "slug": "watchog",
+  "enska": "Watchog"
+ },
+ {
+  "numer": 506,
+  "kynslod": 5,
+  "slug": "lillipup",
+  "enska": "Lillipup"
+ },
+ {
+  "numer": 507,
+  "kynslod": 5,
+  "slug": "herdier",
+  "enska": "Herdier"
+ },
+ {
+  "numer": 508,
+  "kynslod": 5,
+  "slug": "stoutland",
+  "enska": "Stoutland"
+ },
+ {
+  "numer": 509,
+  "kynslod": 5,
+  "slug": "purrloin",
+  "enska": "Purrloin"
+ },
+ {
+  "numer": 510,
+  "kynslod": 5,
+  "slug": "liepard",
+  "enska": "Liepard"
+ },
+ {
+  "numer": 511,
+  "kynslod": 5,
+  "slug": "pansage",
+  "enska": "Pansage"
+ },
+ {
+  "numer": 512,
+  "kynslod": 5,
+  "slug": "simisage",
+  "enska": "Simisage"
+ },
+ {
+  "numer": 513,
+  "kynslod": 5,
+  "slug": "pansear",
+  "enska": "Pansear"
+ },
+ {
+  "numer": 514,
+  "kynslod": 5,
+  "slug": "simisear",
+  "enska": "Simisear"
+ },
+ {
+  "numer": 515,
+  "kynslod": 5,
+  "slug": "panpour",
+  "enska": "Panpour"
+ },
+ {
+  "numer": 516,
+  "kynslod": 5,
+  "slug": "simipour",
+  "enska": "Simipour"
+ },
+ {
+  "numer": 517,
+  "kynslod": 5,
+  "slug": "munna",
+  "enska": "Munna"
+ },
+ {
+  "numer": 518,
+  "kynslod": 5,
+  "slug": "musharna",
+  "enska": "Musharna"
+ },
+ {
+  "numer": 519,
+  "kynslod": 5,
+  "slug": "pidove",
+  "enska": "Pidove"
+ },
+ {
+  "numer": 520,
+  "kynslod": 5,
+  "slug": "tranquill",
+  "enska": "Tranquill"
+ },
+ {
+  "numer": 521,
+  "kynslod": 5,
+  "slug": "unfezant",
+  "enska": "Unfezant"
+ },
+ {
+  "numer": 522,
+  "kynslod": 5,
+  "slug": "blitzle",
+  "enska": "Blitzle"
+ },
+ {
+  "numer": 523,
+  "kynslod": 5,
+  "slug": "zebstrika",
+  "enska": "Zebstrika"
+ },
+ {
+  "numer": 524,
+  "kynslod": 5,
+  "slug": "roggenrola",
+  "enska": "Roggenrola"
+ },
+ {
+  "numer": 525,
+  "kynslod": 5,
+  "slug": "boldore",
+  "enska": "Boldore"
+ },
+ {
+  "numer": 526,
+  "kynslod": 5,
+  "slug": "gigalith",
+  "enska": "Gigalith"
+ },
+ {
+  "numer": 527,
+  "kynslod": 5,
+  "slug": "woobat",
+  "enska": "Woobat"
+ },
+ {
+  "numer": 528,
+  "kynslod": 5,
+  "slug": "swoobat",
+  "enska": "Swoobat"
+ },
+ {
+  "numer": 529,
+  "kynslod": 5,
+  "slug": "drilbur",
+  "enska": "Drilbur"
+ },
+ {
+  "numer": 530,
+  "kynslod": 5,
+  "slug": "excadrill",
+  "enska": "Excadrill"
+ },
+ {
+  "numer": 531,
+  "kynslod": 5,
+  "slug": "audino",
+  "enska": "Audino"
+ },
+ {
+  "numer": 532,
+  "kynslod": 5,
+  "slug": "timburr",
+  "enska": "Timburr"
+ },
+ {
+  "numer": 533,
+  "kynslod": 5,
+  "slug": "gurdurr",
+  "enska": "Gurdurr"
+ },
+ {
+  "numer": 534,
+  "kynslod": 5,
+  "slug": "conkeldurr",
+  "enska": "Conkeldurr"
+ },
+ {
+  "numer": 535,
+  "kynslod": 5,
+  "slug": "tympole",
+  "enska": "Tympole"
+ },
+ {
+  "numer": 536,
+  "kynslod": 5,
+  "slug": "palpitoad",
+  "enska": "Palpitoad"
+ },
+ {
+  "numer": 537,
+  "kynslod": 5,
+  "slug": "seismitoad",
+  "enska": "Seismitoad"
+ },
+ {
+  "numer": 538,
+  "kynslod": 5,
+  "slug": "throh",
+  "enska": "Throh"
+ },
+ {
+  "numer": 539,
+  "kynslod": 5,
+  "slug": "sawk",
+  "enska": "Sawk"
+ },
+ {
+  "numer": 540,
+  "kynslod": 5,
+  "slug": "sewaddle",
+  "enska": "Sewaddle"
+ },
+ {
+  "numer": 541,
+  "kynslod": 5,
+  "slug": "swadloon",
+  "enska": "Swadloon"
+ },
+ {
+  "numer": 542,
+  "kynslod": 5,
+  "slug": "leavanny",
+  "enska": "Leavanny"
+ },
+ {
+  "numer": 543,
+  "kynslod": 5,
+  "slug": "venipede",
+  "enska": "Venipede"
+ },
+ {
+  "numer": 544,
+  "kynslod": 5,
+  "slug": "whirlipede",
+  "enska": "Whirlipede"
+ },
+ {
+  "numer": 545,
+  "kynslod": 5,
+  "slug": "scolipede",
+  "enska": "Scolipede"
+ },
+ {
+  "numer": 546,
+  "kynslod": 5,
+  "slug": "cottonee",
+  "enska": "Cottonee"
+ },
+ {
+  "numer": 547,
+  "kynslod": 5,
+  "slug": "whimsicott",
+  "enska": "Whimsicott"
+ },
+ {
+  "numer": 548,
+  "kynslod": 5,
+  "slug": "petilil",
+  "enska": "Petilil"
+ },
+ {
+  "numer": 549,
+  "kynslod": 5,
+  "slug": "lilligant",
+  "enska": "Lilligant"
+ },
+ {
+  "numer": 550,
+  "kynslod": 5,
+  "slug": "basculin",
+  "enska": "Basculin"
+ },
+ {
+  "numer": 551,
+  "kynslod": 5,
+  "slug": "sandile",
+  "enska": "Sandile"
+ },
+ {
+  "numer": 552,
+  "kynslod": 5,
+  "slug": "krokorok",
+  "enska": "Krokorok"
+ },
+ {
+  "numer": 553,
+  "kynslod": 5,
+  "slug": "krookodile",
+  "enska": "Krookodile"
+ },
+ {
+  "numer": 554,
+  "kynslod": 5,
+  "slug": "darumaka",
+  "enska": "Darumaka"
+ },
+ {
+  "numer": 555,
+  "kynslod": 5,
+  "slug": "darmanitan",
+  "enska": "Darmanitan"
+ },
+ {
+  "numer": 556,
+  "kynslod": 5,
+  "slug": "maractus",
+  "enska": "Maractus"
+ },
+ {
+  "numer": 557,
+  "kynslod": 5,
+  "slug": "dwebble",
+  "enska": "Dwebble"
+ },
+ {
+  "numer": 558,
+  "kynslod": 5,
+  "slug": "crustle",
+  "enska": "Crustle"
+ },
+ {
+  "numer": 559,
+  "kynslod": 5,
+  "slug": "scraggy",
+  "enska": "Scraggy"
+ },
+ {
+  "numer": 560,
+  "kynslod": 5,
+  "slug": "scrafty",
+  "enska": "Scrafty"
+ },
+ {
+  "numer": 561,
+  "kynslod": 5,
+  "slug": "sigilyph",
+  "enska": "Sigilyph"
+ },
+ {
+  "numer": 562,
+  "kynslod": 5,
+  "slug": "yamask",
+  "enska": "Yamask"
+ },
+ {
+  "numer": 563,
+  "kynslod": 5,
+  "slug": "cofagrigus",
+  "enska": "Cofagrigus"
+ },
+ {
+  "numer": 564,
+  "kynslod": 5,
+  "slug": "tirtouga",
+  "enska": "Tirtouga"
+ },
+ {
+  "numer": 565,
+  "kynslod": 5,
+  "slug": "carracosta",
+  "enska": "Carracosta"
+ },
+ {
+  "numer": 566,
+  "kynslod": 5,
+  "slug": "archen",
+  "enska": "Archen"
+ },
+ {
+  "numer": 567,
+  "kynslod": 5,
+  "slug": "archeops",
+  "enska": "Archeops"
+ },
+ {
+  "numer": 568,
+  "kynslod": 5,
+  "slug": "trubbish",
+  "enska": "Trubbish"
+ },
+ {
+  "numer": 569,
+  "kynslod": 5,
+  "slug": "garbodor",
+  "enska": "Garbodor"
+ },
+ {
+  "numer": 570,
+  "kynslod": 5,
+  "slug": "zorua",
+  "enska": "Zorua"
+ },
+ {
+  "numer": 571,
+  "kynslod": 5,
+  "slug": "zoroark",
+  "enska": "Zoroark"
+ },
+ {
+  "numer": 572,
+  "kynslod": 5,
+  "slug": "minccino",
+  "enska": "Minccino"
+ },
+ {
+  "numer": 573,
+  "kynslod": 5,
+  "slug": "cinccino",
+  "enska": "Cinccino"
+ },
+ {
+  "numer": 574,
+  "kynslod": 5,
+  "slug": "gothita",
+  "enska": "Gothita"
+ },
+ {
+  "numer": 575,
+  "kynslod": 5,
+  "slug": "gothorita",
+  "enska": "Gothorita"
+ },
+ {
+  "numer": 576,
+  "kynslod": 5,
+  "slug": "gothitelle",
+  "enska": "Gothitelle"
+ },
+ {
+  "numer": 577,
+  "kynslod": 5,
+  "slug": "solosis",
+  "enska": "Solosis"
+ },
+ {
+  "numer": 578,
+  "kynslod": 5,
+  "slug": "duosion",
+  "enska": "Duosion"
+ },
+ {
+  "numer": 579,
+  "kynslod": 5,
+  "slug": "reuniclus",
+  "enska": "Reuniclus"
+ },
+ {
+  "numer": 580,
+  "kynslod": 5,
+  "slug": "ducklett",
+  "enska": "Ducklett"
+ },
+ {
+  "numer": 581,
+  "kynslod": 5,
+  "slug": "swanna",
+  "enska": "Swanna"
+ },
+ {
+  "numer": 582,
+  "kynslod": 5,
+  "slug": "vanillite",
+  "enska": "Vanillite"
+ },
+ {
+  "numer": 583,
+  "kynslod": 5,
+  "slug": "vanillish",
+  "enska": "Vanillish"
+ },
+ {
+  "numer": 584,
+  "kynslod": 5,
+  "slug": "vanilluxe",
+  "enska": "Vanilluxe"
+ },
+ {
+  "numer": 585,
+  "kynslod": 5,
+  "slug": "deerling",
+  "enska": "Deerling"
+ },
+ {
+  "numer": 586,
+  "kynslod": 5,
+  "slug": "sawsbuck",
+  "enska": "Sawsbuck"
+ },
+ {
+  "numer": 587,
+  "kynslod": 5,
+  "slug": "emolga",
+  "enska": "Emolga"
+ },
+ {
+  "numer": 588,
+  "kynslod": 5,
+  "slug": "karrablast",
+  "enska": "Karrablast"
+ },
+ {
+  "numer": 589,
+  "kynslod": 5,
+  "slug": "escavalier",
+  "enska": "Escavalier"
+ },
+ {
+  "numer": 590,
+  "kynslod": 5,
+  "slug": "foongus",
+  "enska": "Foongus"
+ },
+ {
+  "numer": 591,
+  "kynslod": 5,
+  "slug": "amoonguss",
+  "enska": "Amoonguss"
+ },
+ {
+  "numer": 592,
+  "kynslod": 5,
+  "slug": "frillish",
+  "enska": "Frillish"
+ },
+ {
+  "numer": 593,
+  "kynslod": 5,
+  "slug": "jellicent",
+  "enska": "Jellicent"
+ },
+ {
+  "numer": 594,
+  "kynslod": 5,
+  "slug": "alomomola",
+  "enska": "Alomomola"
+ },
+ {
+  "numer": 595,
+  "kynslod": 5,
+  "slug": "joltik",
+  "enska": "Joltik"
+ },
+ {
+  "numer": 596,
+  "kynslod": 5,
+  "slug": "galvantula",
+  "enska": "Galvantula"
+ },
+ {
+  "numer": 597,
+  "kynslod": 5,
+  "slug": "ferroseed",
+  "enska": "Ferroseed"
+ },
+ {
+  "numer": 598,
+  "kynslod": 5,
+  "slug": "ferrothorn",
+  "enska": "Ferrothorn"
+ },
+ {
+  "numer": 599,
+  "kynslod": 5,
+  "slug": "klink",
+  "enska": "Klink"
+ },
+ {
+  "numer": 600,
+  "kynslod": 5,
+  "slug": "klang",
+  "enska": "Klang"
+ },
+ {
+  "numer": 601,
+  "kynslod": 5,
+  "slug": "klinklang",
+  "enska": "Klinklang"
+ },
+ {
+  "numer": 602,
+  "kynslod": 5,
+  "slug": "tynamo",
+  "enska": "Tynamo"
+ },
+ {
+  "numer": 603,
+  "kynslod": 5,
+  "slug": "eelektrik",
+  "enska": "Eelektrik"
+ },
+ {
+  "numer": 604,
+  "kynslod": 5,
+  "slug": "eelektross",
+  "enska": "Eelektross"
+ },
+ {
+  "numer": 605,
+  "kynslod": 5,
+  "slug": "elgyem",
+  "enska": "Elgyem"
+ },
+ {
+  "numer": 606,
+  "kynslod": 5,
+  "slug": "beheeyem",
+  "enska": "Beheeyem"
+ },
+ {
+  "numer": 607,
+  "kynslod": 5,
+  "slug": "litwick",
+  "enska": "Litwick"
+ },
+ {
+  "numer": 608,
+  "kynslod": 5,
+  "slug": "lampent",
+  "enska": "Lampent"
+ },
+ {
+  "numer": 609,
+  "kynslod": 5,
+  "slug": "chandelure",
+  "enska": "Chandelure"
+ },
+ {
+  "numer": 610,
+  "kynslod": 5,
+  "slug": "axew",
+  "enska": "Axew"
+ },
+ {
+  "numer": 611,
+  "kynslod": 5,
+  "slug": "fraxure",
+  "enska": "Fraxure"
+ },
+ {
+  "numer": 612,
+  "kynslod": 5,
+  "slug": "haxorus",
+  "enska": "Haxorus"
+ },
+ {
+  "numer": 613,
+  "kynslod": 5,
+  "slug": "cubchoo",
+  "enska": "Cubchoo"
+ },
+ {
+  "numer": 614,
+  "kynslod": 5,
+  "slug": "beartic",
+  "enska": "Beartic"
+ },
+ {
+  "numer": 615,
+  "kynslod": 5,
+  "slug": "cryogonal",
+  "enska": "Cryogonal"
+ },
+ {
+  "numer": 616,
+  "kynslod": 5,
+  "slug": "shelmet",
+  "enska": "Shelmet"
+ },
+ {
+  "numer": 617,
+  "kynslod": 5,
+  "slug": "accelgor",
+  "enska": "Accelgor"
+ },
+ {
+  "numer": 618,
+  "kynslod": 5,
+  "slug": "stunfisk",
+  "enska": "Stunfisk"
+ },
+ {
+  "numer": 619,
+  "kynslod": 5,
+  "slug": "mienfoo",
+  "enska": "Mienfoo"
+ },
+ {
+  "numer": 620,
+  "kynslod": 5,
+  "slug": "mienshao",
+  "enska": "Mienshao"
+ },
+ {
+  "numer": 621,
+  "kynslod": 5,
+  "slug": "druddigon",
+  "enska": "Druddigon"
+ },
+ {
+  "numer": 622,
+  "kynslod": 5,
+  "slug": "golett",
+  "enska": "Golett"
+ },
+ {
+  "numer": 623,
+  "kynslod": 5,
+  "slug": "golurk",
+  "enska": "Golurk"
+ },
+ {
+  "numer": 624,
+  "kynslod": 5,
+  "slug": "pawniard",
+  "enska": "Pawniard"
+ },
+ {
+  "numer": 625,
+  "kynslod": 5,
+  "slug": "bisharp",
+  "enska": "Bisharp"
+ },
+ {
+  "numer": 626,
+  "kynslod": 5,
+  "slug": "bouffalant",
+  "enska": "Bouffalant"
+ },
+ {
+  "numer": 627,
+  "kynslod": 5,
+  "slug": "rufflet",
+  "enska": "Rufflet"
+ },
+ {
+  "numer": 628,
+  "kynslod": 5,
+  "slug": "braviary",
+  "enska": "Braviary"
+ },
+ {
+  "numer": 629,
+  "kynslod": 5,
+  "slug": "vullaby",
+  "enska": "Vullaby"
+ },
+ {
+  "numer": 630,
+  "kynslod": 5,
+  "slug": "mandibuzz",
+  "enska": "Mandibuzz"
+ },
+ {
+  "numer": 631,
+  "kynslod": 5,
+  "slug": "heatmor",
+  "enska": "Heatmor"
+ },
+ {
+  "numer": 632,
+  "kynslod": 5,
+  "slug": "durant",
+  "enska": "Durant"
+ },
+ {
+  "numer": 633,
+  "kynslod": 5,
+  "slug": "deino",
+  "enska": "Deino"
+ },
+ {
+  "numer": 634,
+  "kynslod": 5,
+  "slug": "zweilous",
+  "enska": "Zweilous"
+ },
+ {
+  "numer": 635,
+  "kynslod": 5,
+  "slug": "hydreigon",
+  "enska": "Hydreigon"
+ },
+ {
+  "numer": 636,
+  "kynslod": 5,
+  "slug": "larvesta",
+  "enska": "Larvesta"
+ },
+ {
+  "numer": 637,
+  "kynslod": 5,
+  "slug": "volcarona",
+  "enska": "Volcarona"
+ },
+ {
+  "numer": 638,
+  "kynslod": 5,
+  "slug": "cobalion",
+  "enska": "Cobalion"
+ },
+ {
+  "numer": 639,
+  "kynslod": 5,
+  "slug": "terrakion",
+  "enska": "Terrakion"
+ },
+ {
+  "numer": 640,
+  "kynslod": 5,
+  "slug": "virizion",
+  "enska": "Virizion"
+ },
+ {
+  "numer": 641,
+  "kynslod": 5,
+  "slug": "tornadus",
+  "enska": "Tornadus"
+ },
+ {
+  "numer": 642,
+  "kynslod": 5,
+  "slug": "thundurus",
+  "enska": "Thundurus"
+ },
+ {
+  "numer": 643,
+  "kynslod": 5,
+  "slug": "reshiram",
+  "enska": "Reshiram"
+ },
+ {
+  "numer": 644,
+  "kynslod": 5,
+  "slug": "zekrom",
+  "enska": "Zekrom"
+ },
+ {
+  "numer": 645,
+  "kynslod": 5,
+  "slug": "landorus",
+  "enska": "Landorus"
+ },
+ {
+  "numer": 646,
+  "kynslod": 5,
+  "slug": "kyurem",
+  "enska": "Kyurem"
+ },
+ {
+  "numer": 647,
+  "kynslod": 5,
+  "slug": "keldeo",
+  "enska": "Keldeo"
+ },
+ {
+  "numer": 648,
+  "kynslod": 5,
+  "slug": "meloetta",
+  "enska": "Meloetta"
+ },
+ {
+  "numer": 649,
+  "kynslod": 5,
+  "slug": "genesect",
+  "enska": "Genesect"
+ },
+ {
+  "numer": 650,
+  "kynslod": 6,
+  "slug": "chespin",
+  "enska": "Chespin"
+ },
+ {
+  "numer": 651,
+  "kynslod": 6,
+  "slug": "quilladin",
+  "enska": "Quilladin"
+ },
+ {
+  "numer": 652,
+  "kynslod": 6,
+  "slug": "chesnaught",
+  "enska": "Chesnaught"
+ },
+ {
+  "numer": 653,
+  "kynslod": 6,
+  "slug": "fennekin",
+  "enska": "Fennekin"
+ },
+ {
+  "numer": 654,
+  "kynslod": 6,
+  "slug": "braixen",
+  "enska": "Braixen"
+ },
+ {
+  "numer": 655,
+  "kynslod": 6,
+  "slug": "delphox",
+  "enska": "Delphox"
+ },
+ {
+  "numer": 656,
+  "kynslod": 6,
+  "slug": "froakie",
+  "enska": "Froakie"
+ },
+ {
+  "numer": 657,
+  "kynslod": 6,
+  "slug": "frogadier",
+  "enska": "Frogadier"
+ },
+ {
+  "numer": 658,
+  "kynslod": 6,
+  "slug": "greninja",
+  "enska": "Greninja"
+ },
+ {
+  "numer": 659,
+  "kynslod": 6,
+  "slug": "bunnelby",
+  "enska": "Bunnelby"
+ },
+ {
+  "numer": 660,
+  "kynslod": 6,
+  "slug": "diggersby",
+  "enska": "Diggersby"
+ },
+ {
+  "numer": 661,
+  "kynslod": 6,
+  "slug": "fletchling",
+  "enska": "Fletchling"
+ },
+ {
+  "numer": 662,
+  "kynslod": 6,
+  "slug": "fletchinder",
+  "enska": "Fletchinder"
+ },
+ {
+  "numer": 663,
+  "kynslod": 6,
+  "slug": "talonflame",
+  "enska": "Talonflame"
+ },
+ {
+  "numer": 664,
+  "kynslod": 6,
+  "slug": "scatterbug",
+  "enska": "Scatterbug"
+ },
+ {
+  "numer": 665,
+  "kynslod": 6,
+  "slug": "spewpa",
+  "enska": "Spewpa"
+ },
+ {
+  "numer": 666,
+  "kynslod": 6,
+  "slug": "vivillon",
+  "enska": "Vivillon"
+ },
+ {
+  "numer": 667,
+  "kynslod": 6,
+  "slug": "litleo",
+  "enska": "Litleo"
+ },
+ {
+  "numer": 668,
+  "kynslod": 6,
+  "slug": "pyroar",
+  "enska": "Pyroar"
+ },
+ {
+  "numer": 669,
+  "kynslod": 6,
+  "slug": "flabebe",
+  "enska": "Flabébé"
+ },
+ {
+  "numer": 670,
+  "kynslod": 6,
+  "slug": "floette",
+  "enska": "Floette"
+ },
+ {
+  "numer": 671,
+  "kynslod": 6,
+  "slug": "florges",
+  "enska": "Florges"
+ },
+ {
+  "numer": 672,
+  "kynslod": 6,
+  "slug": "skiddo",
+  "enska": "Skiddo"
+ },
+ {
+  "numer": 673,
+  "kynslod": 6,
+  "slug": "gogoat",
+  "enska": "Gogoat"
+ },
+ {
+  "numer": 674,
+  "kynslod": 6,
+  "slug": "pancham",
+  "enska": "Pancham"
+ },
+ {
+  "numer": 675,
+  "kynslod": 6,
+  "slug": "pangoro",
+  "enska": "Pangoro"
+ },
+ {
+  "numer": 676,
+  "kynslod": 6,
+  "slug": "furfrou",
+  "enska": "Furfrou"
+ },
+ {
+  "numer": 677,
+  "kynslod": 6,
+  "slug": "espurr",
+  "enska": "Espurr"
+ },
+ {
+  "numer": 678,
+  "kynslod": 6,
+  "slug": "meowstic",
+  "enska": "Meowstic"
+ },
+ {
+  "numer": 679,
+  "kynslod": 6,
+  "slug": "honedge",
+  "enska": "Honedge"
+ },
+ {
+  "numer": 680,
+  "kynslod": 6,
+  "slug": "doublade",
+  "enska": "Doublade"
+ },
+ {
+  "numer": 681,
+  "kynslod": 6,
+  "slug": "aegislash",
+  "enska": "Aegislash"
+ },
+ {
+  "numer": 682,
+  "kynslod": 6,
+  "slug": "spritzee",
+  "enska": "Spritzee"
+ },
+ {
+  "numer": 683,
+  "kynslod": 6,
+  "slug": "aromatisse",
+  "enska": "Aromatisse"
+ },
+ {
+  "numer": 684,
+  "kynslod": 6,
+  "slug": "swirlix",
+  "enska": "Swirlix"
+ },
+ {
+  "numer": 685,
+  "kynslod": 6,
+  "slug": "slurpuff",
+  "enska": "Slurpuff"
+ },
+ {
+  "numer": 686,
+  "kynslod": 6,
+  "slug": "inkay",
+  "enska": "Inkay"
+ },
+ {
+  "numer": 687,
+  "kynslod": 6,
+  "slug": "malamar",
+  "enska": "Malamar"
+ },
+ {
+  "numer": 688,
+  "kynslod": 6,
+  "slug": "binacle",
+  "enska": "Binacle"
+ },
+ {
+  "numer": 689,
+  "kynslod": 6,
+  "slug": "barbaracle",
+  "enska": "Barbaracle"
+ },
+ {
+  "numer": 690,
+  "kynslod": 6,
+  "slug": "skrelp",
+  "enska": "Skrelp"
+ },
+ {
+  "numer": 691,
+  "kynslod": 6,
+  "slug": "dragalge",
+  "enska": "Dragalge"
+ },
+ {
+  "numer": 692,
+  "kynslod": 6,
+  "slug": "clauncher",
+  "enska": "Clauncher"
+ },
+ {
+  "numer": 693,
+  "kynslod": 6,
+  "slug": "clawitzer",
+  "enska": "Clawitzer"
+ },
+ {
+  "numer": 694,
+  "kynslod": 6,
+  "slug": "helioptile",
+  "enska": "Helioptile"
+ },
+ {
+  "numer": 695,
+  "kynslod": 6,
+  "slug": "heliolisk",
+  "enska": "Heliolisk"
+ },
+ {
+  "numer": 696,
+  "kynslod": 6,
+  "slug": "tyrunt",
+  "enska": "Tyrunt"
+ },
+ {
+  "numer": 697,
+  "kynslod": 6,
+  "slug": "tyrantrum",
+  "enska": "Tyrantrum"
+ },
+ {
+  "numer": 698,
+  "kynslod": 6,
+  "slug": "amaura",
+  "enska": "Amaura"
+ },
+ {
+  "numer": 699,
+  "kynslod": 6,
+  "slug": "aurorus",
+  "enska": "Aurorus"
+ },
+ {
+  "numer": 700,
+  "kynslod": 6,
+  "slug": "sylveon",
+  "enska": "Sylveon"
+ },
+ {
+  "numer": 701,
+  "kynslod": 6,
+  "slug": "hawlucha",
+  "enska": "Hawlucha"
+ },
+ {
+  "numer": 702,
+  "kynslod": 6,
+  "slug": "dedenne",
+  "enska": "Dedenne"
+ },
+ {
+  "numer": 703,
+  "kynslod": 6,
+  "slug": "carbink",
+  "enska": "Carbink"
+ },
+ {
+  "numer": 704,
+  "kynslod": 6,
+  "slug": "goomy",
+  "enska": "Goomy"
+ },
+ {
+  "numer": 705,
+  "kynslod": 6,
+  "slug": "sliggoo",
+  "enska": "Sliggoo"
+ },
+ {
+  "numer": 706,
+  "kynslod": 6,
+  "slug": "goodra",
+  "enska": "Goodra"
+ },
+ {
+  "numer": 707,
+  "kynslod": 6,
+  "slug": "klefki",
+  "enska": "Klefki"
+ },
+ {
+  "numer": 708,
+  "kynslod": 6,
+  "slug": "phantump",
+  "enska": "Phantump"
+ },
+ {
+  "numer": 709,
+  "kynslod": 6,
+  "slug": "trevenant",
+  "enska": "Trevenant"
+ },
+ {
+  "numer": 710,
+  "kynslod": 6,
+  "slug": "pumpkaboo",
+  "enska": "Pumpkaboo"
+ },
+ {
+  "numer": 711,
+  "kynslod": 6,
+  "slug": "gourgeist",
+  "enska": "Gourgeist"
+ },
+ {
+  "numer": 712,
+  "kynslod": 6,
+  "slug": "bergmite",
+  "enska": "Bergmite"
+ },
+ {
+  "numer": 713,
+  "kynslod": 6,
+  "slug": "avalugg",
+  "enska": "Avalugg"
+ },
+ {
+  "numer": 714,
+  "kynslod": 6,
+  "slug": "noibat",
+  "enska": "Noibat"
+ },
+ {
+  "numer": 715,
+  "kynslod": 6,
+  "slug": "noivern",
+  "enska": "Noivern"
+ },
+ {
+  "numer": 716,
+  "kynslod": 6,
+  "slug": "xerneas",
+  "enska": "Xerneas"
+ },
+ {
+  "numer": 717,
+  "kynslod": 6,
+  "slug": "yveltal",
+  "enska": "Yveltal"
+ },
+ {
+  "numer": 718,
+  "kynslod": 6,
+  "slug": "zygarde",
+  "enska": "Zygarde"
+ },
+ {
+  "numer": 719,
+  "kynslod": 6,
+  "slug": "diancie",
+  "enska": "Diancie"
+ },
+ {
+  "numer": 720,
+  "kynslod": 6,
+  "slug": "hoopa",
+  "enska": "Hoopa"
+ },
+ {
+  "numer": 721,
+  "kynslod": 6,
+  "slug": "volcanion",
+  "enska": "Volcanion"
+ },
+ {
+  "numer": 722,
+  "kynslod": 7,
+  "slug": "rowlet",
+  "enska": "Rowlet"
+ },
+ {
+  "numer": 723,
+  "kynslod": 7,
+  "slug": "dartrix",
+  "enska": "Dartrix"
+ },
+ {
+  "numer": 724,
+  "kynslod": 7,
+  "slug": "decidueye",
+  "enska": "Decidueye"
+ },
+ {
+  "numer": 725,
+  "kynslod": 7,
+  "slug": "litten",
+  "enska": "Litten"
+ },
+ {
+  "numer": 726,
+  "kynslod": 7,
+  "slug": "torracat",
+  "enska": "Torracat"
+ },
+ {
+  "numer": 727,
+  "kynslod": 7,
+  "slug": "incineroar",
+  "enska": "Incineroar"
+ },
+ {
+  "numer": 728,
+  "kynslod": 7,
+  "slug": "popplio",
+  "enska": "Popplio"
+ },
+ {
+  "numer": 729,
+  "kynslod": 7,
+  "slug": "brionne",
+  "enska": "Brionne"
+ },
+ {
+  "numer": 730,
+  "kynslod": 7,
+  "slug": "primarina",
+  "enska": "Primarina"
+ },
+ {
+  "numer": 731,
+  "kynslod": 7,
+  "slug": "pikipek",
+  "enska": "Pikipek"
+ },
+ {
+  "numer": 732,
+  "kynslod": 7,
+  "slug": "trumbeak",
+  "enska": "Trumbeak"
+ },
+ {
+  "numer": 733,
+  "kynslod": 7,
+  "slug": "toucannon",
+  "enska": "Toucannon"
+ },
+ {
+  "numer": 734,
+  "kynslod": 7,
+  "slug": "yungoos",
+  "enska": "Yungoos"
+ },
+ {
+  "numer": 735,
+  "kynslod": 7,
+  "slug": "gumshoos",
+  "enska": "Gumshoos"
+ },
+ {
+  "numer": 736,
+  "kynslod": 7,
+  "slug": "grubbin",
+  "enska": "Grubbin"
+ },
+ {
+  "numer": 737,
+  "kynslod": 7,
+  "slug": "charjabug",
+  "enska": "Charjabug"
+ },
+ {
+  "numer": 738,
+  "kynslod": 7,
+  "slug": "vikavolt",
+  "enska": "Vikavolt"
+ },
+ {
+  "numer": 739,
+  "kynslod": 7,
+  "slug": "crabrawler",
+  "enska": "Crabrawler"
+ },
+ {
+  "numer": 740,
+  "kynslod": 7,
+  "slug": "crabominable",
+  "enska": "Crabominable"
+ },
+ {
+  "numer": 741,
+  "kynslod": 7,
+  "slug": "oricorio",
+  "enska": "Oricorio"
+ },
+ {
+  "numer": 742,
+  "kynslod": 7,
+  "slug": "cutiefly",
+  "enska": "Cutiefly"
+ },
+ {
+  "numer": 743,
+  "kynslod": 7,
+  "slug": "ribombee",
+  "enska": "Ribombee"
+ },
+ {
+  "numer": 744,
+  "kynslod": 7,
+  "slug": "rockruff",
+  "enska": "Rockruff"
+ },
+ {
+  "numer": 745,
+  "kynslod": 7,
+  "slug": "lycanroc",
+  "enska": "Lycanroc"
+ },
+ {
+  "numer": 746,
+  "kynslod": 7,
+  "slug": "wishiwashi",
+  "enska": "Wishiwashi"
+ },
+ {
+  "numer": 747,
+  "kynslod": 7,
+  "slug": "mareanie",
+  "enska": "Mareanie"
+ },
+ {
+  "numer": 748,
+  "kynslod": 7,
+  "slug": "toxapex",
+  "enska": "Toxapex"
+ },
+ {
+  "numer": 749,
+  "kynslod": 7,
+  "slug": "mudbray",
+  "enska": "Mudbray"
+ },
+ {
+  "numer": 750,
+  "kynslod": 7,
+  "slug": "mudsdale",
+  "enska": "Mudsdale"
+ },
+ {
+  "numer": 751,
+  "kynslod": 7,
+  "slug": "dewpider",
+  "enska": "Dewpider"
+ },
+ {
+  "numer": 752,
+  "kynslod": 7,
+  "slug": "araquanid",
+  "enska": "Araquanid"
+ },
+ {
+  "numer": 753,
+  "kynslod": 7,
+  "slug": "fomantis",
+  "enska": "Fomantis"
+ },
+ {
+  "numer": 754,
+  "kynslod": 7,
+  "slug": "lurantis",
+  "enska": "Lurantis"
+ },
+ {
+  "numer": 755,
+  "kynslod": 7,
+  "slug": "morelull",
+  "enska": "Morelull"
+ },
+ {
+  "numer": 756,
+  "kynslod": 7,
+  "slug": "shiinotic",
+  "enska": "Shiinotic"
+ },
+ {
+  "numer": 757,
+  "kynslod": 7,
+  "slug": "salandit",
+  "enska": "Salandit"
+ },
+ {
+  "numer": 758,
+  "kynslod": 7,
+  "slug": "salazzle",
+  "enska": "Salazzle"
+ },
+ {
+  "numer": 759,
+  "kynslod": 7,
+  "slug": "stufful",
+  "enska": "Stufful"
+ },
+ {
+  "numer": 760,
+  "kynslod": 7,
+  "slug": "bewear",
+  "enska": "Bewear"
+ },
+ {
+  "numer": 761,
+  "kynslod": 7,
+  "slug": "bounsweet",
+  "enska": "Bounsweet"
+ },
+ {
+  "numer": 762,
+  "kynslod": 7,
+  "slug": "steenee",
+  "enska": "Steenee"
+ },
+ {
+  "numer": 763,
+  "kynslod": 7,
+  "slug": "tsareena",
+  "enska": "Tsareena"
+ },
+ {
+  "numer": 764,
+  "kynslod": 7,
+  "slug": "comfey",
+  "enska": "Comfey"
+ },
+ {
+  "numer": 765,
+  "kynslod": 7,
+  "slug": "oranguru",
+  "enska": "Oranguru"
+ },
+ {
+  "numer": 766,
+  "kynslod": 7,
+  "slug": "passimian",
+  "enska": "Passimian"
+ },
+ {
+  "numer": 767,
+  "kynslod": 7,
+  "slug": "wimpod",
+  "enska": "Wimpod"
+ },
+ {
+  "numer": 768,
+  "kynslod": 7,
+  "slug": "golisopod",
+  "enska": "Golisopod"
+ },
+ {
+  "numer": 769,
+  "kynslod": 7,
+  "slug": "sandygast",
+  "enska": "Sandygast"
+ },
+ {
+  "numer": 770,
+  "kynslod": 7,
+  "slug": "palossand",
+  "enska": "Palossand"
+ },
+ {
+  "numer": 771,
+  "kynslod": 7,
+  "slug": "pyukumuku",
+  "enska": "Pyukumuku"
+ },
+ {
+  "numer": 772,
+  "kynslod": 7,
+  "slug": "type-null",
+  "enska": "Type: Null"
+ },
+ {
+  "numer": 773,
+  "kynslod": 7,
+  "slug": "silvally",
+  "enska": "Silvally"
+ },
+ {
+  "numer": 774,
+  "kynslod": 7,
+  "slug": "minior",
+  "enska": "Minior"
+ },
+ {
+  "numer": 775,
+  "kynslod": 7,
+  "slug": "komala",
+  "enska": "Komala"
+ },
+ {
+  "numer": 776,
+  "kynslod": 7,
+  "slug": "turtonator",
+  "enska": "Turtonator"
+ },
+ {
+  "numer": 777,
+  "kynslod": 7,
+  "slug": "togedemaru",
+  "enska": "Togedemaru"
+ },
+ {
+  "numer": 778,
+  "kynslod": 7,
+  "slug": "mimikyu",
+  "enska": "Mimikyu"
+ },
+ {
+  "numer": 779,
+  "kynslod": 7,
+  "slug": "bruxish",
+  "enska": "Bruxish"
+ },
+ {
+  "numer": 780,
+  "kynslod": 7,
+  "slug": "drampa",
+  "enska": "Drampa"
+ },
+ {
+  "numer": 781,
+  "kynslod": 7,
+  "slug": "dhelmise",
+  "enska": "Dhelmise"
+ },
+ {
+  "numer": 782,
+  "kynslod": 7,
+  "slug": "jangmo-o",
+  "enska": "Jangmo-o"
+ },
+ {
+  "numer": 783,
+  "kynslod": 7,
+  "slug": "hakamo-o",
+  "enska": "Hakamo-o"
+ },
+ {
+  "numer": 784,
+  "kynslod": 7,
+  "slug": "kommo-o",
+  "enska": "Kommo-o"
+ },
+ {
+  "numer": 785,
+  "kynslod": 7,
+  "slug": "tapu-koko",
+  "enska": "Tapu Koko"
+ },
+ {
+  "numer": 786,
+  "kynslod": 7,
+  "slug": "tapu-lele",
+  "enska": "Tapu Lele"
+ },
+ {
+  "numer": 787,
+  "kynslod": 7,
+  "slug": "tapu-bulu",
+  "enska": "Tapu Bulu"
+ },
+ {
+  "numer": 788,
+  "kynslod": 7,
+  "slug": "tapu-fini",
+  "enska": "Tapu Fini"
+ },
+ {
+  "numer": 789,
+  "kynslod": 7,
+  "slug": "cosmog",
+  "enska": "Cosmog"
+ },
+ {
+  "numer": 790,
+  "kynslod": 7,
+  "slug": "cosmoem",
+  "enska": "Cosmoem"
+ },
+ {
+  "numer": 791,
+  "kynslod": 7,
+  "slug": "solgaleo",
+  "enska": "Solgaleo"
+ },
+ {
+  "numer": 792,
+  "kynslod": 7,
+  "slug": "lunala",
+  "enska": "Lunala"
+ },
+ {
+  "numer": 793,
+  "kynslod": 7,
+  "slug": "nihilego",
+  "enska": "Nihilego"
+ },
+ {
+  "numer": 794,
+  "kynslod": 7,
+  "slug": "buzzwole",
+  "enska": "Buzzwole"
+ },
+ {
+  "numer": 795,
+  "kynslod": 7,
+  "slug": "pheromosa",
+  "enska": "Pheromosa"
+ },
+ {
+  "numer": 796,
+  "kynslod": 7,
+  "slug": "xurkitree",
+  "enska": "Xurkitree"
+ },
+ {
+  "numer": 797,
+  "kynslod": 7,
+  "slug": "celesteela",
+  "enska": "Celesteela"
+ },
+ {
+  "numer": 798,
+  "kynslod": 7,
+  "slug": "kartana",
+  "enska": "Kartana"
+ },
+ {
+  "numer": 799,
+  "kynslod": 7,
+  "slug": "guzzlord",
+  "enska": "Guzzlord"
+ },
+ {
+  "numer": 800,
+  "kynslod": 7,
+  "slug": "necrozma",
+  "enska": "Necrozma"
+ },
+ {
+  "numer": 801,
+  "kynslod": 7,
+  "slug": "magearna",
+  "enska": "Magearna"
+ },
+ {
+  "numer": 802,
+  "kynslod": 7,
+  "slug": "marshadow",
+  "enska": "Marshadow"
+ },
+ {
+  "numer": 803,
+  "kynslod": 7,
+  "slug": "poipole",
+  "enska": "Poipole"
+ },
+ {
+  "numer": 804,
+  "kynslod": 7,
+  "slug": "naganadel",
+  "enska": "Naganadel"
+ },
+ {
+  "numer": 805,
+  "kynslod": 7,
+  "slug": "stakataka",
+  "enska": "Stakataka"
+ },
+ {
+  "numer": 806,
+  "kynslod": 7,
+  "slug": "blacephalon",
+  "enska": "Blacephalon"
+ },
+ {
+  "numer": 807,
+  "kynslod": 7,
+  "slug": "zeraora",
+  "enska": "Zeraora"
+ },
+ {
+  "numer": 808,
+  "kynslod": 7,
+  "slug": "meltan",
+  "enska": "Meltan"
+ },
+ {
+  "numer": 809,
+  "kynslod": 7,
+  "slug": "melmetal",
+  "enska": "Melmetal"
+ },
+ {
+  "numer": 810,
+  "kynslod": 8,
+  "slug": "grookey",
+  "enska": "Grookey"
+ },
+ {
+  "numer": 811,
+  "kynslod": 8,
+  "slug": "thwackey",
+  "enska": "Thwackey"
+ },
+ {
+  "numer": 812,
+  "kynslod": 8,
+  "slug": "rillaboom",
+  "enska": "Rillaboom"
+ },
+ {
+  "numer": 813,
+  "kynslod": 8,
+  "slug": "scorbunny",
+  "enska": "Scorbunny"
+ },
+ {
+  "numer": 814,
+  "kynslod": 8,
+  "slug": "raboot",
+  "enska": "Raboot"
+ },
+ {
+  "numer": 815,
+  "kynslod": 8,
+  "slug": "cinderace",
+  "enska": "Cinderace"
+ },
+ {
+  "numer": 816,
+  "kynslod": 8,
+  "slug": "sobble",
+  "enska": "Sobble"
+ },
+ {
+  "numer": 817,
+  "kynslod": 8,
+  "slug": "drizzile",
+  "enska": "Drizzile"
+ },
+ {
+  "numer": 818,
+  "kynslod": 8,
+  "slug": "inteleon",
+  "enska": "Inteleon"
+ },
+ {
+  "numer": 819,
+  "kynslod": 8,
+  "slug": "skwovet",
+  "enska": "Skwovet"
+ },
+ {
+  "numer": 820,
+  "kynslod": 8,
+  "slug": "greedent",
+  "enska": "Greedent"
+ },
+ {
+  "numer": 821,
+  "kynslod": 8,
+  "slug": "rookidee",
+  "enska": "Rookidee"
+ },
+ {
+  "numer": 822,
+  "kynslod": 8,
+  "slug": "corvisquire",
+  "enska": "Corvisquire"
+ },
+ {
+  "numer": 823,
+  "kynslod": 8,
+  "slug": "corviknight",
+  "enska": "Corviknight"
+ },
+ {
+  "numer": 824,
+  "kynslod": 8,
+  "slug": "blipbug",
+  "enska": "Blipbug"
+ },
+ {
+  "numer": 825,
+  "kynslod": 8,
+  "slug": "dottler",
+  "enska": "Dottler"
+ },
+ {
+  "numer": 826,
+  "kynslod": 8,
+  "slug": "orbeetle",
+  "enska": "Orbeetle"
+ },
+ {
+  "numer": 827,
+  "kynslod": 8,
+  "slug": "nickit",
+  "enska": "Nickit"
+ },
+ {
+  "numer": 828,
+  "kynslod": 8,
+  "slug": "thievul",
+  "enska": "Thievul"
+ },
+ {
+  "numer": 829,
+  "kynslod": 8,
+  "slug": "gossifleur",
+  "enska": "Gossifleur"
+ },
+ {
+  "numer": 830,
+  "kynslod": 8,
+  "slug": "eldegoss",
+  "enska": "Eldegoss"
+ },
+ {
+  "numer": 831,
+  "kynslod": 8,
+  "slug": "wooloo",
+  "enska": "Wooloo"
+ },
+ {
+  "numer": 832,
+  "kynslod": 8,
+  "slug": "dubwool",
+  "enska": "Dubwool"
+ },
+ {
+  "numer": 833,
+  "kynslod": 8,
+  "slug": "chewtle",
+  "enska": "Chewtle"
+ },
+ {
+  "numer": 834,
+  "kynslod": 8,
+  "slug": "drednaw",
+  "enska": "Drednaw"
+ },
+ {
+  "numer": 835,
+  "kynslod": 8,
+  "slug": "yamper",
+  "enska": "Yamper"
+ },
+ {
+  "numer": 836,
+  "kynslod": 8,
+  "slug": "boltund",
+  "enska": "Boltund"
+ },
+ {
+  "numer": 837,
+  "kynslod": 8,
+  "slug": "rolycoly",
+  "enska": "Rolycoly"
+ },
+ {
+  "numer": 838,
+  "kynslod": 8,
+  "slug": "carkol",
+  "enska": "Carkol"
+ },
+ {
+  "numer": 839,
+  "kynslod": 8,
+  "slug": "coalossal",
+  "enska": "Coalossal"
+ },
+ {
+  "numer": 840,
+  "kynslod": 8,
+  "slug": "applin",
+  "enska": "Applin"
+ },
+ {
+  "numer": 841,
+  "kynslod": 8,
+  "slug": "flapple",
+  "enska": "Flapple"
+ },
+ {
+  "numer": 842,
+  "kynslod": 8,
+  "slug": "appletun",
+  "enska": "Appletun"
+ },
+ {
+  "numer": 843,
+  "kynslod": 8,
+  "slug": "silicobra",
+  "enska": "Silicobra"
+ },
+ {
+  "numer": 844,
+  "kynslod": 8,
+  "slug": "sandaconda",
+  "enska": "Sandaconda"
+ },
+ {
+  "numer": 845,
+  "kynslod": 8,
+  "slug": "cramorant",
+  "enska": "Cramorant"
+ },
+ {
+  "numer": 846,
+  "kynslod": 8,
+  "slug": "arrokuda",
+  "enska": "Arrokuda"
+ },
+ {
+  "numer": 847,
+  "kynslod": 8,
+  "slug": "barraskewda",
+  "enska": "Barraskewda"
+ },
+ {
+  "numer": 848,
+  "kynslod": 8,
+  "slug": "toxel",
+  "enska": "Toxel"
+ },
+ {
+  "numer": 849,
+  "kynslod": 8,
+  "slug": "toxtricity",
+  "enska": "Toxtricity"
+ },
+ {
+  "numer": 850,
+  "kynslod": 8,
+  "slug": "sizzlipede",
+  "enska": "Sizzlipede"
+ },
+ {
+  "numer": 851,
+  "kynslod": 8,
+  "slug": "centiskorch",
+  "enska": "Centiskorch"
+ },
+ {
+  "numer": 852,
+  "kynslod": 8,
+  "slug": "clobbopus",
+  "enska": "Clobbopus"
+ },
+ {
+  "numer": 853,
+  "kynslod": 8,
+  "slug": "grapploct",
+  "enska": "Grapploct"
+ },
+ {
+  "numer": 854,
+  "kynslod": 8,
+  "slug": "sinistea",
+  "enska": "Sinistea"
+ },
+ {
+  "numer": 855,
+  "kynslod": 8,
+  "slug": "polteageist",
+  "enska": "Polteageist"
+ },
+ {
+  "numer": 856,
+  "kynslod": 8,
+  "slug": "hatenna",
+  "enska": "Hatenna"
+ },
+ {
+  "numer": 857,
+  "kynslod": 8,
+  "slug": "hattrem",
+  "enska": "Hattrem"
+ },
+ {
+  "numer": 858,
+  "kynslod": 8,
+  "slug": "hatterene",
+  "enska": "Hatterene"
+ },
+ {
+  "numer": 859,
+  "kynslod": 8,
+  "slug": "impidimp",
+  "enska": "Impidimp"
+ },
+ {
+  "numer": 860,
+  "kynslod": 8,
+  "slug": "morgrem",
+  "enska": "Morgrem"
+ },
+ {
+  "numer": 861,
+  "kynslod": 8,
+  "slug": "grimmsnarl",
+  "enska": "Grimmsnarl"
+ },
+ {
+  "numer": 862,
+  "kynslod": 8,
+  "slug": "obstagoon",
+  "enska": "Obstagoon"
+ },
+ {
+  "numer": 863,
+  "kynslod": 8,
+  "slug": "perrserker",
+  "enska": "Perrserker"
+ },
+ {
+  "numer": 864,
+  "kynslod": 8,
+  "slug": "cursola",
+  "enska": "Cursola"
+ },
+ {
+  "numer": 865,
+  "kynslod": 8,
+  "slug": "sirfetchd",
+  "enska": "Sirfetch'd"
+ },
+ {
+  "numer": 866,
+  "kynslod": 8,
+  "slug": "mr-rime",
+  "enska": "Mr. Rime"
+ },
+ {
+  "numer": 867,
+  "kynslod": 8,
+  "slug": "runerigus",
+  "enska": "Runerigus"
+ },
+ {
+  "numer": 868,
+  "kynslod": 8,
+  "slug": "milcery",
+  "enska": "Milcery"
+ },
+ {
+  "numer": 869,
+  "kynslod": 8,
+  "slug": "alcremie",
+  "enska": "Alcremie"
+ },
+ {
+  "numer": 870,
+  "kynslod": 8,
+  "slug": "falinks",
+  "enska": "Falinks"
+ },
+ {
+  "numer": 871,
+  "kynslod": 8,
+  "slug": "pincurchin",
+  "enska": "Pincurchin"
+ },
+ {
+  "numer": 872,
+  "kynslod": 8,
+  "slug": "snom",
+  "enska": "Snom"
+ },
+ {
+  "numer": 873,
+  "kynslod": 8,
+  "slug": "frosmoth",
+  "enska": "Frosmoth"
+ },
+ {
+  "numer": 874,
+  "kynslod": 8,
+  "slug": "stonjourner",
+  "enska": "Stonjourner"
+ },
+ {
+  "numer": 875,
+  "kynslod": 8,
+  "slug": "eiscue",
+  "enska": "Eiscue"
+ },
+ {
+  "numer": 876,
+  "kynslod": 8,
+  "slug": "indeedee",
+  "enska": "Indeedee"
+ },
+ {
+  "numer": 877,
+  "kynslod": 8,
+  "slug": "morpeko",
+  "enska": "Morpeko"
+ },
+ {
+  "numer": 878,
+  "kynslod": 8,
+  "slug": "cufant",
+  "enska": "Cufant"
+ },
+ {
+  "numer": 879,
+  "kynslod": 8,
+  "slug": "copperajah",
+  "enska": "Copperajah"
+ },
+ {
+  "numer": 880,
+  "kynslod": 8,
+  "slug": "dracozolt",
+  "enska": "Dracozolt"
+ },
+ {
+  "numer": 881,
+  "kynslod": 8,
+  "slug": "arctozolt",
+  "enska": "Arctozolt"
+ },
+ {
+  "numer": 882,
+  "kynslod": 8,
+  "slug": "dracovish",
+  "enska": "Dracovish"
+ },
+ {
+  "numer": 883,
+  "kynslod": 8,
+  "slug": "arctovish",
+  "enska": "Arctovish"
+ },
+ {
+  "numer": 884,
+  "kynslod": 8,
+  "slug": "duraludon",
+  "enska": "Duraludon"
+ },
+ {
+  "numer": 885,
+  "kynslod": 8,
+  "slug": "dreepy",
+  "enska": "Dreepy"
+ },
+ {
+  "numer": 886,
+  "kynslod": 8,
+  "slug": "drakloak",
+  "enska": "Drakloak"
+ },
+ {
+  "numer": 887,
+  "kynslod": 8,
+  "slug": "dragapult",
+  "enska": "Dragapult"
+ },
+ {
+  "numer": 888,
+  "kynslod": 8,
+  "slug": "zacian",
+  "enska": "Zacian"
+ },
+ {
+  "numer": 889,
+  "kynslod": 8,
+  "slug": "zamazenta",
+  "enska": "Zamazenta"
+ },
+ {
+  "numer": 890,
+  "kynslod": 8,
+  "slug": "eternatus",
+  "enska": "Eternatus"
+ },
+ {
+  "numer": 891,
+  "kynslod": 8,
+  "slug": "kubfu",
+  "enska": "Kubfu"
+ },
+ {
+  "numer": 892,
+  "kynslod": 8,
+  "slug": "urshifu",
+  "enska": "Urshifu"
+ },
+ {
+  "numer": 893,
+  "kynslod": 8,
+  "slug": "zarude",
+  "enska": "Zarude"
+ },
+ {
+  "numer": 894,
+  "kynslod": 8,
+  "slug": "regieleki",
+  "enska": "Regieleki"
+ },
+ {
+  "numer": 895,
+  "kynslod": 8,
+  "slug": "regidrago",
+  "enska": "Regidrago"
+ },
+ {
+  "numer": 896,
+  "kynslod": 8,
+  "slug": "glastrier",
+  "enska": "Glastrier"
+ },
+ {
+  "numer": 897,
+  "kynslod": 8,
+  "slug": "spectrier",
+  "enska": "Spectrier"
+ },
+ {
+  "numer": 898,
+  "kynslod": 8,
+  "slug": "calyrex",
+  "enska": "Calyrex"
+ },
+ {
+  "numer": 899,
+  "kynslod": 8,
+  "slug": "wyrdeer",
+  "enska": "Wyrdeer"
+ },
+ {
+  "numer": 900,
+  "kynslod": 8,
+  "slug": "kleavor",
+  "enska": "Kleavor"
+ },
+ {
+  "numer": 901,
+  "kynslod": 8,
+  "slug": "ursaluna",
+  "enska": "Ursaluna"
+ },
+ {
+  "numer": 902,
+  "kynslod": 8,
+  "slug": "basculegion",
+  "enska": "Basculegion"
+ },
+ {
+  "numer": 903,
+  "kynslod": 8,
+  "slug": "sneasler",
+  "enska": "Sneasler"
+ },
+ {
+  "numer": 904,
+  "kynslod": 8,
+  "slug": "overqwil",
+  "enska": "Overqwil"
+ },
+ {
+  "numer": 905,
+  "kynslod": 8,
+  "slug": "enamorus",
+  "enska": "Enamorus"
+ },
+ {
+  "numer": 906,
+  "kynslod": 9,
+  "slug": "sprigatito",
+  "enska": "Sprigatito"
+ },
+ {
+  "numer": 907,
+  "kynslod": 9,
+  "slug": "floragato",
+  "enska": "Floragato"
+ },
+ {
+  "numer": 908,
+  "kynslod": 9,
+  "slug": "meowscarada",
+  "enska": "Meowscarada"
+ },
+ {
+  "numer": 909,
+  "kynslod": 9,
+  "slug": "fuecoco",
+  "enska": "Fuecoco"
+ },
+ {
+  "numer": 910,
+  "kynslod": 9,
+  "slug": "crocalor",
+  "enska": "Crocalor"
+ },
+ {
+  "numer": 911,
+  "kynslod": 9,
+  "slug": "skeledirge",
+  "enska": "Skeledirge"
+ },
+ {
+  "numer": 912,
+  "kynslod": 9,
+  "slug": "quaxly",
+  "enska": "Quaxly"
+ },
+ {
+  "numer": 913,
+  "kynslod": 9,
+  "slug": "quaxwell",
+  "enska": "Quaxwell"
+ },
+ {
+  "numer": 914,
+  "kynslod": 9,
+  "slug": "quaquaval",
+  "enska": "Quaquaval"
+ },
+ {
+  "numer": 915,
+  "kynslod": 9,
+  "slug": "lechonk",
+  "enska": "Lechonk"
+ },
+ {
+  "numer": 916,
+  "kynslod": 9,
+  "slug": "oinkologne",
+  "enska": "Oinkologne"
+ },
+ {
+  "numer": 917,
+  "kynslod": 9,
+  "slug": "tarountula",
+  "enska": "Tarountula"
+ },
+ {
+  "numer": 918,
+  "kynslod": 9,
+  "slug": "spidops",
+  "enska": "Spidops"
+ },
+ {
+  "numer": 919,
+  "kynslod": 9,
+  "slug": "nymble",
+  "enska": "Nymble"
+ },
+ {
+  "numer": 920,
+  "kynslod": 9,
+  "slug": "lokix",
+  "enska": "Lokix"
+ },
+ {
+  "numer": 921,
+  "kynslod": 9,
+  "slug": "pawmi",
+  "enska": "Pawmi"
+ },
+ {
+  "numer": 922,
+  "kynslod": 9,
+  "slug": "pawmo",
+  "enska": "Pawmo"
+ },
+ {
+  "numer": 923,
+  "kynslod": 9,
+  "slug": "pawmot",
+  "enska": "Pawmot"
+ },
+ {
+  "numer": 924,
+  "kynslod": 9,
+  "slug": "tandemaus",
+  "enska": "Tandemaus"
+ },
+ {
+  "numer": 925,
+  "kynslod": 9,
+  "slug": "maushold",
+  "enska": "Maushold"
+ },
+ {
+  "numer": 926,
+  "kynslod": 9,
+  "slug": "fidough",
+  "enska": "Fidough"
+ },
+ {
+  "numer": 927,
+  "kynslod": 9,
+  "slug": "dachsbun",
+  "enska": "Dachsbun"
+ },
+ {
+  "numer": 928,
+  "kynslod": 9,
+  "slug": "smoliv",
+  "enska": "Smoliv"
+ },
+ {
+  "numer": 929,
+  "kynslod": 9,
+  "slug": "dolliv",
+  "enska": "Dolliv"
+ },
+ {
+  "numer": 930,
+  "kynslod": 9,
+  "slug": "arboliva",
+  "enska": "Arboliva"
+ },
+ {
+  "numer": 931,
+  "kynslod": 9,
+  "slug": "squawkabilly",
+  "enska": "Squawkabilly"
+ },
+ {
+  "numer": 932,
+  "kynslod": 9,
+  "slug": "nacli",
+  "enska": "Nacli"
+ },
+ {
+  "numer": 933,
+  "kynslod": 9,
+  "slug": "naclstack",
+  "enska": "Naclstack"
+ },
+ {
+  "numer": 934,
+  "kynslod": 9,
+  "slug": "garganacl",
+  "enska": "Garganacl"
+ },
+ {
+  "numer": 935,
+  "kynslod": 9,
+  "slug": "charcadet",
+  "enska": "Charcadet"
+ },
+ {
+  "numer": 936,
+  "kynslod": 9,
+  "slug": "armarouge",
+  "enska": "Armarouge"
+ },
+ {
+  "numer": 937,
+  "kynslod": 9,
+  "slug": "ceruledge",
+  "enska": "Ceruledge"
+ },
+ {
+  "numer": 938,
+  "kynslod": 9,
+  "slug": "tadbulb",
+  "enska": "Tadbulb"
+ },
+ {
+  "numer": 939,
+  "kynslod": 9,
+  "slug": "bellibolt",
+  "enska": "Bellibolt"
+ },
+ {
+  "numer": 940,
+  "kynslod": 9,
+  "slug": "wattrel",
+  "enska": "Wattrel"
+ },
+ {
+  "numer": 941,
+  "kynslod": 9,
+  "slug": "kilowattrel",
+  "enska": "Kilowattrel"
+ },
+ {
+  "numer": 942,
+  "kynslod": 9,
+  "slug": "maschiff",
+  "enska": "Maschiff"
+ },
+ {
+  "numer": 943,
+  "kynslod": 9,
+  "slug": "mabosstiff",
+  "enska": "Mabosstiff"
+ },
+ {
+  "numer": 944,
+  "kynslod": 9,
+  "slug": "shroodle",
+  "enska": "Shroodle"
+ },
+ {
+  "numer": 945,
+  "kynslod": 9,
+  "slug": "grafaiai",
+  "enska": "Grafaiai"
+ },
+ {
+  "numer": 946,
+  "kynslod": 9,
+  "slug": "bramblin",
+  "enska": "Bramblin"
+ },
+ {
+  "numer": 947,
+  "kynslod": 9,
+  "slug": "brambleghast",
+  "enska": "Brambleghast"
+ },
+ {
+  "numer": 948,
+  "kynslod": 9,
+  "slug": "toedscool",
+  "enska": "Toedscool"
+ },
+ {
+  "numer": 949,
+  "kynslod": 9,
+  "slug": "toedscruel",
+  "enska": "Toedscruel"
+ },
+ {
+  "numer": 950,
+  "kynslod": 9,
+  "slug": "klawf",
+  "enska": "Klawf"
+ },
+ {
+  "numer": 951,
+  "kynslod": 9,
+  "slug": "capsakid",
+  "enska": "Capsakid"
+ },
+ {
+  "numer": 952,
+  "kynslod": 9,
+  "slug": "scovillain",
+  "enska": "Scovillain"
+ },
+ {
+  "numer": 953,
+  "kynslod": 9,
+  "slug": "rellor",
+  "enska": "Rellor"
+ },
+ {
+  "numer": 954,
+  "kynslod": 9,
+  "slug": "rabsca",
+  "enska": "Rabsca"
+ },
+ {
+  "numer": 955,
+  "kynslod": 9,
+  "slug": "flittle",
+  "enska": "Flittle"
+ },
+ {
+  "numer": 956,
+  "kynslod": 9,
+  "slug": "espathra",
+  "enska": "Espathra"
+ },
+ {
+  "numer": 957,
+  "kynslod": 9,
+  "slug": "tinkatink",
+  "enska": "Tinkatink"
+ },
+ {
+  "numer": 958,
+  "kynslod": 9,
+  "slug": "tinkatuff",
+  "enska": "Tinkatuff"
+ },
+ {
+  "numer": 959,
+  "kynslod": 9,
+  "slug": "tinkaton",
+  "enska": "Tinkaton"
+ },
+ {
+  "numer": 960,
+  "kynslod": 9,
+  "slug": "wiglett",
+  "enska": "Wiglett"
+ },
+ {
+  "numer": 961,
+  "kynslod": 9,
+  "slug": "wugtrio",
+  "enska": "Wugtrio"
+ },
+ {
+  "numer": 962,
+  "kynslod": 9,
+  "slug": "bombirdier",
+  "enska": "Bombirdier"
+ },
+ {
+  "numer": 963,
+  "kynslod": 9,
+  "slug": "finizen",
+  "enska": "Finizen"
+ },
+ {
+  "numer": 964,
+  "kynslod": 9,
+  "slug": "palafin",
+  "enska": "Palafin"
+ },
+ {
+  "numer": 965,
+  "kynslod": 9,
+  "slug": "varoom",
+  "enska": "Varoom"
+ },
+ {
+  "numer": 966,
+  "kynslod": 9,
+  "slug": "revavroom",
+  "enska": "Revavroom"
+ },
+ {
+  "numer": 967,
+  "kynslod": 9,
+  "slug": "cyclizar",
+  "enska": "Cyclizar"
+ },
+ {
+  "numer": 968,
+  "kynslod": 9,
+  "slug": "orthworm",
+  "enska": "Orthworm"
+ },
+ {
+  "numer": 969,
+  "kynslod": 9,
+  "slug": "glimmet",
+  "enska": "Glimmet"
+ },
+ {
+  "numer": 970,
+  "kynslod": 9,
+  "slug": "glimmora",
+  "enska": "Glimmora"
+ },
+ {
+  "numer": 971,
+  "kynslod": 9,
+  "slug": "greavard",
+  "enska": "Greavard"
+ },
+ {
+  "numer": 972,
+  "kynslod": 9,
+  "slug": "houndstone",
+  "enska": "Houndstone"
+ },
+ {
+  "numer": 973,
+  "kynslod": 9,
+  "slug": "flamigo",
+  "enska": "Flamigo"
+ },
+ {
+  "numer": 974,
+  "kynslod": 9,
+  "slug": "cetoddle",
+  "enska": "Cetoddle"
+ },
+ {
+  "numer": 975,
+  "kynslod": 9,
+  "slug": "cetitan",
+  "enska": "Cetitan"
+ },
+ {
+  "numer": 976,
+  "kynslod": 9,
+  "slug": "veluza",
+  "enska": "Veluza"
+ },
+ {
+  "numer": 977,
+  "kynslod": 9,
+  "slug": "dondozo",
+  "enska": "Dondozo"
+ },
+ {
+  "numer": 978,
+  "kynslod": 9,
+  "slug": "tatsugiri",
+  "enska": "Tatsugiri"
+ },
+ {
+  "numer": 979,
+  "kynslod": 9,
+  "slug": "annihilape",
+  "enska": "Annihilape"
+ },
+ {
+  "numer": 980,
+  "kynslod": 9,
+  "slug": "clodsire",
+  "enska": "Clodsire"
+ },
+ {
+  "numer": 981,
+  "kynslod": 9,
+  "slug": "farigiraf",
+  "enska": "Farigiraf"
+ },
+ {
+  "numer": 982,
+  "kynslod": 9,
+  "slug": "dudunsparce",
+  "enska": "Dudunsparce"
+ },
+ {
+  "numer": 983,
+  "kynslod": 9,
+  "slug": "kingambit",
+  "enska": "Kingambit"
+ },
+ {
+  "numer": 984,
+  "kynslod": 9,
+  "slug": "great-tusk",
+  "enska": "Great Tusk"
+ },
+ {
+  "numer": 985,
+  "kynslod": 9,
+  "slug": "scream-tail",
+  "enska": "Scream Tail"
+ },
+ {
+  "numer": 986,
+  "kynslod": 9,
+  "slug": "brute-bonnet",
+  "enska": "Brute Bonnet"
+ },
+ {
+  "numer": 987,
+  "kynslod": 9,
+  "slug": "flutter-mane",
+  "enska": "Flutter Mane"
+ },
+ {
+  "numer": 988,
+  "kynslod": 9,
+  "slug": "slither-wing",
+  "enska": "Slither Wing"
+ },
+ {
+  "numer": 989,
+  "kynslod": 9,
+  "slug": "sandy-shocks",
+  "enska": "Sandy Shocks"
+ },
+ {
+  "numer": 990,
+  "kynslod": 9,
+  "slug": "iron-treads",
+  "enska": "Iron Treads"
+ },
+ {
+  "numer": 991,
+  "kynslod": 9,
+  "slug": "iron-bundle",
+  "enska": "Iron Bundle"
+ },
+ {
+  "numer": 992,
+  "kynslod": 9,
+  "slug": "iron-hands",
+  "enska": "Iron Hands"
+ },
+ {
+  "numer": 993,
+  "kynslod": 9,
+  "slug": "iron-jugulis",
+  "enska": "Iron Jugulis"
+ },
+ {
+  "numer": 994,
+  "kynslod": 9,
+  "slug": "iron-moth",
+  "enska": "Iron Moth"
+ },
+ {
+  "numer": 995,
+  "kynslod": 9,
+  "slug": "iron-thorns",
+  "enska": "Iron Thorns"
+ },
+ {
+  "numer": 996,
+  "kynslod": 9,
+  "slug": "frigibax",
+  "enska": "Frigibax"
+ },
+ {
+  "numer": 997,
+  "kynslod": 9,
+  "slug": "arctibax",
+  "enska": "Arctibax"
+ },
+ {
+  "numer": 998,
+  "kynslod": 9,
+  "slug": "baxcalibur",
+  "enska": "Baxcalibur"
+ },
+ {
+  "numer": 999,
+  "kynslod": 9,
+  "slug": "gimmighoul",
+  "enska": "Gimmighoul"
+ },
+ {
+  "numer": 1000,
+  "kynslod": 9,
+  "slug": "gholdengo",
+  "enska": "Gholdengo"
+ },
+ {
+  "numer": 1001,
+  "kynslod": 9,
+  "slug": "wo-chien",
+  "enska": "Wo-Chien"
+ },
+ {
+  "numer": 1002,
+  "kynslod": 9,
+  "slug": "chien-pao",
+  "enska": "Chien-Pao"
+ },
+ {
+  "numer": 1003,
+  "kynslod": 9,
+  "slug": "ting-lu",
+  "enska": "Ting-Lu"
+ },
+ {
+  "numer": 1004,
+  "kynslod": 9,
+  "slug": "chi-yu",
+  "enska": "Chi-Yu"
+ },
+ {
+  "numer": 1005,
+  "kynslod": 9,
+  "slug": "roaring-moon",
+  "enska": "Roaring Moon"
+ },
+ {
+  "numer": 1006,
+  "kynslod": 9,
+  "slug": "iron-valiant",
+  "enska": "Iron Valiant"
+ },
+ {
+  "numer": 1007,
+  "kynslod": 9,
+  "slug": "koraidon",
+  "enska": "Koraidon"
+ },
+ {
+  "numer": 1008,
+  "kynslod": 9,
+  "slug": "miraidon",
+  "enska": "Miraidon"
+ },
+ {
+  "numer": 1009,
+  "kynslod": 9,
+  "slug": "walking-wake",
+  "enska": "Walking Wake"
+ },
+ {
+  "numer": 1010,
+  "kynslod": 9,
+  "slug": "iron-leaves",
+  "enska": "Iron Leaves"
+ },
+ {
+  "numer": 1011,
+  "kynslod": 9,
+  "slug": "dipplin",
+  "enska": "Dipplin"
+ },
+ {
+  "numer": 1012,
+  "kynslod": 9,
+  "slug": "poltchageist",
+  "enska": "Poltchageist"
+ },
+ {
+  "numer": 1013,
+  "kynslod": 9,
+  "slug": "sinistcha",
+  "enska": "Sinistcha"
+ },
+ {
+  "numer": 1014,
+  "kynslod": 9,
+  "slug": "okidogi",
+  "enska": "Okidogi"
+ },
+ {
+  "numer": 1015,
+  "kynslod": 9,
+  "slug": "munkidori",
+  "enska": "Munkidori"
+ },
+ {
+  "numer": 1016,
+  "kynslod": 9,
+  "slug": "fezandipiti",
+  "enska": "Fezandipiti"
+ },
+ {
+  "numer": 1017,
+  "kynslod": 9,
+  "slug": "ogerpon",
+  "enska": "Ogerpon"
+ },
+ {
+  "numer": 1018,
+  "kynslod": 9,
+  "slug": "archaludon",
+  "enska": "Archaludon"
+ },
+ {
+  "numer": 1019,
+  "kynslod": 9,
+  "slug": "hydrapple",
+  "enska": "Hydrapple"
+ },
+ {
+  "numer": 1020,
+  "kynslod": 9,
+  "slug": "gouging-fire",
+  "enska": "Gouging Fire"
+ },
+ {
+  "numer": 1021,
+  "kynslod": 9,
+  "slug": "raging-bolt",
+  "enska": "Raging Bolt"
+ },
+ {
+  "numer": 1022,
+  "kynslod": 9,
+  "slug": "iron-boulder",
+  "enska": "Iron Boulder"
+ },
+ {
+  "numer": 1023,
+  "kynslod": 9,
+  "slug": "iron-crown",
+  "enska": "Iron Crown"
+ },
+ {
+  "numer": 1024,
+  "kynslod": 9,
+  "slug": "terapagos",
+  "enska": "Terapagos"
+ },
+ {
+  "numer": 1025,
+  "kynslod": 9,
+  "slug": "pecharunt",
+  "enska": "Pecharunt"
+ }
+]

@@ -137,6 +137,29 @@
 	border: 1px solid;
 }
 
+/* Sprite column, far left. */
+.vs-of__table .vs-of__img {
+	width: 48px;
+	padding: 0.25em;
+	text-align: center;
+}
+
+.vs-of__img img {
+	display: block;
+	width: 48px;
+	height: 48px;
+	margin: 0 auto;
+}
+
+.vs-of .screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
 .vs-of__num,
 .vs-of__origin {
 	text-align: right;
@@ -219,5 +242,16 @@
 
 	.vs-of__num {
 		text-align: left;
+	}
+
+	.vs-of__table .vs-of__img {
+		float: right;
+		width: auto;
+		border: 0;
+	}
+
+	.vs-of__table .vs-of__img img {
+		width: 64px;
+		height: 64px;
 	}
 }
