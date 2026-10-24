@@ -156,7 +156,7 @@ final class Store {
 			} elseif ( 'numer' === $f ) {
 				$out[ $f ] = Sanitize::text( $fields[ $f ] );
 			} else {
-				$out[ $f ] = Sanitize::html( $fields[ $f ] );
+				$out[ $f ] = Sanitize::field( $fields[ $f ], $f );
 			}
 		}
 		if ( array_key_exists( 'flokkar', $fields ) ) {

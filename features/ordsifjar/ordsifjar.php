@@ -6,6 +6,7 @@
 defined( 'ABSPATH' ) || exit;
 
 require __DIR__ . '/includes/Csv.php';
+require __DIR__ . '/includes/Format.php';
 require __DIR__ . '/includes/Sanitize.php';
 require __DIR__ . '/includes/Store.php';
 require __DIR__ . '/includes/Import.php';

@@ -7,8 +7,10 @@
  */
 
 require __DIR__ . '/../features/ordsifjar/includes/Csv.php';
+require __DIR__ . '/../features/ordsifjar/includes/Format.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
+use Vasaskrimsli\Ordsifjar\Format;
 
 $failures = 0;
 $count    = 0;
@@ -97,6 +99,36 @@ $seed = Csv::parse( file_get_contents( __DIR__ . '/../features/ordsifjar/data/se
 check( 'seed: formatted, 390 rows, no errors', array( $seed['mode'], count( $seed['rows'] ), $seed['errors'] ), array( Csv::MODE_HTML, 390, array() ) );
 $plan = Csv::diff( array(), $seed, $noop );
 check( 'seed: all 390 rows would be created without errors', array( count( $plan['create'] ), $plan['errors'] ), array( 390, array() ) );
+
+// --- Upprunaorð separators become em dashes; tags, links and placeholders are left alone
+$em = "\u{2014}";
+check( 'hyphens become em dashes', Format::separators( '<strong>Kam</strong>-eld-ljón' ), "<strong>Kam</strong>{$em}eld{$em}ljón" );
+check( 'en dash between tags becomes em dash, href hyphens untouched',
+	Format::separators( '<strong><a href="https://x.is/a-b-c" rel="noreferrer noopener">Lauk</a></strong>–<a href="https://x.is/2965">eðla</a>' ),
+	"<strong><a href=\"https://x.is/a-b-c\" rel=\"noreferrer noopener\">Lauk</a></strong>{$em}<a href=\"https://x.is/2965\">eðla</a>" );
+check( 'entity dashes and spaces around them', Format::separators( 'Lauk &ndash; eðla &#8211;x' ), "Lauk{$em}eðla{$em}x" );
+check( 'a lone placeholder dash stays as it is', Format::separators( '–' ), '–' );
+check( 'already normalised text is unchanged', Format::separators( "Lauk{$em}eðla" ), "Lauk{$em}eðla" );
+check( 'only Upprunaorð is normalised', Format::field( 'thyding', 'Kam-eld' ), 'Kam-eld' );
+
+$seed_rows = Csv::parse( file_get_contents( __DIR__ . '/../features/ordsifjar/data/seed.csv' ) )['rows'];
+$left      = 0;
+foreach ( $seed_rows as $r ) {
+	$text = Csv::plain( Format::separators( $r['uppruni'] ) );
+	if ( '–' !== $text && preg_match( '/[\x{002D}\x{2013}]/u', $text ) ) {
+		++$left;
+	}
+}
+check( 'seed: no hyphen or en dash separators left after normalising', $left, 0 );
+
+$field   = static function ( $html, $f ) {
+	return Format::field( $f, $html );
+};
+$stored  = array( 9 => entry( array( 'id' => 9, 'uppruni' => "<strong>Kam</strong>{$em}eld{$em}ljón" ) ) );
+$plan    = Csv::diff( $stored, Csv::parse( "id,nafn,uppruni\r\n9,Laukeðla,Kam-eld-ljón\r\n" ), $field );
+check( 'plain import with hyphens counts as unchanged (formatting kept)', array( $plan['unchanged'], $plan['update'] ), array( 1, array() ) );
+$plan    = Csv::diff( $stored, Csv::parse( "id,nafn_html,uppruni_html\r\n9,Laukeðla,<strong>Kam</strong>-eld-ljón\r\n" ), $field );
+check( 'formatted import with hyphens counts as unchanged', $plan['unchanged'], 1 );
 
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );

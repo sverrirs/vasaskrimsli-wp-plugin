@@ -13,7 +13,7 @@ final class Import {
 	const PREVIEW_TTL = HOUR_IN_SECONDS;
 
 	public static function preview( string $csv ): array {
-		$plan  = Csv::diff( Store::all(), Csv::parse( $csv ), array( Sanitize::class, 'html' ) );
+		$plan  = Csv::diff( Store::all(), Csv::parse( $csv ), array( Sanitize::class, 'field' ) );
 		$token = strtolower( wp_generate_password( 24, false ) );
 		set_transient(
 			'vs_ordsifjar_import_' . $token,
@@ -75,7 +75,7 @@ final class Import {
 		if ( Store::count_all_statuses() > 0 ) {
 			return;
 		}
-		$plan = Csv::diff( array(), Csv::parse( (string) file_get_contents( VASASKRIMSLI_DIR . 'features/ordsifjar/data/seed.csv' ) ), array( Sanitize::class, 'html' ) );
+		$plan = Csv::diff( array(), Csv::parse( (string) file_get_contents( VASASKRIMSLI_DIR . 'features/ordsifjar/data/seed.csv' ) ), array( Sanitize::class, 'field' ) );
 		foreach ( $plan['create'] as $row ) {
 			Store::save( $row['fields'] );
 		}

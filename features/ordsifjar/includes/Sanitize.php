@@ -32,6 +32,11 @@ final class Sanitize {
 		return wp_kses( $value, self::allowed_html() );
 	}
 
+	/** Sanitised HTML plus the field's own normalisation (e.g. Upprunaorð separators). */
+	public static function field( $value, string $field ): string {
+		return Format::field( $field, self::html( $value ) );
+	}
+
 	public static function text( $value ): string {
 		return sanitize_text_field( (string) $value );
 	}

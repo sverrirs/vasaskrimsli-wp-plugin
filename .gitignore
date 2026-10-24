@@ -5,3 +5,6 @@ dist/
 *.zip
 .DS_Store
 .playground/
+.sprite-cache/
+.sprite-cache-download.log
+migration/source/pokemondb-*.html

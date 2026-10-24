@@ -3,7 +3,7 @@
  * CSV export, parsing and import diffing for orðsifjar entries.
  *
  * Pure PHP with no WordPress calls, so it can be tested directly (tests/run.php).
- * HTML sanitising is injected as a callable; in WordPress that is Sanitize::html().
+ * HTML sanitising is injected as a callable ($html, $field); in WordPress that is Sanitize::field().
  *
  * Entry shape used everywhere:
  *   [ 'id' => int, 'numer' => string, 'kynslod' => int, 'nafn' => html, 'uppruni' => html,
@@ -196,11 +196,13 @@ final class Csv {
 				} elseif ( 'flokkar' === $f ) {
 					$incoming[ $f ] = self::split_flokkar( $cell );
 				} elseif ( self::MODE_HTML === $mode ) {
-					$incoming[ $f ] = $sanitize( trim( $cell ) );
-				} elseif ( $current && self::plain( $current[ $f ] ) === self::plain( self::plain_to_html( $cell ) ) ) {
-					continue; // Same text as stored: keep the stored formatting.
+					$incoming[ $f ] = $sanitize( trim( $cell ), $f );
 				} else {
-					$incoming[ $f ] = $sanitize( self::plain_to_html( $cell ) );
+					$value = $sanitize( self::plain_to_html( $cell ), $f );
+					if ( $current && self::plain( $current[ $f ] ) === self::plain( $value ) ) {
+						continue; // Same text as stored: keep the stored formatting.
+					}
+					$incoming[ $f ] = $value;
 					if ( $current && self::plain( $current[ $f ] ) !== $current[ $f ] ) {
 						$lost[] = $f;
 					}
