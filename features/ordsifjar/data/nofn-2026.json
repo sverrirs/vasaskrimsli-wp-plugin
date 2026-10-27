@@ -1,5 +1,15 @@
 [
  {
+  "numer": 233,
+  "kynslod": 2,
+  "stada": "breytt",
+  "nafn": "Grafíkja²",
+  "uppruni": "<strong>**Grafík**-ja</strong>—tvö",
+  "thyding": "<strong>Grafík:</strong> Tölvuteikning (Computer Graphics).<br><strong>-ja:</strong> Kvenkyns ending (sbr. <em>kirkja</em>). Hljóðlíking við <em>gyðja</em>.<br><strong>² (Annað veldi):</strong> Tölustafurinn er í yfirskrift. Þetta vísar í annað veldi í stærðfræði (x^2). Í tækniheiminum er þetta notað til að tákna útgáfu 2.0, enda er skrímslið uppfærð og betrumbætt útgáfa af forvera sínum (Sjá nr. 137).",
+  "fyrra_nafn": "Grafíkja2",
+  "drog": false
+ },
+ {
   "numer": 298,
   "kynslod": 3,
   "stada": "breytt",

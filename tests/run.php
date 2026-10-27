@@ -132,7 +132,7 @@ check( 'plain import with hyphens counts as unchanged (formatting kept)', array(
 $plan    = Csv::diff( $stored, Csv::parse( "id,nafn_html,uppruni_html\r\n9,Laukeðla,<strong>Kam</strong>-eld-ljón\r\n" ), $field );
 check( 'formatted import with hyphens counts as unchanged', $plan['unchanged'], 1 );
 
-// --- 2026 names (Nofn): fill placeholders, change gen 3 only while unchanged, never overwrite the owner
+// --- 2026 names (Nofn): fill placeholders, change gen 2-3 names only while unchanged, never overwrite the owner
 $d       = "\u{2013}";
 $stored  = array(
 	10 => entry( array( 'id' => 10, 'numer' => '400', 'kynslod' => 4, 'nafn' => $d, 'uppruni' => $d, 'thyding' => $d ) ),
@@ -140,6 +140,7 @@ $stored  = array(
 	12 => entry( array( 'id' => 12, 'numer' => '298', 'kynslod' => 3, 'nafn' => 'Vatnakríli', 'uppruni' => "<strong>Vatna</strong>{$em}kríli", 'thyding' => 'Gamalt.' ) ),
 	13 => entry( array( 'id' => 13, 'numer' => '299', 'kynslod' => 3, 'nafn' => 'Eigið nafn', 'uppruni' => 'Eigið', 'thyding' => 'Eigið.' ) ),
 	14 => entry( array( 'id' => 14, 'numer' => '351a', 'kynslod' => 3, 'nafn' => 'Bjartviðri' ) ),
+	15 => entry( array( 'id' => 15, 'numer' => '233', 'kynslod' => 2, 'nafn' => 'Grafíkja<sup>2</sup>', 'uppruni' => "<strong>Grafík</strong>{$em}ja{$em}tvö", 'thyding' => 'Birt.' ) ),
 );
 $decided = array(
 	array( 'numer' => 400, 'kynslod' => 4, 'stada' => 'nýtt', 'nafn' => 'Nýnefni', 'uppruni' => "Ný{$em}nefni", 'thyding' => '<strong>Ný:</strong> x.', 'drog' => true ),
@@ -148,6 +149,7 @@ $decided = array(
 	array( 'numer' => 299, 'kynslod' => 3, 'stada' => 'breytt', 'nafn' => 'Áttavitringur', 'uppruni' => 'x', 'thyding' => 'y', 'fyrra_nafn' => 'Áttviti', 'drog' => false ),
 	array( 'numer' => 351, 'kynslod' => 3, 'stada' => 'breytt', 'nafn' => 'Veðrabrigði', 'uppruni' => 'x', 'thyding' => 'y', 'fyrra_nafn' => 'Bjartviðri', 'drog' => false ),
 	array( 'numer' => 402, 'kynslod' => 4, 'stada' => 'nýtt', 'nafn' => 'Enginn', 'uppruni' => 'x', 'thyding' => 'y', 'drog' => false ),
+	array( 'numer' => 233, 'kynslod' => 2, 'stada' => 'breytt', 'nafn' => 'Grafíkja²', 'uppruni' => "<strong>Grafík</strong>{$em}ja{$em}tvö", 'thyding' => 'Birt.', 'fyrra_nafn' => 'Grafíkja2', 'drog' => false ),
 );
 $plan    = Nofn::plan( $stored, $decided );
 $by_id   = array_column( $plan['changes'], null, 'id' );
@@ -156,7 +158,12 @@ check( 'nofn: drafted row is flagged', $by_id[10]['drog'] ?? null, true );
 check( 'nofn: owner text kept, only the placeholder field filled', $by_id[11]['fields'] ?? null, array( 'uppruni' => "An{$em}nað" ) );
 check( 'nofn: gen 3 name unchanged since publication is replaced', $by_id[12]['fields'] ?? null, array( 'nafn' => 'Agnarögn', 'uppruni' => "<strong>Agnar</strong>{$em}ögn", 'thyding' => 'Nýtt.' ) );
 check( 'nofn: gen 3 name the owner changed is skipped and reported', array( isset( $by_id[13] ), $plan['skipped'] ), array( false, array( '299 Eigið nafn' ) ) );
-check( 'nofn: Númer matched exactly (351 is not 351a), missing numbers ignored', array_keys( $by_id ), array( 10, 11, 12 ) );
+check( 'nofn: Númer matched exactly (351 is not 351a), missing numbers ignored', array_keys( $by_id ), array( 10, 11, 12, 15 ) );
+check( 'nofn: gen 2 #233 Grafíkja2 becomes Grafíkja² while unchanged (only the name differs)', $by_id[15]['fields'] ?? null, array( 'nafn' => 'Grafíkja²' ) );
+$owner_233             = $stored;
+$owner_233[15]['nafn'] = 'Grafíkja tvö';
+$p233                  = Nofn::plan( $owner_233, $decided );
+check( 'nofn: gen 2 #233 the owner renamed is skipped and reported', array( in_array( 15, array_column( $p233['changes'], 'id' ), true ), $p233['skipped'] ), array( false, array( '299 Eigið nafn', '233 Grafíkja tvö' ) ) );
 check( 'nofn: only placeholder dashes count as empty', array( Nofn::is_placeholder( " {$d} " ), Nofn::is_placeholder( '-' ), Nofn::is_placeholder( '' ), Nofn::is_placeholder( "A{$d}B" ) ), array( true, true, false, false ) );
 
 $after = $stored;
@@ -169,7 +176,10 @@ check( 'nofn: second run still reports only the owner-changed gen 3 name', $agai
 
 $typed             = $stored;
 $typed[12]['nafn'] = 'Agnarögn';
-check( 'nofn: gen 3 entry where the owner already typed the new name is left alone', array_column( Nofn::plan( $typed, $decided )['changes'], 'id' ), array( 10, 11 ) );
+check( 'nofn: gen 3 entry where the owner already typed the new name is left alone', array_column( Nofn::plan( $typed, $decided )['changes'], 'id' ), array( 10, 11, 15 ) );
+$typed_233             = $stored;
+$typed_233[15]['nafn'] = 'Grafíkja²';
+check( 'nofn: gen 2 #233 where the owner already typed Grafíkja² is left alone', array_column( Nofn::plan( $typed_233, $decided )['changes'], 'id' ), array( 10, 11, 12 ) );
 
 // --- generations 3-9 "í vinnslu": notes only where empty, gen 3 heading once, gen 4 kept as it is
 $kyn = json_decode( file_get_contents( __DIR__ . '/../features/ordsifjar/data/kynslodir.json' ), true );
@@ -193,12 +203,14 @@ $national = array_column( json_decode( file_get_contents( __DIR__ . '/../feature
 $bad      = array();
 foreach ( $rows as $r ) {
 	if ( ! in_array( $r['stada'], array( 'nýtt', 'breytt' ), true ) || ( $national[ $r['numer'] ]['kynslod'] ?? 0 ) !== $r['kynslod']
-		|| ( 'breytt' === $r['stada'] ) !== ( 3 === $r['kynslod'] ) || ( 'breytt' === $r['stada'] && '' === (string) ( $r['fyrra_nafn'] ?? '' ) )
+		|| ( 'breytt' === $r['stada'] ) !== in_array( $r['kynslod'], array( 2, 3 ), true ) || ( 'breytt' === $r['stada'] && '' === (string) ( $r['fyrra_nafn'] ?? '' ) )
 		|| '' === Csv::plain( $r['nafn'] ) || preg_match( '#</?(?!(?:strong|em|br|sup|sub|a)[\s>/])\w#i', $r['nafn'] . $r['uppruni'] . $r['thyding'] ) ) {
 		$bad[] = $r['numer'];
 	}
 }
 check( 'nofn-2026.json: valid rows (stada, generation, fyrra_nafn, allowed tags only)', $bad, array() );
+$r233 = array_values( array_filter( $rows, static function ( $r ) { return 233 === $r['numer']; } ) );
+check( 'nofn-2026.json: #233 is the gen 2 change Grafíkja2 -> Grafíkja²', array( $r233[0]['kynslod'] ?? null, $r233[0]['stada'] ?? null, $r233[0]['nafn'] ?? null, $r233[0]['fyrra_nafn'] ?? null ), array( 2, 'breytt', 'Grafíkja²', 'Grafíkja2' ) );
 
 $install = array();
 foreach ( $seed_rows as $i => $r ) {

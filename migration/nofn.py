@@ -4,7 +4,7 @@ Reads lokalisti.json from the vasaskrimsli-dict repo (one row per Pokémon #252-
 what the plugin's data update (Upgrade step 4, Nofn.php) needs:
 
   stada "nýtt"   (gen 4-9): numer, kynslod, nafn, uppruni, thyding  -> fills fields that are still "–"
-  stada "breytt" (gen 3):   the same plus fyrra_nafn                 -> replaces the entry only if its
+  stada "breytt" (gen 3, and #233 in gen 2): the same plus fyrra_nafn -> replaces the entry only if its
                                                                         name is still fyrra_nafn
   stada "óbreytt":          left out (nothing to do)
 

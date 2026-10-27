@@ -53,11 +53,11 @@ final class Upgrade {
 				. ( empty( $r['nofn_drog'] ) ? '' : sprintf( ' (þar af %d með texta í drögum sem á eftir að yfirfara)', $r['nofn_drog'] ) );
 		}
 		if ( ! empty( $r['nofn_breytt'] ) ) {
-			$parts[] = sprintf( '%d %s í 3. kynslóð breytt', $r['nofn_breytt'], self::one( $r['nofn_breytt'] ) ? 'nafni' : 'nöfnum' );
+			$parts[] = sprintf( '%d %s í 2. og 3. kynslóð breytt', $r['nofn_breytt'], self::one( $r['nofn_breytt'] ) ? 'nafni' : 'nöfnum' );
 		}
 		if ( ! empty( $r['nofn_sleppt'] ) ) {
 			$n       = count( $r['nofn_sleppt'] );
-			$parts[] = sprintf( '%d %s í 3. kynslóð var ekki breytt því %s hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'nafni' : 'nöfnum', self::one( $n ) ? 'því' : 'þeim', implode( '; ', $r['nofn_sleppt'] ) );
+			$parts[] = sprintf( '%d %s í 2. og 3. kynslóð var ekki breytt því %s hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'nafni' : 'nöfnum', self::one( $n ) ? 'því' : 'þeim', implode( '; ', $r['nofn_sleppt'] ) );
 		}
 		if ( ! empty( $r['vinnsla'] ) ) {
 			$parts[] = sprintf( '%d kynslóðir merktar „í vinnslu“', $r['vinnsla'] );
@@ -175,7 +175,7 @@ final class Upgrade {
 	 * Runs after version 2, so on a new install the gen 4-9 placeholders exist before they are filled.
 	 */
 	private static function version_3( array &$report ): void {
-		// 4. Names: fill placeholders (gen 4-9), replace gen 3 names that are still as published.
+		// 4. Names: fill placeholders (gen 4-9), replace gen 2-3 names that are still as published.
 		$rows = json_decode( (string) file_get_contents( VASASKRIMSLI_DIR . Nofn::FILE ), true );
 		$plan = Nofn::plan( Store::all(), is_array( $rows ) ? $rows : array() );
 		foreach ( $plan['changes'] as $c ) {

@@ -7,7 +7,8 @@
  * Never overwrites the owner's own text:
  *   "nýtt"   (gen 4-9) fills Nafn, Upprunaorð and Þýðing one by one, only where the field is still the
  *            placeholder "–".
- *   "breytt" (gen 3)   replaces the entry only while its Nafn is still the published name (fyrra_nafn).
+ *   "breytt" (gen 3, and #233 in gen 2: Grafíkja2 -> Grafíkja²) replaces the entry only while its Nafn is still
+ *            the published name (fyrra_nafn).
  *            If the owner has changed the name it is left alone and reported as skipped.
  */
 
@@ -37,7 +38,7 @@ final class Nofn {
 	 * @param array $entries Stored entries keyed by id (Store::all()).
 	 * @param array $rows    Rows of nofn-2026.json.
 	 * @return array{changes: list<array{id: int, numer: string, stada: string, drog: bool, fields: array}>, skipped: list<string>}
-	 *         skipped: "298 Mitt nafn" for gen 3 entries whose name the owner had changed.
+	 *         skipped: "298 Mitt nafn" for gen 2-3 entries whose name the owner had changed.
 	 */
 	public static function plan( array $entries, array $rows ): array {
 		$by_numer = array();
