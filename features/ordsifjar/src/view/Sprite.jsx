@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { htmlToText } from '../../../../shared/js/search.js';
 
@@ -31,9 +31,14 @@ export function Thumb( { entry, onShow, onHide } ) {
 	);
 }
 
-/** The single floating card, rendered into <body> so table overflow never clips it. */
-export function SpriteTooltip( { tip, onHide } ) {
+/**
+ * The single floating card, rendered into <body> so table overflow never clips it.
+ * With `detail` (Skrímslaskrá grid) it also shows Upprunaorð and Þýðing, which the grid has no room for.
+ */
+export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const [ , force ] = useState( 0 );
+	const card = useRef( null );
+	const [ height, setHeight ] = useState( LARGE + 76 );
 
 	useEffect( () => {
 		if ( ! tip ) {
@@ -52,28 +57,41 @@ export function SpriteTooltip( { tip, onHide } ) {
 		};
 	}, [ tip, onHide ] );
 
+	// Measure the real card so a long Þýðing still keeps it on screen.
+	useLayoutEffect( () => {
+		if ( card.current && card.current.offsetHeight !== height ) {
+			setHeight( card.current.offsetHeight );
+		}
+	} );
+
 	if ( ! tip ) {
 		return null;
 	}
 	const { entry, rect } = tip;
-	const width = LARGE + 32;
-	const height = LARGE + 76;
-	// Right of the thumbnail, or left of it when there is no room; vertically centred, kept on screen.
+	const width = detail ? 340 : LARGE + 32;
+	// Right of the anchor, or left of it when there is no room; vertically centred, kept on screen.
 	let left = rect.right + GAP;
 	if ( left + width > window.innerWidth - 8 ) {
 		left = Math.max( 8, rect.left - GAP - width );
 	}
-	const top = Math.min( Math.max( 8, rect.top + rect.height / 2 - height / 2 ), window.innerHeight - height - 8 );
+	const top = Math.min( Math.max( 8, rect.top + rect.height / 2 - height / 2 ), Math.max( 8, window.innerHeight - height - 8 ) );
 	const enska = htmlToText( entry.enska );
 	const nafn = htmlToText( entry.nafn );
+	const has = ( html ) => html && htmlToText( html ) !== '–';
 
 	return createPortal(
-		<div className="vs-of-tip" role="tooltip" style={ { left, top, width } }>
+		<div ref={ card } className={ 'vs-of-tip' + ( detail ? ' is-detail' : '' ) } role="tooltip" style={ { left, top, width } }>
 			<img src={ entry.mynd_stor || entry.mynd } width={ LARGE } height={ LARGE } alt="" decoding="async" />
 			<p className="vs-of-tip__name">
 				<span className="vs-of-tip__num">#{ entry.numer }</span> { nafn && nafn !== '–' ? nafn : enska }
 			</p>
 			{ nafn && nafn !== '–' && enska && <p className="vs-of-tip__en">{ enska }</p> }
+			{ detail && has( entry.uppruni ) && (
+				<p className="vs-of-tip__origin" dangerouslySetInnerHTML={ { __html: entry.uppruni } } />
+			) }
+			{ detail && has( entry.thyding ) && (
+				<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: entry.thyding } } />
+			) }
 		</div>,
 		document.body
 	);

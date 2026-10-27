@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "vasaskrimsli/skrimslaskra",
+	"title": "Skrímslaskrá",
+	"category": "widgets",
+	"icon": "grid-view",
+	"description": "Myndayfirlit yfir öll Vasaskrímsli með númeri og nafni, leit, kynslóðasíu og þremur myndastærðum. Gögnin eru þau sömu og í Orðsifjafræði.",
+	"keywords": [ "skrímslaskrá", "vasaskrímsli", "myndir" ],
+	"textdomain": "vasaskrimsli",
+	"supports": { "html": false, "multiple": false, "align": [ "wide", "full" ] },
+	"editorScript": "file:./editor.js"
+}

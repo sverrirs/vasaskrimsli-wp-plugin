@@ -15,5 +15,5 @@ for ( const block of document.querySelectorAll( '.vs-ordsifjar' ) ) {
 	} catch {
 		continue; // Keep the server-rendered tables.
 	}
-	createRoot( app ).render( <Ordsifjar data={ data } /> );
+	createRoot( app ).render( <Ordsifjar data={ data } syn={ block.dataset.syn || 'tafla' } /> );
 }

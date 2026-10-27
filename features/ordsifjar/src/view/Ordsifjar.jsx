@@ -1,6 +1,7 @@
 import { useCallback, useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
+import { Grid, SizePicker, useSize } from './Skra.jsx';
 
 const PARAMS = { q: 'leit', gen: 'kynslod', flokkur: 'flokkur' };
 
@@ -23,7 +24,14 @@ function writeUrl( state ) {
 
 const Html = ( { as: Tag = 'span', html, ...rest } ) => <Tag { ...rest } dangerouslySetInnerHTML={ { __html: html } } />;
 
-export default function Ordsifjar( { data } ) {
+/**
+ * @param {Object} props
+ * @param {Object} props.data Entries and generation headings from the server.
+ * @param {string} props.syn  'tafla' (Orðsifjafræði table) or 'skra' (Skrímslaskrá image grid).
+ */
+export default function Ordsifjar( { data, syn = 'tafla' } ) {
+	const skra = syn === 'skra';
+	const [ size, setSize ] = useSize();
 	const initial = useMemo( readUrl, [] );
 	const [ q, setQ ] = useState( initial.q );
 	const [ gen, setGen ] = useState( initial.gen );
@@ -68,7 +76,7 @@ export default function Ordsifjar( { data } ) {
 	};
 
 	return (
-		<div className="vs-of">
+		<div className={ 'vs-of' + ( skra ? ' is-skra' : '' ) }>
 			<div className="vs-of__tools" role="search">
 				<label className="vs-of__search">
 					<span className="vs-of__label">Leita</span>
@@ -114,6 +122,8 @@ export default function Ordsifjar( { data } ) {
 					) }
 				</div>
 
+				{ skra && <SizePicker size={ size } onChange={ setSize } /> }
+
 				<p className="vs-of__count" aria-live="polite">
 					{ filtering ? `${ shown.length } af ${ entries.length } nöfnum` : `${ entries.length } nöfn` }
 					{ filtering && (
@@ -142,7 +152,8 @@ export default function Ordsifjar( { data } ) {
 					<section className="vs-of__gen" key={ k.kynslod }>
 						<Html as="h3" className="wp-block-heading" id={ k.akkeri || undefined } html={ k.heiti_html } />
 						{ k.skyring_html && <Html as="p" html={ k.skyring_html } /> }
-						{ rows.length > 0 && (
+						{ rows.length > 0 && skra && <Grid rows={ rows } size={ size } onShow={ showTip } onHide={ hideTip } /> }
+						{ rows.length > 0 && ! skra && (
 							<figure className="wp-block-table vs-of__table">
 								<table>
 									<thead>
@@ -197,7 +208,7 @@ export default function Ordsifjar( { data } ) {
 					</section>
 				);
 			} ) }
-			<SpriteTooltip tip={ tip } onHide={ hideTip } />
+			<SpriteTooltip tip={ tip } onHide={ hideTip } detail={ skra } />
 		</div>
 	);
 }
