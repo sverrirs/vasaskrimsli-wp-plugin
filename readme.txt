@@ -19,6 +19,7 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Breytt nöfn í 3. kynslóð: aðeins skipt um nafn ef það er enn óbreytt frá útgáfu; annars er færslunni sleppt og það kemur fram í tilkynningunni.
 * Kynslóðir 3 til 9 merktar „í vinnslu“ (skýring þar sem engin var, og „(í vinnslu)“ í fyrirsögn 3. kynslóðar).
 * Afrit er tekið fyrir uppfærsluna og hver breytt færsla fær útgáfu í sögunni.
+* Ný blokk: Skrímslaskrá, myndayfirlit með þremur stærðum og sprettglugga.
 
 = 0.2.1 =
 * Smámyndir með gegnsæjum bakgrunni (áður hvítur).
