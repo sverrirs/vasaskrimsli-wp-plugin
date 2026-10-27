@@ -327,38 +327,6 @@
 
 /* ---------- Skrímslaskrá: image grid (block vasaskrimsli/skrimslaskra) ---------- */
 
-.vs-of__sizes {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.vs-of__sizes .vs-of__label {
-	margin: 0;
-}
-
-.vs-of__seg {
-	display: flex;
-	gap: 4px;
-}
-
-.vs-of__seg button {
-	padding: 6px 12px;
-	font: inherit;
-	font-size: 0.9375rem;
-	color: var(--of-ink);
-	background: transparent;
-	border: 1px solid var(--of-line);
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.vs-of__seg button[aria-pressed='true'] {
-	color: #fff;
-	background: var(--of-accent);
-	border-color: var(--of-accent);
-}
-
 .vs-of-grid {
 	--tile-img: 112px;
 	display: grid;
@@ -425,18 +393,6 @@
 	font-size: 0.8125rem;
 	color: var(--of-muted);
 	overflow-wrap: anywhere;
-}
-
-.vs-of-grid.is-litil .vs-of-tile__name {
-	font-size: 0.875rem;
-}
-
-.vs-of-grid.is-litil .vs-of-tile__en {
-	display: none;
-}
-
-.vs-of-grid.is-stor .vs-of-tile__name {
-	font-size: 1.125rem;
 }
 
 /* Popup in the grid: also Upprunaorð and Þýðing. */

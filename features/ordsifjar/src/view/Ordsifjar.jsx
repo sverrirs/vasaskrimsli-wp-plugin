@@ -1,7 +1,7 @@
 import { useCallback, useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
-import { Grid, SizePicker, useSize } from './Skra.jsx';
+import { Grid } from './Skra.jsx';
 
 const PARAMS = { q: 'leit', gen: 'kynslod', flokkur: 'flokkur' };
 
@@ -27,12 +27,13 @@ const Html = ( { as: Tag = 'span', html, ...rest } ) => <Tag { ...rest } dangero
 /**
  * @param {Object} props
  * @param {Object} props.data Entries and generation headings from the server.
- * @param {string} props.syn  'tafla' (Orðsifjafræði table) or 'skra' (Skrímslaskrá image grid).
+ * @param {string} props.syn  'tafla' (Orðsifjafræði table with search and filters) or 'skra'
+ *                             (Skrímslaskrá: only the image grid, no search or filters).
  */
 export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const skra = syn === 'skra';
-	const [ size, setSize ] = useSize();
-	const initial = useMemo( readUrl, [] );
+	// The grid has no search or filters, so it ignores ?leit= etc. and never writes them.
+	const initial = useMemo( () => ( skra ? { q: '', gen: '', flokkur: '' } : readUrl() ), [ skra ] );
 	const [ q, setQ ] = useState( initial.q );
 	const [ gen, setGen ] = useState( initial.gen );
 	const [ flokkur, setFlokkur ] = useState( initial.flokkur );
@@ -41,7 +42,11 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const showTip = useCallback( ( entry, rect ) => setTip( { entry, rect } ), [] );
 	const hideTip = useCallback( () => setTip( null ), [] );
 
-	useEffect( () => writeUrl( { q, gen, flokkur } ), [ q, gen, flokkur ] );
+	useEffect( () => {
+		if ( ! skra ) {
+			writeUrl( { q, gen, flokkur } );
+		}
+	}, [ skra, q, gen, flokkur ] );
 
 	const entries = useMemo(
 		() =>
@@ -77,6 +82,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 
 	return (
 		<div className={ 'vs-of' + ( skra ? ' is-skra' : '' ) }>
+			{ ! skra && (
 			<div className="vs-of__tools" role="search">
 				<label className="vs-of__search">
 					<span className="vs-of__label">Leita</span>
@@ -122,8 +128,6 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					) }
 				</div>
 
-				{ skra && <SizePicker size={ size } onChange={ setSize } /> }
-
 				<p className="vs-of__count" aria-live="polite">
 					{ filtering ? `${ shown.length } af ${ entries.length } nöfnum` : `${ entries.length } nöfn` }
 					{ filtering && (
@@ -133,6 +137,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					) }
 				</p>
 			</div>
+			) }
 
 			{ shown.length === 0 && (
 				<p className="vs-of__empty">
@@ -152,7 +157,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					<section className="vs-of__gen" key={ k.kynslod }>
 						<Html as="h3" className="wp-block-heading" id={ k.akkeri || undefined } html={ k.heiti_html } />
 						{ k.skyring_html && <Html as="p" html={ k.skyring_html } /> }
-						{ rows.length > 0 && skra && <Grid rows={ rows } size={ size } onShow={ showTip } onHide={ hideTip } /> }
+						{ rows.length > 0 && skra && <Grid rows={ rows } onShow={ showTip } onHide={ hideTip } /> }
 						{ rows.length > 0 && ! skra && (
 							<figure className="wp-block-table vs-of__table">
 								<table>

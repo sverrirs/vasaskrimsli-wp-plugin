@@ -1,48 +1,7 @@
-import { useEffect, useState } from 'react';
 import { htmlToText } from '../../../../shared/js/search.js';
 
-/** Image sizes for the Skrímslaskrá grid. "src" picks the 96 px thumbnail or the 256 px image. */
-export const SIZES = [
-	{ key: 'litil', label: 'Lítil', px: 64, src: 'mynd' },
-	{ key: 'midlungs', label: 'Miðlungs', px: 112, src: 'mynd_stor' },
-	{ key: 'stor', label: 'Stór', px: 176, src: 'mynd_stor' },
-];
-const STORE = 'vs-skrimslaskra-staerd';
-
-/** The visitor's chosen size, remembered in this browser only (falls back to Miðlungs). */
-export function useSize() {
-	const [ size, setSize ] = useState( () => {
-		try {
-			const saved = window.localStorage.getItem( STORE );
-			return SIZES.some( ( s ) => s.key === saved ) ? saved : 'midlungs';
-		} catch {
-			return 'midlungs';
-		}
-	} );
-	useEffect( () => {
-		try {
-			window.localStorage.setItem( STORE, size );
-		} catch {
-			// Private mode or blocked storage: the choice just is not remembered.
-		}
-	}, [ size ] );
-	return [ size, setSize ];
-}
-
-export function SizePicker( { size, onChange } ) {
-	return (
-		<div className="vs-of__sizes" role="group" aria-label="Stærð mynda">
-			<span className="vs-of__label">Stærð</span>
-			<div className="vs-of__seg">
-				{ SIZES.map( ( s ) => (
-					<button type="button" key={ s.key } aria-pressed={ size === s.key } onClick={ () => onChange( s.key ) }>
-						{ s.label }
-					</button>
-				) ) }
-			</div>
-		</div>
-	);
-}
+/** Tile image size in the Skrímslaskrá grid (from the 256 px image, so sharp on high-density screens). */
+const IMG = 112;
 
 /** Arrow keys move between tiles: left/right in reading order, up/down to the nearest tile in the next row. */
 function moveFocus( key, from ) {
@@ -72,10 +31,9 @@ function moveFocus( key, from ) {
 }
 
 /** One generation's tiles. Hover, focus or a tap shows the entry in the popup. */
-export function Grid( { rows, size, onShow, onHide } ) {
-	const s = SIZES.find( ( x ) => x.key === size ) ?? SIZES[ 1 ];
+export function Grid( { rows, onShow, onHide } ) {
 	return (
-		<ul className={ `vs-of-grid is-${ s.key }` } style={ { '--tile-img': `${ s.px }px` } }>
+		<ul className="vs-of-grid">
 			{ rows.map( ( e, i ) => {
 				const nafn = htmlToText( e.nafn );
 				const enska = htmlToText( e.enska );
@@ -98,8 +56,8 @@ export function Grid( { rows, size, onShow, onHide } ) {
 								}
 							} }
 						>
-							{ e[ s.src ] || e.mynd ? (
-								<img src={ e[ s.src ] || e.mynd } width={ s.px } height={ s.px } alt="" loading="lazy" decoding="async" />
+							{ e.mynd_stor || e.mynd ? (
+								<img src={ e.mynd_stor || e.mynd } width={ IMG } height={ IMG } alt="" loading="lazy" decoding="async" />
 							) : (
 								<span className="vs-of-tile__noimg" aria-hidden="true" />
 							) }
