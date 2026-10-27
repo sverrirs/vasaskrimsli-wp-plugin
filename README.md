@@ -31,6 +31,35 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   changes cells whose text you edited; unchanged cells keep their formatting. Every import first saves
   a backup (downloadable from the import dialog); importing that backup undoes the import.
 
+## Nöfn 2026
+
+Version 0.3.0 brings the owner's 2026 decisions on Icelandic names (#252 to #1025). They are bundled as
+`features/ordsifjar/data/nofn-2026.json` and applied once by the data update (data version 3) the first
+time an editor opens wp-admin after updating, or on first activation of a new install:
+
+- **Generations 4 to 9** ("nýtt"): Nafn, Upprunaorð and Þýðing are filled in **only where the field is still
+  "–"**, field by field. Anything typed in wp-admin is kept.
+- **Generation 3** ("breytt"): the name, Upprunaorð and Þýðing are replaced **only if the entry's name is
+  still the published one** (`fyrra_nafn`). If it was changed in wp-admin, the entry is left as it is and
+  listed as skipped in the notice. Names that stay ("óbreytt") are not touched.
+- **Generations 3 to 9 are marked "í vinnslu"**: the note "Nöfnin í þessari kynslóð eru í vinnslu og geta
+  breyst." is set only where a generation has no note (gen 4 keeps its own), and the gen 3 heading gets
+  " (í vinnslu)" unless it already says "vinnslu" or "óstaðfest". A note you remove later stays removed.
+- A backup CSV is written first, every changed entry gets a revision (restorable from its history), and an
+  interrupted run continues where it stopped. The notice in wp-admin says how many entries were filled,
+  changed and skipped.
+
+**Regenerating the data file** when the list changes (before a release):
+
+```bash
+python -X utf8 migration/nofn.py      # reads ../vasaskrimsli-dict/ideas/lokalisti/lokalisti.json
+"E:\SDKs\php\8.3.7\php.exe" tests/run.php
+```
+
+The script keeps only what the plugin needs, checks the HTML against the allow-list, the numbers against
+`national.json`, and warns when a `fyrra_nafn` differs from the published name in `seed.csv`. A site that
+has already run data version 3 does not apply a regenerated file again; that needs a new upgrade step.
+
 ## First install on vasaskrimsli.is
 
 The live page is not changed by installing the plugin. Snapshots of it as it was on 2026-10-23 are in
@@ -73,9 +102,9 @@ vasaskrimsli.php          plugin header and bootstrap
 includes/                 shared PHP (asset loading, GitHub updater)
 shared/js/                shared JS (Icelandic search folding)
 features/ordsifjar/
-  includes/               Csv (pure PHP), Sanitize, Store, Import, Rest, Admin, Block
+  includes/               Csv, Format, Nofn (pure PHP), Sanitize, Store, Import, Upgrade, Rest, Admin, Block
   block/                  block.json and editor placeholder
   src/admin, src/view     React apps
-  data/                   seed.csv and kynslodir.json from the original page
-migration/                extract.py, verify.py and the page snapshots
+  data/                   seed.csv and kynslodir.json from the original page, national.json, nofn-2026.json
+migration/                extract.py, verify.py, national.py, nofn.py and the page snapshots
 ```

@@ -10,6 +10,7 @@ require __DIR__ . '/includes/Format.php';
 require __DIR__ . '/includes/Sanitize.php';
 require __DIR__ . '/includes/Store.php';
 require __DIR__ . '/includes/Import.php';
+require __DIR__ . '/includes/Nofn.php';
 require __DIR__ . '/includes/Upgrade.php';
 require __DIR__ . '/includes/Rest.php';
 require __DIR__ . '/includes/Admin.php';
@@ -24,10 +25,11 @@ Ordsifjar\Admin::register();
 Ordsifjar\Upgrade::register();
 
 // First activation on an empty site loads the 390 entries from the original page,
-// then the data updates (gen 4-9 entries, em-dash separators) run straight away.
+// then the data updates (gen 4-9 entries, em-dash separators, 2026 names) run straight away.
+// Re-activating an up-to-date site runs no data update.
 register_activation_hook( VASASKRIMSLI_FILE, static function () {
 	Ordsifjar\Store::register();
 	Ordsifjar\Import::seed();
-	Ordsifjar\Upgrade::run();
+	Ordsifjar\Upgrade::run( (int) get_option( Ordsifjar\Upgrade::OPTION, 1 ) );
 	update_option( Ordsifjar\Upgrade::OPTION, Ordsifjar\Upgrade::VERSION, false );
 } );

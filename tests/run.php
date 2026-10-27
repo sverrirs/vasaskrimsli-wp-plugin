@@ -8,9 +8,11 @@
 
 require __DIR__ . '/../features/ordsifjar/includes/Csv.php';
 require __DIR__ . '/../features/ordsifjar/includes/Format.php';
+require __DIR__ . '/../features/ordsifjar/includes/Nofn.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
 use Vasaskrimsli\Ordsifjar\Format;
+use Vasaskrimsli\Ordsifjar\Nofn;
 
 $failures = 0;
 $count    = 0;
@@ -129,6 +131,93 @@ $plan    = Csv::diff( $stored, Csv::parse( "id,nafn,uppruni\r\n9,Laukeðla,Kam-e
 check( 'plain import with hyphens counts as unchanged (formatting kept)', array( $plan['unchanged'], $plan['update'] ), array( 1, array() ) );
 $plan    = Csv::diff( $stored, Csv::parse( "id,nafn_html,uppruni_html\r\n9,Laukeðla,<strong>Kam</strong>-eld-ljón\r\n" ), $field );
 check( 'formatted import with hyphens counts as unchanged', $plan['unchanged'], 1 );
+
+// --- 2026 names (Nofn): fill placeholders, change gen 3 only while unchanged, never overwrite the owner
+$d       = "\u{2013}";
+$stored  = array(
+	10 => entry( array( 'id' => 10, 'numer' => '400', 'kynslod' => 4, 'nafn' => $d, 'uppruni' => $d, 'thyding' => $d ) ),
+	11 => entry( array( 'id' => 11, 'numer' => '401', 'kynslod' => 4, 'nafn' => '<strong>Mitt nafn</strong>', 'uppruni' => $d, 'thyding' => 'Minn texti' ) ),
+	12 => entry( array( 'id' => 12, 'numer' => '298', 'kynslod' => 3, 'nafn' => 'Vatnakríli', 'uppruni' => "<strong>Vatna</strong>{$em}kríli", 'thyding' => 'Gamalt.' ) ),
+	13 => entry( array( 'id' => 13, 'numer' => '299', 'kynslod' => 3, 'nafn' => 'Eigið nafn', 'uppruni' => 'Eigið', 'thyding' => 'Eigið.' ) ),
+	14 => entry( array( 'id' => 14, 'numer' => '351a', 'kynslod' => 3, 'nafn' => 'Bjartviðri' ) ),
+);
+$decided = array(
+	array( 'numer' => 400, 'kynslod' => 4, 'stada' => 'nýtt', 'nafn' => 'Nýnefni', 'uppruni' => "Ný{$em}nefni", 'thyding' => '<strong>Ný:</strong> x.', 'drog' => true ),
+	array( 'numer' => 401, 'kynslod' => 4, 'stada' => 'nýtt', 'nafn' => 'Annað', 'uppruni' => "An{$em}nað", 'thyding' => 'Ekki þetta.', 'drog' => false ),
+	array( 'numer' => 298, 'kynslod' => 3, 'stada' => 'breytt', 'nafn' => 'Agnarögn', 'uppruni' => "<strong>Agnar</strong>{$em}ögn", 'thyding' => 'Nýtt.', 'fyrra_nafn' => 'Vatnakríli', 'drog' => false ),
+	array( 'numer' => 299, 'kynslod' => 3, 'stada' => 'breytt', 'nafn' => 'Áttavitringur', 'uppruni' => 'x', 'thyding' => 'y', 'fyrra_nafn' => 'Áttviti', 'drog' => false ),
+	array( 'numer' => 351, 'kynslod' => 3, 'stada' => 'breytt', 'nafn' => 'Veðrabrigði', 'uppruni' => 'x', 'thyding' => 'y', 'fyrra_nafn' => 'Bjartviðri', 'drog' => false ),
+	array( 'numer' => 402, 'kynslod' => 4, 'stada' => 'nýtt', 'nafn' => 'Enginn', 'uppruni' => 'x', 'thyding' => 'y', 'drog' => false ),
+);
+$plan    = Nofn::plan( $stored, $decided );
+$by_id   = array_column( $plan['changes'], null, 'id' );
+check( 'nofn: placeholders filled, all three fields', $by_id[10]['fields'] ?? null, array( 'nafn' => 'Nýnefni', 'uppruni' => "Ný{$em}nefni", 'thyding' => '<strong>Ný:</strong> x.' ) );
+check( 'nofn: drafted row is flagged', $by_id[10]['drog'] ?? null, true );
+check( 'nofn: owner text kept, only the placeholder field filled', $by_id[11]['fields'] ?? null, array( 'uppruni' => "An{$em}nað" ) );
+check( 'nofn: gen 3 name unchanged since publication is replaced', $by_id[12]['fields'] ?? null, array( 'nafn' => 'Agnarögn', 'uppruni' => "<strong>Agnar</strong>{$em}ögn", 'thyding' => 'Nýtt.' ) );
+check( 'nofn: gen 3 name the owner changed is skipped and reported', array( isset( $by_id[13] ), $plan['skipped'] ), array( false, array( '299 Eigið nafn' ) ) );
+check( 'nofn: Númer matched exactly (351 is not 351a), missing numbers ignored', array_keys( $by_id ), array( 10, 11, 12 ) );
+check( 'nofn: only placeholder dashes count as empty', array( Nofn::is_placeholder( " {$d} " ), Nofn::is_placeholder( '-' ), Nofn::is_placeholder( '' ), Nofn::is_placeholder( "A{$d}B" ) ), array( true, true, false, false ) );
+
+$after = $stored;
+foreach ( $plan['changes'] as $c ) {
+	$after[ $c['id'] ] = array_merge( $after[ $c['id'] ], $c['fields'] );
+}
+$again = Nofn::plan( $after, $decided );
+check( 'nofn: second run changes nothing (idempotent)', $again['changes'], array() );
+check( 'nofn: second run still reports only the owner-changed gen 3 name', $again['skipped'], array( '299 Eigið nafn' ) );
+
+$typed             = $stored;
+$typed[12]['nafn'] = 'Agnarögn';
+check( 'nofn: gen 3 entry where the owner already typed the new name is left alone', array_column( Nofn::plan( $typed, $decided )['changes'], 'id' ), array( 10, 11 ) );
+
+// --- generations 3-9 "í vinnslu": notes only where empty, gen 3 heading once, gen 4 kept as it is
+$kyn = json_decode( file_get_contents( __DIR__ . '/../features/ordsifjar/data/kynslodir.json' ), true );
+foreach ( array( 5 => 'Fimmta', 6 => 'Sjötta', 7 => 'Sjöunda', 8 => 'Áttunda', 9 => 'Níunda' ) as $n => $o ) {
+	$kyn[] = array( 'kynslod' => $n, 'akkeri' => '', 'heiti_html' => "<em>{$o} kynslóð</em> (óstaðfest)", 'skyring_html' => '' );
+}
+$kyn[7]['skyring_html'] = 'Eigin skýring.'; // gen 8: the owner wrote a note
+$m   = Nofn::in_progress( $kyn );
+$byk = array_column( $m['kynslodir'], null, 'kynslod' );
+check( 'vinnsla: notes set for 3, 5, 6, 7, 9 (gen 8 has its own note)', $m['notes'], 5 );
+check( 'vinnsla: gen 3 note and heading', array( $byk[3]['skyring_html'], $byk[3]['heiti_html'] ), array( Nofn::NOTE, '<em>Þriðja kynslóð</em> (í vinnslu)' ) );
+check( 'vinnsla: gen 4 heading and note kept', array( $byk[4]['heiti_html'], $byk[4]['skyring_html'] ), array( $kyn[3]['heiti_html'], $kyn[3]['skyring_html'] ) );
+check( 'vinnsla: owner note kept, óstaðfest heading not changed', array( $byk[8]['skyring_html'], $byk[8]['heiti_html'] ), array( 'Eigin skýring.', '<em>Áttunda kynslóð</em> (óstaðfest)' ) );
+check( 'vinnsla: gens 1 and 2 untouched', array( $byk[1], $byk[2] ), array( $kyn[0], $kyn[1] ) );
+$m2 = Nofn::in_progress( $m['kynslodir'] );
+check( 'vinnsla: second run changes nothing', array( $m2['notes'], $m2['headings'], $m2['kynslodir'] ), array( 0, 0, $m['kynslodir'] ) );
+
+// --- the bundled decisions file against the real data: what a new install gets
+$rows     = json_decode( file_get_contents( __DIR__ . '/../features/ordsifjar/data/nofn-2026.json' ), true );
+$national = array_column( json_decode( file_get_contents( __DIR__ . '/../features/ordsifjar/data/national.json' ), true ), null, 'numer' );
+$bad      = array();
+foreach ( $rows as $r ) {
+	if ( ! in_array( $r['stada'], array( 'nýtt', 'breytt' ), true ) || ( $national[ $r['numer'] ]['kynslod'] ?? 0 ) !== $r['kynslod']
+		|| ( 'breytt' === $r['stada'] ) !== ( 3 === $r['kynslod'] ) || ( 'breytt' === $r['stada'] && '' === (string) ( $r['fyrra_nafn'] ?? '' ) )
+		|| '' === Csv::plain( $r['nafn'] ) || preg_match( '#</?(?!(?:strong|em|br|sup|sub|a)[\s>/])\w#i', $r['nafn'] . $r['uppruni'] . $r['thyding'] ) ) {
+		$bad[] = $r['numer'];
+	}
+}
+check( 'nofn-2026.json: valid rows (stada, generation, fyrra_nafn, allowed tags only)', $bad, array() );
+
+$install = array();
+foreach ( $seed_rows as $i => $r ) {
+	$install[ $i + 1 ] = $r + array( 'id' => $i + 1 );
+}
+$present = array_flip( array_column( $seed_rows, 'numer' ) );
+foreach ( $national as $n => $p ) {
+	if ( $p['kynslod'] >= 4 && ! isset( $present[ (string) $n ] ) ) {
+		$id             = count( $install ) + 1;
+		$install[ $id ] = array( 'id' => $id, 'numer' => (string) $n, 'kynslod' => $p['kynslod'], 'nafn' => $d, 'uppruni' => $d, 'thyding' => $d );
+	}
+}
+$plan = Nofn::plan( $install, $rows );
+$want = array( 'nýtt' => 0, 'breytt' => 0 );
+foreach ( $rows as $r ) {
+	++$want[ $r['stada'] ];
+}
+$got = array_count_values( array_column( $plan['changes'], 'stada' ) ) + array( 'nýtt' => 0, 'breytt' => 0 );
+check( 'new install: every decided name applies, none skipped', array( $got['nýtt'], $got['breytt'], $plan['skipped'] ), array( $want['nýtt'], $want['breytt'], array() ) );
 
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );
