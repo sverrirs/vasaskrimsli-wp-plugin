@@ -10,6 +10,46 @@
   "drog": false
  },
  {
+  "numer": 261,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Úlfasi",
+  "uppruni": "<strong>Úlf</strong>—asi",
+  "thyding": "Úlfur er hundfrændi og asi mikill flýtir. Veran eltir það sem hún vill ná, en ef það snýr sér við getur hún sjálf hlaupið undan. Það er úlfalegur asi á öllum.",
+  "fyrra_nafn": "Hvolpbítur",
+  "drog": false
+ },
+ {
+  "numer": 281,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Spádans",
+  "uppruni": "<strong>Spá</strong>—dans",
+  "thyding": "Spá er að sjá fyrir það sem kann að gerast. Veran sér inn í framtíðina og dansar gjarnan á sólríkum morgnum. Spádans er dans sem tekur næsta spor áður en það gerist.",
+  "fyrra_nafn": "Áradís",
+  "drog": false
+ },
+ {
+  "numer": 282,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Hjartaborg",
+  "uppruni": "<strong>Hjarta</strong>—borg",
+  "thyding": "Hjarta tengist hlýjum tilfinningum og borg getur verið vígi sem ver fólk. Hjartalaga platan á brjóstinu og verndin yfir vininum mætast í lifandi hjartaborg.",
+  "fyrra_nafn": "Verndardís",
+  "drog": false
+ },
+ {
+  "numer": 294,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Gjallargarg",
+  "uppruni": "<strong>Gjallar</strong>—garg",
+  "thyding": "<strong>Gjalla:</strong> að hljóma hátt og skerandi. <em>Gjallarhorn</em> er lúður Heimdallar sem heyrist í alla heima (sbr. <em>loud</em>, hávær).<br><strong>Garg:</strong> hátt og hrjúft óp. Eyrun á Loudred virka eins og hátalarar og það magnar röddina upp í garg.<br><strong>Fjölskylda:</strong> Pískur (#293) → Gjallargarg → Ærandi (#295).",
+  "fyrra_nafn": "Gargari",
+  "drog": true
+ },
+ {
   "numer": 298,
   "kynslod": 3,
   "stada": "breytt",
@@ -17,6 +57,116 @@
   "uppruni": "<strong>Agnar</strong>—ögn",
   "thyding": "<strong>Agnarögn:</strong> eitthvað örlítið, minnsta ögn; raunverulegt orð. Azurill er minnsti liður ættarinnar.<br><strong>Orðaleikur:</strong> nafn Marill, Daggarögn (#183), er hljóðlíking við <em>agnarögn</em>; hér fær minnsti liðurinn sjálft orðið sem brandarinn byggir á, og ættin verður stigi: Agnarögn → Daggarögn → Úðingur (fyrst ögn, svo dögg, svo úði).",
   "fyrra_nafn": "Vatnakríli",
+  "drog": false
+ },
+ {
+  "numer": 300,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Kisusnúður",
+  "uppruni": "<strong>Kisu</strong>—snúður",
+  "thyding": "Snúður getur verið eitthvað sem snýst og er líka hringvafin bolla. Kisa sem snýst við að elta halann verður að Kisusnúð, án þess að vera í rauninni úr deigi.",
+  "fyrra_nafn": "Mjálingur",
+  "drog": true
+ },
+ {
+  "numer": 301,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Flauel",
+  "uppruni": "Flauel",
+  "thyding": "Flauel er mjúkt efni með þéttum, stuttum þráðum á yfirborðinu. Kötturinn er þekktur fyrir glæsilegan feld. Nafnið lætur mjúka efnið ganga af stað á loppum, þótt feldurinn sé náttúrulegur.",
+  "fyrra_nafn": "Fínmjáll",
+  "drog": false
+ },
+ {
+  "numer": 304,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Námnamm",
+  "uppruni": "<strong>Nám</strong>—namm",
+  "thyding": "Náma er staður þar sem málmgrýti er unnið og namm er ánægjuhljóð þegar eitthvað bragðast vel. Þessi litla vera étur járngrýti: það sem námumaður vinnur er henni nammi.",
+  "fyrra_nafn": "Járnlingur",
+  "drog": false
+ },
+ {
+  "numer": 306,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Bryntröll",
+  "uppruni": "<strong>Bryn</strong>—tröll",
+  "thyding": "Brynja ver líkamann og tröll er stór og sterk þjóðsagnavera. Þetta stóra skrímsli er hulið málmplötum og ver fjallið sitt af afli. Það er eins og tröll sem hefur farið í herklæði.",
+  "fyrra_nafn": "Stálvargur",
+  "drog": false
+ },
+ {
+  "numer": 308,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Einbeitni",
+  "uppruni": "<strong>Ein</strong>—beitni",
+  "thyding": "Einbeitni er að beina allri athyglinni að einu. Veran þjálfar skynjun sína með hugleiðslu og berst síðan af nákvæmni. Heiti eiginleikans verður nafn þess sem kann hann best.",
+  "fyrra_nafn": "Huggarpur",
+  "drog": false
+ },
+ {
+  "numer": 309,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Hvelding",
+  "uppruni": "<strong>Hv</strong>—elding",
+  "thyding": "Í nýja nafninu mætast hvolpur og elding. Hv- úr hvolpi bætist framan við eldingu: hundurinn hleður feldinn og þýtur áfram.",
+  "fyrra_nafn": "Neistahvolpur",
+  "drog": false
+ },
+ {
+  "numer": 322,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Burðarbunga",
+  "uppruni": "<strong>Burðar</strong>—bunga",
+  "thyding": "Burður er það að bera og bunga hringlaga upphækkun. Úlfaldaveran ber þungar byrðar og er sjálf með gosfjallslíka bungu á baki.",
+  "fyrra_nafn": "Kvika",
+  "drog": false
+ },
+ {
+  "numer": 328,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Gildrugin",
+  "uppruni": "<strong>Gildru</strong>—gin",
+  "thyding": "Gildra fangar og gin er opinn munnur. Veran bíður neðst í sandgryfju með stóra kjálka. Gildran virðist hafa eignast sitt eigið gin.",
+  "fyrra_nafn": "Gryfjuljón",
+  "drog": true
+ },
+ {
+  "numer": 330,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Seiðgustur",
+  "uppruni": "<strong>Seið</strong>—gustur",
+  "thyding": "Seiður getur verið töfrar og gustur vindhviða. Veran felur sig í sandstormi og laðar bráð með vængjahljóðinu. Það er eins og vindurinn sjálfur seiði til sín hlustandann.",
+  "fyrra_nafn": "Sandreki",
+  "drog": false
+ },
+ {
+  "numer": 336,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Saxslanga",
+  "uppruni": "<strong>Sax</strong>—slanga",
+  "thyding": "<strong>Sax:</strong> stutt sverð eins og víkingar báru (sbr. <em>sever</em>, að höggva af).<br><strong>Slanga:</strong> langt, fótalaust skriðdýr (sbr. <em>viper</em>, naðra, og japanska <em>habu</em>, eitruð slanga). Halinn á Seviper er eins og sverðsblað og hún brýnir hann á steinum fyrir bardaga.",
+  "fyrra_nafn": "Hjuggormur",
+  "drog": true
+ },
+ {
+  "numer": 339,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Slímsíli",
+  "uppruni": "<strong>Slím</strong>—síli",
+  "thyding": "<strong>Slím:</strong> sleipt lag sem þekur búk Barboach svo hann rennur úr greipum.<br><strong>Síli:</strong> lítill fiskur, eins og hornsíli. Á einum stað keppir fólk í að veiða sem flesta með berum höndum, en það er erfitt því Barboach er svo háll.",
+  "fyrra_nafn": "Leirskeggi",
   "drog": false
  },
  {
@@ -40,6 +190,16 @@
   "drog": false
  },
  {
+  "numer": 366,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Sæskrín",
+  "uppruni": "<strong>Sæ</strong>—skrín",
+  "thyding": "Sær er sjór og skrín lítið ílát fyrir verðmæti. Tvíhliða skelin geymir perlulíkt höfuð og lokast yfir því. Sjávarskrínið er lifandi og getur sjálft gripið um hluti.",
+  "fyrra_nafn": "Perluskel",
+  "drog": false
+ },
+ {
   "numer": 368,
   "kynslod": 3,
   "stada": "breytt",
@@ -57,6 +217,16 @@
   "uppruni": "<strong>Harð</strong>—haus",
   "thyding": "<strong>Harður:</strong> sem lætur ekki undan, sterkur.<br><strong>Haus:</strong> höfuð. Bagon er „Rock Head Pokémon“: hann dreymir um að fljúga, kastar sér fram af klettum og höfuðið verður hart eins og hert stál. <em>Harðhaus</em> er orð í BÍN og bein þýðing á <em>Rock Head</em>.<br><strong>Ættarsaga:</strong> Harðhaus → Skeldreki → Ógnardreki: harður haus, hörð skel, svo loks vængir.",
   "fyrra_nafn": "Skalladreki",
+  "drog": false
+ },
+ {
+  "numer": 373,
+  "kynslod": 3,
+  "stada": "breytt",
+  "nafn": "Himinháski",
+  "uppruni": "<strong>Himin</strong>—háski",
+  "thyding": "Himinn er loftið yfir okkur og háski hætta. Drekinn fær loks vængi og flýgur af miklu afli; þegar hann reiðist missir hann stjórn á sér. Hættan er komin upp á himininn.",
+  "fyrra_nafn": "Ógnardreki",
   "drog": false
  },
  {
@@ -81,9 +251,9 @@
   "numer": 389,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Skógbaka",
-  "uppruni": "<strong>Skóg</strong>—baka",
-  "thyding": "<strong>Skógur:</strong> Mörg tré sem vaxa saman. Á baki Torterra vex skógur og þar búa önnur dýr.<br><strong>Baka:</strong> Stytting á <em>skjaldbaka</em>.",
+  "nafn": "Landgangur",
+  "uppruni": "<strong>Land</strong>—gangur",
+  "thyding": "Landgangur er meðal annars brú frá skipi upp á land. Hér er landið sjálft komið á gang: á baki skjaldbökunnar vex tré og smáar verur byggja þar hreiður.",
   "drog": false
  },
  {
@@ -136,7 +306,7 @@
   "kynslod": 4,
   "stada": "nýtt",
   "nafn": "Kjægir",
-  "uppruni": "<strong>Kj</strong>—ægir",
+  "uppruni": "<strong>Kj(ag)</strong>—Ægir",
   "thyding": "<strong>Kjag:</strong> vaggandi, klunnalegt göngulag, eins og þegar mörgæsir ganga (sögnin <em>að kjaga</em>).<br><strong>Ægir:</strong> jötunn hafsins í norrænni goðafræði, konungur sjávarins (sbr. <em>emperor</em>, keisaramörgæs). Stafirnir <em>-ag</em> falla brott þar sem orðin mætast: Empoleon kjagar á landi en ræður ríkjum í hafinu.",
   "drog": true
  },
@@ -144,28 +314,28 @@
   "numer": 396,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Starlingur",
-  "uppruni": "<strong>Star</strong>—lingur",
-  "thyding": "<strong>Stari:</strong> Smávaxinn, svartleitur og kvikur fugl sem hefur orpið á Íslandi síðan um 1940.<br><strong>-lingur:</strong> Smækkun, eins og í Kráklingur (#198).",
-  "drog": false
+  "nafn": "Starrlingur",
+  "uppruni": "<strong>Starr(i)</strong>—lingur",
+  "thyding": "<strong>Starri:</strong> Smávaxinn, svartleitur og kvikur fugl sem hefur orpið á Íslandi síðan um 1940.<br><strong>-lingur:</strong> Smækkun, eins og í Kráklingur (#198).",
+  "drog": true
  },
  {
   "numer": 397,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Starvængur",
-  "uppruni": "<strong>Star</strong>—vængur",
-  "thyding": "<strong>Stari:</strong> fuglinn.<br><strong>Vængur:</strong> það sem fuglinn flýgur á (sbr. <em>avian</em>, <em>bird</em>).",
-  "drog": false
+  "nafn": "Starrvængur",
+  "uppruni": "<strong>Starr(i)</strong>—vængur",
+  "thyding": "<strong>Starri:</strong> smávaxinn, svartleitur og kvikur fugl, líka kallaður <em>stari</em> (sbr. <em>starling</em>, japanska <em>mukudori</em>).<br><strong>Vængur:</strong> það sem fuglinn flýgur með (sbr. <em>avian</em>, fugla-, og japanska <em>bird</em>). Staravia flýgur um í stórum og háværum hópum.<br><strong>Fjölskylda:</strong> Starrlingur (#396) → Starrvængur → Ránstarri (#398).",
+  "drog": true
  },
  {
   "numer": 398,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Ránstari",
-  "uppruni": "<strong>Rán</strong>—stari",
-  "thyding": "<strong>Rán:</strong> það að ræna; <em>ránfugl</em> er fugl sem veiðir sér til matar (sbr. <em>raptor</em>).<br><strong>Stari:</strong> fuglinn. Stari sem er orðinn að ránfugli.",
-  "drog": false
+  "nafn": "Ránstarri",
+  "uppruni": "<strong>Rán</strong>—starri",
+  "thyding": "<strong>Rán:</strong> það að taka eitthvað með valdi. <em>Ránfugl</em> er fugl sem veiðir önnur dýr, eins og örn og fálki (sbr. <em>raptor</em>, ránfugl, og japanska <em>hawk</em>, haukur).<br><strong>Starri:</strong> smávaxinn, svartleitur og kvikur fugl (sbr. <em>starling</em>). Litli starrinn er orðinn að stórum og sterkum ránfugli með rauðan topp á höfðinu.<br><strong>Fjölskylda:</strong> Starrlingur (#396) → Starrvængur (#397) → Ránstarri.",
+  "drog": true
  },
  {
   "numer": 399,
@@ -173,8 +343,8 @@
   "stada": "nýtt",
   "nafn": "Bófur",
   "uppruni": "Bifur",
-  "thyding": "Dregið af orðinu Bifur (bara smá orðaleikur)",
-  "drog": false
+  "thyding": "<strong>Bifur:</strong> gamalt íslenskt orð yfir bjór, nagdýrið sem fellir tré með tönnunum (sbr. <em>beaver</em>, japanska <em>Bippa</em>). Bífur er líka dvergur í Dvergatali Völuspár. Sérhljóðinu er breytt í <em>ó</em>, svo nafnið minnir líka á orðið <em>bófi</em> (sbr. <em>doofus</em>, kjáni). <em>Orðaleikur:</em> hljóðavíxl.<br><strong>Fjölskylda:</strong> Bófur → Bömbur (#400). Bívur, Bávur og Bömbur standa hlið við hlið í Völuspá.",
+  "drog": true
  },
  {
   "numer": 400,
@@ -252,9 +422,9 @@
   "numer": 408,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Skallaeðla",
-  "uppruni": "<strong>Skalla</strong>—eðla",
-  "thyding": "<strong>Skalli:</strong> Höfuð; <em>að skalla</em> er að slá með höfðinu, eins og í fótbolta. Cranidos stangar með þykkri höfuðkúpu.<br><strong>Eðla:</strong> Úr <em>risaeðla</em>, eins og í Laukeðla (#1).",
+  "nafn": "Skalli",
+  "uppruni": "Skalli",
+  "thyding": "<strong>Skalli:</strong> höfuðhögg, eins og þegar fótboltamaður skallar boltann; líka harður kollur. Cranidos styrkir höfuðið með því að skalla aðra Cranidos og felldi tré með skalla fyrir 100 milljón árum. Skalli → Skallþurs: skallinn stækkar í þurs.",
   "drog": false
  },
  {
@@ -297,18 +467,18 @@
   "numer": 413,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Pokafrú",
-  "uppruni": "<strong>Poka</strong>—frú",
-  "thyding": "<strong>Poki:</strong> Kvendýr pokamölsins verða aldrei fleyg og búa alla ævi í pokanum.<br><strong>Frú:</strong> Kona (sbr. <em>madam</em>), eins og í Nálfrú (#30).",
-  "drog": false
+  "nafn": "Samfella",
+  "uppruni": "samfella",
+  "thyding": "Samfella er heil flík og orðið merkir líka samhangandi heild. Kápan verður hér hluti líkamans og losnar aldrei: dýr og flík eru ein samfella.",
+  "drog": true
  },
  {
   "numer": 414,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Pokamölur",
-  "uppruni": "<strong>Poka</strong>—mölur",
-  "thyding": "<strong>Poki:</strong> Hann skríður úr pokanum sem lirfa.<br><strong>Mölur:</strong> Fiðrildi sem flýgur á nóttunni (sbr. <em>moth</em>), eins og í Grímumölur (#284).",
+  "nafn": "Vængvafri",
+  "uppruni": "<strong>Væng</strong>—vafri",
+  "thyding": "Að vafra er að fara víða og leita. Þessi mölur á sér ekki hreiður heldur flýgur sífellt yfir akra og fjöll eftir sætum safa: vafri með vængi.",
   "drog": false
  },
  {
@@ -603,18 +773,18 @@
   "numer": 447,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Árungi",
-  "uppruni": "<strong>Ár</strong>—ungi",
-  "thyding": "<strong>Ára:</strong> orka.<br><strong>Ungi:</strong> afkvæmi.",
+  "nafn": "Hughrif",
+  "uppruni": "<strong>Hug</strong>—hrif",
+  "thyding": "Hughrif eru tilfinningar eða hugarhræring. Þessi hundvera sér gleði og reiði sem bylgjur, svo það sem venjulega er ósýnilegt fær form fyrir augunum á henni.",
   "drog": false
  },
  {
   "numer": 448,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Árarakki",
-  "uppruni": "<strong>Ára</strong>—rakki",
-  "thyding": "<strong>Ára:</strong> Orkan sem Lucario sér og stjórnar.<br><strong>Rakki:</strong> Hundur; í Orðaneti er <em>rakki</em> samheiti <em>hundur</em>. Lucario líkist sjakalaguðinum Anúbis.",
+  "nafn": "Hugrýnir",
+  "uppruni": "<strong>Hug</strong>—rýnir",
+  "thyding": "Að rýna er að skoða vandlega. Veran getur skynjað líðan annarra úr mikilli fjarlægð með því að lesa áru þeirra: eins og hún rýni í ósýnilega mynd af hug þeirra.",
   "drog": false
  },
  {
@@ -657,9 +827,9 @@
   "numer": 453,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Kvakki",
-  "uppruni": "<strong>Kvak</strong>—ki",
-  "thyding": "<strong>Kvak:</strong> hljóð frosksins.<br><strong>-ki:</strong> hljóðið er tvöfaldað og gert að kátlegu nafni; þetta er nýr orðaleikur.",
+  "nafn": "Kinnblástur",
+  "uppruni": "<strong>Kinn</strong>—blástur",
+  "thyding": "Blástur fyllir kinnarnar og kemur af stað kvakinu. Froskurinn blæs upp kinnpokana til að gera ógnandi hljóð. Í Kinnblæstri leynist líka innblástur, en þessi hljóðfæraleikari fær sinn úr kinnunum.",
   "drog": false
  },
  {
@@ -667,9 +837,9 @@
   "kynslod": 4,
   "stada": "nýtt",
   "nafn": "Eituropi",
-  "uppruni": "Eitur og Ropi",
-  "thyding": "Ropi eins og hljóðið sem kemur úr froskum",
-  "drog": false
+  "uppruni": "<strong>Eitur</strong>—ropi",
+  "thyding": "<strong>Eitur:</strong> efni sem gerir fólki og dýrum illt (sbr. <em>toxic</em>, japanska <em>doku</em>).<br><strong>Ropi:</strong> hljóð sem kemur upp úr hálsinum, hér kvakið sem kemur úr froskum (sbr. <em>croak</em>). Toxicroak líkist eiturpílufroski og hefur stóran rauðan hálspoka.<br><strong>Fjölskylda:</strong> Kinnblástur (#453) → Eituropi.",
+  "drog": true
  },
  {
   "numer": 455,
@@ -847,18 +1017,18 @@
   "kynslod": 4,
   "stada": "nýtt",
   "nafn": "Þrífíkja",
-  "uppruni": "<strong>Þrí</strong>—fíkja",
-  "thyding": "Þrívídd og fíkja",
+  "uppruni": "<strong>Þrí(vídd)</strong>—fíkja",
+  "thyding": "<strong>Þrívídd:</strong> hæð, breidd og dýpt. Z er þriðji ásinn í þrívíðu hnitakerfi (sbr. <em>Porygon-Z</em>).<br><strong>Fíkja:</strong> sætur ávöxtur, og um leið endingin úr Grafíkju (#137). Porygon-Z er tölvuvera sem átti að geta ferðast á milli vídda.<br><strong>Fjölskylda:</strong> Grafíkja (#137) → Grafíkja² (#233) → Þrífíkja.",
   "drog": true
  },
  {
   "numer": 475,
   "kynslod": 4,
   "stada": "nýtt",
-  "nafn": "Árahjör",
-  "uppruni": "<strong>Ára</strong>—hjör",
-  "thyding": "<strong>Ára:</strong> orka eða útgeislun, sami stofn og í Árara (#280) og Áradís (#281).<br><strong>Hjör:</strong> sverð í skáldamáli (sverðaheiti í Nafnaþulum 40). Gallade berst með sverðlaga örmum.",
-  "drog": true
+  "nafn": "Bjargvættur",
+  "uppruni": "<strong>Bjarg</strong>—vættur",
+  "thyding": "<strong>Bjargvættur:</strong> sá sem kemur til bjargar á ögurstundu; raunverulegt orð (sbr. <em>rescuer</em>). Í því felst <strong>vættur</strong>, verndarandi úr þjóðtrúnni, eins og landvættirnir. Gallade leitar uppi þá sem þurfa hjálp og berst með sverðunum á olnbogunum aðeins til að verja aðra.",
+  "drog": false
  },
  {
   "numer": 476,
@@ -964,9 +1134,9 @@
   "kynslod": 4,
   "stada": "nýtt",
   "nafn": "Rugnar",
-  "uppruni": "rangur aftur á bak",
+  "uppruni": "rangur",
   "thyding": "Rangur skrifað aftur á bak verður Rugnar. Nafnið snýr sjálft við eins og heimurinn handan hins venjulega heims.",
-  "drog": false
+  "drog": true
  },
  {
   "numer": 488,
@@ -1071,9 +1241,9 @@
   "numer": 499,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Glóðgöltur",
-  "uppruni": "<strong>Glóð</strong>—göltur",
-  "thyding": "Glóð vex með eldinum í líkamanum; göltur er karlkyns svín, orðið stærra en grísinn.",
+  "nafn": "Sótsvín",
+  "uppruni": "<strong>Sót</strong>—svín",
+  "thyding": "<strong>Sót:</strong> svarta duftið sem reykur skilur eftir í ofnum og strompum. <strong>Svín.</strong> Þegar Pignite lendir í vandræðum blæs hann reyk, og allt sem hann étur verður eldsneyti fyrir eldinn í maganum. <em>Stuðlar:</em> s-s.",
   "drog": false
  },
  {
@@ -1476,9 +1646,9 @@
   "numer": 544,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Krullfætla",
-  "uppruni": "<strong>Krulla</strong>—fætla",
-  "thyding": "Krulla er vafningurinn; fætla er stytt úr margfætla. Krulli úr orðabanka eigandans er kveikjan.",
+  "nafn": "Krulli",
+  "uppruni": "<strong>Krull</strong>—i",
+  "thyding": "<strong>Krulli:</strong> af <em>krulla</em>, hringur eða vafningur; <em>krulla</em> er líka íþróttin (<em>curling</em>) þar sem steinum er rennt eftir ísnum. Whirlipede vefur sig í hjól og rúllar á óvini sína. Orð úr orðabanka eigandans.",
   "drog": false
  },
  {
@@ -1548,9 +1718,9 @@
   "numer": 552,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Bófadíll",
-  "uppruni": "<strong>Bófa</strong>—díll",
-  "thyding": "<strong>Bófi:</strong> þjófur, hrappur (sbr. <em>crook</em>, japanska <em>warui</em>, vondur).<br><strong>-díll:</strong> úr <em>krókódíll</em>.",
+  "nafn": "Krókþrjótur",
+  "uppruni": "<strong>Krók</strong>—þrjótur",
+  "thyding": "<strong>Krókur:</strong> fyrri hluti orðsins <em>krókódíll</em> (sbr. <em>crocodile</em>).<br><strong>Þrjótur:</strong> bófi, hrappur (sbr. <em>crook</em>). Krokorok lifir í litlum hópum í eyðimörkinni og felur bráð í sandinum til mögru daganna.",
   "drog": false
  },
  {
@@ -1585,9 +1755,9 @@
   "kynslod": 5,
   "stada": "nýtt",
   "nafn": "Taktus",
-  "uppruni": "<strong>Takt</strong>—us",
-  "thyding": "Taktur og Kaktus",
-  "drog": false
+  "uppruni": "<strong>Takt(ur)</strong>—(kakt)us",
+  "thyding": "<strong>Taktur:</strong> jafn sláttur í tónlist og dansi (sbr. <em>maraca</em>, hrista).<br><strong>Kaktus:</strong> þyrnótt planta sem vex í eyðimörkum (sbr. <em>cactus</em>). <em>Orðaleikur:</em> samrunaorð, <em>taktur</em> + <em>kaktus</em> = Taktus. Maractus hreyfir sig í takt og hljómar þá eins og hrista.",
+  "drog": true
  },
  {
   "numer": 557,
@@ -1782,9 +1952,9 @@
   "numer": 578,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Tvíkjarni",
-  "uppruni": "<strong>Tví</strong>—kjarni",
-  "thyding": "<strong>Tví-:</strong> tveir.<br><strong>Kjarni:</strong> miðjan í frumunni.",
+  "nafn": "Þankatog",
+  "uppruni": "<strong>Þanki</strong>—tog",
+  "thyding": "Þanki er hugsun. Veran hefur tvo heila sem hugsa sjálfstætt og vilja stundum gera sitt hvort, eins og hugsanirnar séu í togstreitu.",
   "drog": false
  },
  {
@@ -1836,9 +2006,9 @@
   "numer": 584,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Tvíkúla",
-  "uppruni": "<strong>Tví</strong>—kúla",
-  "thyding": "<strong>Tví-:</strong> tveir (japanska <em>bai</em>, tvöfalt).<br><strong>Kúla:</strong> ískúla; Vanilluxe er ís með tveimur kúlum.",
+  "nafn": "Ísveisla",
+  "uppruni": "<strong>Ís</strong>—veisla",
+  "thyding": "<strong>Ís</strong> og <strong>veisla</strong> (sbr. <em>deluxe</em>): tveggja kúlna ís er veisla. Vanilluxe er stór ís með tvö höfuð; þegar bæði reiðast í einu grefur hann allt í snjó.",
   "drog": false
  },
  {
@@ -1998,9 +2168,9 @@
   "numer": 602,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Neistaseiði",
-  "uppruni": "<strong>Neisti</strong>—seiði",
-  "thyding": "Rafmagnað seiði, ungt fiskdýr.",
+  "nafn": "Hrökkseiði",
+  "uppruni": "<strong>Hrökk</strong>—seiði",
+  "thyding": "<strong>Hrökkva:</strong> kippast við; <em>hrökkáll</em> er íslenska heitið á rafál, eins og Hrökkáll (#604).<br><strong>Seiði:</strong> smáfiskur nýkominn úr hrogni (sbr. japanska <em>shirasu</em>). Eitt Tynamo gefur aðeins lítinn straum, en margir saman eru eins og elding.",
   "drog": false
  },
  {
@@ -2079,28 +2249,28 @@
   "numer": 611,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Axarskoltur",
-  "uppruni": "<strong>Axar</strong>—skoltur",
-  "thyding": "<strong>Öx:</strong> öxi (japanska <em>ono</em>); skögultennurnar eru eins og axarblöð.<br><strong>Skoltur:</strong> kjálki, eins og í Skoltblöku.",
+  "nafn": "Brakjaxl",
+  "uppruni": "<strong>Brak</strong>—jaxl",
+  "thyding": "Brak er brothljóð. Hér heyrast klettarnir braka undan löngum tönnunum; jaxl merkir bæði tönn og hörkutól. Skögultennurnar eru þó ekki aftari jaxlar: hörkutólið er brandarinn.",
   "drog": false
  },
  {
   "numer": 612,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Axardreki",
-  "uppruni": "<strong>Axar</strong>—dreki",
-  "thyding": "<strong>Öx:</strong> öxi (sbr. <em>axe</em>); axirnar í kjálkunum.<br><strong>Dreki:</strong> drekategundin; Haxorus er fullvaxni drekinn.",
+  "nafn": "Bjálkabrjótur",
+  "uppruni": "<strong>Bjálki</strong>—brjótur",
+  "thyding": "Bjálki er þykkur burðarbiti. Axarlaga tennur drekans geta skorið í gegnum stálbjálka, svo nafnið gerir ótrúlegan kraft þeirra að persónu.",
   "drog": false
  },
  {
   "numer": 613,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Atjúúnn",
-  "uppruni": "<strong>Atjú</strong>—(h)únn",
-  "thyding": "Atjú hermir eftir hnerra; húnn er bjarnarungi. Hljóðið er viljandi skrifað svo barn geti lesið það upphátt.",
-  "drog": true
+  "nafn": "Atjúnn",
+  "uppruni": "<strong>Atjú</strong>—húnn",
+  "thyding": "<strong>Atjú!:</strong> hljóðið þegar maður hnerrar (sbr. <em>ah-choo</em>, japanska <em>kushun</em>).<br><strong>Húnn:</strong> bjarnarungi, og <em>húnn</em> er bjarnarheiti í Nafnaþulum. Orðin renna saman um <em>ú</em>: atjú + húnn = Atjúnn. Nefið á Cubchoo lekur alltaf og hann notar horið í ísárásirnar sínar.",
+  "drog": false
  },
  {
   "numer": 614,
@@ -2142,9 +2312,9 @@
   "numer": 618,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Stuðkoli",
-  "uppruni": "<strong>Stuð</strong>—koli",
-  "thyding": "<strong>Stuð:</strong> rafstuð (sbr. <em>stun</em>), og líka fjör og gleði.<br><strong>Koli:</strong> flatfiskur; Stunfisk er byggður á kola (japanska <em>karei</em>).",
+  "nafn": "Flatsmellur",
+  "uppruni": "<strong>Flatur</strong>—smellur",
+  "thyding": "Smellur er stutt hvellhljóð. Flatfiskurinn liggur falinn í leðju og venjulega myndin getur brugðist við snertingu með rafstuði; smellurinn er hljóðmynd þess.",
   "drog": false
  },
  {
@@ -2304,9 +2474,9 @@
   "numer": 636,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Glóðlirfa",
-  "uppruni": "<strong>Glóð</strong>—lirfa",
-  "thyding": "Glóð er eldurinn sem hún geymir; lirfa er þroskastigið.",
+  "nafn": "Blysbrúskur",
+  "uppruni": "<strong>Blys</strong>—brúskur",
+  "thyding": "Brúskur er þéttur hártoppur. Hvíti loðbrúskurinn um höfuð verunnar umlykur fimm horn sem spúa eldi eins og blys.",
   "drog": false
  },
  {
@@ -2340,9 +2510,9 @@
   "numer": 640,
   "kynslod": 5,
   "stada": "nýtt",
-  "nafn": "Grænhyrna",
-  "uppruni": "<strong>Grænn</strong>—hyrna",
-  "thyding": "Grænn kappi með blaðlaga horn; hyrna er horn eða hyrnd vera í nafninu.",
+  "nafn": "Mistilteinn",
+  "uppruni": "<strong>Mistil</strong>—teinn",
+  "thyding": "<strong>Mistilteinn:</strong> sverðsheiti í Nafnaþulum Snorra-Eddu og líka jurtin mistilteinn, grænn sproti sem vex á trjám; í Gylfaginningu er það eini viðurinn sem hafði ekki svarið Baldri grið (sbr. <em>viridian</em>, grænn). Virizion er grænn sverðkappi og hornin á höfðinu eru beitt eins og sverð.",
   "drog": false
  },
  {
@@ -2457,9 +2627,9 @@
   "numer": 653,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Glóðyrðlingur",
-  "uppruni": "<strong>Glóð</strong>—yrðlingur",
-  "thyding": "<strong>Glóð:</strong> lifandi kol, eldur sem leynist (sbr. <em>kindle</em> og ítalska <em>fuoco</em>).<br><strong>Yrðlingur:</strong> refahvolpur (sbr. smækkunina <em>-kin</em> og japanska <em>ko</em>, barn). <em>Náttúrufræði:</em> ekkert dýr á Íslandi hefur átt eins mörg heiti og refurinn.",
+  "nafn": "Kvistabrak",
+  "uppruni": "<strong>Kvistur</strong>—brak",
+  "thyding": "Brak er snöggt brotahljóð. Litli refurinn maular kvisti sér til orku, svo nafnið lætur heyra hvað brakar í nestinu hans.",
   "drog": false
  },
  {
@@ -2475,9 +2645,9 @@
   "numer": 655,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Völvutófa",
-  "uppruni": "<strong>Völvu</strong>—tófa",
-  "thyding": "<strong>Völva</strong> (í eignarfalli <em>völvu-</em>): spákona í norrænni trú; Völuspá er spá völvunnar (sbr. <em>Delphic oracle</em>, véfréttin í Delfí). Orðið er dregið af <em>völur</em>, göngustafur, og Delphox heldur á logandi staf.<br><strong>Tófa:</strong> refur.",
+  "nafn": "Rúnarrefur",
+  "uppruni": "<strong>Rún</strong>—refur",
+  "thyding": "Rún er ritmerki. Refurinn skilur eftir brunaför á jörðu og fólk las áður spár úr lögun þeirra; förin eru hér líkt við rúnir, ekki kölluð raunverulegt rúnaletur.",
   "drog": false
  },
  {
@@ -2529,9 +2699,9 @@
   "numer": 661,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Glóbrysti",
-  "uppruni": "<strong>Gló</strong>—brysti",
-  "thyding": "<strong>Gló:</strong> glóð, rauð birta.<br><strong>Brysti:</strong> af <em>brjóst</em>. Stytt úr <em>glóbrystingur</em>, íslenska heitinu á fuglinum <em>Erithacus rubecula</em> (enska <em>robin</em>), sem sést sjaldan á Íslandi (sbr. japanska <em>komadori</em>).",
+  "nafn": "Ylfiður",
+  "uppruni": "<strong>Ylur</strong>—fiður",
+  "thyding": "Ylur er mildur hiti. Líkaminn er alltaf heitur og hitnar enn meira þegar fuglinum bregður eða hann æsist; nafnið vefur ylinn í fjaðrir.",
   "drog": false
  },
  {
@@ -2610,18 +2780,18 @@
   "numer": 670,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Blómey",
-  "uppruni": "<strong>Blóm</strong>—ey",
-  "thyding": "<strong>Blóm.</strong><br><strong>-ey:</strong> algeng ending kvenmannsnafna, eins og í <em>Sóley</em>, sem er líka nafn á gulu",
+  "nafn": "Garðagleði",
+  "uppruni": "<strong>Garða</strong>—gleði",
+  "thyding": "Gleði er ánægja, en getur líka verið fagnaður. Hér er blómagarðurinn kominn í hátíðarskap: litla veran dansar þegar blómin springa út og hlúir að þeim sem eru að visna.",
   "drog": false
  },
  {
   "numer": 671,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Blómgerður",
-  "uppruni": "<strong>Blóm</strong>—gerður",
-  "thyding": "<strong>Blóm.</strong><br><strong>Gerður:</strong> jötnamærin sem Freyr varð ástfanginn af, „allra kvenna fegurst“; þegar hún lyfti höndum lýsti af þeim yfir loft og lög (sbr. <em>gorgeous</em>). Florges ræktar blómagarða.",
+  "nafn": "Krónuríki",
+  "uppruni": "<strong>Króna</strong>—ríki",
+  "thyding": "Króna blóms er úr krónublöðum, en króna er líka tákn valds. Veran ræktar og stjórnar blómum sínum, svo garðurinn verður ríki margra blómkróna.",
   "drog": false
  },
  {
@@ -2700,9 +2870,9 @@
   "numer": 680,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Tvíbrandur",
-  "uppruni": "<strong>Tví</strong>—brandur",
-  "thyding": "<strong>Tví-:</strong> tveir, tvöfalt (sbr. <em>double</em>).<br><strong>Brandur:</strong> sverð í skáldamáli (Nafnaþulur).",
+  "nafn": "Brandabræður",
+  "uppruni": "<strong>Brandur</strong>—bræður",
+  "thyding": "Brandur er sverð. Sverðin tvö vinna saman með hugboðum og eru kölluð tvíburar í lýsingunni; hér verða þau sverðabræður.",
   "drog": false
  },
  {
@@ -2745,9 +2915,9 @@
   "numer": 685,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Sykursnúður",
-  "uppruni": "<strong>Sykur</strong>—snúður",
-  "thyding": "<strong>Sykur:</strong> sæta kökufyrirmyndin.<br><strong>Snúður:</strong> ný nafnlíking við bakaríssnúð; heimildirnar nefna marengs og kökur, ekki sérstaklega snúða.",
+  "nafn": "Marengs",
+  "uppruni": "Marengs",
+  "thyding": "<strong>Marengs:</strong> sætur, loftkenndur eftirréttur úr þeyttum eggjahvítum og sykri (sbr. <em>meringue</em>). Slurpuff er „Meringue Pokémon“: feldurinn er fullur af lofti, mjúkur viðkomu og léttari en hann sýnist.",
   "drog": false
  },
  {
@@ -2826,9 +2996,9 @@
   "numer": 694,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Sóleðla",
-  "uppruni": "<strong>Sól</strong>—eðla",
-  "thyding": "<strong>Sól</strong> (sbr. gríska <em>hḗlios</em>).<br><strong>Eðla:</strong> skriðdýr (sbr. <em>reptile</em>), eins og í Laukeðla (#1). Helioptile breytir sólarljósi í rafmagn.",
+  "nafn": "Ljósnesti",
+  "uppruni": "<strong>Ljós</strong>—nesti",
+  "thyding": "Nesti er matur í ferð. Eðlan getur lifað á orku úr sólarljósi án þess að þurfa að borða, svo hún tekur birtuna sjálfa með í nesti.",
   "drog": false
  },
  {
@@ -2898,9 +3068,9 @@
   "numer": 702,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Stuðskeggur",
-  "uppruni": "<strong>Stuð</strong>—skeggur",
-  "thyding": "<strong>Stuð:</strong> rafmagnið sem nagdýrið notar.<br><strong>Skegg:</strong> vangahárin virka eins og loftnet.",
+  "nafn": "Kinnsími",
+  "uppruni": "<strong>Kinn</strong>—sími",
+  "thyding": "Sími flytur skilaboð langt að. Vangahárin á kinnum músarinnar senda og taka við rafbylgjum, eins og hún hafi síma í báðum kinnum.",
   "drog": false
  },
  {
@@ -2961,19 +3131,19 @@
   "numer": 709,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Draugstofn",
-  "uppruni": "<strong>Draug</strong>—stofn",
-  "thyding": "<strong>Draugur:</strong> skuggalegi íbúinn í trénu.<br><strong>Stofn:</strong> trjábolurinn sem gengur um á rótum.",
+  "nafn": "Trjáhirðir",
+  "uppruni": "<strong>Trjá</strong>—hirðir",
+  "thyding": "<strong>Tré.</strong><br><strong>Hirðir:</strong> sá sem gætir hjarðar. Trevenant stjórnar trjánum með rótunum eins og hirðir hjörð sinni (sbr. <em>Elder Tree Pokémon</em>).",
   "drog": false
  },
  {
   "numer": 710,
   "kynslod": 6,
   "stada": "nýtt",
-  "nafn": "Draugasker",
-  "uppruni": "<strong>Drauga</strong>—sker",
-  "thyding": "<strong>Draugur:</strong> vofa (sbr. <em>boo</em>).<br><strong>Grasker:</strong> <em>gras-</em> skipt út fyrir <em>drauga-</em>; Pumpkaboo er draugur sem býr í graskeri.",
-  "drog": false
+  "nafn": "Draugaker",
+  "uppruni": "<strong>Drauga</strong>—(gras)ker",
+  "thyding": "<strong>Draugur:</strong> vofa (sbr. boo).<br><strong>Grasker:</strong> gras- skipt út fyrir drauga-; Pumpkaboo er draugur sem býr í graskeri.",
+  "drog": true
  },
  {
   "numer": 711,
@@ -3123,9 +3293,9 @@
   "numer": 727,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Bálbrúsi",
-  "uppruni": "<strong>bál</strong>—Brúsi",
-  "thyding": "Bál er mikill eldur. Brúsi er íslenskt kattaheiti eftir skapi; glímukötturinn er eins og fullur brúsi af keppnisfjöri og eldi.",
+  "nafn": "Klappkappi",
+  "uppruni": "<strong>Klapp</strong>—kappi",
+  "thyding": "Klapp er lófatak og kappi duglegur bardagamaður. Kötturinn eflist þegar áhorfendur hrífast en missir móðinn ef þeim leiðist. Klappið er eins og eldsneyti kappans.",
   "drog": false
  },
  {
@@ -3150,9 +3320,9 @@
   "numer": 730,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Mardöll",
-  "uppruni": "<strong>Mar</strong>—döll",
-  "thyding": "<strong>Mar:</strong> haf (sbr. Mardvali).<br><strong>Mardöll:</strong> eitt íslenskra heita hafmeyjar, og líka eitt af nöfnum Freyju. Merking <em>-döll</em> er óviss. Primarina er söngvin hafmey eða sírena.",
+  "nafn": "Sjávaría",
+  "uppruni": "<strong>Sjávar</strong>—aría",
+  "thyding": "Sjór er salt vatn hafsins og aría lag sem einn syngur í óperu. Sjávar- og aría deila ar-inu. Söngselurinn lætur vatnsblöðrur hreyfast eftir röddinni, svo sjórinn verður hluti aríunnar.",
   "drog": false
  },
  {
@@ -3258,9 +3428,9 @@
   "numer": 742,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Krúttfluga",
-  "uppruni": "<strong>Krútt</strong>—fluga",
-  "thyding": "<strong>Krútt:</strong> eitthvað sætt.<br><strong>Fluga:</strong> skordýr. Nafnið flytur enska krúttbrandarann yfir á íslensku.",
+  "nafn": "Geðgestur",
+  "uppruni": "<strong>Geð</strong>—gestur",
+  "thyding": "Geð merkir skap eða líðan og gestur kemur í heimsókn. Fyrir litlu flugunni líkist sterk tilfinning blómi í fullum skrúða. Hún flýgur því stundum að glöðu eða sorgmæddu fólki eins og það sé blóm.",
   "drog": false
  },
  {
@@ -3341,8 +3511,8 @@
   "stada": "nýtt",
   "nafn": "Bóluló",
   "uppruni": "<strong>bóla</strong>—kónguló",
-  "thyding": "Vatnsbólan á höfðinu tengist enda orðsins kónguló; miðhluti dýraheitisins fellur brott.",
-  "drog": false
+  "thyding": "Bóla er vatnsblaðran á höfði verunnar. Nafnið sameinar bólu og endann ló úr kónguló.",
+  "drog": true
  },
  {
   "numer": 752,
@@ -3438,18 +3608,18 @@
   "numer": 762,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Aldinmey",
-  "uppruni": "<strong>Aldin</strong>—mey",
-  "thyding": "<strong>Aldin:</strong> ávöxtur (sbr. Skoppaldin).<br><strong>Mey:</strong> ung stúlka (sbr. <em>teenager</em>, <em>maiko</em>). Steenee skoppar um, fjörug og ilmandi.",
+  "nafn": "Ilmsnót",
+  "uppruni": "<strong>Ilm</strong>—snót",
+  "thyding": "<strong>Ilmur:</strong> góð lykt; Steenee dreifir sætum ilmi sem gerir alla glaða.<br><strong>Snót:</strong> stúlka, gamalt og fallegt orð (sbr. <em>teen</em> og japanska <em>maiko</em>, ung dansmær). Steenee skoppar og snýst eins og dansari.",
   "drog": false
  },
  {
   "numer": 763,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Aldindrottning",
-  "uppruni": "<strong>Aldin</strong>—drottning",
-  "thyding": "<strong>Aldin:</strong> ávöxtur.<br><strong>Drottning:</strong> kona sem ríkir (sbr. <em>tsarina</em>, <em>queen</em>, <em>joō</em>). Mangóstan er kallaður „drottning ávaxtanna“.",
+  "nafn": "Hlífaldin",
+  "uppruni": "<strong>Hlíf</strong>—aldin",
+  "thyding": "Hlíf ver eitthvað og aldin er ávöxtur plöntu. Öflugasta veran í ættinni notar kraft sinn til að vernda litlu stigin. Hér er aldinið sjálft orðið hlíf utan um hina, eins og gangandi ávaxtavörður.",
   "drog": false
  },
  {
@@ -3474,9 +3644,9 @@
   "numer": 766,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Kastansi",
-  "uppruni": "<strong>Kast</strong>—ansi",
-  "thyding": "<strong>Kast:</strong> það að kasta, eins og bolta (sbr. <em>pass</em>). Passimian kastar berjum á milli sín eins og í boltaleik og vinnur alltaf saman í liði.<br><strong>Ansi:</strong> endingin úr <em>simpansi</em>, apanum sem er skyldastur manninum (sbr. <em>simian</em>, api).",
+  "nafn": "Liðslemúr",
+  "uppruni": "<strong>Liðs</strong>—lemúr",
+  "thyding": "<strong>Lið:</strong> hópur sem vinnur saman (sbr. <em>Teamwork Pokémon</em>).<br><strong>Lemúr:</strong> prímati með langt skott frá Madagaskar; Passimian líkist sifaka-lemúr. Passimian lifa í um tuttugu dýra hópum og bregðast aldrei félögunum. <em>Stuðlar:</em> L-ið-L-emúr.",
   "drog": false
  },
  {
@@ -3492,9 +3662,9 @@
   "numer": 768,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Skelhersir",
-  "uppruni": "<strong>skel</strong>—hersir",
-  "thyding": "Hersir er höfðingi; skelin líkist brynju. Gamall höfðingjatitill verður að skeldýri.",
+  "nafn": "Sæklippir",
+  "uppruni": "<strong>Sæ</strong>—klippir",
+  "thyding": "Sær er sjór og klippir sá sem klippir eitthvað í sundur. Klær sjávardýrsins geta klofið sjóinn í tvennt. Hjá þessum öfluga skelbúna bardagamanni er sjálft hafið eins og dúkur undir skærum.",
   "drog": false
  },
  {
@@ -3573,9 +3743,9 @@
   "numer": 777,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Stuðbroddur",
-  "uppruni": "<strong>stuð</strong>—broddur",
-  "thyding": "Stuð er rafhögg og fjör; broddur stendur út úr kringlóttum líkamanum.",
+  "nafn": "Þrumubeita",
+  "uppruni": "<strong>Þrumu</strong>—beita",
+  "thyding": "Þruma er hljóðið sem fylgir eldingu og beita lokkar eitthvað að. Veran heldur nálinni uppi og bíður eldingar til að safna rafmagni. Hún veiðir þannig straum úr þrumuveðri í stað fiska úr sjó.",
   "drog": false
  },
  {
@@ -3654,27 +3824,27 @@
   "numer": 786,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Glitrildi",
-  "uppruni": "<strong>glit</strong>—fiðrildi",
-  "thyding": "Glit er skínandi ljós; -rildi er úr fiðrildi. Vængirnir og glóandi hreistrið mætast.",
+  "nafn": "Gullinrildi",
+  "uppruni": "<strong>Gullin</strong>—rildi",
+  "thyding": "<strong>Gullinn:</strong> úr gulli, eins og í hinum Tapu-nöfnunum.<br><strong>-rildi:</strong> úr <em>fiðrildi</em>, eins og í Frírildi (#12). Tapu Lele er fiðrildislegur verndarandi sem dreifir glóandi hreistri sem læknar.",
   "drog": false
  },
  {
   "numer": 787,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Gullinhorni",
-  "uppruni": "<strong>Gullin</strong>—horni",
-  "thyding": "<strong>Gullinn:</strong> gylltur.<br><strong>Horni:</strong> sá sem ber horn. <em>Gollinhorni</em> er eitt af heitum nautsins í Nafnaþulum Snorra-Eddu, svo nafnið er raunverulegt fornt nautsheiti sem passar beint við Gullinkamba. Tapu Bulu er naut sem rífur upp tré og stangar með hornunum.",
+  "nafn": "Friðarklukka",
+  "uppruni": "<strong>Friðar</strong>—klukka",
+  "thyding": "Friður er logn milli þeirra sem gætu barist og klukka getur verið bjalla. Goðið hringir bjöllunni á halanum til að aðrir viti af því og óþarfa átök verði ekki. Stóra nautið ber friðarboð í stað þess að laumast að fólki.",
   "drog": false
  },
  {
   "numer": 788,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Gullinuggi",
-  "uppruni": "<strong>Gullin</strong>—uggi",
-  "thyding": "<strong>Gullinn:</strong> gylltur.<br><strong>Uggi:</strong> sundfit fisks (sbr. <em>fin</em>, <em>hire</em>). Tapu Fini lokast eins og sverðfiskur og opnast eins og hafmey; hann stjórnar vatni og skapar hreint vatn.",
+  "nafn": "Hafsýn",
+  "uppruni": "<strong>Haf</strong>—sýn",
+  "thyding": "Haf er stórt saltvatn og sýn það sem maður sér. Þoka goðsins getur í sögunni tengt heim lifandi og látinna. Hafsýnin er því ekki aðeins útsýni yfir sjó: hún opnar sýn inn í annan heim.",
   "drog": false
  },
  {
@@ -3699,18 +3869,18 @@
   "numer": 791,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Sólljón",
-  "uppruni": "<strong>Sól</strong>—ljón",
-  "thyding": "<strong>Sól:</strong> í Gylfaginningu er Sól dóttir Mundilfara og ekur vagni sólarinnar.<br><strong>Ljón:</strong> stórt kattardýr (sbr. <em>leo</em>; eins og í <em>Kameldljón</em>). Solgaleo lýsir svo skært að dimmasta nótt verður björt sem dagur.",
+  "nafn": "Sólgleypir",
+  "uppruni": "<strong>Sól</strong>—gleypir",
+  "thyding": "<strong>Sól</strong> og<br><strong>gleypir:</strong> sá sem gleypir. Í ævafornum ritum heitir Solgaleo „dýrið sem gleypir sólina“ (sbr. <em>the beast that devours the sun</em>), og ljósið streymir frá honum endalaust. Í norrænni goðafræði eltir úlfurinn Sköll sólina til að gleypa hana.",
   "drog": false
  },
  {
   "numer": 792,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Mánablaka",
-  "uppruni": "<strong>Mána</strong>—blaka",
-  "thyding": "<strong>Máni:</strong> tunglið; í Gylfaginningu er Máni sonur Mundilfara sem stýrir göngu tungls.<br><strong>Blaka:</strong> úr <em>leðurblaka</em> (eins og í <em>Blakildi</em> og <em>Skoltblaka</em>). Lunala er leðurblaka með tunglsvip.",
+  "nafn": "Tunglæta",
+  "uppruni": "<strong>Tungl</strong>—æta",
+  "thyding": "<strong>Tungl</strong> og<br><strong>æta:</strong> sú sem étur, eins og í Ljósætu (#800). Lunala lifir á því að draga í sig allt ljós og breyta því í eigin orku; hún myndar Ljósþrenninguna með Solgaleo og Necrozma.",
   "drog": false
  },
  {
@@ -3735,9 +3905,9 @@
   "numer": 795,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Ilmfríður",
-  "uppruni": "<strong>Ilm</strong>—fríður",
-  "thyding": "<strong>Ilmur:</strong> lykt; Pheromosa heillar með sterkum ilmefnum sínum (sbr. <em>pheromone</em>).<br><strong>Fríður:</strong> fallegur (sbr. spænska <em>hermosa</em>), og algengur síðari liður í kvenmannsnöfnum. Fegurðin og ilmurinn eru helstu einkenni Pheromosa.",
+  "nafn": "Glerslæða",
+  "uppruni": "<strong>Gler</strong>—slæða",
+  "thyding": "Gler getur verið gegnsætt og slæða þunnur dúkur. Tveir gegnsæir vængir ná frá höfði verunnar næstum niður að jörð. Þeir líkjast langri slæðu sem má sjá í gegnum, en eru ekki sagðir vera úr raunverulegu gleri.",
   "drog": false
  },
  {
@@ -3762,10 +3932,10 @@
   "numer": 798,
   "kynslod": 7,
   "stada": "nýtt",
-  "nafn": "Blaðbrandur",
-  "uppruni": "<strong>Blað</strong>—brandur",
-  "thyding": "<strong>Blað:</strong> bæði pappírsblað, laufblað og sverðsblað; Kartana er pappírsbrot (grastegund) með beittu blaði.<br><strong>Brandur:</strong> sverð; <em>brandr</em> er eitt sverðsheita í Nafnaþulum.",
-  "drog": false
+  "nafn": "Eggfimur",
+  "uppruni": "<strong>Egg</strong>—fimur",
+  "thyding": "Egg er beitta brúnin á blaði. Fimi er leikni í hreyfingum. Hér hefur sjálf eggin lært fimleika: pappírsþunn veran hreyfir beittan líkama sinn af mikilli lipurð.",
+  "drog": true
  },
  {
   "numer": 799,
@@ -3915,18 +4085,18 @@
   "numer": 815,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Markahéri",
-  "uppruni": "<strong>Marka</strong>—héri",
-  "thyding": "<strong>Mark:</strong> það sem skorað er í fótbolta. <em>Orðaleikur:</em> úr <em>markahrókur</em>, sá sem skorar flest mörkin (sbr. <em>ace</em>, stjörnuleikmaðurinn).<br><strong>Héri:</strong> dýrið. Cinderace sparkar logandi bolta.",
+  "nafn": "Fótbragð",
+  "uppruni": "<strong>Fót</strong>—bragð",
+  "thyding": "Fótur ber líkamann og bragð getur verið snjöll hreyfing sem blekkir andstæðing. Veran notar fimar fótahreyfingar til að villa um fyrir mótherjum. Hér þarf engin töfrabrögð úr höndum: fæturnir sjá um bragðið.",
   "drog": false
  },
  {
   "numer": 816,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Skælingur",
-  "uppruni": "<strong>Skæl</strong>—ingur",
-  "thyding": "<strong>Skæla:</strong> að gráta, skæla (sbr. <em>sob</em>, <em>mesomeso</em>).<br><strong>-ingur:</strong> gerir orðið að litlu kríli.",
+  "nafn": "Ekkaleki",
+  "uppruni": "<strong>Ekki</strong>—leki",
+  "thyding": "Ekki er andköf við grát og leki er þegar vökvi sleppur út. Hér lekur táravatn úr litlu verunni þegar hún fær ekka; ekk og lek bergmála mjúklega hvort annað.",
   "drog": false
  },
  {
@@ -3942,18 +4112,18 @@
   "numer": 818,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Vítottsí",
-  "uppruni": "Vítottsí",
-  "thyding": "<strong>Vítottsí:</strong> orð úr orðabanka eigandans, afbakað nafn skíðaskotkonunnar Lisu Vittozzi, eins og <em>Úrúgæ</em> úr Úrúgvæ; Inteleon er leyniskytta sem hittir af löngu færi (sbr. <em>intel</em>, njósnir).",
+  "nafn": "Fránauga",
+  "uppruni": "<strong>Frán</strong>—auga",
+  "thyding": "<strong>Fránn:</strong> skarpur og glampandi, um augu sem sjá vel (gamalt orð). <strong>Auga.</strong> Inteleon er með blikhimnu yfir augunum sem finnur veika bletti óvinanna, og kambinn á höfðinu notar hann til að mæla vind fyrir skotið.",
   "drog": false
  },
  {
   "numer": 819,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Ratatoskur",
-  "uppruni": "Ratatoskur",
-  "thyding": "<strong>Ratatoskur:</strong> íkorninn sem hleypur upp og niður askinn Yggdrasil og ber orð á milli arnarins efst og Níðhöggs neðst (Grímnismál 32). Merking nafnsins sjálfs er óviss. Skwovet hleypur líka um og safnar berjum.",
+  "nafn": "Kinnesti",
+  "uppruni": "<strong>Kinn</strong>—nesti",
+  "thyding": "Nesti er matur sem maður tekur með sér. Kinn og nesti deila n-i í Kinnesti: litli íkorninn ber nestið sitt í kinnunum, þar sem hann geymir ber.",
   "drog": false
  },
  {
@@ -4023,9 +4193,9 @@
   "numer": 827,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Hnuplingur",
-  "uppruni": "<strong>Hnupl</strong>—ingur",
-  "thyding": "<strong>Hnupla:</strong> að stela smáhlutum (sbr. <em>nick</em> og japanska <em>kusuneru</em>).<br><strong>-lingur:</strong> eins og í <em>yrðlingur</em>, sem er heiti á refsunga (sbr. <em>kit</em>). <em>Orðaleikur:</em> hnupl + yrðlingur = Hnuplingur.",
+  "nafn": "Fingralangur",
+  "uppruni": "<strong>Fingra</strong>—langur",
+  "thyding": "<strong>Fingralangur:</strong> sá sem hnuplar; raunverulegt orð (sbr. <em>nick</em>, að hnupla). <em>Orðaleikur:</em> refurinn hefur enga fingur, bara mjúka þófa, en hann er samt fingralangur.",
   "drog": false
  },
  {
@@ -4086,9 +4256,9 @@
   "numer": 834,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Gnagbaka",
-  "uppruni": "<strong>Gnag</strong>—baka",
-  "thyding": "<strong>Gnaga:</strong> að naga og bíta fast (sbr. <em>gnaw</em>).<br><strong>-baka:</strong> skjaldbaka. Rímar við Nartböku.",
+  "nafn": "Harðjaxl",
+  "uppruni": "<strong>Harð</strong>—jaxl",
+  "thyding": "<strong>Harðjaxl:</strong> sá sem er harður af sér; raunverulegt orð. Í því felst <strong>jaxl</strong>, jaxlinn í munninum. <em>Orðaleikur:</em> Drednaw er bit-Pokémon með kjálka sem bíta í sundur stálstangir, sannkallaður harðjaxl.",
   "drog": false
  },
  {
@@ -4104,9 +4274,9 @@
   "numer": 836,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Leifturhundur",
-  "uppruni": "<strong>Leiftur</strong>—hundur",
-  "thyding": "<strong>Leiftur:</strong> elding, snöggt ljós (sbr. <em>bolt</em>; Leifturskotta #25).<br><strong>Hundur:</strong> sbr. <em>Hund</em>.",
+  "nafn": "Þrídagsþytur",
+  "uppruni": "<strong>Þrí</strong>—dags—þytur",
+  "thyding": "Þrír dagar eru þrír heilir sólarhringar og þytur hröð ferð eða suð hennar. Hundurinn getur hlaupið samfellt í þrjá daga með hjálp raforkunnar. Venjulegur sprettur hans er því heill þriggja daga ferðatími.",
   "drog": false
  },
  {
@@ -4239,9 +4409,9 @@
   "numer": 851,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Bálfætla",
-  "uppruni": "<strong>Bál</strong>—fætla",
-  "thyding": "<strong>Bál:</strong> stór eldur (sbr. <em>scorch</em>, japanska <em>maruyake</em>; Bálormur #6).<br><strong>-fætla:</strong> úr <em>margfætla</em>. Litla Snarkfætlan verður að báli.",
+  "nafn": "Funalengja",
+  "uppruni": "<strong>Funa</strong>—lengja",
+  "thyding": "<strong>Funi:</strong> logi, eldur.<br><strong>Lengja:</strong> löng ræma. Centiskorch byggir á japönsku risaþúsundfætlunni <em>Ōmukade</em>, sem hafði fætur eins og þúsund logandi kyndla.",
   "drog": false
  },
  {
@@ -4302,9 +4472,9 @@
   "numer": 858,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Hugdís",
-  "uppruni": "<strong>Hug</strong>—dís",
-  "thyding": "<strong>Hugur:</strong> andlegur styrkur.<br><strong>Dís:</strong> kvenkyns vættur; hún finnur sterkar tilfinningar langt að.",
+  "nafn": "Hárborg",
+  "uppruni": "<strong>Hár</strong>—borg",
+  "thyding": "Hár vex á höfði og borg getur verið stór bygging eða virki. Líkami verunnar er lítill innan um sítt hárið, sem myndar heilt rými utan um hana í risaham. Borgin er því bæði há og úr hári.",
   "drog": false
  },
  {
@@ -4383,9 +4553,9 @@
   "numer": 867,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Rúnavofa",
-  "uppruni": "<strong>Rúna</strong>—vofa",
-  "thyding": "<strong>Rúnir:</strong> fornt letur norrænna manna, ristið á steina; Runerigus er byggður á rúnasteini (sbr. <em>rune</em>).<br><strong>Vofa:</strong> draugur.",
+  "nafn": "Minnisvarði",
+  "uppruni": "<strong>Minnis</strong>—varði",
+  "thyding": "<strong>Minnisvarði:</strong> steinn eða merki sem reist er til að minnast einhvers; raunverulegt orð (sbr. <em>runestone</em>). Runerigus byggir á rúnasteinum sem víkingar reistu til minningar um þá sem dóu fjarri heimahögum.",
   "drog": false
  },
  {
@@ -4401,9 +4571,9 @@
   "numer": 869,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Rjómadís",
-  "uppruni": "<strong>Rjóma</strong>—dís",
-  "thyding": "<strong>Rjómi:</strong> úr álfaveitingum þjóðsögunnar.<br><strong>Dís:</strong> kvenkyns vættur; mjúk rjómavera sem gleður bakara.",
+  "nafn": "Hnallþóra",
+  "uppruni": "Hnallþóra",
+  "thyding": "<strong>Hnallþóra:</strong> stór, skreytt rjómaterta; orðið er komið af persónu í <em>Kristnihaldi undir Jökli</em> eftir Halldór Laxness sem bakaði slíkar tertur. Alcremie er rjóma-Pokémon og risaform hennar er eins og brúðkaupsterta (sbr. <em>cream</em>).",
   "drog": false
  },
  {
@@ -4626,9 +4796,9 @@
   "numer": 894,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Rafvörður",
-  "uppruni": "<strong>Raf</strong>—vörður",
-  "thyding": "<strong>Raf:</strong> rafmagn (sbr. japanska <em>ereki</em>).<br><strong>Vörður:</strong> sá sem vaktar; allir Regi-risarnir enda á <em>-vörður</em> (Steinvörður #377, Ísvörður #378, Stálvörður #379).",
+  "nafn": "Spennugreip",
+  "uppruni": "<strong>Spennu</strong>—greip",
+  "thyding": "Spenna knýr rafstraum og greip er sterkt tak. Rafrisinn getur lokað andstæðinga inni í rafmagni. Hann þarf því ekki venjulegar hendur til að ná föstu taki: spennan myndar sjálft fangið.",
   "drog": false
  },
  {
@@ -4698,9 +4868,9 @@
   "numer": 902,
   "kynslod": 8,
   "stada": "nýtt",
-  "nafn": "Heruggi",
-  "uppruni": "<strong>Her</strong>—uggi",
-  "thyding": "<strong>Her:</strong> fylking, mikill fjöldi (sbr. <em>legion</em>); Basculegion er sálir margra fiska.<br><strong>Uggi:</strong> sundfiðrildi fisks, en <em>uggur</em> eða <em>uggi</em> þýðir líka ótti: draugafiskurinn vekur ugg.",
+  "nafn": "Laxasveit",
+  "uppruni": "<strong>Laxa</strong>—sveit",
+  "thyding": "<strong>Lax:</strong> fiskurinn sem syndir upp árnar til að hrygna (sbr. <em>bass</em>).<br><strong>Sveit:</strong> herflokkur, eins og í <em>hersveit</em>, íslenska orðinu yfir rómverska <em>legio</em> (sbr. <em>legion</em>). Basculegion klæðist sálum félaga sem komust ekki upp ána og syndir án þess að þreytast.",
   "drog": false
  },
  {
@@ -4752,9 +4922,9 @@
   "numer": 908,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Brellumjási",
-  "uppruni": "<strong>Brellu</strong>—mjá—si",
-  "thyding": "<strong>Brella:</strong> bragð, sjónhverfing (sbr. tegundarheitið <em>Magician Pokémon</em>). <strong>Mjá</strong> +<br><strong>-si:</strong> kötturinn. Meowscarada lætur blóm birtast og springa eins og töfrabragð; enska nafnið er <em>meow</em> + spænska <em>mascarada</em>, grímuball.",
+  "nafn": "Blómblöff",
+  "uppruni": "<strong>Blóm</strong>—blöff",
+  "thyding": "Blöff er plat eða blekking. Hér er það saklaus galdrasýning: blómið virðist svífa, því gljáandi feldurinn felur stöngulinn.",
   "drog": false
  },
  {
@@ -4779,9 +4949,9 @@
   "numer": 911,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Bálkjálki",
-  "uppruni": "<strong>bál</strong>—kjálki",
-  "thyding": "Bál er mikill eldur og kjálki er beinið sem ber tennurnar. Logar umlykja kjálka krókódílsins; bál og kjálki kveða hvort við annað.",
+  "nafn": "Hrævareldur",
+  "uppruni": "<strong>Hræva</strong>—eldur",
+  "thyding": "<strong>Hrævareldur:</strong> blár, flöktandi bjarmi sem sést yfir mýrum og var í þjóðtrú talinn draugaljós (sbr. <em>will-o'-the-wisp</em>); raunverulegt orð. Í því felst <strong>eldur</strong>, og ættin endar í eldi: Brísingur → Logakollur → Hrævareldur. Skeledirge er eld- og draugategund; söngur hans róar sálir allra sem heyra.",
   "drog": false
  },
  {
@@ -4878,10 +5048,10 @@
   "numer": 922,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Neistalappi",
-  "uppruni": "<strong>Neista</strong>—lappi",
-  "thyding": "<strong>Neisti:</strong> lítill rafneisti; Pawmo hleypir rafmagni úr loppunum.<br><strong>Lappi:</strong> af <em>löpp</em>, fótur (og gælunafn á hundi).<br><strong>Fjölskylda:</strong> Stuðloppa (#921) → Neistalappi → Stuðmundur (#923).",
-  "drog": true
+  "nafn": "Þófaskellur",
+  "uppruni": "<strong>Þófa</strong>—skellur",
+  "thyding": "Þófi er púði undir loppu og skellur er snöggt högg eða hljóð. Þessi mjúki þófi kemur á óvart: hann slær og losar rafmagn samtímis.",
+  "drog": false
  },
  {
   "numer": 923,
@@ -4950,10 +5120,10 @@
   "numer": 930,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Ólífdís",
-  "uppruni": "<strong>Ólíf</strong>—dís",
-  "thyding": "<strong>Ólífa.</strong><br><strong>Dís:</strong> kvenkyns vættur eða gyðja (sbr. <em>dīva</em>). Arboliva er rólegt ólífutré sem gefur öðrum næringu.",
-  "drog": false
+  "nafn": "Viðdís",
+  "uppruni": "<strong>Við(smjör)</strong>—dís",
+  "thyding": "<strong>Viðsmjör:</strong> gamla íslenska orðið yfir ólífuolíu, bókstaflega „smjör úr tré“ (viður + smjör); ólífur hétu viðsmjörsber (sbr. <em>arbor</em>, tré, og <em>oliva</em>, ólífa).<br><strong>Dís:</strong> gyðja eða tignarleg kona (sbr. latneska <em>dīva</em>, gyðja). Arboliva er eins og lítið ólífutré með ólífur á greinunum.<br><strong>Fjölskylda:</strong> Ólífill (#928) → Ólífrún (#929) → Viðdís.",
+  "drog": true
  },
  {
   "numer": 931,
@@ -4977,9 +5147,9 @@
   "numer": 933,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Salthlaði",
-  "uppruni": "<strong>Salt</strong>—hlaði",
-  "thyding": "<strong>Salt.</strong><br><strong>Hlaði:</strong> stafli, hleðsla (sbr. <em>stack</em>). Naclstack er hlaðinn úr saltkubbum eins og pýramídi.",
+  "nafn": "Steinsalt",
+  "uppruni": "<strong>Stein</strong>—salt",
+  "thyding": "<strong>Steinsalt:</strong> salt sem finnst í jörðu sem steinn; raunverulegt orð og nákvæm þýðing á tegundarheitinu <em>Rock Salt Pokémon</em> (þýska <em>Steinsalz</em>). Naclstack þjappar steinsalti saman í búknum.",
   "drog": false
  },
  {
@@ -5148,9 +5318,9 @@
   "numer": 952,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Kryddþrjótur",
-  "uppruni": "<strong>krydd</strong>—þrjótur",
-  "thyding": "Krydd bragðbætir mat og þrjótur er óþekk sögupersóna; sterkir piparhausarnir hafa mikið skap.",
+  "nafn": "Hitahasar",
+  "uppruni": "<strong>Hita</strong>—hasar",
+  "thyding": "Hasar er mikill fyrirgangur. Tvöfaldur piparhausinn bætir hita í lætin: rauði hausinn blæs eldi og báðir hafa sitt skap.",
   "drog": false
  },
  {
@@ -5607,9 +5777,9 @@
   "numer": 1003,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Pottkollur",
-  "uppruni": "<strong>pottur</strong>—kollur",
-  "thyding": "Pottur er ílát og kollur höfuð; stórt ílát situr á höfði hjarðdýrsins.",
+  "nafn": "Ketilelgur",
+  "uppruni": "<strong>Ketil</strong>—elgur",
+  "thyding": "<strong>Ketill:</strong> forn helgiketill (sbr. <em>dǐng</em>).<br><strong>Elgur:</strong> stærsti hjörturinn (sbr. <em>lù</em>); Ting-Lu er þungur og stór eins og elgur, með horn sem líkjast greinum.",
   "drog": false
  },
  {
@@ -5634,9 +5804,9 @@
   "numer": 1006,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Járndís",
-  "uppruni": "<strong>Járn</strong>—dís",
-  "thyding": "<strong>Járn.</strong><br><strong>Dís:</strong> kvenkyns vættur, úr Verndardís (#282). Iron Valiant er framtíðarútgáfa Gardevoir og Gallade í senn.",
+  "nafn": "Snældusverð",
+  "uppruni": "<strong>Snældu</strong>—sverð",
+  "thyding": "Snælda snýst þegar þráður er spunninn. Vélkappinn getur snúið efri hluta líkamans með blöðunum á handleggjunum, svo hann minnir á snældu sem ber sverð.",
   "drog": false
  },
  {
@@ -5769,9 +5939,9 @@
   "numer": 1021,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Þrumuraffi",
-  "uppruni": "<strong>Þruma</strong>—raffi",
-  "thyding": "<strong>Þruma:</strong> Hljóð frá eldingu.<br><strong>Raffi:</strong> Stytting úr útgefnu gíraffaheiti. Langi hálsinn og þrumumátturinn ráða nafni.",
+  "nafn": "Skýkrúna",
+  "uppruni": "<strong>Ský</strong>—krúna",
+  "thyding": "Krúna er skraut sem konungur eða drottning ber á höfði. Skýlíkur makki umlykur höfuð verunnar og sjö hárlokkar mynda aðra krúnu ofan á því. Hún virðist krýnd af storminum sjálfum.",
   "drog": false
  },
  {
@@ -5796,9 +5966,9 @@
   "numer": 1024,
   "kynslod": 9,
   "stada": "nýtt",
-  "nafn": "Gimskjöldur",
-  "uppruni": "<strong>Gim</strong>—skjöldur",
-  "thyding": "<strong>Gim:</strong> úr <em>gimsteinn</em>, dýrmætur, glitrandi steinn (sbr. <em>Terastal</em>, kristallinn).<br><strong>Skjöldur:</strong> fyrri helmingur orðsins <em>skjaldbaka</em>; skel skjaldbökunnar er skjöldurinn hennar. Terapagos er skjaldbaka (sbr. <em>terrapin</em>, <em>galápagos</em>) með skel úr glitrandi kristöllum.",
+  "nafn": "Algersemi",
+  "uppruni": "<strong>Alger</strong>—gersemi",
+  "thyding": "Gersemi er mjög dýrmætur hlutur og alger merkir heill eða fullkominn. Í kristallaskel þessarar goðsagnaveru býr kraftur allra átján gerða. Hér er gersemin alger því ekkert gerðarsvið vantar.",
   "drog": false
  },
  {
