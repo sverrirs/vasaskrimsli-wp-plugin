@@ -3,7 +3,7 @@
  * Plugin Name:       Vasaskrímsli
  * Plugin URI:        https://github.com/sverrirs/vasaskrimsli-wp-plugin
  * Description:       Gagnvirkir hlutar vasaskrimsli.is. Inniheldur Orðsifjafræði: leitanlega töflu yfir uppruna nafna, með ritli og CSV útflutningi.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Sverrir Sigmundarson
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VASASKRIMSLI_VERSION', '1.0.0' );
+define( 'VASASKRIMSLI_VERSION', '1.1.0' );
 define( 'VASASKRIMSLI_FILE', __FILE__ );
 define( 'VASASKRIMSLI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VASASKRIMSLI_URL', plugin_dir_url( __FILE__ ) );

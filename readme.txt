@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,10 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.1.0 =
+* Nýjar Þýðingar fyrir 661 skrímsli í kynslóðum 3 til 9: íslenskur orðsifjauppruni og skemmtilegar staðreyndir. Aðeins skipt um texta sem er enn eins og útgáfa 0.3.0 skrifaði hann; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni.
+* Afrit er tekið fyrir uppfærsluna og hver breytt færsla fær útgáfu í sögunni.
 
 = 1.0.0 =
 * Fyrsta fullbúna útgáfa. Sömu gögn og í 0.3.0 (nýjustu samþykktu nöfnin úr lokalistanum).
