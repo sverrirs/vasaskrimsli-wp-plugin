@@ -17,6 +17,8 @@ namespace Vasaskrimsli\Ordsifjar;
 final class Nofn {
 
 	const FILE   = 'features/ordsifjar/data/nofn-2026.json';
+	/** Data version 4. nofn-2026.json stays as version 3 wrote it: it is the "fyrri" text this file replaces. */
+	const TEXT_FILE = 'features/ordsifjar/data/thyding-2026.json';
 	const FIELDS = array( 'nafn', 'uppruni', 'thyding' );
 
 	/** Note for generations whose names are still being worked on. */
@@ -86,6 +88,42 @@ final class Nofn {
 						'fields' => $fields,
 					);
 				}
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Data version 4: the rewritten Þýðing texts (data/thyding-2026.json, made by migration/thyding.py).
+	 * A row {numer, nafn, fyrri, thyding} replaces the entry's Þýðing only while the entry still has that
+	 * name and still shows exactly the text version 3 wrote (fyrri). Text the owner has edited is kept.
+	 *
+	 * @return array{changes: list<array{id: int, numer: string, fields: array}>, skipped: list<string>}
+	 *         skipped: "999 Gemmérgull" for entries whose Þýðing (or name) the owner had changed.
+	 */
+	public static function plan_texts( array $entries, array $rows ): array {
+		$by_numer = array();
+		foreach ( $entries as $id => $e ) {
+			$by_numer[ (string) $e['numer'] ][] = $id;
+		}
+		$out = array( 'changes' => array(), 'skipped' => array() );
+		foreach ( $rows as $r ) {
+			$new = (string) ( $r['thyding'] ?? '' );
+			if ( '' === Csv::plain( $new ) ) {
+				continue;
+			}
+			foreach ( $by_numer[ (string) $r['numer'] ] ?? array() as $id ) {
+				$e       = $entries[ $id ];
+				$current = Csv::plain( (string) $e['thyding'] );
+				if ( Csv::plain( $new ) === $current ) {
+					continue; // Already done.
+				}
+				if ( Csv::plain( (string) $e['nafn'] ) !== Csv::plain( (string) $r['nafn'] )
+					|| Csv::plain( (string) ( $r['fyrri'] ?? '' ) ) !== $current ) {
+					$out['skipped'][] = $e['numer'] . ' ' . Csv::plain( (string) $e['nafn'] );
+					continue;
+				}
+				$out['changes'][] = array( 'id' => (int) $id, 'numer' => (string) $e['numer'], 'fields' => array( 'thyding' => $new ) );
 			}
 		}
 		return $out;

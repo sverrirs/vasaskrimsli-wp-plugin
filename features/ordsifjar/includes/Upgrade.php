@@ -15,7 +15,7 @@ final class Upgrade {
 
 	const OPTION  = 'vs_ordsifjar_data_version';
 	const LOCK    = 'vs_ordsifjar_upgrade_lock';
-	const VERSION = 3;
+	const VERSION = 4;
 
 	/** Generations 5-9 headings. Gen 4 already comes from the original page. */
 	const NEW_GENERATIONS = array(
@@ -59,6 +59,13 @@ final class Upgrade {
 			$n       = count( $r['nofn_sleppt'] );
 			$parts[] = sprintf( '%d %s í 2. og 3. kynslóð var ekki breytt því %s hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'nafni' : 'nöfnum', self::one( $n ) ? 'því' : 'þeim', implode( '; ', $r['nofn_sleppt'] ) );
 		}
+		if ( ! empty( $r['texti_breytt'] ) ) {
+			$parts[] = sprintf( 'ný Þýðing í %d færslum', $r['texti_breytt'] );
+		}
+		if ( ! empty( $r['texti_sleppt'] ) ) {
+			$n       = count( $r['texti_sleppt'] );
+			$parts[] = sprintf( 'Þýðingu %d %s var ekki breytt því henni hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'færslu' : 'færslna', implode( '; ', $r['texti_sleppt'] ) );
+		}
 		if ( ! empty( $r['vinnsla'] ) ) {
 			$parts[] = sprintf( '%d kynslóðir merktar „í vinnslu“', $r['vinnsla'] );
 		}
@@ -96,13 +103,13 @@ final class Upgrade {
 
 	/**
 	 * @param int $from The data version the site has now; only newer steps run. 1 on a new install.
-	 * @return array{backup: string|null, dashes: int, added: int, kynslodir: int, nofn_fyllt: int, nofn_drog: int, nofn_breytt: int, nofn_sleppt: list<string>, vinnsla: int}
+	 * @return array{backup: string|null, dashes: int, added: int, kynslodir: int, nofn_fyllt: int, nofn_drog: int, nofn_breytt: int, nofn_sleppt: list<string>, vinnsla: int, texti_breytt: int, texti_sleppt: list<string>}
 	 */
 	public static function run( int $from = 1 ): array {
 		if ( function_exists( 'set_time_limit' ) ) {
 			@set_time_limit( 300 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors -- not allowed on some hosts.
 		}
-		$report = array( 'backup' => null, 'dashes' => 0, 'added' => 0, 'kynslodir' => 0, 'nofn_fyllt' => 0, 'nofn_drog' => 0, 'nofn_breytt' => 0, 'nofn_sleppt' => array(), 'vinnsla' => 0 );
+		$report = array( 'backup' => null, 'dashes' => 0, 'added' => 0, 'kynslodir' => 0, 'nofn_fyllt' => 0, 'nofn_drog' => 0, 'nofn_breytt' => 0, 'nofn_sleppt' => array(), 'vinnsla' => 0, 'texti_breytt' => 0, 'texti_sleppt' => array() );
 		if ( $from >= self::VERSION ) {
 			return $report; // Already up to date (e.g. the plugin was re-activated).
 		}
@@ -119,6 +126,9 @@ final class Upgrade {
 		}
 		if ( $from < 3 ) {
 			self::version_3( $report );
+		}
+		if ( $from < 4 ) {
+			self::version_4( $report );
 		}
 
 		update_option( 'vs_ordsifjar_last_upgrade', $report + array( 'time' => time() ), false );
@@ -197,6 +207,18 @@ final class Upgrade {
 			Store::save_kynslodir( $marked['kynslodir'] );
 		}
 		$report['vinnsla'] = $marked['notes'];
+	}
+
+	/** Data version 4: rewritten Þýðing texts, only where the entry still shows what version 3 wrote. */
+	private static function version_4( array &$report ): void {
+		$rows = json_decode( (string) file_get_contents( VASASKRIMSLI_DIR . Nofn::TEXT_FILE ), true );
+		$plan = Nofn::plan_texts( Store::all(), is_array( $rows ) ? $rows : array() );
+		foreach ( $plan['changes'] as $c ) {
+			if ( ! is_wp_error( Store::save( $c['fields'], $c['id'] ) ) ) {
+				++$report['texti_breytt'];
+			}
+		}
+		$report['texti_sleppt'] = $plan['skipped'];
 	}
 
 	/** Every Númer used by an entry, including drafts and the trash, so deleted ones are not re-added. */

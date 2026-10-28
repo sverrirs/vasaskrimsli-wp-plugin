@@ -231,5 +231,42 @@ foreach ( $rows as $r ) {
 $got = array_count_values( array_column( $plan['changes'], 'stada' ) ) + array( 'nýtt' => 0, 'breytt' => 0 );
 check( 'new install: every decided name applies, none skipped', array( $got['nýtt'], $got['breytt'], $plan['skipped'] ), array( $want['nýtt'], $want['breytt'], array() ) );
 
+// --- data version 4: rewritten Þýðing texts replace only what version 3 wrote
+$v3    = array(
+	1 => entry( array( 'id' => 1, 'numer' => '999', 'nafn' => 'Gemmérgull', 'thyding' => '<strong>Gemmér:</strong> gamalt.' ) ),
+	2 => entry( array( 'id' => 2, 'numer' => '986', 'nafn' => 'Berserkur', 'thyding' => 'Eigandinn skrifaði þetta sjálfur.' ) ),
+	3 => entry( array( 'id' => 3, 'numer' => '987', 'nafn' => 'Annað nafn', 'thyding' => 'gamalt 987' ) ),
+	4 => entry( array( 'id' => 4, 'numer' => '988', 'nafn' => 'Nýtt', 'thyding' => '<em>nýtt</em> 988' ) ),
+);
+$trows = array(
+	array( 'numer' => 999, 'nafn' => 'Gemmérgull', 'fyrri' => '<strong>Gemmér:</strong>  gamalt.', 'thyding' => '<strong>Gemmér:</strong> nýtt.' ),
+	array( 'numer' => 986, 'nafn' => 'Berserkur', 'fyrri' => 'gamalt 986', 'thyding' => 'nýtt 986' ),
+	array( 'numer' => 987, 'nafn' => 'Rétt nafn', 'fyrri' => 'gamalt 987', 'thyding' => 'nýtt 987' ),
+	array( 'numer' => 988, 'nafn' => 'Nýtt', 'fyrri' => 'gamalt 988', 'thyding' => 'nýtt 988' ),
+);
+$tp    = Nofn::plan_texts( $v3, $trows );
+check( 'texts: replaced only where the site still shows the version 3 text (whitespace and tags ignored)', array_column( $tp['changes'], 'id' ), array( 1 ) );
+check( 'texts: the new text is what is saved, nothing else', $tp['changes'][0]['fields'] ?? null, array( 'thyding' => '<strong>Gemmér:</strong> nýtt.' ) );
+check( 'texts: owner-edited text and renamed entries are reported, already-new text is silent', $tp['skipped'], array( '986 Berserkur', '987 Annað nafn' ) );
+$v3[1]['thyding'] = $tp['changes'][0]['fields']['thyding'];
+check( 'texts: running again changes nothing', Nofn::plan_texts( $v3, $trows ), array( 'changes' => array(), 'skipped' => array( '986 Berserkur', '987 Annað nafn' ) ) );
+
+$tfile = __DIR__ . '/../features/ordsifjar/data/thyding-2026.json';
+if ( file_exists( $tfile ) ) {
+	foreach ( $plan['changes'] as $c ) {
+		$install[ $c['id'] ] = $c['fields'] + $install[ $c['id'] ];
+	}
+	$texts = json_decode( file_get_contents( $tfile ), true );
+	$tp    = Nofn::plan_texts( $install, $texts );
+	check( 'thyding-2026.json on a new install after version 3: every text applies, none skipped', array( count( $tp['changes'] ), $tp['skipped'] ), array( count( $texts ), array() ) );
+	$bad = array();
+	foreach ( $texts as $r ) {
+		if ( preg_match( '#</?(?!(?:strong|em|br|sup|sub|a)[\s>/])\w#i', $r['thyding'] ) || '' === Csv::plain( $r['thyding'] ) ) {
+			$bad[] = $r['numer'];
+		}
+	}
+	check( 'thyding-2026.json: allowed tags only, no empty text', $bad, array() );
+}
+
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );
