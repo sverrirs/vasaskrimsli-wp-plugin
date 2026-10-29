@@ -30,6 +30,8 @@ Ordsifjar\Upgrade::register();
 register_activation_hook( VASASKRIMSLI_FILE, static function () {
 	Ordsifjar\Store::register();
 	Ordsifjar\Import::seed();
-	Ordsifjar\Upgrade::run( (int) get_option( Ordsifjar\Upgrade::OPTION, 1 ) );
-	update_option( Ordsifjar\Upgrade::OPTION, Ordsifjar\Upgrade::VERSION, false );
+	$report = Ordsifjar\Upgrade::run( (int) get_option( Ordsifjar\Upgrade::OPTION, 1 ) );
+	if ( empty( $report['missing'] ) ) {
+		update_option( Ordsifjar\Upgrade::OPTION, Ordsifjar\Upgrade::VERSION, false );
+	}
 } );

@@ -1,0 +1,24 @@
+[
+ {
+  "numer": 751,
+  "fyrri": {
+   "thyding": "<strong>Bóla:</strong> Vatnsbólan á höfði verunnar.<br><strong>-ló:</strong> Endinn úr kónguló; kóngu- dettur burt.<br><strong>Náttúra:</strong> Til er kónguló sem býr undir vatni í loftbólu sem hún heldur fastri með vef sínum.<br><strong>Fjölskylda:</strong> Bóluló → Kafló (#752)."
+  },
+  "nytt": {
+   "thyding": "<strong>Bóla:</strong> Vatnsbólan á höfði verunnar.<br><strong>-ló:</strong> Endinn úr kónguló; kóngu- dettur burt.<br><strong>Náttúra:</strong> Til er kónguló sem býr undir vatni í loftbólu sem hún heldur fastri með vef sínum.<br><strong>Fjölskylda:</strong> Bóluló → Kafekkja (#752)."
+  }
+ },
+ {
+  "numer": 752,
+  "fyrri": {
+   "nafn": "Kafló",
+   "uppruni": "<strong>Kaf</strong>—ló",
+   "thyding": "<strong>Kafa:</strong> Að synda í kafi.<br><strong>-ló:</strong> Úr kónguló. Kafló ber vatnsbólu um höfuðið eins og kafarahjálm og tekur veikburða verur í skjól inni í henni.<br><strong>Íslenska:</strong> Að vera í kafi er að vera undir vatni, og að vera á kafi í einhverju er að vera mjög upptekinn af því.<br><strong>Fjölskylda:</strong> Bóluló (#751) → Kafló."
+  },
+  "nytt": {
+   "nafn": "Kafekkja",
+   "uppruni": "<strong>Kaf</strong>—ekkja",
+   "thyding": "<strong>Kafa:</strong> Að synda í kafi.<br><strong>-ekkja:</strong> Úr heiti kóngulóarinnar svörtu ekkjunnar. Kafekkja ber vatnsbólu um höfuðið eins og kafarahjálm og tekur veikburða verur í skjól inni í henni.<br><strong>Íslenska:</strong> Að vera í kafi er að vera undir vatni, og að vera á kafi í einhverju er að vera mjög upptekinn af því.<br><strong>Fjölskylda:</strong> Bóluló (#751) → Kafekkja."
+  }
+ }
+]

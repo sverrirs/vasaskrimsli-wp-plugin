@@ -268,5 +268,44 @@ if ( file_exists( $tfile ) ) {
 	check( 'thyding-2026.json: allowed tags only, no empty text', $bad, array() );
 }
 
+// --- data version 5 and up: later decisions change a field only where the site still shows the released text
+$v4    = array(
+	1 => entry( array( 'id' => 1, 'numer' => '752', 'nafn' => 'Kafló', 'uppruni' => '<strong>Kaf</strong>—ló', 'thyding' => 'gamalt 752' ) ),
+	2 => entry( array( 'id' => 2, 'numer' => '751', 'nafn' => 'Bóluló', 'thyding' => 'Eigandinn skrifaði þetta sjálfur.' ) ),
+	3 => entry( array( 'id' => 3, 'numer' => '750', 'nafn' => 'Mitt nafn', 'thyding' => 'gamalt 750' ) ),
+);
+$crows = array(
+	array( 'numer' => 752, 'fyrri' => array( 'nafn' => 'Kafló', 'uppruni' => '<strong>Kaf</strong>—ló', 'thyding' => 'gamalt  752' ), 'nytt' => array( 'nafn' => 'Kafekkja', 'uppruni' => '<strong>Kaf</strong>—ekkja', 'thyding' => 'nýtt 752' ) ),
+	array( 'numer' => 751, 'fyrri' => array( 'thyding' => 'gamalt 751' ), 'nytt' => array( 'thyding' => 'nýtt 751' ) ),
+	array( 'numer' => 750, 'fyrri' => array( 'nafn' => 'Gamla', 'thyding' => 'gamalt 750' ), 'nytt' => array( 'nafn' => 'Nýja', 'thyding' => 'nýtt 750' ) ),
+);
+$cp    = Nofn::plan_changes( $v4, $crows );
+check( 'changes: every field still as released is replaced (whitespace ignored)', $cp['changes'][0] ?? null, array( 'id' => 1, 'numer' => '752', 'fields' => array( 'nafn' => 'Kafekkja', 'uppruni' => '<strong>Kaf</strong>—ekkja', 'thyding' => 'nýtt 752' ) ) );
+check( 'changes: each field on its own; an owner-edited field is kept and reported', array( array_column( $cp['changes'], 'fields', 'numer' )['750'] ?? null, $cp['skipped'] ), array( array( 'thyding' => 'nýtt 750' ), array( '751 Bóluló (Þýðing)', '750 Mitt nafn (Nafn)' ) ) );
+foreach ( $cp['changes'] as $c ) {
+	$v4[ $c['id'] ] = $c['fields'] + $v4[ $c['id'] ];
+}
+check( 'changes: running again changes nothing', Nofn::plan_changes( $v4, $crows ), array( 'changes' => array(), 'skipped' => array( '751 Bóluló (Þýðing)', '750 Mitt nafn (Nafn)' ) ) );
+
+// Every released breytingar-N.json applies in full to a site that has versions 3 and 4 (and earlier N).
+if ( file_exists( $tfile ) ) {
+	foreach ( $tp['changes'] as $c ) {
+		$install[ $c['id'] ] = $c['fields'] + $install[ $c['id'] ];
+	}
+	for ( $v = 5; file_exists( $cfile = __DIR__ . '/../features/ordsifjar/data/breytingar-' . $v . '.json' ); $v++ ) {
+		$crows = json_decode( file_get_contents( $cfile ), true );
+		$cp    = Nofn::plan_changes( $install, $crows );
+		$want  = 0;
+		foreach ( $crows as $r ) {
+			$want += count( $r['nytt'] );
+		}
+		check( "breytingar-{$v}.json after the earlier versions: every field applies, none skipped", array( array_sum( array_map( 'count', array_column( $cp['changes'], 'fields' ) ) ), $cp['skipped'] ), array( $want, array() ) );
+		foreach ( $cp['changes'] as $c ) {
+			$install[ $c['id'] ] = $c['fields'] + $install[ $c['id'] ];
+		}
+	}
+	check( 'breytingar-5.json exists and #752 is Kafekkja after all versions', Csv::plain( current( array_filter( $install, static fn( $e ) => '752' === (string) $e['numer'] ) )['nafn'] ?? '' ), 'Kafekkja' );
+}
+
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );

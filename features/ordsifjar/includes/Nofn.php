@@ -129,6 +129,55 @@ final class Nofn {
 		return $out;
 	}
 
+	/** Data version N >= 5: later decisions (data/breytingar-N.json, made by migration/breytingar.py). */
+	public static function changes_file( int $version ): string {
+		return "features/ordsifjar/data/breytingar-{$version}.json";
+	}
+
+	/**
+	 * A row {numer, fyrri: {field: html}, nytt: {field: html}} changes each field on its own, only while the
+	 * entry still shows exactly fyrri (the released text). A field the owner has edited is kept.
+	 *
+	 * @return array{changes: list<array{id: int, numer: string, fields: array}>, skipped: list<string>}
+	 *         skipped: "752 Mitt nafn (Nafn, Þýðing)" for entries with fields the owner had changed.
+	 */
+	public static function plan_changes( array $entries, array $rows ): array {
+		$labels   = array( 'nafn' => 'Nafn', 'uppruni' => 'Upprunaorð', 'thyding' => 'Þýðing' );
+		$by_numer = array();
+		foreach ( $entries as $id => $e ) {
+			$by_numer[ (string) $e['numer'] ][] = $id;
+		}
+		$out = array( 'changes' => array(), 'skipped' => array() );
+		foreach ( $rows as $r ) {
+			foreach ( $by_numer[ (string) $r['numer'] ] ?? array() as $id ) {
+				$e      = $entries[ $id ];
+				$fields = array();
+				$kept   = array();
+				foreach ( (array) ( $r['nytt'] ?? array() ) as $f => $new ) {
+					if ( ! isset( $labels[ $f ] ) || '' === Csv::plain( (string) $new ) ) {
+						continue;
+					}
+					$current = Csv::plain( (string) $e[ $f ] );
+					if ( Csv::plain( (string) $new ) === $current ) {
+						continue; // Already done.
+					}
+					if ( Csv::plain( (string) ( $r['fyrri'][ $f ] ?? '' ) ) !== $current ) {
+						$kept[] = $labels[ $f ];
+						continue;
+					}
+					$fields[ $f ] = (string) $new;
+				}
+				if ( $kept ) {
+					$out['skipped'][] = $e['numer'] . ' ' . Csv::plain( (string) $e['nafn'] ) . ' (' . implode( ', ', $kept ) . ')';
+				}
+				if ( $fields ) {
+					$out['changes'][] = array( 'id' => (int) $id, 'numer' => (string) $e['numer'], 'fields' => $fields );
+				}
+			}
+		}
+		return $out;
+	}
+
 	/**
 	 * Marks generations 3 to 9 as in progress: NOTE where the note is empty, and " (í vinnslu)" on the
 	 * gen 3 heading unless it already says "vinnslu" or "óstaðfest". A note the owner wrote is kept.

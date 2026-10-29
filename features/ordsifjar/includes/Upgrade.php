@@ -15,7 +15,7 @@ final class Upgrade {
 
 	const OPTION  = 'vs_ordsifjar_data_version';
 	const LOCK    = 'vs_ordsifjar_upgrade_lock';
-	const VERSION = 4;
+	const VERSION = 5;
 
 	/** Generations 5-9 headings. Gen 4 already comes from the original page. */
 	const NEW_GENERATIONS = array(
@@ -66,6 +66,13 @@ final class Upgrade {
 			$n       = count( $r['texti_sleppt'] );
 			$parts[] = sprintf( 'Þýðingu %d %s var ekki breytt því henni hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'færslu' : 'færslna', implode( '; ', $r['texti_sleppt'] ) );
 		}
+		if ( ! empty( $r['breytt'] ) ) {
+			$parts[] = sprintf( '%d %s breytt eftir nýjustu ákvörðunum', $r['breytt'], self::one( $r['breytt'] ) ? 'færslu' : 'færslum' );
+		}
+		if ( ! empty( $r['breytt_sleppt'] ) ) {
+			$n       = count( $r['breytt_sleppt'] );
+			$parts[] = sprintf( '%d %s var ekki breytt þar sem texta hafði þegar verið breytt hér (%s)', $n, self::one( $n ) ? 'færslu' : 'færslum', implode( '; ', $r['breytt_sleppt'] ) );
+		}
 		if ( ! empty( $r['vinnsla'] ) ) {
 			$parts[] = sprintf( '%d kynslóðir merktar „í vinnslu“', $r['vinnsla'] );
 		}
@@ -94,8 +101,10 @@ final class Upgrade {
 			update_option( self::LOCK, time(), false ); // A run that died; take over.
 		}
 		try {
-			self::run( (int) get_option( self::OPTION, 1 ) );
-			update_option( self::OPTION, self::VERSION, false );
+			$report = self::run( (int) get_option( self::OPTION, 1 ) );
+			if ( empty( $report['missing'] ) ) {
+				update_option( self::OPTION, self::VERSION, false );
+			}
 		} finally {
 			delete_option( self::LOCK );
 		}
@@ -103,15 +112,25 @@ final class Upgrade {
 
 	/**
 	 * @param int $from The data version the site has now; only newer steps run. 1 on a new install.
-	 * @return array{backup: string|null, dashes: int, added: int, kynslodir: int, nofn_fyllt: int, nofn_drog: int, nofn_breytt: int, nofn_sleppt: list<string>, vinnsla: int, texti_breytt: int, texti_sleppt: list<string>}
+	 * @return array{backup: string|null, dashes: int, added: int, kynslodir: int, nofn_fyllt: int, nofn_drog: int, nofn_breytt: int, nofn_sleppt: list<string>, vinnsla: int, texti_breytt: int, texti_sleppt: list<string>, breytt: int, breytt_sleppt: list<string>, missing?: list<string>}
 	 */
 	public static function run( int $from = 1 ): array {
 		if ( function_exists( 'set_time_limit' ) ) {
 			@set_time_limit( 300 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors -- not allowed on some hosts.
 		}
-		$report = array( 'backup' => null, 'dashes' => 0, 'added' => 0, 'kynslodir' => 0, 'nofn_fyllt' => 0, 'nofn_drog' => 0, 'nofn_breytt' => 0, 'nofn_sleppt' => array(), 'vinnsla' => 0, 'texti_breytt' => 0, 'texti_sleppt' => array() );
+		$report = array( 'backup' => null, 'dashes' => 0, 'added' => 0, 'kynslodir' => 0, 'nofn_fyllt' => 0, 'nofn_drog' => 0, 'nofn_breytt' => 0, 'nofn_sleppt' => array(), 'vinnsla' => 0, 'texti_breytt' => 0, 'texti_sleppt' => array(), 'breytt' => 0, 'breytt_sleppt' => array() );
 		if ( $from >= self::VERSION ) {
 			return $report; // Already up to date (e.g. the plugin was re-activated).
+		}
+		// A data file missing from the upload would make its step do nothing; stop and retry on the next update.
+		$missing = array();
+		for ( $v = max( 5, $from + 1 ); $v <= self::VERSION; $v++ ) {
+			if ( ! is_readable( VASASKRIMSLI_DIR . Nofn::changes_file( $v ) ) ) {
+				$missing[] = Nofn::changes_file( $v );
+			}
+		}
+		if ( $missing ) {
+			return $report + array( 'missing' => $missing );
 		}
 		if ( Store::all() ) {
 			$backup           = Import::backup();
@@ -129,6 +148,9 @@ final class Upgrade {
 		}
 		if ( $from < 4 ) {
 			self::version_4( $report );
+		}
+		for ( $v = max( 5, $from + 1 ); $v <= self::VERSION; $v++ ) {
+			self::later_version( $v, $report );
 		}
 
 		update_option( 'vs_ordsifjar_last_upgrade', $report + array( 'time' => time() ), false );
@@ -219,6 +241,18 @@ final class Upgrade {
 			}
 		}
 		$report['texti_sleppt'] = $plan['skipped'];
+	}
+
+	/** Data version 5 and up: later decisions, a field changed only where the site still shows the released text. */
+	private static function later_version( int $version, array &$report ): void {
+		$rows = json_decode( (string) file_get_contents( VASASKRIMSLI_DIR . Nofn::changes_file( $version ) ), true );
+		$plan = Nofn::plan_changes( Store::all(), is_array( $rows ) ? $rows : array() );
+		foreach ( $plan['changes'] as $c ) {
+			if ( ! is_wp_error( Store::save( $c['fields'], $c['id'] ) ) ) {
+				++$report['breytt'];
+			}
+		}
+		$report['breytt_sleppt'] = array_merge( $report['breytt_sleppt'], $plan['skipped'] );
 	}
 
 	/** Every Númer used by an entry, including drafts and the trash, so deleted ones are not re-added. */
