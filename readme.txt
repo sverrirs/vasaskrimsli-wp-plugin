@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.3.0 =
+* #875 heitir nú Klakagæs (áður Klakageir), með nýjum upprunaorðum og Þýðingu: geirfuglinn var ekki mörgæs. Aðeins skipt um texta sem er enn eins og fyrri útgáfa skrifaði hann; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni.
 
 = 1.2.0 =
 * #752 heitir nú Kafekkja (áður Kafló), með nýjum upprunaorðum og Þýðingu; Þýðing #751 Bóluló uppfærð. Aðeins skipt um texta sem er enn eins og fyrri útgáfa skrifaði hann; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni.

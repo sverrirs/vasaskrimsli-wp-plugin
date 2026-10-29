@@ -15,7 +15,7 @@ final class Upgrade {
 
 	const OPTION  = 'vs_ordsifjar_data_version';
 	const LOCK    = 'vs_ordsifjar_upgrade_lock';
-	const VERSION = 5;
+	const VERSION = 6;
 
 	/** Generations 5-9 headings. Gen 4 already comes from the original page. */
 	const NEW_GENERATIONS = array(
