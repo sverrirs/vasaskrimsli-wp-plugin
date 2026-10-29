@@ -52,7 +52,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 		() =>
 			data.entries.map( ( e ) => ( {
 				...e,
-				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.enska, e.athugasemdir, ...( e.flokkar ?? [] ) ].map( htmlToText ).join( ' ' ) ),
+				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.enska, e.athugasemdir, e.serstakt, ...( e.flokkar ?? [] ) ].map( htmlToText ).join( ' ' ) ),
 			} ) ),
 		[ data ]
 	);
@@ -184,6 +184,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 												</td>
 												<td data-label="Nafn" className="vs-of__name">
 													<Html html={ e.nafn } />
+													{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
 													{ e.flokkar?.length > 0 && (
 														<span className="vs-of__tags">
 															{ e.flokkar.map( ( f ) => (

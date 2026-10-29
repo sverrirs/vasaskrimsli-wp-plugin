@@ -268,6 +268,18 @@ if ( file_exists( $tfile ) ) {
 	check( 'thyding-2026.json: allowed tags only, no empty text', $bad, array() );
 }
 
+// --- special kinds: Tímaflækingar are the Paradox Pokémon
+$tima = array();
+for ( $n = 900; $n <= 1025; $n++ ) {
+	if ( 'Tímaflækingur' === Format::serstakt( (string) $n ) ) {
+		$tima[] = $n;
+	}
+}
+check( 'Tímaflækingar: the 20 Paradox Pokémon', $tima, array_merge( range( 984, 995 ), range( 1005, 1010 ), range( 1020, 1023 ) ) );
+check( 'serstakt: a form number counts as its base number', Format::serstakt( '1007a' ), 'Tímaflækingur' );
+check( 'serstakt: ordinary entry has none', Format::serstakt( '1' ), '' );
+check( 'serstakt: placeholder number has none', Format::serstakt( '–' ), '' );
+
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text
 $v4    = array(
 	1 => entry( array( 'id' => 1, 'numer' => '752', 'nafn' => 'Kafló', 'uppruni' => '<strong>Kaf</strong>—ló', 'thyding' => 'gamalt 752' ) ),

@@ -262,6 +262,24 @@
 	cursor: pointer;
 }
 
+/* Special kind of vasaskrímsli (Tímaflækingur): table name cell, grid tile, popup and the no-JS grid. */
+.vs-of-mark {
+	display: inline-block;
+	margin-top: 4px;
+	padding: 1px 8px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--of-ink);
+	background: var(--of-mark);
+	border-radius: 999px;
+	white-space: nowrap;
+}
+
+.vs-of__name .vs-of-mark {
+	display: table;
+}
+
 .vs-of__note {
 	margin-top: 8px;
 	padding-top: 8px;

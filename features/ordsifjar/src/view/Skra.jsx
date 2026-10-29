@@ -64,6 +64,7 @@ export function Grid( { rows, onShow, onHide } ) {
 							<span className="vs-of-tile__num">#{ e.numer }</span>
 							<span className="vs-of-tile__name">{ icelandic ? nafn : enska }</span>
 							{ icelandic && enska && <span className="vs-of-tile__en">{ enska }</span> }
+							{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
 						</button>
 					</li>
 				);

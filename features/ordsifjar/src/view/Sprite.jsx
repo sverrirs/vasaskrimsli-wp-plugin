@@ -86,6 +86,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 				<span className="vs-of-tip__num">#{ entry.numer }</span> { nafn && nafn !== '–' ? nafn : enska }
 			</p>
 			{ nafn && nafn !== '–' && enska && <p className="vs-of-tip__en">{ enska }</p> }
+			{ entry.serstakt && <p><span className="vs-of-mark">{ entry.serstakt }</span></p> }
 			{ detail && has( entry.uppruni ) && (
 				<p className="vs-of-tip__origin" dangerouslySetInnerHTML={ { __html: entry.uppruni } } />
 			) }

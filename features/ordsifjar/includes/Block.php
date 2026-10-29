@@ -48,6 +48,7 @@ final class Block {
 		$base           = VASASKRIMSLI_URL . 'features/ordsifjar/assets/sprites/';
 		$e['mynd']      = $found ? $base . $n . '.webp' : '';
 		$e['mynd_stor'] = $found ? $base . 'large/' . $n . '.webp' : ''; // Hover tooltip.
+		$e['serstakt']  = Format::serstakt( (string) $e['numer'] );
 		return $e;
 	}
 
@@ -97,7 +98,8 @@ final class Block {
 				$html .= '<tr><td class="vs-of__img">' . ( $e['mynd'] ? '<img src="' . esc_url( $e['mynd'] ) . '" width="48" height="48" alt="" loading="lazy" decoding="async">' : '' ) . '</td>';
 				$html .= '<td class="vs-of__num">' . esc_html( $e['numer'] ) . '</td>';
 				foreach ( $cols as $f => $class ) {
-					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
+					$mark  = 'nafn' === $f ? self::mark_html( $e ) : '';
+					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . $mark . '</td>';
 				}
 				$html .= '</tr>';
 			}
@@ -118,8 +120,13 @@ final class Block {
 			$name  = ( '' !== $nafn && '–' !== $nafn ) ? $nafn : $enska;
 			$html .= '<li>' . ( $e['mynd_stor'] ? '<img src="' . esc_url( $e['mynd_stor'] ) . '" width="112" height="112" alt="" loading="lazy" decoding="async">' : '' )
 				. '<span>#' . esc_html( $e['numer'] ) . '</span><strong>' . esc_html( $name ) . '</strong>'
-				. ( $name !== $enska ? '<span>' . esc_html( $enska ) . '</span>' : '' ) . '</li>';
+				. ( $name !== $enska ? '<span>' . esc_html( $enska ) . '</span>' : '' ) . self::mark_html( $e ) . '</li>';
 		}
 		return $html . '</ul>';
+	}
+
+	/** The marking for a special kind (Tímaflækingur), or ''. */
+	private static function mark_html( array $e ): string {
+		return $e['serstakt'] ? '<span class="vs-of-mark">' . esc_html( $e['serstakt'] ) . '</span>' : '';
 	}
 }

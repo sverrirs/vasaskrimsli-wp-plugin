@@ -29,6 +29,30 @@ final class Format {
 		return implode( '', $parts );
 	}
 
+	/**
+	 * Special kinds of vasaskrímsli, shown as a marking in the Skrímslaskrá and the Orðsifjafræði table.
+	 * Tímaflækingar are the Paradox Pokémon: travellers from the past or the future (Koraidon and Miraidon included).
+	 */
+	const SERSTAKT = array(
+		'Tímaflækingur' => array( array( 984, 995 ), array( 1005, 1010 ), array( 1020, 1023 ) ),
+	);
+
+	/** The special kind of an entry ("Tímaflækingur"), or '' for none. "984a" counts as 984. */
+	public static function serstakt( string $numer ): string {
+		if ( ! preg_match( '/^\d+/', $numer, $m ) ) {
+			return '';
+		}
+		$n = (int) $m[0];
+		foreach ( self::SERSTAKT as $heiti => $bil ) {
+			foreach ( $bil as $b ) {
+				if ( $n >= $b[0] && $n <= $b[1] ) {
+					return $heiti;
+				}
+			}
+		}
+		return '';
+	}
+
 	/** Applies the normalisation that belongs to a field, if any. */
 	public static function field( string $field, string $html ): string {
 		return 'uppruni' === $field ? self::separators( $html ) : $html;
