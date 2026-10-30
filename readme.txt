@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.4.1 =
+* Öll form skrímslis sjást nú í einu, hvert á sínu spjaldi með stórri mynd, við hlið sprettgluggans (á síma tvö í röð undir honum).
 
 = 1.4.0 =
 * Skrímslaskrá: safnið mitt. Smelltu á allt að 20 skrímsli til að safna þeim (smelltu aftur til að taka úr safninu). Safnið er í spjaldi vinstra megin sem rennur út þegar músin fer yfir það, og er geymt í vafranum.

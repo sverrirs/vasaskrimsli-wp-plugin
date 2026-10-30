@@ -4,7 +4,8 @@ import { htmlToText } from '../../../../shared/js/search.js';
 
 const LARGE = 256;
 const GAP = 12;
-const FORMS = 300; // Width of the forms card.
+const FORM = 212; // Width of one form card.
+const FORM_GAP = 8;
 
 /**
  * Thumbnail in the first column. Hover, keyboard focus or a tap shows a larger image in a
@@ -41,7 +42,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const card = useRef( null );
 	const [ height, setHeight ] = useState( LARGE + 76 );
 	const formsCard = useRef( null );
-	const [ formsHeight, setFormsHeight ] = useState( 200 );
+	const [ formsHeight, setFormsHeight ] = useState( 280 );
 
 	useEffect( () => {
 		if ( ! tip ) {
@@ -85,17 +86,30 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const nafn = htmlToText( entry.nafn );
 	const has = ( html ) => html && htmlToText( html ) !== '–';
 	const formir = entry.formir ?? [];
-	// The forms card goes on the far side of the entry card, or on the other side of the anchor when there is no room.
-	let formsLeft = left > rect.left ? left + width + 8 : left - 8 - FORMS;
-	if ( formsLeft + FORMS > window.innerWidth - 8 ) {
-		formsLeft = Math.min( rect.left, left ) - GAP - FORMS;
+	// Every form as its own card, all at once, in the larger free area beside the entry card and the anchor;
+	// below the entry card when neither side has room for one card.
+	const mainLeft = Math.min( left, rect.left );
+	const mainRight = Math.max( left + width, rect.right );
+	const spaceLeft = mainLeft - GAP - 8;
+	const spaceRight = window.innerWidth - 8 - ( mainRight + GAP );
+	const fit = ( space ) => Math.max( 0, Math.min( formir.length, Math.floor( ( space + FORM_GAP ) / ( FORM + FORM_GAP ) ) ) );
+	const cols = Math.max( fit( spaceLeft ), fit( spaceRight ) );
+	// No room beside it (phones): smaller cards, two to a row, under the entry card.
+	const small = Math.min( FORM, Math.floor( ( window.innerWidth - 16 - FORM_GAP ) / 2 ) );
+	const formW = cols ? FORM : small;
+	const formsWidth = cols ? cols * ( FORM + FORM_GAP ) - FORM_GAP : Math.min( formir.length, 2 ) * ( small + FORM_GAP ) - FORM_GAP;
+	let formsLeft;
+	let formsTop;
+	let formsSide = '';
+	if ( cols ) {
+		formsSide = fit( spaceRight ) >= fit( spaceLeft ) ? '' : ' is-left'; // On the left, a short last row sits next to the tile.
+		formsLeft = formsSide ? mainLeft - GAP - formsWidth : mainRight + GAP;
+		formsTop = Math.min( Math.max( 8, rect.top + rect.height / 2 - formsHeight / 2 ), Math.max( 8, window.innerHeight - formsHeight - 8 ) );
+	} else {
+		formsLeft = Math.max( 8, Math.min( window.innerWidth - formsWidth - 8, left ) );
+		formsTop = Math.max( 8, Math.min( top + height + 8, window.innerHeight - formsHeight - 8 ) );
 	}
-	if ( formsLeft < 8 ) {
-		formsLeft = Math.max( 8, Math.min( window.innerWidth - FORMS - 8, left ) );
-	}
-	const formsTop = formsLeft === left || ( formsLeft < left + width && formsLeft + FORMS > left )
-		? Math.min( top + height + 8, Math.max( 8, window.innerHeight - formsHeight - 8 ) ) // Overlaps: below instead.
-		: Math.min( Math.max( 8, top ), Math.max( 8, window.innerHeight - formsHeight - 8 ) );
+	const name = nafn && nafn !== '–' ? nafn : enska;
 
 	return createPortal(
 		<>
@@ -114,16 +128,16 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 			) }
 		</div>
 		{ formir.length > 0 && (
-			<div ref={ formsCard } className="vs-of-tip vs-of-forms" role="tooltip" style={ { left: formsLeft, top: formsTop, width: FORMS } }>
-				<p className="vs-of-forms__title">Önnur form</p>
-				<ul>
-					{ formir.map( ( f ) => (
-						<li key={ f.heiti }>
-							{ f.mynd ? <img src={ f.mynd } width="96" height="96" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
-							<span>{ f.heiti }</span>
-						</li>
-					) ) }
-				</ul>
+			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px` } }>
+				{ formir.map( ( f, i ) => (
+					<div className="vs-of-forms__card" key={ f.heiti }>
+						{ f.mynd ? <img src={ f.mynd } width="180" height="180" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
+						<p className="vs-of-tip__name">{ f.heiti }</p>
+						<p className="vs-of-tip__en">
+							Form { i + 1 } af { formir.length } · #{ entry.numer } { name }
+						</p>
+					</div>
+				) ) }
 			</div>
 		) }
 		</>,
