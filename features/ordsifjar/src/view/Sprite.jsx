@@ -4,6 +4,7 @@ import { htmlToText } from '../../../../shared/js/search.js';
 
 const LARGE = 256;
 const GAP = 12;
+const FORMS = 300; // Width of the forms card.
 
 /**
  * Thumbnail in the first column. Hover, keyboard focus or a tap shows a larger image in a
@@ -39,6 +40,8 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const [ , force ] = useState( 0 );
 	const card = useRef( null );
 	const [ height, setHeight ] = useState( LARGE + 76 );
+	const formsCard = useRef( null );
+	const [ formsHeight, setFormsHeight ] = useState( 200 );
 
 	useEffect( () => {
 		if ( ! tip ) {
@@ -62,6 +65,9 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 		if ( card.current && card.current.offsetHeight !== height ) {
 			setHeight( card.current.offsetHeight );
 		}
+		if ( formsCard.current && formsCard.current.offsetHeight !== formsHeight ) {
+			setFormsHeight( formsCard.current.offsetHeight );
+		}
 	} );
 
 	if ( ! tip ) {
@@ -78,8 +84,21 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const enska = htmlToText( entry.enska );
 	const nafn = htmlToText( entry.nafn );
 	const has = ( html ) => html && htmlToText( html ) !== '–';
+	const formir = entry.formir ?? [];
+	// The forms card goes on the far side of the entry card, or on the other side of the anchor when there is no room.
+	let formsLeft = left > rect.left ? left + width + 8 : left - 8 - FORMS;
+	if ( formsLeft + FORMS > window.innerWidth - 8 ) {
+		formsLeft = Math.min( rect.left, left ) - GAP - FORMS;
+	}
+	if ( formsLeft < 8 ) {
+		formsLeft = Math.max( 8, Math.min( window.innerWidth - FORMS - 8, left ) );
+	}
+	const formsTop = formsLeft === left || ( formsLeft < left + width && formsLeft + FORMS > left )
+		? Math.min( top + height + 8, Math.max( 8, window.innerHeight - formsHeight - 8 ) ) // Overlaps: below instead.
+		: Math.min( Math.max( 8, top ), Math.max( 8, window.innerHeight - formsHeight - 8 ) );
 
 	return createPortal(
+		<>
 		<div ref={ card } className={ 'vs-of-tip' + ( detail ? ' is-detail' : '' ) } role="tooltip" style={ { left, top, width } }>
 			<img src={ entry.mynd_stor || entry.mynd } width={ LARGE } height={ LARGE } alt="" decoding="async" />
 			<p className="vs-of-tip__name">
@@ -93,7 +112,21 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 			{ detail && has( entry.thyding ) && (
 				<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: entry.thyding } } />
 			) }
-		</div>,
+		</div>
+		{ formir.length > 0 && (
+			<div ref={ formsCard } className="vs-of-tip vs-of-forms" role="tooltip" style={ { left: formsLeft, top: formsTop, width: FORMS } }>
+				<p className="vs-of-forms__title">Önnur form</p>
+				<ul>
+					{ formir.map( ( f ) => (
+						<li key={ f.heiti }>
+							{ f.mynd ? <img src={ f.mynd } width="96" height="96" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
+							<span>{ f.heiti }</span>
+						</li>
+					) ) }
+				</ul>
+			</div>
+		) }
+		</>,
 		document.body
 	);
 }

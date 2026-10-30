@@ -2,6 +2,16 @@ import { useCallback, useDeferredValue, useEffect, useMemo, useState } from 'rea
 import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
 import { Grid } from './Skra.jsx';
+import Safn from './Safn.jsx';
+import { load, save, toggle } from './safn.js';
+
+const storage = () => {
+	try {
+		return window.localStorage;
+	} catch {
+		return null;
+	}
+};
 
 const PARAMS = { q: 'leit', gen: 'kynslod', flokkur: 'flokkur' };
 
@@ -41,6 +51,23 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const [ tip, setTip ] = useState( null );
 	const showTip = useCallback( ( entry, rect ) => setTip( { entry, rect } ), [] );
 	const hideTip = useCallback( () => setTip( null ), [] );
+	// The visitor's collection (Skrímslaskrá only): Númer in the order they were added.
+	const [ safn, setSafn ] = useState( () => ( skra ? load( storage() ) : [] ) );
+	const [ full, setFull ] = useState( 0 );
+	const pick = useCallback( ( numer ) => {
+		setSafn( ( list ) => {
+			const r = toggle( list, numer );
+			if ( r.full ) {
+				setFull( Date.now() );
+			}
+			return r.list;
+		} );
+	}, [] );
+	useEffect( () => {
+		if ( skra ) {
+			save( storage(), safn );
+		}
+	}, [ skra, safn ] );
 
 	useEffect( () => {
 		if ( ! skra ) {
@@ -157,7 +184,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					<section className="vs-of__gen" key={ k.kynslod }>
 						<Html as="h3" className="wp-block-heading" id={ k.akkeri || undefined } html={ k.heiti_html } />
 						{ k.skyring_html && <Html as="p" html={ k.skyring_html } /> }
-						{ rows.length > 0 && skra && <Grid rows={ rows } onShow={ showTip } onHide={ hideTip } /> }
+						{ rows.length > 0 && skra && <Grid rows={ rows } onShow={ showTip } onHide={ hideTip } chosen={ safn } onPick={ pick } /> }
 						{ rows.length > 0 && ! skra && (
 							<figure className="wp-block-table vs-of__table">
 								<table>
@@ -215,6 +242,16 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 				);
 			} ) }
 			<SpriteTooltip tip={ tip } onHide={ hideTip } detail={ skra } />
+			{ skra && (
+				<Safn
+					chosen={ safn.map( ( n ) => entries.find( ( e ) => String( e.numer ) === n ) ).filter( Boolean ) }
+					full={ full }
+					onRemove={ pick }
+					onClear={ () => setSafn( [] ) }
+					throunUrl={ data.throun }
+					all={ entries }
+				/>
+			) }
 		</div>
 	);
 }

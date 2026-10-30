@@ -211,6 +211,56 @@
 	color: var(--wp--preset--color--contrast-2, #37505d);
 }
 
+/* Second hover card: the special and regional forms. */
+.vs-of-forms {
+	padding: 12px;
+}
+
+.vs-of-tip .vs-of-forms__title {
+	margin: 0 0 8px;
+	font-weight: 600;
+}
+
+.vs-of-forms ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+	gap: 8px 4px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-of-forms li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0;
+	font-size: 0.8125rem;
+	line-height: 1.2;
+}
+
+.vs-of-tip.vs-of-forms img,
+.vs-of-forms__noimg {
+	display: block;
+	width: 80px;
+	height: 80px;
+	margin: 0 0 4px;
+}
+
+.vs-of-tile__forms {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	padding: 1px 6px;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--of-accent);
+	background: #fff;
+	border: 1px solid var(--of-accent);
+	border-radius: 9px;
+}
+
 @keyframes vs-of-tip-in {
 	from { opacity: 0; transform: translateY(4px); }
 	to { opacity: 1; transform: none; }
@@ -374,7 +424,8 @@
 	background: rgba(255, 255, 255, 0.55);
 	border: 1px solid var(--of-surface-2);
 	border-radius: 6px;
-	cursor: zoom-in;
+	cursor: pointer;
+	position: relative;
 }
 
 .vs-of-tile:hover {
@@ -411,6 +462,225 @@
 	font-size: 0.8125rem;
 	color: var(--of-muted);
 	overflow-wrap: anywhere;
+}
+
+/* In the visitor's collection. */
+.vs-of-tile.is-picked {
+	border-color: var(--of-accent);
+	box-shadow: inset 0 0 0 1px var(--of-accent);
+	background: #fff;
+}
+
+.vs-of-tile__picked {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	display: grid;
+	place-items: center;
+	width: 24px;
+	height: 24px;
+	font-size: 0.875rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	background: var(--of-accent);
+	border-radius: 50%;
+}
+
+/* Collection panel: a tab on the left edge that slides out on hover, focus or a tap. */
+.vs-safn {
+	--safn-w: min(300px, calc(100vw - 56px));
+	position: fixed;
+	top: 50%;
+	left: 0;
+	z-index: 9990;
+	display: flex;
+	flex-direction: row-reverse; /* Tab (first in the markup) on the right edge of the panel. */
+	align-items: center;
+	transform: translate(calc(-1 * var(--safn-w)), -50%);
+	transition: transform 0.22s ease;
+}
+
+.vs-safn:hover,
+.vs-safn:focus-within,
+.vs-safn.is-open {
+	transform: translate(0, -50%);
+}
+
+.vs-safn__body {
+	box-sizing: border-box;
+	width: var(--safn-w);
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 16px;
+	color: var(--of-ink);
+	background: #fff;
+	border: 1px solid var(--of-line);
+	border-left: 0;
+	border-radius: 0 8px 8px 0;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+.vs-safn__tab {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 8px;
+	font: inherit;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: #fff;
+	background: var(--of-accent);
+	border: 0;
+	border-radius: 0 8px 8px 0;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.vs-safn__tab-label {
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+}
+
+.vs-safn__count {
+	display: grid;
+	place-items: center;
+	min-width: 26px;
+	height: 26px;
+	color: var(--of-ink);
+	background: var(--of-mark);
+	border-radius: 13px;
+	font-variant-numeric: tabular-nums;
+}
+
+.vs-safn__title {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	margin: 0 0 8px;
+	font-weight: 700;
+	font-size: 1.125rem;
+}
+
+.vs-safn__title span {
+	font-weight: 400;
+	font-size: 0.875rem;
+	color: var(--of-muted);
+}
+
+.vs-safn__hint,
+.vs-safn__full {
+	margin: 0 0 12px;
+	font-size: 0.875rem;
+	color: var(--of-muted);
+}
+
+.vs-safn__full {
+	padding: 8px 10px;
+	color: var(--of-ink);
+	background: var(--of-mark);
+	border-radius: 6px;
+}
+
+.vs-safn__list {
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-safn__list li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 4px 0;
+	border-bottom: 1px solid var(--of-surface-2);
+}
+
+.vs-safn__list img,
+.vs-safn__noimg {
+	flex: none;
+	width: 40px;
+	height: 40px;
+}
+
+.vs-safn__name {
+	flex: 1;
+	min-width: 0;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.vs-safn__name span {
+	font-weight: 400;
+	font-size: 0.8125rem;
+	color: var(--of-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.vs-safn__remove {
+	flex: none;
+	width: 32px;
+	height: 32px;
+	font-size: 1.25rem;
+	line-height: 1;
+	color: var(--of-muted);
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.vs-safn__remove:hover,
+.vs-safn__remove:focus-visible {
+	color: var(--of-ink);
+	border-color: var(--of-line);
+}
+
+.vs-safn__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.vs-safn__pdf,
+.vs-safn__clear {
+	padding: 10px 14px;
+	font: inherit;
+	font-weight: 600;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.vs-safn__pdf {
+	color: #fff;
+	background: var(--of-accent);
+	border: 1px solid var(--of-accent);
+}
+
+.vs-safn__clear {
+	color: var(--of-ink);
+	background: none;
+	border: 1px solid var(--of-line);
+}
+
+.vs-safn button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vs-safn {
+		transition: none;
+	}
+}
+
+@media print {
+	.vs-safn {
+		display: none;
+	}
 }
 
 /* Popup in the grid: also Upprunaorð and Þýðing. */

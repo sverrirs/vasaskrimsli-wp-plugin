@@ -53,6 +53,26 @@ final class Format {
 		return '';
 	}
 
+	/**
+	 * The special and regional forms of an entry, from data/formir.json (migration/formir.py).
+	 * "26a" counts as 26. A form's picture is assets/sprites/formir/<slug>.webp, '' when $have lacks it.
+	 *
+	 * @param array  $formir Decoded formir.json: national number => list of {s: slug, h: name}.
+	 * @param array  $have   Slugs that have a picture, as keys.
+	 * @return list<array{heiti: string, slug: string}> slug is '' when there is no picture.
+	 */
+	public static function formir( array $formir, array $have, string $numer ): array {
+		if ( ! preg_match( '/^\d+/', $numer, $m ) ) {
+			return array();
+		}
+		$out = array();
+		foreach ( $formir[ (string) (int) $m[0] ] ?? array() as $f ) {
+			$slug  = (string) ( $f['s'] ?? '' );
+			$out[] = array( 'heiti' => (string) ( $f['h'] ?? '' ), 'slug' => isset( $have[ $slug ] ) ? $slug : '' );
+		}
+		return $out;
+	}
+
 	/** Applies the normalisation that belongs to a field, if any. */
 	public static function field( string $field, string $html ): string {
 		return 'uppruni' === $field ? self::separators( $html ) : $html;

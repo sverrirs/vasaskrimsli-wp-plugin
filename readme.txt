@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,11 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.4.0 =
+* Skrímslaskrá: safnið mitt. Smelltu á allt að 20 skrímsli til að safna þeim (smelltu aftur til að taka úr safninu). Safnið er í spjaldi vinstra megin sem rennur út þegar músin fer yfir það, og er geymt í vafranum.
+* Safnið má sækja sem PDF skjal: eitt A6 spjald á hverri síðu, með mynd, nafni, númeri, upprunaorðum, Þýðingu, fróðleik („Vissir þú?“) og þróun með myndum og númerum, á litaskala eftir tegund skrímslisins.
+* Skrímsli með sérstök form eða svæðisbundin form (t.d. Alóla, Galar, Hisui, Paldea og Mega) eru merkt í myndayfirlitinu, og sérstakt spjald sýnir öll formin þegar músin fer yfir skrímslið.
 
 = 1.3.0 =
 * #875 heitir nú Klakagæs (áður Klakageir), með nýjum upprunaorðum og Þýðingu: geirfuglinn var ekki mörgæs. Aðeins skipt um texta sem er enn eins og fyrri útgáfa skrifaði hann; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni.

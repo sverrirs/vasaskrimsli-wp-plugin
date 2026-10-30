@@ -30,8 +30,11 @@ function moveFocus( key, from ) {
 	}
 }
 
-/** One generation's tiles. Hover, focus or a tap shows the entry in the popup. */
-export function Grid( { rows, onShow, onHide } ) {
+/**
+ * One generation's tiles. Hover, focus or a tap shows the entry in the popup; a click (or Enter) also puts
+ * it in the visitor's collection, or takes it out again.
+ */
+export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 	return (
 		<ul className="vs-of-grid">
 			{ rows.map( ( e, i ) => {
@@ -39,16 +42,21 @@ export function Grid( { rows, onShow, onHide } ) {
 				const enska = htmlToText( e.enska );
 				const icelandic = nafn && nafn !== '–';
 				const show = ( ev ) => onShow( e, ev.currentTarget.getBoundingClientRect() );
+				const picked = chosen.includes( String( e.numer ) );
 				return (
 					<li key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
 						<button
 							type="button"
-							className="vs-of-tile"
+							className={ 'vs-of-tile' + ( picked ? ' is-picked' : '' ) }
+							aria-pressed={ picked }
 							onMouseEnter={ show }
 							onMouseLeave={ onHide }
 							onFocus={ show }
 							onBlur={ onHide }
-							onClick={ show }
+							onClick={ ( ev ) => {
+								show( ev );
+								onPick?.( e.numer );
+							} }
 							onKeyDown={ ( ev ) => {
 								if ( [ 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown' ].includes( ev.key ) ) {
 									ev.preventDefault();
@@ -65,6 +73,16 @@ export function Grid( { rows, onShow, onHide } ) {
 							<span className="vs-of-tile__name">{ icelandic ? nafn : enska }</span>
 							{ icelandic && enska && <span className="vs-of-tile__en">{ enska }</span> }
 							{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
+							{ e.formir?.length > 0 && (
+								<span className="vs-of-tile__forms" title={ `${ e.formir.length } önnur form` }>
+									+{ e.formir.length } form
+								</span>
+							) }
+							{ picked && (
+								<span className="vs-of-tile__picked" aria-hidden="true">
+									✓
+								</span>
+							) }
 						</button>
 					</li>
 				);

@@ -280,6 +280,18 @@ check( 'serstakt: a form number counts as its base number', Format::serstakt( '1
 check( 'serstakt: ordinary entry has none', Format::serstakt( '1' ), '' );
 check( 'serstakt: placeholder number has none', Format::serstakt( '–' ), '' );
 
+// --- special and regional forms
+$formir = array( '26' => array( array( 's' => 'raichu-alolan', 'h' => 'Alolan Raichu' ), array( 's' => 'raichu-mega-x', 'h' => 'Mega Raichu X' ) ) );
+$have   = array( 'raichu-alolan' => 0 );
+check( 'formir: forms in order, slug only where there is a picture', Format::formir( $formir, $have, '26' ), array(
+	array( 'heiti' => 'Alolan Raichu', 'slug' => 'raichu-alolan' ),
+	array( 'heiti' => 'Mega Raichu X', 'slug' => '' ),
+) );
+check( 'formir: "26a" counts as 26', count( Format::formir( $formir, $have, '26a' ) ), 2 );
+check( 'formir: none for others and placeholders', array( Format::formir( $formir, $have, '25' ), Format::formir( $formir, $have, '–' ) ), array( array(), array() ) );
+$real = json_decode( (string) file_get_contents( dirname( __DIR__ ) . '/features/ordsifjar/data/formir.json' ), true );
+check( 'formir.json: Raichu has its Alolan form, Bulbasaur has none', array( $real['26'][0]['h'] ?? null, isset( $real['1'] ) ), array( 'Alolan Raichu', false ) );
+
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text
 $v4    = array(
 	1 => entry( array( 'id' => 1, 'numer' => '752', 'nafn' => 'Kafló', 'uppruni' => '<strong>Kaf</strong>—ló', 'thyding' => 'gamalt 752' ) ),

@@ -49,7 +49,31 @@ final class Block {
 		$e['mynd']      = $found ? $base . $n . '.webp' : '';
 		$e['mynd_stor'] = $found ? $base . 'large/' . $n . '.webp' : ''; // Hover tooltip.
 		$e['serstakt']  = Format::serstakt( (string) $e['numer'] );
+		$e['formir']    = array_map( static function ( $f ) use ( $base ) {
+			return array( 'heiti' => $f['heiti'], 'mynd' => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '' );
+		}, Format::formir( self::formir_data(), self::formir_have(), (string) $e['numer'] ) );
 		return $e;
+	}
+
+	/** data/formir.json, read once per request. */
+	private static function formir_data(): array {
+		static $data = null;
+		if ( null === $data ) {
+			$file = VASASKRIMSLI_DIR . 'features/ordsifjar/data/formir.json';
+			$data = is_readable( $file ) ? ( json_decode( (string) file_get_contents( $file ), true ) ?: array() ) : array();
+		}
+		return $data;
+	}
+
+	/** Form slugs that have a picture in assets/sprites/formir/, as keys. */
+	private static function formir_have(): array {
+		static $have = null;
+		if ( null === $have ) {
+			$have = array_flip( array_map( static function ( $f ) {
+				return basename( $f, '.webp' );
+			}, glob( VASASKRIMSLI_DIR . 'features/ordsifjar/assets/sprites/formir/*.webp' ) ?: array() ) );
+		}
+		return $have;
 	}
 
 	public static function render(): string {
@@ -69,6 +93,10 @@ final class Block {
 			}, $entries ),
 			'kynslodir' => $kynslodir,
 		);
+		if ( 'skra' === $syn ) {
+			// Types and evolution chains for the collection's PDF cards, fetched only when one is made.
+			$data['throun'] = VASASKRIMSLI_URL . 'features/ordsifjar/data/throun.json?ver=' . VASASKRIMSLI_VERSION;
+		}
 
 		$by_gen = array();
 		foreach ( $entries as $e ) {
