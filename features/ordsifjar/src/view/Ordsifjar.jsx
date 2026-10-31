@@ -3,7 +3,7 @@ import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
 import { Grid } from './Skra.jsx';
 import Safn from './Safn.jsx';
-import { cycle, load, remove, save, split, variant } from './safn.js';
+import { add, load, remove, save, split, variant } from './safn.js';
 
 const storage = () => {
 	try {
@@ -49,16 +49,18 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const [ flokkur, setFlokkur ] = useState( initial.flokkur );
 	const query = useDeferredValue( q );
 	const [ tip, setTip ] = useState( null );
-	const showTip = useCallback( ( entry, rect ) => setTip( { entry, rect } ), [] );
+	// form: the form shown on the large card ('' the monster itself), on the Skrímslaskrá grid.
+	const showTip = useCallback( ( entry, rect, form = '' ) => setTip( { entry, rect, form } ), [] );
 	const hideTip = useCallback( () => setTip( null ), [] );
 	// The visitor's collection (Skrímslaskrá only): Númer, or Númer:form, in the order they were added.
 	const [ safn, setSafn ] = useState( () => ( skra ? load( storage() ) : [] ) );
-	const [ full, setFull ] = useState( 0 );
+	// A click that added nothing opens the panel for a moment: { why: 'full' | 'all', at }.
+	const [ note, setNote ] = useState( null );
 	const pick = useCallback( ( entry ) => {
 		setSafn( ( list ) => {
-			const r = cycle( list, entry.numer, ( entry.formir ?? [] ).map( ( f ) => f.id ) );
-			if ( r.full ) {
-				setFull( Date.now() );
+			const r = add( list, entry.numer, ( entry.formir ?? [] ).map( ( f ) => f.id ) );
+			if ( r.full || r.all ) {
+				setNote( { why: r.full ? 'full' : 'all', at: Date.now() } );
 			}
 			return r.list;
 		} );
@@ -233,7 +235,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					</section>
 				);
 			} ) }
-			<SpriteTooltip tip={ tip } onHide={ hideTip } detail={ skra } />
+			<SpriteTooltip tip={ tip } onHide={ hideTip } detail={ skra } chosen={ safn } />
 			{ skra && (
 				<Safn
 					chosen={ safn
@@ -244,8 +246,8 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 							return v && { ...v, item };
 						} )
 						.filter( Boolean ) }
-					full={ full }
-					onRemove={ ( numer ) => setSafn( ( list ) => remove( list, numer ) ) }
+					note={ note }
+					onRemove={ ( item ) => setSafn( ( list ) => remove( list, item ) ) }
 					onClear={ () => setSafn( [] ) }
 					throunUrl={ data.throun }
 					all={ entries }

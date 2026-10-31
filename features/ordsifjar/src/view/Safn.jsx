@@ -6,27 +6,27 @@ import { MAX } from './safn.js';
  * The collection panel on the left edge of the Skrímslaskrá page. Collapsed to a tab until the mouse
  * is over it or it has keyboard focus; a tap on the tab opens and closes it on touch screens.
  */
-export default function Safn( { chosen, full, onRemove, onClear, throunUrl, all } ) {
+export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all } ) {
 	const [ open, setOpen ] = useState( false );
 	const [ busy, setBusy ] = useState( null ); // null, or the number of cards drawn so far.
 	const [ error, setError ] = useState( '' );
-	const [ fullNote, setFullNote ] = useState( false );
+	const [ shownNote, setShownNote ] = useState( '' );
 	const busyRef = useRef( false );
 	const root = useRef( null );
 
-	// Show the panel for a moment when a click could not add (it is full).
+	// Show the panel for a moment when a click added nothing: it is full, or the monster and all its forms are in it.
 	useEffect( () => {
-		if ( ! full ) {
+		if ( ! note ) {
 			return undefined;
 		}
 		setOpen( true );
-		setFullNote( true );
+		setShownNote( note.why );
 		const t = setTimeout( () => {
 			setOpen( false );
-			setFullNote( false );
+			setShownNote( '' );
 		}, 3500 );
 		return () => clearTimeout( t );
-	}, [ full ] );
+	}, [ note ] );
 
 	const download = async () => {
 		if ( busyRef.current || ! chosen.length ) {
@@ -66,10 +66,12 @@ export default function Safn( { chosen, full, onRemove, onClear, throunUrl, all 
 				<p className="vs-safn__title">
 					Safnið mitt <span>{ n } af { MAX }</span>
 				</p>
-				{ n === 0 && <p className="vs-safn__hint">Smelltu á skrímsli til að setja það í safnið. Hafi það önnur form velur næsti smellur þau eitt af öðru og síðasti smellurinn tekur það úr safninu.</p> }
-				{ fullNote && (
+				{ n === 0 && <p className="vs-safn__hint">Smelltu á skrímsli til að setja það í safnið. Hafi það önnur form bætir hver smellur næsta formi við. Taktu skrímsli úr safninu með × hér.</p> }
+				{ shownNote && (
 					<p className="vs-safn__full" role="status">
-						Safnið er fullt. Taktu skrímsli úr því til að bæta öðru við.
+						{ shownNote === 'full'
+							? 'Safnið er fullt. Taktu skrímsli úr því til að bæta öðru við.'
+							: 'Skrímslið og öll form þess eru þegar í safninu.' }
 					</p>
 				) }
 				{ n > 0 && (
@@ -83,7 +85,7 @@ export default function Safn( { chosen, full, onRemove, onClear, throunUrl, all 
 									<span className="vs-safn__name">
 										<span>#{ e.numer }</span> { name }
 									</span>
-									<button type="button" className="vs-safn__remove" aria-label={ `Taka ${ name } úr safninu` } onClick={ () => onRemove( e.numer ) }>
+									<button type="button" className="vs-safn__remove" aria-label={ `Taka ${ name } úr safninu` } onClick={ () => onRemove( e.item ) }>
 										×
 									</button>
 								</li>

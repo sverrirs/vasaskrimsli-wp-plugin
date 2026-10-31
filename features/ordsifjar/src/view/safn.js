@@ -1,14 +1,15 @@
 /**
- * The visitor's collection on the Skrímslaskrá page (up to MAX monsters, each as itself or one of its
- * forms, kept in this browser only) and the text helpers for its PDF cards. No DOM here, so it is tested in node (tests/js/safn.test.js).
+ * The visitor's collection on the Skrímslaskrá page (up to MAX cards: monsters and their forms, kept in
+ * this browser only) and the text helpers for its PDF cards. No DOM here, so it is tested in node
+ * (tests/js/safn.test.js).
  */
 
-export const MAX = 20;
+export const MAX = 50;
 export const KEY = 'vasaskrimsli-safn';
 
 /**
  * An item of the list is the monster's Númer ("26"), or Númer and the id of one of its forms
- * ("26:raichu-alolan"). A monster is in the list once, as one of its forms or itself.
+ * ("26:raichu-alolan"). A monster can be in the list several times, once as each of its forms.
  */
 export const itemOf = ( numer, form = '' ) => ( form ? `${ numer }:${ form }` : String( numer ) );
 
@@ -18,31 +19,31 @@ export function split( item ) {
 	return i < 0 ? { numer: item, form: '' } : { numer: item.slice( 0, i ), form: item.slice( i + 1 ) };
 }
 
-/** The list's item for numer, or undefined. */
-export const find = ( list, numer ) => list.find( ( x ) => split( x ).numer === String( numer ) );
+/** The list's items for numer, in list order. */
+export const itemsOf = ( list, numer ) => list.filter( ( x ) => split( x ).numer === String( numer ) );
 
 /**
- * One click on a monster: adds it, then each click moves to its next form (forms: their ids, in order),
- * and the click after the last form takes it out again. It keeps its place in the list meanwhile.
- * @return {{ list: string[], full: boolean }} full: numer was not added because the list already has MAX.
+ * One click on a monster: adds the first of the monster itself and its forms (forms: their ids, in order)
+ * that is not in the list yet, after the monster's other items. Clicks never take anything out.
+ * @return {{ list: string[], full: boolean, all: boolean }} full: nothing added because the list already
+ *         has MAX; all: nothing added because the monster and all its forms are in it.
  */
-export function cycle( list, numer, forms = [] ) {
+export function add( list, numer, forms = [] ) {
 	const n = String( numer );
-	const now = find( list, n );
-	if ( now === undefined ) {
-		return list.length >= MAX ? { list, full: true } : { list: [ ...list, n ], full: false };
-	}
-	const { form } = split( now );
-	const at = form ? forms.indexOf( form ) : -1;
-	const next = form && at < 0 ? undefined : forms[ at + 1 ]; // A form the entry no longer has: out.
+	const next = [ n, ...forms.map( ( f ) => itemOf( n, f ) ) ].find( ( x ) => ! list.includes( x ) );
 	if ( next === undefined ) {
-		return { list: remove( list, n ), full: false };
+		return { list, full: false, all: true };
 	}
-	return { list: list.map( ( x ) => ( x === now ? itemOf( n, next ) : x ) ), full: false };
+	if ( list.length >= MAX ) {
+		return { list, full: true, all: false };
+	}
+	const last = list.findLastIndex( ( x ) => split( x ).numer === n );
+	const at = last < 0 ? list.length : last + 1;
+	return { list: [ ...list.slice( 0, at ), next, ...list.slice( at ) ], full: false, all: false };
 }
 
-/** Takes numer out of the list, whichever of its forms is there. */
-export const remove = ( list, numer ) => list.filter( ( x ) => split( x ).numer !== String( numer ) );
+/** Takes one item out of the list. */
+export const remove = ( list, item ) => list.filter( ( x ) => x !== item );
 
 /**
  * The entry as the collection shows it: the chosen form's name and picture in place of the monster's.
@@ -67,11 +68,7 @@ export function load( storage ) {
 		if ( ! Array.isArray( v ) ) {
 			return [];
 		}
-		const seen = new Set();
-		return v
-			.map( String )
-			.filter( ( x ) => ! seen.has( split( x ).numer ) && seen.add( split( x ).numer ) )
-			.slice( 0, MAX );
+		return [ ...new Set( v.map( String ) ) ].slice( 0, MAX );
 	} catch {
 		return [];
 	}

@@ -1,41 +1,48 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { MAX, cycle, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
+import { MAX, add, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
 import { jpegSize, makePdf } from '../../features/ordsifjar/src/view/pdf.js';
 
-test( 'cycle adds, removes and stops at MAX', () => {
+test( 'add stops at MAX and remove takes one item out', () => {
 	let list = [];
 	for ( let n = 1; n <= MAX; n++ ) {
-		const r = cycle( list, n );
+		const r = add( list, n );
 		assert.equal( r.full, false );
 		list = r.list;
 	}
 	assert.equal( list.length, MAX );
-	const over = cycle( list, 999 );
+	const over = add( list, 999 );
 	assert.equal( over.full, true );
 	assert.deepEqual( over.list, list );
-	const removed = cycle( list, 5 );
-	assert.equal( removed.list.length, MAX - 1 );
-	assert.ok( ! removed.list.includes( '5' ) );
-	assert.deepEqual( cycle( removed.list, '351a' ).list.at( -1 ), '351a' );
+	const removed = remove( list, '5' );
+	assert.equal( removed.length, MAX - 1 );
+	assert.ok( ! removed.includes( '5' ) );
+	assert.deepEqual( add( removed, '351a' ).list.at( -1 ), '351a' );
 } );
 
-test( 'cycle goes through the forms in place, then out', () => {
+test( 'clicks add the monster and then each of its forms, next to each other, and never take out', () => {
 	const forms = [ 'raichu-alolan', 'raichu-mega-x' ];
 	const seen = [];
-	let list = [ '1' ];
+	let list = [ '1', '2' ];
+	list = add( list, 1 ).list; // Already in, no forms: nothing changes.
 	for ( let i = 0; i < 4; i++ ) {
-		list = cycle( list, 26, forms ).list;
-		seen.push( [ ...list ] );
+		const r = add( list, 26, forms );
+		list = r.list;
+		seen.push( [ [ ...list ], r.all ] );
 	}
-	assert.deepEqual( seen, [ [ '1', '26' ], [ '1', '26:raichu-alolan' ], [ '1', '26:raichu-mega-x' ], [ '1' ] ] );
-	// A form the entry no longer has goes out on the next click; remove takes out whichever form is there.
-	assert.deepEqual( cycle( [ '26:gone', '2' ], 26, forms ).list, [ '2' ] );
-	assert.deepEqual( remove( [ '26:raichu-alolan', '2' ], '26' ), [ '2' ] );
-	// A full list still cycles a monster that is in it.
-	const full = Array.from( { length: MAX }, ( _, i ) => String( i + 20 ) );
-	assert.equal( cycle( full, 26, forms ).list[ 6 ], '26:raichu-alolan' );
+	assert.deepEqual( seen, [
+		[ [ '1', '2', '26' ], false ],
+		[ [ '1', '2', '26', '26:raichu-alolan' ], false ],
+		[ [ '1', '2', '26', '26:raichu-alolan', '26:raichu-mega-x' ], false ],
+		[ [ '1', '2', '26', '26:raichu-alolan', '26:raichu-mega-x' ], true ],
+	] );
+	assert.equal( add( [ '1' ], 1 ).all, true );
+	// Only Mega X: take the others out with ×. A click then adds the first one missing, after its siblings.
+	list = remove( remove( list, '26' ), '26:raichu-alolan' );
+	assert.deepEqual( list, [ '1', '2', '26:raichu-mega-x' ] );
+	assert.deepEqual( add( [ '26:raichu-mega-x', '3' ], 26, forms ).list, [ '26:raichu-mega-x', '26', '3' ] );
+	assert.deepEqual( itemsOf( list, 26 ), [ '26:raichu-mega-x' ] );
 } );
 
 test( 'variant shows the form in place of the monster', () => {
@@ -51,8 +58,8 @@ test( 'load survives broken or blocked storage and save round-trips', () => {
 	const storage = { getItem: ( k ) => store.get( k ) ?? null, setItem: ( k, v ) => store.set( k, v ) };
 	save( storage, [ '1', '905' ] );
 	assert.deepEqual( load( storage ), [ '1', '905' ] );
-	save( storage, [ '26:raichu-alolan', '26', '1' ] ); // One per monster.
-	assert.deepEqual( load( storage ), [ '26:raichu-alolan', '1' ] );
+	save( storage, [ '26:raichu-alolan', '26', '26:raichu-alolan', '1' ] ); // Forms are their own items; no repeats.
+	assert.deepEqual( load( storage ), [ '26:raichu-alolan', '26', '1' ] );
 	store.set( 'vasaskrimsli-safn', '{nope' );
 	assert.deepEqual( load( storage ), [] );
 	assert.deepEqual( load( { getItem: () => { throw new Error( 'blocked' ); } } ), [] );

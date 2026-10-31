@@ -1,5 +1,5 @@
 import { htmlToText } from '../../../../shared/js/search.js';
-import { find, split, variant } from './safn.js';
+import { add, itemsOf, split, variant } from './safn.js';
 
 /** Tile image size in the Skrímslaskrá grid (from the 256 px image, so sharp on high-density screens). */
 const IMG = 112;
@@ -33,20 +33,22 @@ function moveFocus( key, from ) {
 
 /**
  * One generation's tiles. Hover, focus or a tap shows the entry in the popup; a click (or Enter) also puts
- * it in the visitor's collection. Further clicks go through its forms (the tile then shows the chosen
- * form's picture and name), and the click after the last one takes it out again.
+ * it in the visitor's collection. Further clicks add its forms one by one (the tile then shows the form added
+ * last); clicks never take anything out, the × in the collection panel does.
  */
 export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 	return (
 		<ul className="vs-of-grid">
 			{ rows.map( ( e, i ) => {
-				const item = find( chosen, e.numer );
-				const picked = item !== undefined;
-				const v = ( picked && variant( e, split( item ).form ) ) || e;
+				const items = itemsOf( chosen, e.numer );
+				const picked = items.length > 0;
+				const total = 1 + ( e.formir?.length ?? 0 );
+				const v = ( picked && variant( e, split( items.at( -1 ) ).form ) ) || e;
 				const nafn = htmlToText( v.nafn );
 				const enska = htmlToText( v.enska );
 				const icelandic = nafn && nafn !== '–';
-				const show = ( ev ) => onShow( e, ev.currentTarget.getBoundingClientRect() );
+				// The popup's large card is the form the tile shows; on a click, the one the click adds.
+				const show = ( ev, form = picked ? split( items.at( -1 ) ).form : '' ) => onShow( e, ev.currentTarget.getBoundingClientRect(), form );
 				return (
 					<li key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
 						<button
@@ -58,7 +60,8 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 							onFocus={ show }
 							onBlur={ onHide }
 							onClick={ ( ev ) => {
-								show( ev );
+								const added = add( chosen, e.numer, ( e.formir ?? [] ).map( ( f ) => f.id ) ).list.find( ( x ) => ! chosen.includes( x ) );
+								show( ev, added ? split( added ).form : undefined );
 								onPick?.( e );
 							} }
 							onKeyDown={ ( ev ) => {
@@ -83,8 +86,8 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 								</span>
 							) }
 							{ picked && (
-								<span className={ 'vs-of-tile__picked' + ( v.forma ? ' is-form' : '' ) } aria-hidden="true">
-									{ v.forma ? `✓ ${ v.forma.nr }/${ e.formir.length }` : '✓' }
+								<span className={ 'vs-of-tile__picked' + ( total > 1 ? ' is-form' : '' ) } aria-hidden="true">
+									{ total > 1 ? `✓ ${ items.length }/${ total }` : '✓' }
 								</span>
 							) }
 						</button>
