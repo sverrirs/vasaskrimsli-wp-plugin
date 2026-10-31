@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,10 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.5.1 =
+* Fjölskylda: hvert skrímsli sem þróast sýnir nú alla fjölskylduna í Þýðingu, í töflunni, sprettiglugganum og á PDF-kortinu. Línan er búin til úr þróunargögnunum og kemur í stað skrifaðra lína sem vantaði í eða voru með rangt númer.
+* Safnið mitt: minni hnappar hlið við hlið, með niðurhals- og ruslatunnutákni. Hreinsa er rauður og spyr fyrst; annar smellur á meðan stikan rennur út hreinsar safnið.
 
 = 1.5.0 =
 * Orðsifjafræði: taflan hefur nú þrjá dálka, Nafn, Þýðing og Lýsing. Upprunaorð og enska nafnið (smátt, grátt, með tengli) standa undir nafninu.
