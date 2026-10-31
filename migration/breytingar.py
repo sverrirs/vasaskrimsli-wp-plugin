@@ -34,7 +34,8 @@ def released(version):
         state[r["numer"]]["thyding"] = r["thyding"]
     for m in range(5, version):
         for r in json.loads((DATA / f"breytingar-{m}.json").read_text(encoding="utf-8")):
-            state[r["numer"]].update(r["nytt"])
+            if r["numer"] in state:  # Version 7 also filled Lýsing for #1-232, which have no baseline here.
+                state[r["numer"]].update(r["nytt"])
     return state
 
 
