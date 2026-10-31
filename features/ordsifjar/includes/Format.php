@@ -57,18 +57,22 @@ final class Format {
 	 * The special and regional forms of an entry, from data/formir.json (migration/formir.py).
 	 * "26a" counts as 26. A form's picture is assets/sprites/formir/<slug>.webp, '' when $have lacks it.
 	 *
-	 * @param array  $formir Decoded formir.json: national number => list of {s: slug, h: name}.
+	 * The name is the Icelandic one ("i", with {n} for $name) and falls back to the English one ("h").
+	 *
+	 * @param array  $formir Decoded formir.json: national number => list of {s: slug, h: name, i: Icelandic name}.
 	 * @param array  $have   Slugs that have a picture, as keys.
+	 * @param string $name   The monster's Icelandic name (its English one when it has none yet).
 	 * @return list<array{heiti: string, slug: string}> slug is '' when there is no picture.
 	 */
-	public static function formir( array $formir, array $have, string $numer ): array {
+	public static function formir( array $formir, array $have, string $numer, string $name = '' ): array {
 		if ( ! preg_match( '/^\d+/', $numer, $m ) ) {
 			return array();
 		}
 		$out = array();
 		foreach ( $formir[ (string) (int) $m[0] ] ?? array() as $f ) {
 			$slug  = (string) ( $f['s'] ?? '' );
-			$out[] = array( 'heiti' => (string) ( $f['h'] ?? '' ), 'slug' => isset( $have[ $slug ] ) ? $slug : '' );
+			$heiti = '' !== $name && ! empty( $f['i'] ) ? str_replace( '{n}', $name, (string) $f['i'] ) : (string) ( $f['h'] ?? '' );
+			$out[] = array( 'heiti' => $heiti, 'slug' => isset( $have[ $slug ] ) ? $slug : '' );
 		}
 		return $out;
 	}

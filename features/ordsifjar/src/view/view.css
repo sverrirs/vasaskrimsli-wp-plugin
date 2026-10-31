@@ -137,18 +137,34 @@
 	border: 1px solid;
 }
 
-/* Sprite column, far left. */
-.vs-of__table .vs-of__img {
-	width: 48px;
-	padding: 0.25em;
+/* First column: picture, number and Icelandic name together. */
+.vs-of__table .vs-of__who {
+	width: 128px;
 	text-align: center;
 }
 
-.vs-of__img img {
+.vs-of__who img {
 	display: block;
-	width: 48px;
-	height: 48px;
+	width: 96px;
+	height: 96px;
 	margin: 0 auto;
+}
+
+.vs-of__who .vs-of__num {
+	display: block;
+	margin-top: 4px;
+	font-size: 0.875rem;
+	color: var(--of-muted);
+}
+
+.vs-of__who .vs-of__name {
+	display: block;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.vs-of__who .vs-of__tags {
+	justify-content: center;
 }
 
 .vs-of__thumb {
@@ -251,6 +267,32 @@
 	margin: 0 auto 8px;
 }
 
+/* In the grid the form cards also carry the entry's Upprunaorð and Þýðing, like the entry card. */
+.vs-of-forms.is-detail .vs-of-forms__card {
+	text-align: left;
+}
+
+.vs-of-forms.is-detail .vs-of-forms__card img,
+.vs-of-forms.is-detail .vs-of-forms__noimg {
+	width: min(140px, calc(var(--form-w, 280px) - 32px));
+	height: min(140px, calc(var(--form-w, 280px) - 32px));
+}
+
+.vs-of-forms.is-compact .vs-of-forms__card img,
+.vs-of-forms.is-compact .vs-of-forms__noimg {
+	width: 96px;
+	height: 96px;
+}
+
+.vs-of-forms.is-detail .vs-of-tip__name,
+.vs-of-forms.is-detail .vs-of-tip__en {
+	text-align: center;
+}
+
+.vs-of-forms.is-detail .vs-of-tip__text {
+	font-size: 0.8125rem;
+}
+
 .vs-of-tile__forms {
 	position: absolute;
 	top: 6px;
@@ -284,7 +326,6 @@
 	white-space: nowrap;
 }
 
-.vs-of__num,
 .vs-of__origin {
 	text-align: right;
 }
@@ -331,8 +372,9 @@
 	white-space: nowrap;
 }
 
-.vs-of__name .vs-of-mark {
+.vs-of__who .vs-of-mark {
 	display: table;
+	margin: 4px auto 0;
 }
 
 .vs-of__note {
@@ -382,19 +424,8 @@
 		letter-spacing: 0.04em;
 	}
 
-	.vs-of__num {
-		text-align: left;
-	}
-
-	.vs-of__table .vs-of__img {
-		float: right;
+	.vs-of__table .vs-of__who {
 		width: auto;
-		border: 0;
-	}
-
-	.vs-of__table .vs-of__img img {
-		width: 64px;
-		height: 64px;
 	}
 }
 

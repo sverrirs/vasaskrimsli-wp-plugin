@@ -190,11 +190,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 								<table>
 									<thead>
 										<tr>
-											<th scope="col" className="vs-of__img">
-												<span className="screen-reader-text">Mynd</span>
-											</th>
-											<th scope="col" className="vs-of__num">Númer</th>
-											<th scope="col">Nafn</th>
+											<th scope="col" className="vs-of__who">Nafn</th>
 											<th scope="col" className="vs-of__origin">Upprunaorð</th>
 											<th scope="col">Þýðing</th>
 											<th scope="col" className="vs-of__en">Enska</th>
@@ -203,14 +199,10 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 									<tbody>
 										{ rows.map( ( e, i ) => (
 											<tr key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
-												<td className="vs-of__img">
+												<td className="vs-of__who">
 													<Thumb entry={ e } onShow={ showTip } onHide={ hideTip } />
-												</td>
-												<td data-label="Númer" className="vs-of__num">
-													{ e.numer }
-												</td>
-												<td data-label="Nafn" className="vs-of__name">
-													<Html html={ e.nafn } />
+													<span className="vs-of__num">#{ e.numer }</span>
+													<Html className="vs-of__name" html={ e.nafn } />
 													{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
 													{ e.flokkar?.length > 0 && (
 														<span className="vs-of__tags">

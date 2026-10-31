@@ -289,8 +289,16 @@ check( 'formir: forms in order, slug only where there is a picture', Format::for
 ) );
 check( 'formir: "26a" counts as 26', count( Format::formir( $formir, $have, '26a' ) ), 2 );
 check( 'formir: none for others and placeholders', array( Format::formir( $formir, $have, '25' ), Format::formir( $formir, $have, '–' ) ), array( array(), array() ) );
+$formir['26'][0]['i'] = '{n} Alóla';
+$formir['26'][1]['i'] = 'Mega {n} X';
+check( 'formir: Icelandic names from the Icelandic name of the monster', array_column( Format::formir( $formir, $have, '26', 'Þrumumús' ), 'heiti' ), array( 'Þrumumús Alóla', 'Mega Þrumumús X' ) );
+check( 'formir: English names without a name to fill in', array_column( Format::formir( $formir, $have, '26' ), 'heiti' ), array( 'Alolan Raichu', 'Mega Raichu X' ) );
 $real = json_decode( (string) file_get_contents( dirname( __DIR__ ) . '/features/ordsifjar/data/formir.json' ), true );
 check( 'formir.json: Raichu has its Alolan form, Bulbasaur has none', array( $real['26'][0]['h'] ?? null, isset( $real['1'] ) ), array( 'Alolan Raichu', false ) );
+check( 'formir.json: every form has an Icelandic name', array_filter( array_merge( ...array_values( $real ) ), static function ( $f ) {
+	return empty( $f['i'] ) || false === strpos( $f['i'], '{n}' );
+} ), array() );
+check( 'formir.json: named as the books do', array_column( Format::formir( $real, array(), '6', 'Bálormur' ), 'heiti' ), array( 'Mega Bálormur X', 'Mega Bálormur Y' ) );
 
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text
 $v4    = array(

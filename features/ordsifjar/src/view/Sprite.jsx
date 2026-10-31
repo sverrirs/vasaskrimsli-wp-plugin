@@ -4,11 +4,13 @@ import { htmlToText } from '../../../../shared/js/search.js';
 
 const LARGE = 256;
 const GAP = 12;
-const FORM = 212; // Width of one form card.
+const FORM_W = 212; // Width of one form card;
+const FORM_DETAIL = 280; // wider when it also carries Upprunaorð and Þýðing.
 const FORM_GAP = 8;
+const THUMB = 96; // Table picture, from the 256 px image so it stays sharp.
 
 /**
- * Thumbnail in the first column. Hover, keyboard focus or a tap shows a larger image in a
+ * Picture in the first column. Hover, keyboard focus or a tap shows a larger image in a
  * tooltip card next to it; leaving, Escape, scrolling or a tap elsewhere hides it.
  */
 export function Thumb( { entry, onShow, onHide } ) {
@@ -28,7 +30,7 @@ export function Thumb( { entry, onShow, onHide } ) {
 			onBlur={ onHide }
 			onClick={ show }
 		>
-			<img src={ entry.mynd } width="48" height="48" alt="" loading="lazy" decoding="async" />
+			<img src={ entry.mynd_stor || entry.mynd } width={ THUMB } height={ THUMB } alt="" loading="lazy" decoding="async" />
 		</button>
 	);
 }
@@ -43,6 +45,9 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const [ height, setHeight ] = useState( LARGE + 76 );
 	const formsCard = useRef( null );
 	const [ formsHeight, setFormsHeight ] = useState( 280 );
+	// Form cards too tall for the window: smaller pictures for that entry, then scaled down to fit.
+	const [ compactFor, setCompactFor ] = useState( null );
+	const key = tip ? `${ tip.entry.kynslod }-${ tip.entry.numer }` : null;
 
 	useEffect( () => {
 		if ( ! tip ) {
@@ -69,6 +74,9 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 		if ( formsCard.current && formsCard.current.offsetHeight !== formsHeight ) {
 			setFormsHeight( formsCard.current.offsetHeight );
 		}
+		if ( formsCard.current && compactFor !== key && formsCard.current.offsetHeight > window.innerHeight - 16 ) {
+			setCompactFor( key );
+		}
 	} );
 
 	if ( ! tip ) {
@@ -86,6 +94,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const nafn = htmlToText( entry.nafn );
 	const has = ( html ) => html && htmlToText( html ) !== '–';
 	const formir = entry.formir ?? [];
+	const FORM = detail ? FORM_DETAIL : FORM_W;
 	// Every form as its own card, all at once, in the larger free area beside the entry card and the anchor;
 	// below the entry card when neither side has room for one card.
 	const mainLeft = Math.min( left, rect.left );
@@ -98,16 +107,19 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const small = Math.min( FORM, Math.floor( ( window.innerWidth - 16 - FORM_GAP ) / 2 ) );
 	const formW = cols ? FORM : small;
 	const formsWidth = cols ? cols * ( FORM + FORM_GAP ) - FORM_GAP : Math.min( formir.length, 2 ) * ( small + FORM_GAP ) - FORM_GAP;
+	const compact = compactFor === key;
+	const scale = Math.min( 1, ( window.innerHeight - 16 ) / formsHeight );
+	const shown = formsHeight * scale;
 	let formsLeft;
 	let formsTop;
 	let formsSide = '';
 	if ( cols ) {
 		formsSide = fit( spaceRight ) >= fit( spaceLeft ) ? '' : ' is-left'; // On the left, a short last row sits next to the tile.
 		formsLeft = formsSide ? mainLeft - GAP - formsWidth : mainRight + GAP;
-		formsTop = Math.min( Math.max( 8, rect.top + rect.height / 2 - formsHeight / 2 ), Math.max( 8, window.innerHeight - formsHeight - 8 ) );
+		formsTop = Math.min( Math.max( 8, rect.top + rect.height / 2 - shown / 2 ), Math.max( 8, window.innerHeight - shown - 8 ) );
 	} else {
 		formsLeft = Math.max( 8, Math.min( window.innerWidth - formsWidth - 8, left ) );
-		formsTop = Math.max( 8, Math.min( top + height + 8, window.innerHeight - formsHeight - 8 ) );
+		formsTop = Math.max( 8, Math.min( top + height + 8, window.innerHeight - shown - 8 ) );
 	}
 	const name = nafn && nafn !== '–' ? nafn : enska;
 
@@ -128,7 +140,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 			) }
 		</div>
 		{ formir.length > 0 && (
-			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px` } }>
+			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide + ( detail ? ' is-detail' : '' ) + ( compact ? ' is-compact' : '' ) } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px`, transform: scale < 1 ? `scale(${ scale })` : undefined, transformOrigin: formsSide ? 'top right' : 'top left' } }>
 				{ formir.map( ( f, i ) => (
 					<div className="vs-of-forms__card" key={ f.heiti }>
 						{ f.mynd ? <img src={ f.mynd } width="180" height="180" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
@@ -136,6 +148,12 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 						<p className="vs-of-tip__en">
 							Form { i + 1 } af { formir.length } · #{ entry.numer } { name }
 						</p>
+						{ detail && has( entry.uppruni ) && (
+							<p className="vs-of-tip__origin" dangerouslySetInnerHTML={ { __html: entry.uppruni } } />
+						) }
+						{ detail && has( entry.thyding ) && (
+							<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: entry.thyding } } />
+						) }
 					</div>
 				) ) }
 			</div>

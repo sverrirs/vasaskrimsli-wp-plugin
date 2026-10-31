@@ -9,8 +9,11 @@ card in the Skrímslaskrá grid and the Orðsifjafræði table.
      official artwork (artwork/avif/<form-slug>.avif) when there is no sprite; its white background is made
      transparent from the edges in.
   3. writes features/ordsifjar/assets/sprites/formir/<form-slug>.webp (256 px, transparent) and
-     features/ordsifjar/data/formir.json: {"26": [{"s": "raichu-alolan", "h": "Alolan Raichu", "t": [types]}]}.
-     The base form itself is not listed.
+     features/ordsifjar/data/formir.json:
+     {"26": [{"s": "raichu-alolan", "h": "Alolan Raichu", "i": "{n} Alóla", "t": [types]}]}.
+     "i" is the Icelandic name with {n} for the monster's Icelandic name (Format::formir fills it in), named
+     the way the published books do it: "Rottóttur Alóla", "Funhundur Hisui", "Stórþjór Paldea Bardagakyn",
+     "Mega Tvímýta X". The base form itself is not listed.
 
   python -X utf8 migration/formir.py [path/to/vasaskrimsli-dict]
 """
@@ -40,6 +43,44 @@ ARTWORK = "https://img.pokemondb.net/artwork/avif/{slug}.avif"
 GALLERY = re.compile(r'href="https://img\.pokemondb\.net/artwork/large/([a-z0-9-]+)\.jpg" data-title="([^"]+?) official artwork"')
 
 
+REGION = {"Alolan": "Alóla", "Galarian": "Galar", "Hisuian": "Hisui", "Paldean": "Paldea"}
+# Everything else, as the English name with the monster's own English name taken out.
+OTHER = {
+    "Primal": "frumform", "Partner": "félagi",
+    "Combat Breed": "Paldea Bardagakyn", "Blaze Breed": "Paldea Blossakyn", "Aqua Breed": "Paldea Vatnakyn",
+    "Attack Forme": "sóknarform", "Defense Forme": "varnarform", "Speed Forme": "hraðaform",
+    "Sandy Cloak": "sandskikkja", "Trash Cloak": "ruslaskikkja",
+    "Heat": "hitaform", "Wash": "þvottaform", "Frost": "frostform", "Fan": "viftuform", "Mow": "sláttuform",
+    "Origin Forme": "upprunaform", "Sky Forme": "himinform", "Therian Forme": "dýrsform",
+    "Blue-Striped Form": "bláröndóttur", "White-Striped Form": "hvítröndóttur",
+    "Zen Mode": "íhugunarhamur", "Galarian Standard Mode": "Galar", "Galarian Zen Mode": "Galar íhugunarhamur",
+    "White": "hvítur", "Black": "svartur", "Resolute Form": "einbeitt form", "Pirouette Forme": "dansform",
+    "Ash-": "Ash", "Eternal Flower": "eilífðarblóm", "Female": "kvenkyns", "Blade Forme": "sverðsform",
+    "10% Forme": "10% form", "Complete Forme": "fullkomið form", "Unbound": "óbundinn",
+    "Pom-Pom Style": "dúskastíll", "Pa'u Style": "pa'u-stíll", "Sensu Style": "blævængsstíll",
+    "Midnight Form": "miðnæturform", "Dusk Form": "ljósaskiptaform", "School Form": "torfuform",
+    "Core Form": "kjarnaform", "Dusk Mane": "rökkurfax", "Dawn Wings": "dögunarvængir", "Ultra": "ofurform",
+    "Low Key Form": "lágstemmt form", "Noice Face": "íslaust andlit", "Hangry Mode": "svangur hamur",
+    "Crowned Sword": "krýnt sverð", "Crowned Shield": "krýndur skjöldur", "Rapid Strike Style": "hraðhöggsstíll",
+    "Ice Rider": "ísriddari", "Shadow Rider": "skuggariddari", "Hero Form": "hetjuform",
+    "Droopy Form": "slapandi form", "Stretchy Form": "teygt form", "Roaming Form": "flökkuform",
+    "Wellspring Mask": "lindargríma", "Hearthflame Mask": "arineldsgríma", "Cornerstone Mask": "hornsteinsgríma",
+    "Terastal Form": "kristalform", "Stellar Form": "stjörnuform",
+}
+
+
+def icelandic(name, species):
+    """The form's Icelandic name, with {n} for the monster's Icelandic name; None when there is no rule for it."""
+    m = re.fullmatch(r"Mega " + re.escape(species) + r"( [XYZ])?", name)
+    if m:
+        return "Mega {n}" + (m.group(1) or "")
+    m = re.fullmatch(r"(Alolan|Galarian|Hisuian|Paldean) " + re.escape(species), name)
+    if m:
+        return "{n} " + REGION[m.group(1)]
+    rest = re.sub(r"\s+", " ", name.replace(species, "")).strip()
+    return "{n} " + OTHER[rest] if rest in OTHER else None
+
+
 def parse(base):
     out = {}
     for page in sorted((base / "raw" / "pokemondb" / "pokedex").glob("*.html.gz")):
@@ -56,14 +97,19 @@ def parse(base):
         db = base / "data" / "monsters" / f"{numer:04d}-{slug}" / "pokemondb.json"
         if db.exists():
             types = {f["name"]: f.get("types") or [] for f in json.loads(db.read_text(encoding="utf-8")).get("forms", [])}
+        species = re.sub(r" \(.*\)$", "", next((t for s, t in forms if s == slug), forms[0][1]))  # "Deoxys (Normal Forme)"
         rows = []
         for s, title in forms:
             inner = re.fullmatch(r".+? \((.+)\)", title)  # "Rotom (Heat Rotom)" -> "Heat Rotom"
             name = inner.group(1) if inner else title
-            rows.append({"s": s, "h": name, "t": types.get(title) or types.get(name) or []})
+            row = {"s": s, "h": name, "i": icelandic(name, species), "t": types.get(title) or types.get(name) or []}
+            rows.append(row)
         out[str(numer)] = [r for r in rows if r["s"] != slug]
         if len(out[str(numer)]) == len(rows):  # The base slug was not in the gallery: keep the first as base.
             out[str(numer)] = out[str(numer)][1:]
+        for row in out[str(numer)]:
+            if row["i"] is None:
+                raise SystemExit(f"No Icelandic name rule for {row['h']!r} ({species}): add it to OTHER")
     return {k: v for k, v in out.items() if v}
 
 

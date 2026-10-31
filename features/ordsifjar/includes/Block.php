@@ -51,8 +51,14 @@ final class Block {
 		$e['serstakt']  = Format::serstakt( (string) $e['numer'] );
 		$e['formir']    = array_map( static function ( $f ) use ( $base ) {
 			return array( 'heiti' => $f['heiti'], 'mynd' => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '' );
-		}, Format::formir( self::formir_data(), self::formir_have(), (string) $e['numer'] ) );
+		}, Format::formir( self::formir_data(), self::formir_have(), (string) $e['numer'], self::plain_name( $e ) ) );
 		return $e;
+	}
+
+	/** The entry's Icelandic name as plain text, or its English one when it has none yet. */
+	private static function plain_name( array $e ): string {
+		$nafn = Csv::plain( (string) ( $e['nafn'] ?? '' ) );
+		return ( '' !== $nafn && '–' !== $nafn ) ? $nafn : Csv::plain( (string) ( $e['enska'] ?? '' ) );
 	}
 
 	/** data/formir.json, read once per request. */
@@ -120,14 +126,15 @@ final class Block {
 				$html .= self::grid_html( $rows ) . '</section>';
 				continue;
 			}
-			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__img"><span class="screen-reader-text">Mynd</span></th><th class="vs-of__num">Númer</th><th>Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
-			$cols  = array( 'nafn' => '', 'uppruni' => ' class="vs-of__origin"', 'thyding' => '', 'enska' => ' class="vs-of__en"' );
+			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__who">Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
+			$cols  = array( 'uppruni' => ' class="vs-of__origin"', 'thyding' => '', 'enska' => ' class="vs-of__en"' );
 			foreach ( $rows as $e ) {
-				$html .= '<tr><td class="vs-of__img">' . ( $e['mynd'] ? '<img src="' . esc_url( $e['mynd'] ) . '" width="48" height="48" alt="" loading="lazy" decoding="async">' : '' ) . '</td>';
-				$html .= '<td class="vs-of__num">' . esc_html( $e['numer'] ) . '</td>';
+				$img   = $e['mynd_stor'] ?: $e['mynd'];
+				$html .= '<tr><td class="vs-of__who">' . ( $img ? '<img src="' . esc_url( $img ) . '" width="96" height="96" alt="" loading="lazy" decoding="async">' : '' )
+					. '<span class="vs-of__num">#' . esc_html( $e['numer'] ) . '</span>'
+					. '<span class="vs-of__name">' . wp_kses( $e['nafn'], Sanitize::allowed_html() ) . '</span>' . self::mark_html( $e ) . '</td>';
 				foreach ( $cols as $f => $class ) {
-					$mark  = 'nafn' === $f ? self::mark_html( $e ) : '';
-					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . $mark . '</td>';
+					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
 				}
 				$html .= '</tr>';
 			}
