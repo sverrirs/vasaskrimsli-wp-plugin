@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { MAX, add, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
+import { MAX, add, boldSelf, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
 import { jpegSize, makePdf } from '../../features/ordsifjar/src/view/pdf.js';
 
 test( 'add stops at MAX and remove takes one item out', () => {
@@ -111,4 +111,18 @@ test( 'jpegSize reads a real JPEG and rejects other data', () => {
 	const real = readFileSync( new URL( './fixtures/tiny.jpg', import.meta.url ) );
 	assert.deepEqual( jpegSize( real ), { width: 3, height: 2 } );
 	assert.throws( () => jpegSize( new Uint8Array( 20 ) ) );
+} );
+
+test( 'boldSelf bolds the monster\'s own name on the Fjölskylda line only', () => {
+	const html = '<strong>Þrí:</strong> Þrír. Þríbý er hér.<br><strong>Fjölskylda:</strong> Þríbý → Býdrottning (#416).';
+	assert.equal(
+		boldSelf( html, 'Þríbý' ),
+		'<strong>Þrí:</strong> Þrír. Þríbý er hér.<br><strong>Fjölskylda:</strong> <strong>Þríbý</strong> → Býdrottning (#416).'
+	);
+	// A whole word only: "Býdrottning" is not touched when the name is "Bý".
+	assert.equal( boldSelf( '<strong>Fjölskylda:</strong> Þríbý → Býdrottning.', 'Bý' ), '<strong>Fjölskylda:</strong> Þríbý → Býdrottning.' );
+	assert.equal( boldSelf( html, '' ), html );
+	// The PDF card reads it as a bold run.
+	const line = parseRich( boldSelf( html, 'Þríbý' ) )[ 1 ];
+	assert.deepEqual( line.filter( ( r ) => r.b ).map( ( r ) => r.t.trim() ), [ 'Fjölskylda:', 'Þríbý' ] );
 } );

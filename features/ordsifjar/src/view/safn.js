@@ -58,7 +58,7 @@ export function variant( entry, form ) {
 		return undefined;
 	}
 	const f = entry.formir[ i ];
-	return { ...entry, nafn: f.heiti, enska: f.enska || entry.enska, mynd: f.mynd, mynd_stor: f.mynd, forma: { ...f, nr: i + 1 } };
+	return { ...entry, nafn: f.heiti, enska: f.enska || entry.enska, mynd: f.mynd, mynd_stor: f.mynd, forma: { ...f, nr: i + 1, grunn: entry.nafn } };
 }
 
 /** The saved list, or [] when storage is blocked, empty or holds something else. */
@@ -172,6 +172,28 @@ export function sections( thydingHtml, upprunaHtml ) {
 		out[ last ].push( line );
 	}
 	return out;
+}
+
+/**
+ * Þýðing with the monster's own name in bold on the Fjölskylda line ("Þríbý → Býdrottning (#416)"),
+ * so the reader sees where in the line it sits. Only text outside tags is touched.
+ */
+export function boldSelf( thydingHtml, nafn ) {
+	const name = String( nafn ?? '' ).trim();
+	if ( ! thydingHtml || ! name || name === '–' ) {
+		return thydingHtml;
+	}
+	const esc = name.replace( /[.*+?^${}()|[\]\\]/g, '\\$&' );
+	const word = new RegExp( `(?<!\\p{L})${ esc }(?!\\p{L})`, 'gu' );
+	return String( thydingHtml )
+		.split( /(<br\s*\/?>|<\/p>)/i )
+		.map( ( line ) => ( /Fjölskylda\s*:/.test( line )
+			? line.replace( /(Fjölskylda\s*:(?:\s*<\/(?:strong|b)>)?)([\s\S]*)/, ( m, head, rest ) => head + rest
+				.split( /(<[^>]*>)/ )
+				.map( ( tok ) => ( tok.startsWith( '<' ) ? tok : tok.replace( word, '<strong>$&</strong>' ) ) )
+				.join( '' ) )
+			: line ) )
+		.join( '' );
 }
 
 /** "905" -> 905, "351a" -> 351. */

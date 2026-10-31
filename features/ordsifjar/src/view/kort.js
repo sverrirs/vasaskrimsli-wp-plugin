@@ -9,7 +9,7 @@
 
 import { htmlToText } from '../../../../shared/js/search.js';
 import { makePdf } from './pdf.js';
-import { national, parseRich, plainLine, sections } from './safn.js';
+import { boldSelf, national, parseRich, plainLine, sections } from './safn.js';
 
 const W = 1240; // A6 at 300 dpi.
 const H = 1748;
@@ -271,7 +271,7 @@ export function drawCard( canvas, entry, info, images, fam ) {
 	const title = nafn && nafn !== '–' ? nafn : enska;
 	const uppruni = parseRich( entry.uppruni ).flat();
 	const hasOrigin = uppruni.length > 0 && plainLine( uppruni ) !== '–';
-	const parts = sections( entry.thyding, entry.uppruni );
+	const parts = sections( boldSelf( entry.thyding, htmlToText( entry.forma?.grunn ?? entry.nafn ) ), entry.uppruni );
 	const hasText = parts.ordsifjar.length + parts.frodleikur.length > 0;
 	const footer = 54;
 	const stages = info?.k ?? [];

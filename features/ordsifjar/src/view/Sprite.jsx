@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { htmlToText } from '../../../../shared/js/search.js';
-import { itemOf } from './safn.js';
+import { boldSelf, itemOf } from './safn.js';
 
 const LARGE = 256;
 const GAP = 12;
@@ -142,7 +142,7 @@ export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 				<p className="vs-of-tip__origin" dangerouslySetInnerHTML={ { __html: entry.uppruni } } />
 			) }
 			{ detail && has( entry.thyding ) && (
-				<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: entry.thyding } } />
+				<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: boldSelf( entry.thyding, nafn ) } } />
 			) }
 		</div>
 		{ formir.length > 0 && (
