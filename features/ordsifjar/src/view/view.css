@@ -716,17 +716,28 @@
 
 .vs-safn__actions {
 	display: flex;
-	flex-direction: column;
 	gap: 8px;
 }
 
 .vs-safn__pdf,
 .vs-safn__clear {
-	padding: 10px 14px;
+	display: inline-flex;
+	flex: 1 1 0;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-width: 0;
+	padding: 6px 10px;
 	font: inherit;
+	font-size: 0.875rem;
 	font-weight: 600;
+	white-space: nowrap;
 	border-radius: 6px;
 	cursor: pointer;
+}
+
+.vs-safn__icon {
+	flex: none;
 }
 
 .vs-safn__pdf {

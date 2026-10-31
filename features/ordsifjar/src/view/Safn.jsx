@@ -5,6 +5,14 @@ import { MAX } from './safn.js';
 /** How long the second click on „Hreinsa safnið“ is waited for. */
 const CONFIRM_MS = 4000;
 
+const Icon = ( { d } ) => (
+	<svg className="vs-safn__icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+		{ d.map( ( x ) => <path key={ x } d={ x } /> ) }
+	</svg>
+);
+const DOWNLOAD = [ 'M12 3v12', 'M7 10l5 5 5-5', 'M5 21h14' ];
+const TRASH = [ 'M3 6h18', 'M8 6V4h8v2', 'M19 6l-1 14H6L5 6', 'M10 11v6', 'M14 11v6' ];
+
 /**
  * The collection panel on the left edge of the Skrímslaskrá page. Collapsed to a tab until the mouse
  * is over it or it has keyboard focus; a tap on the tab opens and closes it on touch screens.
@@ -122,10 +130,18 @@ export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all 
 				) }
 				<div className="vs-safn__actions">
 					<button type="button" className="vs-safn__pdf" disabled={ ! n || busy !== null } aria-busy={ busy !== null } onClick={ download }>
-						{ busy !== null ? `Bý til skjal… ${ busy }/${ n }` : 'Sækja PDF' }
+						<Icon d={ DOWNLOAD } />
+						<span>{ busy !== null ? `${ busy }/${ n }` : 'Sækja PDF' }</span>
 					</button>
-					<button type="button" className={ 'vs-safn__clear' + ( confirming ? ' is-confirming' : '' ) } disabled={ ! n || busy !== null } onClick={ clear }>
-						<span aria-live="polite">{ confirming ? 'Smelltu aftur' : 'Hreinsa safnið' }</span>
+					<button
+						type="button"
+						className={ 'vs-safn__clear' + ( confirming ? ' is-confirming' : '' ) }
+						disabled={ ! n || busy !== null }
+						onClick={ clear }
+						title={ confirming ? 'Smelltu aftur til að hreinsa safnið' : 'Hreinsa safnið' }
+					>
+						<Icon d={ TRASH } />
+						<span aria-live="polite">{ confirming ? 'Aftur?' : 'Hreinsa' }</span>
 						{ confirming && <span className="vs-safn__clear-bar" style={ { animationDuration: `${ CONFIRM_MS }ms` } } aria-hidden="true" /> }
 					</button>
 				</div>
