@@ -84,18 +84,16 @@ final class Format {
 	}
 
 	/**
-	 * Þýðing with a "Fjölskylda:" line at the end, built from the evolution chain, when the text has none:
+	 * Þýðing with a "Fjölskylda:" line built from the evolution chain, in place of a written one or at the end:
 	 * "Fjölskylda: Laufmjási → Blómkisi (#907) → Blómblöff (#908)." The monster itself has no number;
-	 * stages with several monsters read "A eða B" / "A, B eða C". Unchanged for monsters that do not evolve.
+	 * stages with several monsters read "A eða B" / "A, B eða C". Unchanged for monsters that do not evolve,
+	 * so a written line about another kind of relation (legendary trios, Marbendill's egg) stays.
 	 *
 	 * @param int   $self   The monster's national number.
 	 * @param array $stages Its "k" in throun.json: national numbers at each stage.
 	 * @param array $names  National number => plain-text name; numbers without one are left out.
 	 */
 	public static function with_family( string $thyding, int $self, array $stages, array $names ): string {
-		if ( preg_match( '/Fjölskylda\s*:/u', Csv::plain( $thyding ) ) ) {
-			return $thyding;
-		}
 		$parts = array();
 		$count = 0;
 		foreach ( $stages as $stage ) {
@@ -115,7 +113,15 @@ final class Format {
 		if ( $count < 2 ) {
 			return $thyding;
 		}
-		$line  = '<strong>Fjölskylda:</strong> ' . implode( ' → ', $parts ) . '.';
+		$line = '<strong>Fjölskylda:</strong> ' . implode( ' → ', $parts ) . '.';
+		// A written line is replaced where it stands: written ones often missed members or numbered the wrong one.
+		$lines = preg_split( '/(<br\s*\/?>)/i', $thyding, -1, PREG_SPLIT_DELIM_CAPTURE );
+		foreach ( $lines as $i => $l ) {
+			if ( 0 === $i % 2 && preg_match( '/^\s*Fjölskylda\s*:/u', Csv::plain( $l ) ) ) {
+				$lines[ $i ] = $line;
+				return implode( '', $lines );
+			}
+		}
 		$plain = trim( Csv::plain( $thyding ) );
 		return ( '' === $plain || '–' === $plain ) ? $line : rtrim( $thyding ) . '<br>' . $line;
 	}

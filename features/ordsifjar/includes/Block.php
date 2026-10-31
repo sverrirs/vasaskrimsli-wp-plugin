@@ -67,8 +67,8 @@ final class Block {
 	}
 
 	/**
-	 * Adds a "Fjölskylda:" line to the Þýðing of every monster that evolves and has none written
-	 * (data/throun.json), so the whole family shows it, not only the members someone wrote it for.
+	 * Gives the Þýðing of every monster that evolves a "Fjölskylda:" line built from the evolution chain
+	 * (data/throun.json), so every member of the family shows the same, complete line.
 	 */
 	private static function with_families( array $entries ): array {
 		$file   = VASASKRIMSLI_DIR . 'features/ordsifjar/data/throun.json';

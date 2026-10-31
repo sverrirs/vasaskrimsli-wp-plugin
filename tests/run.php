@@ -123,13 +123,13 @@ check( 'family line: branches read "eða", three or more with commas',
 		'x<br><strong>Fjölskylda:</strong> Árari (#280) → Spádans → Hjartaborg (#282) eða Bjargvættur (#475).',
 		'x<br><strong>Fjölskylda:</strong> Evi (#133) → A, B (#135) eða C (#136).',
 	) );
-check( 'family line: a written one is kept, a lone monster gets none, an empty text gets only the line',
+check( 'family line: a written one is replaced where it stands, kept for a lone monster; an empty text gets only the line',
 	array(
-		Format::with_family( 'x<br><strong>Fjölskylda:</strong> handskrifað.', 906, array( array( 906 ), array( 907 ) ), $fam_names ),
-		Format::with_family( 'x', 906, array( array( 906 ) ), $fam_names ),
+		Format::with_family( 'x<br><strong>Fjölskylda:</strong> Laufmjási → Blómkisi (#907).<br>y', 907, array( array( 906 ), array( 907 ) ), $fam_names ),
+		Format::with_family( 'x<br><strong>Fjölskylda:</strong> Systurveran.', 906, array( array( 906 ) ), $fam_names ),
 		Format::with_family( '', 907, array( array( 906 ), array( 907 ) ), $fam_names ),
 	),
-	array( 'x<br><strong>Fjölskylda:</strong> handskrifað.', 'x', '<strong>Fjölskylda:</strong> Laufmjási (#906) → Blómkisi.' ) );
+	array( 'x<br><strong>Fjölskylda:</strong> Laufmjási (#906) → Blómkisi.<br>y', 'x<br><strong>Fjölskylda:</strong> Systurveran.', '<strong>Fjölskylda:</strong> Laufmjási (#906) → Blómkisi.' ) );
 check( 'already normalised text is unchanged', Format::separators( "Lauk{$em}eðla" ), "Lauk{$em}eðla" );
 check( 'only Upprunaorð is normalised', Format::field( 'thyding', 'Kam-eld' ), 'Kam-eld' );
 
