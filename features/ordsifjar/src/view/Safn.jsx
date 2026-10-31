@@ -141,7 +141,7 @@ export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all 
 						title={ confirming ? 'Smelltu aftur til að hreinsa safnið' : 'Hreinsa safnið' }
 					>
 						<Icon d={ TRASH } />
-						<span aria-live="polite">{ confirming ? 'Aftur?' : 'Hreinsa' }</span>
+						<span aria-live="polite">{ confirming ? 'Ertu viss?' : 'Hreinsa' }</span>
 						{ confirming && <span className="vs-safn__clear-bar" style={ { animationDuration: `${ CONFIRM_MS }ms` } } aria-hidden="true" /> }
 					</button>
 				</div>
