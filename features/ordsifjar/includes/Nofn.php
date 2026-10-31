@@ -142,7 +142,7 @@ final class Nofn {
 	 *         skipped: "752 Mitt nafn (Nafn, Þýðing)" for entries with fields the owner had changed.
 	 */
 	public static function plan_changes( array $entries, array $rows ): array {
-		$labels   = array( 'nafn' => 'Nafn', 'uppruni' => 'Upprunaorð', 'thyding' => 'Þýðing' );
+		$labels   = array( 'nafn' => 'Nafn', 'uppruni' => 'Upprunaorð', 'thyding' => 'Þýðing', 'lysing' => 'Lýsing' );
 		$by_numer = array();
 		foreach ( $entries as $id => $e ) {
 			$by_numer[ (string) $e['numer'] ][] = $id;
@@ -157,7 +157,7 @@ final class Nofn {
 					if ( ! isset( $labels[ $f ] ) || '' === Csv::plain( (string) $new ) ) {
 						continue;
 					}
-					$current = Csv::plain( (string) $e[ $f ] );
+					$current = Csv::plain( (string) ( $e[ $f ] ?? '' ) );
 					if ( Csv::plain( (string) $new ) === $current ) {
 						continue; // Already done.
 					}

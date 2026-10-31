@@ -141,7 +141,7 @@
 
 /* First column: picture, number and Icelandic name together. */
 .vs-of__table .vs-of__who {
-	width: 128px;
+	width: 160px;
 	text-align: center;
 }
 
@@ -340,12 +340,27 @@
 	white-space: nowrap;
 }
 
-.vs-of__origin {
-	text-align: right;
+/* Under the name in the first column: Upprunaorð, then the English name in small grey italics. */
+.vs-of__who .vs-of__origin {
+	display: block;
+	margin-top: 4px;
+	line-height: 1.3;
 }
 
-.vs-of__en {
-	text-align: left;
+.vs-of__who .vs-of__en {
+	display: block;
+	margin-top: 2px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	color: var(--of-muted);
+}
+
+.vs-of__who .vs-of__en a {
+	color: inherit;
+}
+
+.vs-of__table .vs-of__lysing {
+	width: 32%;
 }
 
 .vs-of__num {

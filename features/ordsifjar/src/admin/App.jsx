@@ -4,7 +4,7 @@ import { FlokkarCell, RichCell, TextCell } from './Cells.jsx';
 import { HistoryDialog, ImportDialog, KynslodirDialog } from './Dialogs.jsx';
 import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 
-const COPY_FIELDS = [ 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'enska', 'flokkar', 'athugasemdir' ];
+const COPY_FIELDS = [ 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'lysing', 'enska', 'flokkar', 'athugasemdir' ];
 
 export default function App() {
 	const [ data, setData ] = useState( null );
@@ -70,7 +70,7 @@ export default function App() {
 		() =>
 			( data?.entries ?? [] ).map( ( e ) => ( {
 				e,
-				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.enska, e.athugasemdir, ...e.flokkar ].map( htmlToText ).join( ' ' ) ),
+				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.lysing, e.enska, e.athugasemdir, ...e.flokkar ].map( htmlToText ).join( ' ' ) ),
 			} ) ),
 		[ data ]
 	);
@@ -139,6 +139,7 @@ export default function App() {
 							<th className="col-nafn">Nafn</th>
 							<th className="col-uppruni">Upprunaorð</th>
 							<th className="col-thyding">Þýðing</th>
+							<th className="col-lysing">Lýsing</th>
 							<th className="col-enska">Enska</th>
 							<th className="col-flokkar">Flokkar</th>
 							<th className="col-athugasemdir">Athugasemdir</th>
@@ -157,6 +158,7 @@ export default function App() {
 									<td><RichCell html={ e.nafn } label={ `Nafn: ${ name }` } onSave={ set( 'nafn' ) } /></td>
 									<td><RichCell html={ e.uppruni } label={ `Upprunaorð: ${ name }` } onSave={ set( 'uppruni' ) } /></td>
 									<td><RichCell html={ e.thyding } label={ `Þýðing: ${ name }` } onSave={ set( 'thyding' ) } /></td>
+									<td><RichCell html={ e.lysing } label={ `Lýsing: ${ name }` } onSave={ set( 'lysing' ) } /></td>
 									<td><RichCell html={ e.enska } label={ `Enska: ${ name }` } onSave={ set( 'enska' ) } /></td>
 									<td><FlokkarCell value={ e.flokkar } all={ data.flokkar } label={ `Flokkar: ${ name }` } onSave={ set( 'flokkar' ) } /></td>
 									<td><RichCell html={ e.athugasemdir } label={ `Athugasemdir: ${ name }` } onSave={ set( 'athugasemdir' ) } /></td>

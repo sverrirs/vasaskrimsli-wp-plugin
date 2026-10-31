@@ -3,7 +3,7 @@ import { api, backupUrl } from './api.js';
 import RichEditor from './RichEditor.jsx';
 import { htmlToText } from '../../../../shared/js/search.js';
 
-const LABELS = { numer: 'Númer', kynslod: 'Kynslóð', nafn: 'Nafn', uppruni: 'Upprunaorð', thyding: 'Þýðing', enska: 'Enska', flokkar: 'Flokkar', athugasemdir: 'Athugasemdir' };
+const LABELS = { numer: 'Númer', kynslod: 'Kynslóð', nafn: 'Nafn', uppruni: 'Upprunaorð', thyding: 'Þýðing', lysing: 'Lýsing', enska: 'Enska', flokkar: 'Flokkar', athugasemdir: 'Athugasemdir' };
 
 /** Native <dialog>, opened as a modal on mount. */
 function Dialog( { title, onClose, children, wide = false } ) {

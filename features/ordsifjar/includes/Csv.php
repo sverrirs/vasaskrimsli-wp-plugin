@@ -7,7 +7,7 @@
  *
  * Entry shape used everywhere:
  *   [ 'id' => int, 'numer' => string, 'kynslod' => int, 'nafn' => html, 'uppruni' => html,
- *     'thyding' => html, 'enska' => html, 'flokkar' => string[], 'athugasemdir' => html ]
+ *     'thyding' => html, 'lysing' => html, 'enska' => html, 'flokkar' => string[], 'athugasemdir' => html ]
  */
 
 namespace Vasaskrimsli\Ordsifjar;
@@ -15,10 +15,10 @@ namespace Vasaskrimsli\Ordsifjar;
 final class Csv {
 
 	/** Fields that hold formatted text (HTML). */
-	const HTML_FIELDS = array( 'nafn', 'uppruni', 'thyding', 'enska', 'athugasemdir' );
+	const HTML_FIELDS = array( 'nafn', 'uppruni', 'thyding', 'lysing', 'enska', 'athugasemdir' );
 
 	/** Column order of both exports. HTML fields get a "_html" suffix in the formatted file. */
-	const FIELDS = array( 'id', 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'enska', 'flokkar', 'athugasemdir' );
+	const FIELDS = array( 'id', 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'lysing', 'enska', 'flokkar', 'athugasemdir' );
 
 	const MODE_HTML  = 'html';
 	const MODE_PLAIN = 'plain';

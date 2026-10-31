@@ -1,0 +1,24 @@
+[
+ {
+  "numer": 496,
+  "fyrri": {
+   "nafn": "Vafnaðra",
+   "uppruni": "<strong>Vaf</strong>—naðra",
+   "thyding": "<strong>Vaf:</strong> af sögninni að vefja; vafningur er eitthvað sem vefst utan um annað, eins og vafningsviður sem klifrar upp tré (sbr. <em>vine</em>).<br><strong>Naðra:</strong> gamalt orð um snák. Veran er lipur og felur sig í laufinu.<br><strong>Íslenska:</strong> Af sögninni að vefja koma líka orðin vefur og vefari."
+  },
+  "nytt": {
+   "nafn": "Vaflanga",
+   "uppruni": "<strong>Vaf</strong>—langa",
+   "thyding": "<strong>Vaf:</strong> af sögninni að vefja; vafningur er eitthvað sem vefst utan um annað, eins og vafningsviður sem klifrar upp tré (sbr. <em>vine</em>).<br><strong>Slanga:</strong> snákur; s-ið fellur burt á samskeytunum svo orðin renna saman, eins og í Drottnáki. Veran er lipur og felur sig í laufinu.<br><strong>Íslenska:</strong> Af sögninni að vefja koma líka orðin vefur og vefari."
+  }
+ },
+ {
+  "numer": 497,
+  "fyrri": {
+   "thyding": "<strong>Drottna:</strong> að ríkja og ráða yfir öðrum; drottinn er sá sem ræður, og orðið er dregið af <em>drótt</em>, sem í fornu máli var fylgdarlið konungs.<br><strong>Snákur:</strong> slanga; s-ið fellur burt á samskeytunum. Veran er tignarlegur snákur sem lítur niður á aðra.<br><strong>Íslenska:</strong> Dróttkvæði, helsti bragarháttur fornskáldanna, heitir eftir drótt konungs, því kvæðin voru flutt fyrir hirðina.<br><strong>Fjölskylda:</strong> Laufnaðra → Vafnaðra → Drottnákur (#497)."
+  },
+  "nytt": {
+   "thyding": "<strong>Drottna:</strong> að ríkja og ráða yfir öðrum; drottinn er sá sem ræður, og orðið er dregið af <em>drótt</em>, sem í fornu máli var fylgdarlið konungs.<br><strong>Snákur:</strong> slanga; s-ið fellur burt á samskeytunum. Veran er tignarlegur snákur sem lítur niður á aðra.<br><strong>Íslenska:</strong> Dróttkvæði, helsti bragarháttur fornskáldanna, heitir eftir drótt konungs, því kvæðin voru flutt fyrir hirðina.<br><strong>Fjölskylda:</strong> Laufnaðra → Vaflanga → Drottnákur (#497)."
+  }
+ }
+]

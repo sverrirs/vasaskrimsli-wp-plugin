@@ -131,15 +131,17 @@ final class Block {
 				$html .= self::grid_html( $rows ) . '</section>';
 				continue;
 			}
-			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__who">Nafn</th><th class="vs-of__origin">Upprunaorð</th><th>Þýðing</th><th class="vs-of__en">Enska</th></tr></thead><tbody>';
-			$cols  = array( 'uppruni' => ' class="vs-of__origin"', 'thyding' => '', 'enska' => ' class="vs-of__en"' );
+			$html .= '<figure class="wp-block-table vs-of__table"><table><thead><tr><th class="vs-of__who">Nafn</th><th>Þýðing</th><th class="vs-of__lysing">Lýsing</th></tr></thead><tbody>';
+			$cols  = array( 'thyding' => '', 'lysing' => ' class="vs-of__lysing"' );
 			foreach ( $rows as $e ) {
 				$img   = $e['mynd_stor'] ?: $e['mynd'];
 				$html .= '<tr><td class="vs-of__who">' . ( $img ? '<img src="' . esc_url( $img ) . '" width="96" height="96" alt="" loading="lazy" decoding="async">' : '' )
 					. '<span class="vs-of__num">#' . esc_html( $e['numer'] ) . '</span>'
-					. '<span class="vs-of__name">' . wp_kses( $e['nafn'], Sanitize::allowed_html() ) . '</span>' . self::mark_html( $e ) . '</td>';
+					. '<span class="vs-of__name">' . wp_kses( $e['nafn'], Sanitize::allowed_html() ) . '</span>' . self::mark_html( $e )
+					. '<span class="vs-of__origin">' . wp_kses( $e['uppruni'], Sanitize::allowed_html() ) . '</span>'
+					. '<span class="vs-of__en">' . wp_kses( $e['enska'], Sanitize::allowed_html() ) . '</span></td>';
 				foreach ( $cols as $f => $class ) {
-					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ], Sanitize::allowed_html() ) . '</td>';
+					$html .= '<td' . $class . '>' . wp_kses( $e[ $f ] ?? '', Sanitize::allowed_html() ) . '</td>';
 				}
 				$html .= '</tr>';
 			}

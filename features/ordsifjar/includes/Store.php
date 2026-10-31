@@ -19,7 +19,7 @@ final class Store {
 	const CAPABILITY  = 'edit_pages';
 
 	/** Fields stored in post_content, in order. */
-	const FIELDS = array( 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'enska', 'athugasemdir' );
+	const FIELDS = array( 'numer', 'kynslod', 'nafn', 'uppruni', 'thyding', 'lysing', 'enska', 'athugasemdir' );
 
 	public static function register(): void {
 		register_post_type(
@@ -247,7 +247,7 @@ final class Store {
 		if ( ! $post || self::POST_TYPE !== get_post_type( $post->post_parent ?: $post->ID ) ) {
 			return $value;
 		}
-		$labels = array( 'numer' => 'Númer', 'kynslod' => 'Kynslóð', 'nafn' => 'Nafn', 'uppruni' => 'Upprunaorð', 'thyding' => 'Þýðing', 'enska' => 'Enska', 'athugasemdir' => 'Athugasemdir' );
+		$labels = array( 'numer' => 'Númer', 'kynslod' => 'Kynslóð', 'nafn' => 'Nafn', 'uppruni' => 'Upprunaorð', 'thyding' => 'Þýðing', 'lysing' => 'Lýsing', 'enska' => 'Enska', 'athugasemdir' => 'Athugasemdir' );
 		$lines  = array();
 		foreach ( self::decode( (string) $value ) as $f => $v ) {
 			$lines[] = $labels[ $f ] . ': ' . ( is_int( $v ) ? $v : Csv::plain( $v ) );

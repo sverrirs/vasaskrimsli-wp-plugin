@@ -81,7 +81,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 		() =>
 			data.entries.map( ( e ) => ( {
 				...e,
-				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.enska, e.athugasemdir, e.serstakt, ...( e.flokkar ?? [] ) ].map( htmlToText ).join( ' ' ) ),
+				hay: fold( [ e.numer, e.nafn, e.uppruni, e.thyding, e.lysing, e.enska, e.athugasemdir, e.serstakt, ...( e.flokkar ?? [] ) ].map( htmlToText ).join( ' ' ) ),
 			} ) ),
 		[ data ]
 	);
@@ -193,9 +193,8 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 									<thead>
 										<tr>
 											<th scope="col" className="vs-of__who">Nafn</th>
-											<th scope="col" className="vs-of__origin">Upprunaorð</th>
 											<th scope="col">Þýðing</th>
-											<th scope="col" className="vs-of__en">Enska</th>
+											<th scope="col" className="vs-of__lysing">Lýsing</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -206,6 +205,8 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 													<span className="vs-of__num">#{ e.numer }</span>
 													<Html className="vs-of__name" html={ e.nafn } />
 													{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
+													<Html className="vs-of__origin" html={ e.uppruni } />
+													<Html className="vs-of__en" html={ e.enska } />
 													{ e.flokkar?.length > 0 && (
 														<span className="vs-of__tags">
 															{ e.flokkar.map( ( f ) => (
@@ -216,15 +217,12 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 														</span>
 													) }
 												</td>
-												<td data-label="Upprunaorð" className="vs-of__origin">
-													<Html html={ e.uppruni } />
-												</td>
 												<td data-label="Þýðing">
 													<Html html={ e.thyding } />
 													{ e.athugasemdir && <Html as="div" className="vs-of__note" html={ e.athugasemdir } /> }
 												</td>
-												<td data-label="Enska" className="vs-of__en">
-													<Html html={ e.enska } />
+												<td data-label="Lýsing" className="vs-of__lysing">
+													<Html html={ e.lysing } />
 												</td>
 											</tr>
 										) ) }

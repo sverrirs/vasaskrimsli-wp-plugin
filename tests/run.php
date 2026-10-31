@@ -35,7 +35,7 @@ function entry( array $over = array() ): array {
 			'uppruni' => '<strong><a href="https://ordsifjabok.arnastofnun.is/faersla/10705">Lauk</a></strong>–eðla',
 			'thyding' => '<strong>Laukur:</strong> Norrænt orð.<br><em>Eðla:</em> Skriðdýr &amp; „hali“.',
 			'enska' => '<a href="https://pokemondb.net/pokedex/bulbasaur">Bulbasaur</a>',
-			'flokkar' => array( 'Jurt', 'Dýr' ), 'athugasemdir' => '',
+			'flokkar' => array( 'Jurt', 'Dýr' ), 'athugasemdir' => '', 'lysing' => '',
 		),
 		$over
 	);
@@ -50,8 +50,8 @@ check( 'plain_to_html escapes and turns newlines into br', Csv::plain_to_html( "
 $html_csv  = Csv::export( array( entry() ), Csv::MODE_HTML );
 $plain_csv = Csv::export( array( entry() ), Csv::MODE_PLAIN );
 check( 'export starts with UTF-8 BOM', substr( $html_csv, 0, 3 ), "\xEF\xBB\xBF" );
-check( 'formatted header', strtok( substr( $html_csv, 3 ), "\r" ), 'id,numer,kynslod,nafn_html,uppruni_html,thyding_html,enska_html,flokkar,athugasemdir_html' );
-check( 'plain header', strtok( substr( $plain_csv, 3 ), "\r" ), 'id,numer,kynslod,nafn,uppruni,thyding,enska,flokkar,athugasemdir' );
+check( 'formatted header', strtok( substr( $html_csv, 3 ), "\r" ), 'id,numer,kynslod,nafn_html,uppruni_html,thyding_html,lysing_html,enska_html,flokkar,athugasemdir_html' );
+check( 'plain header', strtok( substr( $plain_csv, 3 ), "\r" ), 'id,numer,kynslod,nafn,uppruni,thyding,lysing,enska,flokkar,athugasemdir' );
 check( 'plain export has no tags', strpos( $plain_csv, '<' ), false );
 
 // --- round trips
@@ -318,6 +318,15 @@ foreach ( $cp['changes'] as $c ) {
 	$v4[ $c['id'] ] = $c['fields'] + $v4[ $c['id'] ];
 }
 check( 'changes: running again changes nothing', Nofn::plan_changes( $v4, $crows ), array( 'changes' => array(), 'skipped' => array( '751 Bóluló (Þýðing)', '750 Mitt nafn (Nafn)' ) ) );
+
+// Lýsing (data version 7): filled only where the entry has none; text the owner wrote is kept.
+$lrows = array(
+	array( 'numer' => 752, 'fyrri' => array( 'lysing' => '' ), 'nytt' => array( 'lysing' => 'Hann kafar.' ) ),
+	array( 'numer' => 751, 'fyrri' => array( 'lysing' => '' ), 'nytt' => array( 'lysing' => 'Hann flýtur.' ) ),
+);
+$v4[2]['lysing'] = 'Eigandinn skrifaði.';
+$lp = Nofn::plan_changes( $v4, $lrows );
+check( 'lysing: filled where empty, the text the owner wrote is kept', array( array_column( $lp['changes'], 'fields', 'numer' ), $lp['skipped'] ), array( array( '752' => array( 'lysing' => 'Hann kafar.' ) ), array( '751 Bóluló (Lýsing)' ) ) );
 
 // Every released breytingar-N.json applies in full to a site that has versions 3 and 4 (and earlier N).
 if ( file_exists( $tfile ) ) {
