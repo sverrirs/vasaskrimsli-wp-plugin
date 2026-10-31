@@ -3,7 +3,7 @@ import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
 import { Grid } from './Skra.jsx';
 import Safn from './Safn.jsx';
-import { load, save, toggle } from './safn.js';
+import { cycle, load, remove, save, split, variant } from './safn.js';
 
 const storage = () => {
 	try {
@@ -51,12 +51,12 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const [ tip, setTip ] = useState( null );
 	const showTip = useCallback( ( entry, rect ) => setTip( { entry, rect } ), [] );
 	const hideTip = useCallback( () => setTip( null ), [] );
-	// The visitor's collection (Skrímslaskrá only): Númer in the order they were added.
+	// The visitor's collection (Skrímslaskrá only): Númer, or Númer:form, in the order they were added.
 	const [ safn, setSafn ] = useState( () => ( skra ? load( storage() ) : [] ) );
 	const [ full, setFull ] = useState( 0 );
-	const pick = useCallback( ( numer ) => {
+	const pick = useCallback( ( entry ) => {
 		setSafn( ( list ) => {
-			const r = toggle( list, numer );
+			const r = cycle( list, entry.numer, ( entry.formir ?? [] ).map( ( f ) => f.id ) );
 			if ( r.full ) {
 				setFull( Date.now() );
 			}
@@ -236,9 +236,16 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 			<SpriteTooltip tip={ tip } onHide={ hideTip } detail={ skra } />
 			{ skra && (
 				<Safn
-					chosen={ safn.map( ( n ) => entries.find( ( e ) => String( e.numer ) === n ) ).filter( Boolean ) }
+					chosen={ safn
+						.map( ( item ) => {
+							const { numer, form } = split( item );
+							const e = entries.find( ( x ) => String( x.numer ) === numer );
+							const v = e && variant( e, form );
+							return v && { ...v, item };
+						} )
+						.filter( Boolean ) }
 					full={ full }
-					onRemove={ pick }
+					onRemove={ ( numer ) => setSafn( ( list ) => remove( list, numer ) ) }
 					onClear={ () => setSafn( [] ) }
 					throunUrl={ data.throun }
 					all={ entries }

@@ -1,4 +1,5 @@
 import { htmlToText } from '../../../../shared/js/search.js';
+import { find, split, variant } from './safn.js';
 
 /** Tile image size in the Skrímslaskrá grid (from the 256 px image, so sharp on high-density screens). */
 const IMG = 112;
@@ -32,17 +33,20 @@ function moveFocus( key, from ) {
 
 /**
  * One generation's tiles. Hover, focus or a tap shows the entry in the popup; a click (or Enter) also puts
- * it in the visitor's collection, or takes it out again.
+ * it in the visitor's collection. Further clicks go through its forms (the tile then shows the chosen
+ * form's picture and name), and the click after the last one takes it out again.
  */
 export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 	return (
 		<ul className="vs-of-grid">
 			{ rows.map( ( e, i ) => {
-				const nafn = htmlToText( e.nafn );
-				const enska = htmlToText( e.enska );
+				const item = find( chosen, e.numer );
+				const picked = item !== undefined;
+				const v = ( picked && variant( e, split( item ).form ) ) || e;
+				const nafn = htmlToText( v.nafn );
+				const enska = htmlToText( v.enska );
 				const icelandic = nafn && nafn !== '–';
 				const show = ( ev ) => onShow( e, ev.currentTarget.getBoundingClientRect() );
-				const picked = chosen.includes( String( e.numer ) );
 				return (
 					<li key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
 						<button
@@ -55,7 +59,7 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 							onBlur={ onHide }
 							onClick={ ( ev ) => {
 								show( ev );
-								onPick?.( e.numer );
+								onPick?.( e );
 							} }
 							onKeyDown={ ( ev ) => {
 								if ( [ 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown' ].includes( ev.key ) ) {
@@ -64,8 +68,8 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 								}
 							} }
 						>
-							{ e.mynd_stor || e.mynd ? (
-								<img src={ e.mynd_stor || e.mynd } width={ IMG } height={ IMG } alt="" loading="lazy" decoding="async" />
+							{ v.mynd_stor || v.mynd ? (
+								<img src={ v.mynd_stor || v.mynd } width={ IMG } height={ IMG } alt="" loading="lazy" decoding="async" />
 							) : (
 								<span className="vs-of-tile__noimg" aria-hidden="true" />
 							) }
@@ -79,8 +83,8 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 								</span>
 							) }
 							{ picked && (
-								<span className="vs-of-tile__picked" aria-hidden="true">
-									✓
+								<span className={ 'vs-of-tile__picked' + ( v.forma ? ' is-form' : '' ) } aria-hidden="true">
+									{ v.forma ? `✓ ${ v.forma.nr }/${ e.formir.length }` : '✓' }
 								</span>
 							) }
 						</button>

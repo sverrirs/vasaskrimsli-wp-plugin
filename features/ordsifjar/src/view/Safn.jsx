@@ -66,7 +66,7 @@ export default function Safn( { chosen, full, onRemove, onClear, throunUrl, all 
 				<p className="vs-safn__title">
 					Safnið mitt <span>{ n } af { MAX }</span>
 				</p>
-				{ n === 0 && <p className="vs-safn__hint">Smelltu á skrímsli til að setja það í safnið. Smelltu aftur til að taka það úr því.</p> }
+				{ n === 0 && <p className="vs-safn__hint">Smelltu á skrímsli til að setja það í safnið. Hafi það önnur form velur næsti smellur þau eitt af öðru og síðasti smellurinn tekur það úr safninu.</p> }
 				{ fullNote && (
 					<p className="vs-safn__full" role="status">
 						Safnið er fullt. Taktu skrímsli úr því til að bæta öðru við.
@@ -78,7 +78,7 @@ export default function Safn( { chosen, full, onRemove, onClear, throunUrl, all 
 							const nafn = htmlToText( e.nafn );
 							const name = nafn && nafn !== '–' ? nafn : htmlToText( e.enska );
 							return (
-								<li key={ e.numer }>
+								<li key={ e.item }>
 									{ e.mynd ? <img src={ e.mynd } width="40" height="40" alt="" /> : <span className="vs-safn__noimg" /> }
 									<span className="vs-safn__name">
 										<span>#{ e.numer }</span> { name }

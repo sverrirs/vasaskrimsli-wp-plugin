@@ -62,7 +62,8 @@ final class Format {
 	 * @param array  $formir Decoded formir.json: national number => list of {s: slug, h: name, i: Icelandic name}.
 	 * @param array  $have   Slugs that have a picture, as keys.
 	 * @param string $name   The monster's Icelandic name (its English one when it has none yet).
-	 * @return list<array{heiti: string, slug: string}> slug is '' when there is no picture.
+	 * @return list<array{id: string, heiti: string, enska: string, slug: string}> id is the form's slug (it names
+	 *         the form in the visitor's collection); slug is '' when there is no picture.
 	 */
 	public static function formir( array $formir, array $have, string $numer, string $name = '' ): array {
 		if ( ! preg_match( '/^\d+/', $numer, $m ) ) {
@@ -72,7 +73,12 @@ final class Format {
 		foreach ( $formir[ (string) (int) $m[0] ] ?? array() as $f ) {
 			$slug  = (string) ( $f['s'] ?? '' );
 			$heiti = '' !== $name && ! empty( $f['i'] ) ? str_replace( '{n}', $name, (string) $f['i'] ) : (string) ( $f['h'] ?? '' );
-			$out[] = array( 'heiti' => $heiti, 'slug' => isset( $have[ $slug ] ) ? $slug : '' );
+			$out[] = array(
+				'id'    => $slug,
+				'heiti' => $heiti,
+				'enska' => (string) ( $f['h'] ?? '' ),
+				'slug'  => isset( $have[ $slug ] ) ? $slug : '',
+			);
 		}
 		return $out;
 	}

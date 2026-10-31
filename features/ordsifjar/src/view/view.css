@@ -504,6 +504,14 @@
 	border-radius: 50%;
 }
 
+/* One of the monster's forms is in the collection: "✓ 1/2". */
+.vs-of-tile__picked.is-form {
+	width: auto;
+	padding: 0 7px;
+	font-size: 0.75rem;
+	border-radius: 12px;
+}
+
 /* Collection panel: a tab on the left edge that slides out on hover, focus or a tap. */
 .vs-safn {
 	--safn-w: min(300px, calc(100vw - 56px));

@@ -50,7 +50,12 @@ final class Block {
 		$e['mynd_stor'] = $found ? $base . 'large/' . $n . '.webp' : ''; // Hover tooltip.
 		$e['serstakt']  = Format::serstakt( (string) $e['numer'] );
 		$e['formir']    = array_map( static function ( $f ) use ( $base ) {
-			return array( 'heiti' => $f['heiti'], 'mynd' => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '' );
+			return array(
+				'id'    => $f['id'],
+				'heiti' => $f['heiti'],
+				'enska' => $f['enska'],
+				'mynd'  => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '',
+			);
 		}, Format::formir( self::formir_data(), self::formir_have(), (string) $e['numer'], self::plain_name( $e ) ) );
 		return $e;
 	}

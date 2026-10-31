@@ -224,7 +224,7 @@ function drawEvolution( ctx, stages, current, x, y, w, h, fam, colors, images ) 
  * Draws one card.
  * @param {Object} entry  The entry as shown on the page.
  * @param {Object} info   Its row in throun.json: { t: types, k: stages }.
- * @param {Map} images    National number -> loaded picture (256 px).
+ * @param {Map} images    National number -> loaded picture (256 px); 'forma': the chosen form's picture.
  * @param {string} fam    CSS font family.
  */
 export function drawCard( canvas, entry, info, images, fam ) {
@@ -308,7 +308,7 @@ export function drawCard( canvas, entry, info, images, fam ) {
 	const { S } = L;
 
 	// Picture on a white glow.
-	const pic = images.get( num );
+	const pic = images.get( 'forma' ) ?? images.get( num ); // A form in the collection: its own picture.
 	const px = ( W - S ) / 2;
 	const glow = ctx.createRadialGradient( W / 2, py + S / 2, 40, W / 2, py + S / 2, S * 0.62 );
 	glow.addColorStop( 0, css( WHITE, 0.95 ) );
@@ -432,8 +432,8 @@ export async function buildPdf( chosen, all, throunUrl, fam, progress = () => {}
 		const wanted = new Set( [ national( entry.numer ), ...( info?.k ?? [] ).flat() ] );
 		const images = new Map();
 		await Promise.all(
-			[ ...wanted ].map( async ( n ) => {
-				const img = await loadImage( pictures.get( n ) );
+			[ ...wanted, ...( entry.forma?.mynd ? [ 'forma' ] : [] ) ].map( async ( n ) => {
+				const img = await loadImage( n === 'forma' ? entry.forma.mynd : pictures.get( n ) );
 				if ( img ) {
 					images.set( n, img );
 				}
