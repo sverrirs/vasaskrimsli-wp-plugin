@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.4.6
+Stable tag: 1.5.0
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,12 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.5.0 =
+* Orðsifjafræði: taflan hefur nú þrjá dálka, Nafn, Þýðing og Lýsing. Upprunaorð og enska nafnið (smátt, grátt, með tengli) standa undir nafninu.
+* Nýr reitur, Lýsing: hvernig skrímslið lítur út og hvað það gerir, svo nafnið skiljist. Hann er í stjórnborðinu, í CSV út- og innflutningi og í útgáfusögu.
+* Gagnaútgáfa 7 setur Lýsingu á öll 1028 skrímslin, aðeins þar sem reiturinn er tómur, og breytir #496 í Vaflanga. Afrit er tekið fyrst og texti sem þú hefur skrifað sjálf(ur) helst óbreyttur.
+* Sprettigluggi og PDF-kort: nafn skrímslisins sjálfs er feitletrað í Fjölskyldu-línunni.
 
 = 1.4.6 =
 * Sprettiglugginn heldur spjöldunum kyrrum þegar smellt er á form: stóra spjaldið er alltaf skrímslið sjálft og formin í sömu röð. Spjöld í safninu eru merkt „✓ Í safninu“ og það sem síðasti smellur bætti við fær þykkari ramma og „✓ Bætt í safnið“.
