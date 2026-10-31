@@ -17,7 +17,7 @@ Gagnvirkir hlutar vasaskrimsli.is.
 = 1.5.5 =
 * #964 Hafkappi sýnir hetjuformið sem aðalmynd, því núllformið er teiknað eins og #963 Hnísill; núllformið er nú aukaformið („Hafkappi núllform“).
 * Tímaflækingar: merkið er klofið, „Tímaflækingur“ á gulu og síðan skáskorið „Fortíð“ (ryðbrúnt) eða „Framtíð“ (fjólublátt).
-* Gagnaútgáfa 8: nýjar Þýðingar fyrir 283 skrímsli, þar af 144 í 1. og 2. kynslóð, skrifaðar til að kenna meira um orðin (t.d. #32 Náldur sem áður vísaði bara í #29). Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
+* Gagnaútgáfa 8: nýjar Þýðingar fyrir 319 skrímsli, þar af 167 í 1. og 2. kynslóð, skrifaðar til að kenna meira um orðin (t.d. #32 Náldur sem áður vísaði bara í #29). Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
 
 = 1.5.4 =
 * Tímaflækingar: merkið segir nú hvort skrímslið er úr fortíðinni eða framtíðinni („Tímaflækingur · Fortíð“ eða „Tímaflækingur · Framtíð“), 11 í hvorum hópi. Leit að „Fortíð“ eða „Framtíð“ finnur hvorn hóp og leit að „Tímaflækingur“ finnur alla 22.

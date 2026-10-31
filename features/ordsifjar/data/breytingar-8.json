@@ -27,6 +27,15 @@
   }
  },
  {
+  "numer": 8,
+  "fyrri": {
+   "thyding": "<strong>Skjaldborg:</strong> Varnarveggur úr skjöldum (hernaðarheiti).<br><strong>Borgari:</strong> Íbúi eða sá sem býr í <em>„</em>borginni<em>”</em> (skelinni).<br><em>Orðaleikur: Að slá skjaldborg um einhvern þýðir að vernda hann. Og skjald- er líka fyrri hlutinn í skjaldbaka!</em>"
+  },
+  "nytt": {
+   "thyding": "<strong>Skjaldborg:</strong> Varnarveggur úr skjöldum (hernaðarheiti).<br><strong>Borgari:</strong> Íbúi eða sá sem býr í „borginni“ (skelinni).<br><strong>Íslenska:</strong> Að slá skjaldborg um einhvern þýðir að vernda hann. Orðið <em>skjöldur</em> getur líka merkt horn- eða kalkskel á dýrum. Í orðinu <em>skjaldbaka</em> er seinni hlutinn dreginn af orðinu <em>bak</em>, svo skjaldbaka er dýr með skjöld á bakinu."
+  }
+ },
+ {
   "numer": 11,
   "fyrri": {
    "thyding": "<strong>Púpa:</strong> Hylki sem lirfa myndar utan um sig áður en hún verður fluga.<br><strong>-isti:</strong> eins og í píanisti og gítaristi: sá sem stundar eitthvað. Púpisti er atvinnupúpa!"
@@ -78,6 +87,33 @@
   },
   "nytt": {
    "thyding": "<strong>Spjót:</strong> Lagvopn.<br><strong>-rungur:</strong> Viðskeyti (sbr. <em>spjátrungur</em>, <em>ungur</em>).<br><strong>Íslenska:</strong> <em>Spjátrungur</em> er monthani eða oflátungur. Orðið er leitt af sögninni <em>að spjátra</em>, sem þýddi að ganga hreykinn og hreykja sér."
+  }
+ },
+ {
+  "numer": 23,
+  "fyrri": {
+   "thyding": "<strong>Naðra:</strong> Slanga/eiturormur. Orðið er <em>Naðra</em> skrifað afturábak (sbr. <em>Ekans/Snake</em>).<br><em>Náttúrufræði</em>: Engar slöngur lifa villtar á Íslandi."
+  },
+  "nytt": {
+   "thyding": "<strong>Naðra:</strong> Slanga eða eiturormur. Nafnið er orðið <em>naðra</em> skrifað aftur á bak.<br><strong>Náttúra:</strong> Engar slöngur lifa villtar á Íslandi."
+  }
+ },
+ {
+  "numer": 24,
+  "fyrri": {
+   "thyding": "<strong>Slanga:</strong> Snákur. Orðið er <em>Slanga</em> skrifað afturábak (sbr. <em>Arbok/Cobra</em>).<br><em>Orðaleikur: Getur þú skrifað nafnið þitt aftur á bak? Hvaða skrímslanafn færðu?</em>"
+  },
+  "nytt": {
+   "thyding": "<strong>Slanga:</strong> Snákur. Orðið er <em>slanga</em> skrifað afturábak. Getur þú skrifað nafnið þitt aftur á bak?<br><strong>Íslenska:</strong> Orðið <em>slanga</em> kom inn í íslensku úr dönsku á 17. öld. Það er skylt sögninni að <em>slöngva</em> og vísar í hlykkjóttar hreyfingar dýrsins.<br><strong>Goðafræði:</strong> Í norrænni goðafræði liggur Miðgarðsormur í hafinu sem umlykur heiminn og bítur í sporð sér. Hann er afkvæmi Loka og erkióvinur Þórs."
+  }
+ },
+ {
+  "numer": 27,
+  "fyrri": {
+   "thyding": "<strong>Sandur:</strong> Jarðefni.<br><strong>Snjáldur:</strong> Trýni eða nef (sbr. <em>snjáldurmús</em>).<br><em>Dýrafræði: Snjáldurmús er íslenska orðið yfir dýrið sem heitir shrew á ensku, alveg eins og í Sandshrew.</em>"
+  },
+  "nytt": {
+   "thyding": "<strong>Sandur:</strong> Jarðefni.<br><strong>Snjáldur:</strong> Trýni eða nef (sbr. <em>snjáldurmús</em>).<br><strong>Náttúra:</strong> Snjáldurmús er lítið dýr með langt og mjótt trýni. Hún líkist mús en er ekki nagdýr."
   }
  },
  {
@@ -135,6 +171,15 @@
   }
  },
  {
+  "numer": 41,
+  "fyrri": {
+   "thyding": "<strong>Blaka:</strong> Að slá vængjum (eða leðurblaka).<br><strong>-ildi:</strong> Ending úr orðinu <em>fiðrildi</em>.<br><em>Orðaleikur: Leðurblaka þýðir eiginlega „sú sem blakar leðurvængjum<em>”</em>.</em>"
+  },
+  "nytt": {
+   "thyding": "<strong>Blaka:</strong> Að slá vængjum (eða leðurblaka).<br><strong>-ildi:</strong> Ending úr orðinu <em>fiðrildi</em>.<br><strong>Íslenska:</strong> Leðurblaka þýðir eiginlega „sú sem blakar leðurvængjum“. Sögnin að <em>blaka</em> merkir að hreyfast hægt eða slá laust, og af sama orði kemur íþróttin <em>blak</em>.<br><strong>Náttúra:</strong> Engar leðurblökur búa á Íslandi. Þrjár tegundir hafa þó borist hingað með vindum en ekki fjölgað sér."
+  }
+ },
+ {
   "numer": 43,
   "fyrri": {
    "thyding": "<strong>Kál:</strong> Matjurt.<br><strong>Haus:</strong> Höfuð. <br>Orðið er einnig notað um aulahátt (<em>„</em>þú ert nú meiri kálhausinn<em>”</em>), heimskingi, bjáni"
@@ -186,6 +231,15 @@
   },
   "nytt": {
    "thyding": "<strong>Mjá:</strong> Hljóð katta.<br><strong>Gjarn:</strong> Gefinn fyrir eitthvað, hefur tilhneigingu til einhvers.<br><strong>Íslenska:</strong> <em>Gjarn</em> hljómar líkt og <em>garn</em>, þráður sem kettir leika sér að, en orðin eru ekki skyld. <em>Gjarn</em> þýðir fús og af því er <em>gjarnan</em> dregið. <em>Garn</em> er hins vegar skylt orðinu <em>görn</em>."
+  }
+ },
+ {
+  "numer": 54,
+  "fyrri": {
+   "thyding": "<strong>Mígreni:</strong> Höfuðverkur.<br><strong>Önd:</strong> Fugl. <br><em>Orðaleikur:</em> Samsetning á <em><em>„</em></em>Mígreni<em>”</em> og <em><em>„</em></em>Önd<em>”</em>. Önd verður <em>endur </em>í fleirtölu. Þaðan kemur -endi."
+  },
+  "nytt": {
+   "thyding": "<strong>Mígreni:</strong> Höfuðverkur.<br><strong>Önd:</strong> Fugl. Samsetning á „mígreni“ og „önd“. Önd verður <em>endur</em> í fleirtölu og þaðan kemur -endi.<br><strong>Íslenska:</strong> Til eru fleiri en eitt orð <em>önd</em>. Eitt þeirra merkir forstofu, og það sést enn í orðinu <em>anddyri</em>."
   }
  },
  {
@@ -261,6 +315,15 @@
   }
  },
  {
+  "numer": 75,
+  "fyrri": {
+   "thyding": "<strong>Mold:</strong> Jarðvegur.<br><strong>-ungur:</strong> Viðskeyti.<br><em>Orðaleikur</em>: Vísar í orðatiltækið að <em><em>„</em></em>malda í móinn<em>”</em>, mótmæla nokkuð, sýna vægan mótþróa (vísar í þrjósku og þrætugirni þeirra)."
+  },
+  "nytt": {
+   "thyding": "<strong>Mold:</strong> Jarðvegur.<br><strong>-ungur:</strong> Viðskeyti, það sama og í <em>silungur</em> og <em>höfrungur</em>.<br><strong>Íslenska:</strong> Að <em>malda í móinn</em> merkir að mótmæla örlítið eða sýna vægan mótþróa. Það passar við þrjósku og þrætugirni þeirra. Orðið <em>mold</em> er skylt orðunum <em>mala</em>, <em>mjöl</em> og <em>moli</em>. Til er líka gamla orðið <em>moldungur</em>, sem merkir ormur."
+  }
+ },
+ {
   "numer": 77,
   "fyrri": {
    "thyding": "<strong>Logi:</strong> Eldur.<br><strong>-ald:</strong> Ending úr <em>folald</em>."
@@ -288,12 +351,30 @@
   }
  },
  {
+  "numer": 83,
+  "fyrri": {
+   "thyding": "<strong>Önd:</strong> Fugl.<br><strong>Vígur:</strong> Vopnfær/stríðs-. <br><em>Orðaleikur:</em> Orðið <em>andvígur</em> merkir að vera á móti einhverju."
+  },
+  "nytt": {
+   "thyding": "<strong>Önd:</strong> Fugl.<br><strong>Vígur:</strong> Vopnfær/stríðs-.<br><strong>Íslenska:</strong> Orðið <em>andvígur</em> merkir að vera á móti einhverju. Orðið <em>önd</em> merkir ekki bara fugl. Annað gamalt orð <em>önd</em> merkir sál eða andi og er skylt orðinu <em>andi</em>."
+  }
+ },
+ {
   "numer": 84,
   "fyrri": {
    "thyding": "<strong>Par:</strong> Tveir (tveir hausar).<br><strong>Fugl:</strong> Dýrategund."
   },
   "nytt": {
    "thyding": "<strong>Par:</strong> Tveir (tveir hausar).<br><strong>Fugl:</strong> Dýrategund.<br><strong>Náttúra:</strong> Álftin er stærsti fugl Íslands. Á varptíma verja álftahjónin óðal sitt saman."
+  }
+ },
+ {
+  "numer": 85,
+  "fyrri": {
+   "thyding": "<strong>Þrí-:</strong> Þrír.<br><strong>Trana:</strong> Stór, grár, hálslangur og háfættur fugl.<br><em>Orðaleikur: </em>Fuglsnef/haus (sbr. <em>að trana sér fram</em>)."
+  },
+  "nytt": {
+   "thyding": "<strong>Þrí-:</strong> Þrír.<br><strong>Trana:</strong> Stór, grár, hálslangur og háfættur fugl.<br><strong>Íslenska:</strong> <em>Trana</em> getur líka merkt rana eða trjónu, og sögnin að <em>trana</em> merkir að ota fram (sbr. <em>að trana sér fram</em>). Í gamla daga hét skip <em>Trana</em>, líklega af því að það hafði framteygt drekahöfuð."
   }
  },
  {
@@ -312,6 +393,15 @@
   },
   "nytt": {
    "thyding": "<strong>Snær:</strong> Snjór.<br><strong>Sæljón:</strong> Selategund. <em>Snæ</em> + <em>Sæljón</em>.<br><strong>Náttúra:</strong> Við Ísland kæpa tvær selategundir, landselur og útselur. Fjórar aðrar selategundir sjást hér af og til."
+  }
+ },
+ {
+  "numer": 89,
+  "fyrri": {
+   "thyding": "<strong>For:</strong> Leðja, skítur (sbr. <em>forarpyttur</em>).<br><strong>Sprakkur:</strong> röskur, skjótur.<br><em>Orðaleikur</em>: Forsprakki þýðir líka upphafsmaður og leiðtogi."
+  },
+  "nytt": {
+   "thyding": "<strong>For:</strong> Leðja, skítur (sbr. <em>forarpyttur</em>).<br><strong>Sprakkur:</strong> Röskur, skjótur.<br><strong>Íslenska:</strong> <em>Forsprakki</em> þýðir líka upphafsmaður og leiðtogi. Orðið sést fyrst á 18. öld og er líklega tökuorð, skylt fornensku orði sem merkti formælandi."
   }
  },
  {
@@ -477,12 +567,39 @@
   }
  },
  {
+  "numer": 123,
+  "fyrri": {
+   "thyding": "<strong>Ljár:</strong> Slátturverkfæri.<br><strong>Spretta:</strong> Að hlaupa og líka að rekja eða skera upp saum.<br><em>Orðaleikur</em>: Afbökun á orðinu engispretta."
+  },
+  "nytt": {
+   "thyding": "<strong>Ljár:</strong> Slátturverkfæri.<br><strong>Spretta:</strong> Að hlaupa og líka að rekja eða skera upp saum.<br><strong>Íslenska:</strong> Nafnið er afbökun á orðinu <em>engispretta</em>. Ljár er grasskeri sem festur er á orf, og torfljár var notaður til að skera torf. Sögnin að <em>spretta</em> getur líka merkt að vaxa, og <em>spretta</em> er líka orð yfir vöxt plantna."
+  }
+ },
+ {
   "numer": 124,
   "fyrri": {
    "thyding": "<strong>Tál:</strong> Svik, blekking eða tæling.<br><strong>Grýla:</strong> Tröllskessa."
   },
   "nytt": {
    "thyding": "<strong>Tál:</strong> Svik, blekking eða tæling.<br><strong>Grýla:</strong> Tröllskessa.<br><strong>Þjóðsaga:</strong> Grýla er tröllkona og móðir íslensku jólasveinanna, og Leppalúði er líklega faðir þeirra. Elstu Grýlukvæðin eru talin frá 13. öld."
+  }
+ },
+ {
+  "numer": 125,
+  "fyrri": {
+   "thyding": "<strong>Spenna:</strong> Rafspenna.<br><strong>Dýr:</strong> Skepna.<br><em>Orðaleikur:</em> Hljómar eins og <em>spendýr</em>."
+  },
+  "nytt": {
+   "thyding": "<strong>Spenna:</strong> Rafspenna.<br><strong>Dýr:</strong> Skepna.<br><strong>Íslenska:</strong> Nafnið hljómar eins og <em>spendýr</em>. Speni er totan á brjósti eða júgri sem unginn sýgur mjólk úr, og þaðan fá spendýrin nafn sitt.<br><strong>Náttúra:</strong> Melrakkinn (tófan) er eina villta landspendýrið sem telst upprunalegt á Íslandi. Hann hefur líklega búið hér frá lokum ísaldar."
+  }
+ },
+ {
+  "numer": 126,
+  "fyrri": {
+   "thyding": "<strong>Kvika:</strong> Bráðið grjót.<br><strong>Kynda:</strong> Að kveikja eld.<br><em>Orðaleikur:</em> Vísar í <em>kvikindi</em> (ófreskja)."
+  },
+  "nytt": {
+   "thyding": "<strong>Kvika:</strong> Bráðið grjót.<br><strong>Kynda:</strong> Að kveikja eld.<br><strong>Íslenska:</strong> Nafnið vísar í <em>kvikindi</em> (ófreskja). Orðin <em>kvika</em> og <em>kvikindi</em> eru skyld lýsingarorðinu <em>kvikur</em>, sem merkir lifandi eða fjörlegur. Af sama toga eru orðin <em>kvikasilfur</em> og <em>kviksyndi</em>. Af sögninni að <em>kynda</em> er dregið orðið <em>kyndill</em>, sem merkir blys."
   }
  },
  {
@@ -510,6 +627,15 @@
   },
   "nytt": {
    "thyding": "<strong>Grey:</strong> Aumingi.<br><strong>Grásleppa:</strong> Fisktegund.<br><strong>Náttúra:</strong> Grásleppa er kvenfiskur hrognkelsis, og karlinn heitir rauðmagi. Það er rauðmaginn sem gætir hrognanna."
+  }
+ },
+ {
+  "numer": 132,
+  "fyrri": {
+   "thyding": "<strong>Gervi:</strong> Eftirlíking.<br><strong>-ill:</strong> Ending.<br><em>Orðaleikur</em>: Vísar í orðið <a href=\"https://islenskordabok.arnastofnun.is/ord/49125\">hermir</a>, hlutur sem líkir eftir einhverju öðru raunverulegu."
+  },
+  "nytt": {
+   "thyding": "<strong>Gervi:</strong> Eftirlíking.<br><strong>-ill:</strong> Ending (sbr. <em>biðill</em>, <em>rindill</em>).<br><strong>Íslenska:</strong> Nafnið vísar í orðið hermir, hlutur sem líkir eftir einhverju öðru raunverulegu. Orðið <em>gervi</em> merkti upphaflega búnaður eða klæði og er skylt sögninni að <em>gera</em>."
   }
  },
  {
@@ -645,6 +771,15 @@
   },
   "nytt": {
    "thyding": "<strong>Brími:</strong> Eldur eða bjarmi (skáldamál).<br><strong>-ir:</strong> Nafnorðsending.<br><strong>Goðafræði:</strong> Í Völuspá segir að goðin hafi skapað dvergana úr blóði <em>Brimis</em>. Það nafn er líkt en skrifað án kommu yfir i-inu."
+  }
+ },
+ {
+  "numer": 158,
+  "fyrri": {
+   "thyding": "<strong>Smár:</strong> Lítill.<br><strong>Díll:</strong> Blettur, <br><em>Orðaleikur</em>: Stytting á <em>krókódíll</em>."
+  },
+  "nytt": {
+   "thyding": "<strong>Smár:</strong> Lítill.<br><strong>Díll:</strong> Blettur.<br><strong>Íslenska:</strong> Nafnið er stytting á <em>krókódíll</em>. Orðið barst í íslensku á 17. öld og kemur úr grísku <em>krokódeilos</em>. Það er myndað úr grískum orðum fyrir möl og orm. Orðið <em>díll</em> merkir smáblett eða brunablett, og fuglinn dílaskarfur er líka kallaður <em>díli</em>."
   }
  },
  {
@@ -810,6 +945,15 @@
   }
  },
  {
+  "numer": 181,
+  "fyrri": {
+   "thyding": "<strong>Standa:</strong> Að standa uppréttur.<br><strong>Lambi:</strong> Ung sauðkind.<br><em>Orðaleikur</em><strong>:</strong> Nafnið er hljóðlíking við Standlampa (gólflampa). Sem passar því halinn á því lýsir af sér birtu líkt og lampi og það var notað sem viti fyrir sjófarendur."
+  },
+  "nytt": {
+   "thyding": "<strong>Standa:</strong> Að standa uppréttur.<br><strong>Lambi:</strong> Ung sauðkind.<br><strong>Íslenska:</strong> Nafnið er hljóðlíking við <em>standlampa</em> (gólflampa). Það passar því halinn lýsir líkt og lampi og var notaður sem viti fyrir sjófarendur. Orðið <em>lampi</em> kemur úr grísku <em>lampás</em>, sem merkir blys og er dregið af sögn sem merkir að lýsa."
+  }
+ },
+ {
   "numer": 182,
   "fyrri": {
    "thyding": "<strong>Faldur:</strong> Skrautlegur höfuðbúnaður eða felling.<br><strong>Lilja:</strong> Blóm."
@@ -864,6 +1008,15 @@
   }
  },
  {
+  "numer": 189,
+  "fyrri": {
+   "thyding": "<strong>Hviða:</strong> Vindhviða.<br><strong>Kolla:</strong> Blómkollur/Fífill (sem fýkur).<br><em>Orðaleikur</em>: Hljóðlíking við <a href=\"http://www.floraislands.is/taraxspp.html\">Biðukollu</a>."
+  },
+  "nytt": {
+   "thyding": "<strong>Hviða:</strong> Vindhviða.<br><strong>Kolla:</strong> Blómkollur/Fífill (sem fýkur).<br><strong>Náttúra:</strong> Nafnið er hljóðlíking við biðukollu. Eftir blómgun lokar túnfífillinn blómakörfunni á meðan fræin þroskast. Þegar hún opnast aftur heitir hún biðukolla, og hvert fræ hefur hvítan svifkrans.<br><strong>Íslenska:</strong> <em>Kolla</em> getur líka merkt kollótt dýr eða kvenfugl af andaætt."
+  }
+ },
+ {
   "numer": 190,
   "fyrri": {
    "thyding": "<strong>Hali:</strong> Rófa.<br><strong>Mundur:</strong> Hönd (sem heldur um) eða mannsnafn."
@@ -879,6 +1032,15 @@
   },
   "nytt": {
    "thyding": "<strong>Sól:</strong> Stjarnan.<br><strong>Karn:</strong> Dregið af <em>kjarni</em> (fræ) eða <em>korn</em>.<br><strong>Goðafræði:</strong> Í Alvíssmálum á sólin mörg nöfn. Menn segja <em>sól</em>, goðin segja <em>sunna</em> og dvergarnir kalla hana <em>Dvalins leika</em>."
+  }
+ },
+ {
+  "numer": 193,
+  "fyrri": {
+   "thyding": "<strong>Fluga:</strong> Skordýr.<br><strong>Dreki:</strong> Skrímsli.<br><em>Orðaleikur</em><strong>:</strong> Nafnið er afbökun á orðinu Drekafluga, þar sem orðhlutunum er snúið við. Myndar jafnframt orðaleik við leikfangið flugdreka."
+  },
+  "nytt": {
+   "thyding": "<strong>Fluga:</strong> Skordýr.<br><strong>Dreki:</strong> Skrímsli.<br><strong>Íslenska:</strong> Nafnið er <em>drekafluga</em> með orðhlutunum snúið við og minnir líka á leikfangið flugdreka. Orðið <em>dreki</em> kemur úr grísku <em>drákōn</em>, sem merkir eiginlega „hinn hvasseygði“. Dreki var líka heiti á herskipi með drekahöfði."
   }
  },
  {
@@ -915,6 +1077,15 @@
   },
   "nytt": {
    "thyding": "<strong>Myrkur:</strong> Dimma.<br><strong>Boði:</strong> Sendiboði eða fyrirboði.<br><strong>Goðafræði:</strong> Í Snorra-Eddu elta tveir úlfar sólina og tunglið. Úlfurinn Sköll eltir sólina og Hati vill ná tunglinu."
+  }
+ },
+ {
+  "numer": 198,
+  "fyrri": {
+   "thyding": "<strong>Kráka:</strong> Fugl.<br><strong>-lingur:</strong> Smækkun. <br><em>Orðaleikur:</em> <em>Kræklingur</em> er algengt skeldýr við strendur Íslands."
+  },
+  "nytt": {
+   "thyding": "<strong>Kráka:</strong> Fugl.<br><strong>-lingur:</strong> Smækkun.<br><strong>Íslenska:</strong> Nafnið líkist orðinu <em>kræklingur</em>, sem er algengt skeldýr við strendur Íslands. Kræklingur heitir líka <em>krákuskel</em>, og orðið er skylt orðinu <em>kráka</em>.<br><strong>Náttúra:</strong> Æðarfuglinn lifir á kræklingum og gleypir marga smáa kræklinga við hverja köfun."
   }
  },
  {
@@ -1080,12 +1251,30 @@
   }
  },
  {
+  "numer": 218,
+  "fyrri": {
+   "thyding": "<strong>Leti:</strong> Að vera latur.<br><strong>Glóð:</strong> Lifandi kol/eldur.<br><em>Orðaleikur</em>: Nafnið er hljóðlíking við Letiblóð"
+  },
+  "nytt": {
+   "thyding": "<strong>Leti:</strong> Að vera latur.<br><strong>Glóð:</strong> Lifandi kol/eldur.<br><strong>Íslenska:</strong> Nafnið er hljóðlíking við <em>letiblóð</em>. Orðið <em>glóð</em> er dregið af sögninni að <em>glóa</em>. Í fleirtölu heita glóðir <em>glæður</em>, og orðið var líka haft um grynningar í á eða læk."
+  }
+ },
+ {
   "numer": 219,
   "fyrri": {
    "thyding": "<strong>Kvika:</strong> Bráðið grjót.<br><strong>Hetta:</strong> Húfa eða snigilhús."
   },
   "nytt": {
    "thyding": "<strong>Kvika:</strong> Bráðið grjót.<br><strong>Hetta:</strong> Húfa eða snigilhús.<br><strong>Náttúra:</strong> Í eldgosum á Íslandi kemur yfirleitt upp þunnfljótandi <em>basaltkvika</em> eða seig <em>líparítkvika</em>."
+  }
+ },
+ {
+  "numer": 220,
+  "fyrri": {
+   "thyding": "<strong>Svín:</strong> Grís.<br><strong>-li:</strong> Smækkun (sbr. <em>kríli</em>).<br><em>Orðaleikur</em>: Nafnið er gamansöm vísun í orðið Svili, Svilar eru menn sem eru giftir systrum."
+  },
+  "nytt": {
+   "thyding": "<strong>Svín:</strong> Grís.<br><strong>-li:</strong> Smækkun (sbr. <em>kríli</em>).<br><strong>Íslenska:</strong> Nafnið vísar í orðið <em>svili</em>. Svilar eru menn sem eru giftir systrum. Orðið er ævagamalt, og í grísku eru til skyld orð sem merkja líka eiginmenn systra."
   }
  },
  {
@@ -1125,6 +1314,15 @@
   }
  },
  {
+  "numer": 227,
+  "fyrri": {
+   "thyding": "<strong>Stál:</strong> Málmur.<br><strong>-ki:</strong> Ending (sbr. <em>álki</em>).<br><em>Orðaleikur</em>: Orðmynd af fuglsheitinu Fálki."
+  },
+  "nytt": {
+   "thyding": "<strong>Stál:</strong> Málmur.<br><strong>-ki:</strong> Ending (sbr. <em>álki</em>).<br><strong>Íslenska:</strong> Nafnið er myndað eins og fuglsheitið <em>fálki</em>. Orðið <em>stál</em> merkir eiginlega harður og sterkur málmur.<br><strong>Saga:</strong> Íslenskir fálkar voru veiddir og fluttir út til Evrópu frá miðöldum og þóttu meðal verðmætustu veiðifugla. Fálkaorðan, eitt æðsta heiðursmerki Íslands, dregur nafn sitt af fuglinum."
+  }
+ },
+ {
   "numer": 228,
   "fyrri": {
    "thyding": "<strong>Víti:</strong> Helvíti.<br><strong>Vargur:</strong> Úlfur/hundur."
@@ -1143,6 +1341,15 @@
   }
  },
  {
+  "numer": 231,
+  "fyrri": {
+   "thyding": "<strong>Fíll:</strong> Stórt dýr.<br><strong>-ingur:</strong> Smækkun (lítill fíll).<br><em>Orðaleikur</em>: Nafnið er tvírætt því <em>Fílingur </em>er einnig algengt slanguryrði yfir góða stemningu, gleði eða „stuð<em>”</em> (<em>að vera í góðum fíling</em>). Það passar vel við þennan glaðværa fíl."
+  },
+  "nytt": {
+   "thyding": "<strong>Fíll:</strong> Stórt dýr.<br><strong>-ingur:</strong> Smækkun (lítill fíll).<br><strong>Íslenska:</strong> <em>Fílingur</em> er líka algengt slanguryrði yfir góða stemningu, gleði eða „stuð“ (<em>að vera í góðum fíling</em>). Það passar vel við þennan glaðværa fíl. Orðið <em>fíll</em> er komið úr arabísku, þar sem fíllinn heitir <em>fil</em>. Af því er dregið orðið <em>fílefldur</em>, sem merkir mjög sterkur."
+  }
+ },
+ {
   "numer": 232,
   "fyrri": {
    "thyding": "<strong>Erki-:</strong> Áhersluforliður (arch-).<br><strong>Fantur:</strong> Hrotti, en stundum notað um fíla (<em>ele-phant</em>).<br><em>Orðaleikur</em>: Vísun í orðið Erkifjandi<br><em>Bókmenntavísun</em><strong>:</strong> Nafnið er orðaleikur sem vísar í Ollifanta (e. <em>Oliphaunts</em>) úr <em>Hringadróttinssögu</em>."
@@ -1157,7 +1364,7 @@
    "thyding": "<strong>Grafík:</strong> Tölvuteikning (Computer Graphics).<br><strong>-ja:</strong> Kvenkyns ending (sbr. <em>kirkja</em>). Hljóðlíking við <em>gyðja</em>.<br><strong>² (Annað veldi):</strong> Tölustafurinn er í yfirskrift. Þetta vísar í annað veldi í stærðfræði (x^2). Í tækniheiminum er þetta notað til að tákna útgáfu 2.0, enda er skrímslið uppfærð og betrumbætt útgáfa af forvera sínum (Sjá nr. 137)."
   },
   "nytt": {
-   "thyding": "<strong>Grafík:</strong> Tölvuteikning (Computer Graphics).<br><strong>-ja:</strong> Kvenkyns ending (sbr. <em>kirkja</em>). Hljóðlíking við <em>gyðja</em>.<br><strong>² (Annað veldi):</strong> Tölustafurinn er í yfirskrift. Þetta vísar í annað veldi í stærðfræði (x²). Í tækniheiminum er þetta notað til að tákna útgáfu 2.0, enda er skrímslið uppfærð og betri útgáfa af forvera sínum, Grafíkju, sem var búin til úr tölvugrafík."
+   "thyding": "<strong>Grafík:</strong> Tölvuteikning (Computer Graphics).<br><strong>-ja:</strong> Kvenkyns ending (sbr. <em>kirkja</em>). Hljóðlíking við <em>gyðja</em>.<br><strong>² (Annað veldi):</strong> Tölustafurinn er í yfirskrift. Þetta vísar í annað veldi í stærðfræði (x²). Í tækniheiminum er þetta notað til að tákna útgáfu 2.0, enda er skrímslið uppfærð og betri útgáfa af forvera sínum, Grafíkju, sem var búin til úr tölvugrafík.<br><strong>Vissir þú?</strong> Þrír í öðru veldi er níu, því 3 sinnum 3 eru 9. Orðið <em>veldi</em> merkir líka ríki eða vald, eins og þegar talað er um veldi konungsins."
   }
  },
  {
@@ -1341,6 +1548,15 @@
   }
  },
  {
+  "numer": 258,
+  "fyrri": {
+   "thyding": "<strong>Pollur:</strong> Smátjörn, smá dæld með vatni í.<br><strong>Pési:</strong> Strákur/gæi.<br><em>Orðaleikur:</em> Vísar í <em><em>„</em></em>Pollagalla<em><em>”</em></em> og að vera <em>polli</em> (lítill strákur)."
+  },
+  "nytt": {
+   "thyding": "<strong>Pollur:</strong> Smátjörn, smá dæld með vatni í.<br><strong>Pési:</strong> Strákur/gæi.<br><strong>Íslenska:</strong> Nafnið vísar í <em>pollagalla</em> og að vera <em>polli</em> (lítill strákur). Orðið <em>pési</em> var haft um lítinn og rýran mann eða strákpjakk, en líka um lélegan hrút. Annað orð <em>pési</em> merkir lítinn bækling."
+  }
+ },
+ {
   "numer": 259,
   "fyrri": {
    "thyding": "<strong>Mýri:</strong> Votlendi.<br><strong>Traðki:</strong> Sá sem treður."
@@ -1359,6 +1575,15 @@
   }
  },
  {
+  "numer": 262,
+  "fyrri": {
+   "thyding": "<strong>Úlfur:</strong> Rándýr.<br><strong>-úð:</strong> Ending (sbr. <em>andúð, dulúð, harðúð</em>), ending notuð yfir framkomu eða hugarfar.<br><em>Orðaleikur:</em> Úlfúð er til í íslensku og merkir fjandskapur, deilur eða illindi."
+  },
+  "nytt": {
+   "thyding": "<strong>Úlfur:</strong> Rándýr.<br><strong>-úð:</strong> Ending (sbr. <em>andúð, dulúð, harðúð</em>), notuð yfir framkomu eða hugarfar.<br><strong>Íslenska:</strong> <em>Úlfúð</em> er til í íslensku og merkir fjandskapur, deilur eða illindi.<br><strong>Goðafræði:</strong> Fenrisúlfur er sonur Loka í norrænni goðafræði. Æsir bundu hann með fjötrinum Gleipni, og Týr missti höndina í gini úlfsins."
+  }
+ },
+ {
   "numer": 263,
   "fyrri": {
    "thyding": "<strong>Slynkur:</strong> Snögg truflun á hreyfingu, rykkur eða kænska."
@@ -1368,12 +1593,30 @@
   }
  },
  {
+  "numer": 264,
+  "fyrri": {
+   "thyding": "<strong>Beinn:</strong> Að fara í beinni línu. <br><strong>Skeyti:</strong> einhverju sem er skotið, einnig skilaboð eða bréf.<br><em>Orðaleikur</em>:<em> </em>Beinskeyttur merkir sá sem hittir í mark, og líka sá sem talar hreint og beint út. Beinskeyta þýtur í beinni línu og hittir alltaf í mark."
+  },
+  "nytt": {
+   "thyding": "<strong>Beinn:</strong> Að fara í beinni línu.<br><strong>Skeyti:</strong> Eitthvað sem er skotið, einnig skilaboð eða bréf.<br><strong>Íslenska:</strong> <em>Beinskeyttur</em> merkir sá sem hittir í mark, og líka sá sem talar hreint og beint út. Beinskeyta þýtur í beinni línu og hittir alltaf í mark. Orðið <em>skeyti</em> er dregið af sögninni að <em>skjóta</em>. Það getur merkt kastvopn, skilaboð eða símskeyti, og það er líka í orðunum <em>forskeyti</em> og <em>viðskeyti</em>."
+  }
+ },
+ {
   "numer": 265,
   "fyrri": {
    "thyding": "<strong>Rass:</strong> Afturendi.<br><strong>Maðkur:</strong> Ormur.<br><em>Lýsing</em>: Rassmaðkur er með gadda á afturendanum sem hann notar til að flysja börk af trém."
   },
   "nytt": {
    "thyding": "<strong>Rass:</strong> Afturendi.<br><strong>Maðkur:</strong> Ormur eða fótalaus skordýralirfa.<br><strong>Lýsing:</strong> Rassmaðkur er með gadda á afturendanum sem hann notar til að flysja börk af trjám.<br><strong>Íslenska:</strong> Samkvæmt Íslenskri orðsifjabók er orðið <em>ánamaðkur</em> afbökun á <em>ámumaðkur</em>. Það nafn kemur af sjúkdómnum ámusótt, því fólk trúði að maðkurinn gæti læknað hana."
+  }
+ },
+ {
+  "numer": 266,
+  "fyrri": {
+   "thyding": "<strong>Reifar:</strong> Hvítt léreft sem ungbörn voru vafin í (reifuð).<br><strong>Angi:</strong> Barn, lítil vera.<br><em>Uppruni:</em> Dregið af orðunum <a href=\"https://islenskordabok.arnastofnun.is/ord/32984\">reifastrangi</a>/<a href=\"https://islenskordabok.arnastofnun.is/ord/32981\">reifabarn</a>, í gamla daga voru börn reifuð (vafin þétt) fyrstu mánuðina til að tryggja beinan vöxt og hlýju."
+  },
+  "nytt": {
+   "thyding": "<strong>Reifar:</strong> Hvítt léreft sem ungbörn voru vafin í (reifuð).<br><strong>Angi:</strong> Barn, lítil vera.<br><strong>Íslenska:</strong> Reifar eru dúkræmur sem sveipað var um ungbörn. Orðið er líklega skylt sögninni að <em>rífa</em> og merkti upphaflega afrifið stykki eða ræmu. Reifablöð eru líka á plöntum."
   }
  },
  {
@@ -1437,6 +1680,15 @@
   },
   "nytt": {
    "thyding": "<strong>Svala:</strong> Fuglategund.<br><strong>Ungur:</strong> Lítill/ungur.<br><strong>Náttúra:</strong> Landsvalan kemur til Íslands á hverju ári sem flækingur og hefur orpið hér. Hún veiðir skordýr á flugi.<br><strong>Íslenska:</strong> Sumir telja að nafnið svala sé dregið af gamalli rót sem merkir að hreyfast og eigi þá við flug fuglsins. Svala er líka kvenmannsnafn."
+  }
+ },
+ {
+  "numer": 277,
+  "fyrri": {
+   "thyding": "<strong>Sperrtur:</strong> Sá sem sperrir brjóstið, stoltur og montinn í fasi.<br><strong>Svala:</strong> Fuglategund.<br><em>Orðaleikur</em>: <em>Sperra</em> er líka bjálki í þaki, og svölur gera sér gjarnan hreiður undir þakskeggi."
+  },
+  "nytt": {
+   "thyding": "<strong>Sperrtur:</strong> Sá sem sperrir brjóstið, stoltur og montinn í fasi.<br><strong>Svala:</strong> Fuglategund.<br><strong>Íslenska:</strong> <em>Sperra</em> er líka burðartré í þaki. Fuglsheitið <em>svala</em> er líklega skylt orði sem merkir að hreyfast eða kvika og á þá við fluglag fuglsins. Svala er líka kvenmannsnafn."
   }
  },
  {
@@ -1518,6 +1770,24 @@
   },
   "nytt": {
    "thyding": "<strong>Glíma:</strong> Íslensk þjóðaríþrótt.<br><strong>Kútur:</strong> Lítill strákur.<br><strong>Saga:</strong> Í glímu reynir hvor keppandi að fella hinn með löglegu glímubragði en halda sjálfur jafnvægi. Karlar keppa um Grettisbeltið og konur um Freyjumenið.<br><strong>Íslenska:</strong> Orðið glíma merkti líklega upphaflega leikur eða skemmtun. Kútur getur líka merkt litla tunnu, og að <em>hrökkva í kút</em> er að hnipra sig saman."
+  }
+ },
+ {
+  "numer": 298,
+  "fyrri": {
+   "thyding": "<strong>Agnar:</strong> Eignarfall af <em>ögn</em>, eins og í <em>agnarlítill</em>.<br><strong>Ögn:</strong> Örlítið korn eða smáræði. <em>Agnarögn</em> merkir minnsta ögn sem til er, og veran er minnsti liður ættarinnar.<br><strong>Orðaleikur:</strong> Ættin fer stig af stigi: fyrst ögn, svo dögg, svo úði.<br><strong>Fjölskylda:</strong> Agnarögn → Daggarögn (#183) → Úðingur (#184)."
+  },
+  "nytt": {
+   "thyding": "<strong>Agnar:</strong> Eignarfall af <em>ögn</em>, eins og í <em>agnarlítill</em>.<br><strong>Ögn:</strong> Örlítið korn eða smáræði. <em>Agnarögn</em> merkir minnsta ögn sem til er, og veran er minnsti liður ættarinnar. Ættin fer stig af stigi: fyrst ögn, svo dögg, svo úði.<br><strong>Íslenska:</strong> Orðið <em>ögn</em> er ævagamalt. Það var líka haft um hlífarblað á grasblómi og er skylt orðinu <em>egg</em> (brún), af fornri rót sem merkir beittur eða oddhvass. Ögn var líka kvenmannsnafn.<br><strong>Fjölskylda:</strong> Agnarögn → Daggarögn (#183) → Úðingur (#184)."
+  }
+ },
+ {
+  "numer": 299,
+  "fyrri": {
+   "thyding": "<strong>Átt:</strong> Höfuðáttir (Norður, suður…).<br><strong>Viti:</strong> Vísar í <a href=\"https://islenskordabok.arnastofnun.is/ord/45938\">vit</a> (nef/munnur) eða <a href=\"https://ordsifjabok.arnastofnun.is/faersla/22788\">v<em>ita</em></a> (snúa í ákveðna átt).<br><em>Orðaleikur</em><strong>:</strong> Nafnið er bein hljóðlíking við Áttavita. Nefið á honum er segulmagnað og vísar alltaf í norður."
+  },
+  "nytt": {
+   "thyding": "<strong>Átt:</strong> Höfuðáttir (Norður, suður…).<br><strong>Viti:</strong> Vísar í vit (nef/munnur) eða <em>vita</em> (snúa í ákveðna átt).<br><strong>Íslenska:</strong> Nafnið er bein hljóðlíking við <em>áttavita</em>. Nefið á honum er segulmagnað og vísar alltaf í norður. Orðið <em>átt</em> merkir stefnu, en í gamla daga gat það líka merkt ætt eða fjölskyldu."
   }
  },
  {
@@ -1764,6 +2034,15 @@
   }
  },
  {
+  "numer": 343,
+  "fyrri": {
+   "thyding": "<strong>Leir:</strong> Leðjukenndur jarðvegur sem má móta hluti úr.<br><strong>Snúður:</strong> Hlutur sem snýst.<br><em>Orðaleikur</em>: Snúður er líka kanilsnúður úr bakaríi, en þennan á ekki að borða!"
+  },
+  "nytt": {
+   "thyding": "<strong>Leir:</strong> Leðjukenndur jarðvegur sem má móta hluti úr.<br><strong>Snúður:</strong> Hlutur sem snýst.<br><strong>Íslenska:</strong> Snúður er líka kanilsnúður úr bakaríi, en þennan á ekki að borða! Orðið <em>leir</em> var líka haft um lélegan kveðskap, <em>leirburð</em>. Af leir er dregið orðið <em>leira</em>, leirborið svæði við árósa eða fjarðarbotna."
+  }
+ },
+ {
   "numer": 344,
   "fyrri": {
    "thyding": "<strong>Leir:</strong> leðjukenndur jarðvegur.<br><strong>Goð:</strong> Skurðgoð."
@@ -1890,6 +2169,15 @@
   }
  },
  {
+  "numer": 360,
+  "fyrri": {
+   "thyding": "<strong>Hví:</strong> Af hverju.<br><strong>Ekki:</strong> Neitun.<br><em>Orðaleikur</em>: Hljóðlíking við hví-ekki"
+  },
+  "nytt": {
+   "thyding": "<strong>Hví:</strong> Af hverju.<br><strong>Ekki:</strong> Neitun.<br><strong>Íslenska:</strong> Nafnið hljómar eins og <em>hví ekki?</em> Orðið <em>ekki</em> var áður <em>etki</em>. Það er gamalt hvorugkynsform af fornafninu <em>engi</em> (enginn)."
+  }
+ },
+ {
   "numer": 361,
   "fyrri": {
    "thyding": "<strong>Snjór:</strong> Frosin úrkoma.<br><strong>Kríli:</strong> Lítil vera."
@@ -1914,6 +2202,15 @@
   },
   "nytt": {
    "thyding": "<strong>Kúla:</strong> Hnöttur.<br><strong>Selur:</strong> Sjávarspendýr.<br><strong>Þjóðsaga:</strong> Í sögunni um selshaminn tekur maður í Mýrdal selsham og fær selakonuna fyrir konu. Hún horfir oft út á sjóinn, og þegar hún finnur haminn mörgum árum seinna fer hún aftur í hafið."
+  }
+ },
+ {
+  "numer": 364,
+  "fyrri": {
+   "thyding": "<strong>Selur:</strong> Dýrið.<br><strong>Ljón:</strong> Konungur dýranna.<br><em>Orðaleikur:</em> Hljómar eins og Sæljón."
+  },
+  "nytt": {
+   "thyding": "<strong>Selur:</strong> Dýrið.<br><strong>Ljón:</strong> Konungur dýranna.<br><strong>Íslenska:</strong> Nafnið hljómar eins og <em>sæljón</em>.<br><strong>Þjóðsaga:</strong> Í sögunni Selshamurinn tekur maður selsham af selakonu og hún verður konan hans. Mörgum árum seinna finnur hún haminn, steypir sér í sjóinn og kveður: „Mér er um og ó, ég á sjö börn í sjó og sjö börn á landi.“"
   }
  },
  {
@@ -2004,6 +2301,15 @@
   },
   "nytt": {
    "thyding": "<strong>Ís:</strong> Klaki.<br><strong>Vörður:</strong> Sá sem vaktar eitthvað, eftirlitsmaður.<br><strong>Náttúra:</strong> Jöklar þekja um 11% af Íslandi. Vatnajökull einn þekur um 8% landsins."
+  }
+ },
+ {
+  "numer": 379,
+  "fyrri": {
+   "thyding": "<strong>Stál:</strong> Málmur.<br><strong><strong>Vörður</strong>:</strong> Sá sem vaktar eitthvað, eftirlitsmaður.<br><em>Orðaleikur</em>: <em>Vörður</em> er líka fleirtala af <em>varða</em>, grjótvörður vísuðu ferðalöngum veginn í gamla daga."
+  },
+  "nytt": {
+   "thyding": "<strong>Stál:</strong> Málmur.<br><strong>Vörður:</strong> Sá sem vaktar eitthvað, eftirlitsmaður.<br><strong>Íslenska:</strong> <em>Vörður</em> er líka fleirtala af <em>varða</em>. Varða er hraukur úr grjóti eða mold sem hlaðinn er sem vegvísir, og vörður vísuðu ferðalöngum veginn. Sögnin að <em>varða</em> merkir að hlaða vörður."
   }
  },
  {
@@ -2196,12 +2502,30 @@
   }
  },
  {
+  "numer": 662,
+  "fyrri": {
+   "thyding": "<strong>Neisti:</strong> Lítill eldglampi.<br><strong>Fleygur:</strong> Sá sem getur flogið; hér verður orðið að heiti á fljúgandi veru. Eldurinn í maganum eykur flughraðann.<br><strong>Orðaleikur:</strong> Fleygur er líka fleygt orð, frægt orð sem flýgur manna á milli, og fleygur er líka járnbútur sem rekinn er í við til að kljúfa hann."
+  },
+  "nytt": {
+   "thyding": "<strong>Neisti:</strong> Lítill eldglampi.<br><strong>Fleygur:</strong> Sá sem getur flogið; hér verður orðið að heiti á fljúgandi veru. Eldurinn í maganum eykur flughraðann.<br><strong>Íslenska:</strong> <em>Fleygur</em> er líka aflangur bútur úr harðviði eða málmi sem notaður er til að kljúfa tré. Bæði orðin <em>fleygur</em> eru skyld sögninni að <em>fljúga</em>. <em>Neisti</em> hét líka <em>gneisti</em> og merkti líklega upphaflega eldsindur sem kviknar við högg eða núning."
+  }
+ },
+ {
   "numer": 676,
   "fyrri": {
    "thyding": "<strong>Snyrta:</strong> Að gera fínt, klippa og greiða (sbr. <em>frou-frou</em>). Hann lætur klippa feldinn í alls konar mynstur.<br><strong>Snati:</strong> Gamalt og vinsælt hundsnafn.<br><strong>Þjóðsaga:</strong> Í ævintýrinu um Sigurð hring og Snata í þjóðsögum Jóns Árnasonar hjálpar hundurinn Snati kóngssyni að höggva skóg og sigra naut."
   },
   "nytt": {
    "thyding": "<strong>Snyrta:</strong> Að gera fínt, klippa og greiða (sbr. <em>frou-frou</em>). Hann lætur klippa feldinn í alls konar mynstur.<br><strong>Snati:</strong> Gamalt og vinsælt hundsnafn.<br><strong>Þjóðsaga:</strong> Í ævintýrinu um Hring kóngsson í þjóðsögum Jóns Árnasonar hjálpar hundurinn Snati kóngssyninum að höggva skóg og sigra tvö grimm naut."
+  }
+ },
+ {
+  "numer": 677,
+  "fyrri": {
+   "thyding": "<strong>Hugur:</strong> Hugsun og hugarorka; mikill hugarkraftur býr undir eyrunum.<br><strong>Mali:</strong> Gæluheiti dregið af sögninni að mala, eins og köttur malar.<br><strong>Orðaleikur:</strong> Að mala merkir líka að mylja korn í mjöl, eins og myllan gerir.<br><strong>Fjölskylda:</strong> Hugmali → Hugmjáni (#678)."
+  },
+  "nytt": {
+   "thyding": "<strong>Hugur:</strong> Hugsun og hugarorka; mikill hugarkraftur býr undir eyrunum.<br><strong>Mali:</strong> Gæluheiti dregið af sögninni að mala, eins og köttur malar.<br><strong>Íslenska:</strong> Að mala merkir líka að mylja korn í mjöl, og orðin <em>mala</em> og <em>mjöl</em> eru skyld. Orðið <em>hugur</em> var áður líka haft um sál eða anda sem gat farið úr líkamanum.<br><strong>Fjölskylda:</strong> Hugmali → Hugmjáni (#678)."
   }
  },
  {
