@@ -10,6 +10,8 @@
 	--of-surface-2: var(--wp--preset--color--base-2, #dce0e6);
 	--of-accent: var(--wp--preset--color--pokemon-2, #2162aa);
 	--of-mark: var(--wp--preset--color--pokemon-1, #ffd800);
+	--of-danger: #c62828;
+	--of-danger-strong: #8e1b1b;
 }
 
 .vs-of__tools {
@@ -734,9 +736,35 @@
 }
 
 .vs-safn__clear {
-	color: var(--of-ink);
-	background: none;
-	border: 1px solid var(--of-line);
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+	background: var(--of-danger);
+	border: 1px solid var(--of-danger);
+}
+
+.vs-safn__clear.is-confirming {
+	background: var(--of-danger-strong);
+	border-color: var(--of-danger-strong);
+}
+
+/* Runs out while the second click is waited for. */
+.vs-safn__clear-bar {
+	position: absolute;
+	inset: auto 0 0;
+	height: 4px;
+	background: #fff;
+	transform-origin: left;
+	animation: vs-safn-confirm linear forwards;
+}
+
+@keyframes vs-safn-confirm {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
 }
 
 .vs-safn button:disabled {
