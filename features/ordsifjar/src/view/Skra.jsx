@@ -1,5 +1,6 @@
 import { htmlToText } from '../../../../shared/js/search.js';
 import { add, itemsOf, split } from './safn.js';
+import Mark from './Mark.jsx';
 
 /** Tile image size in the Skrímslaskrá grid (from the 256 px image, so sharp on high-density screens). */
 const IMG = 112;
@@ -78,7 +79,7 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 							<span className="vs-of-tile__num">#{ e.numer }</span>
 							<span className="vs-of-tile__name">{ icelandic ? nafn : enska }</span>
 							{ icelandic && enska && <span className="vs-of-tile__en">{ enska }</span> }
-							{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
+							<Mark serstakt={ e.serstakt } />
 							{ e.formir?.length > 0 && (
 								<span className="vs-of-tile__forms" title={ `${ e.formir.length } önnur form` }>
 									+{ e.formir.length } form

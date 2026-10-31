@@ -3,6 +3,7 @@ import { fold, htmlToText, matches } from '../../../../shared/js/search.js';
 import { SpriteTooltip, Thumb } from './Sprite.jsx';
 import { Grid } from './Skra.jsx';
 import Safn from './Safn.jsx';
+import Mark from './Mark.jsx';
 import { add, load, remove, save, split, variant } from './safn.js';
 
 const storage = () => {
@@ -204,7 +205,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 													<Thumb entry={ e } onShow={ showTip } onHide={ hideTip } />
 													<span className="vs-of__num">#{ e.numer }</span>
 													<Html className="vs-of__name" html={ e.nafn } />
-													{ e.serstakt && <span className="vs-of-mark">{ e.serstakt }</span> }
+													<Mark serstakt={ e.serstakt } />
 													<Html className="vs-of__origin" html={ e.uppruni } />
 													<Html className="vs-of__en" html={ e.enska } />
 													{ e.flokkar?.length > 0 && (

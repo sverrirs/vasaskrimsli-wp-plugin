@@ -409,6 +409,38 @@
 	margin: 4px auto 0;
 }
 
+/* Kind and time: the kind on the yellow pill, the time after a slanted cut in its own colour. */
+.vs-of-mark.is-split {
+	display: inline-flex;
+	padding: 0;
+	overflow: hidden;
+}
+
+.vs-of__who .vs-of-mark.is-split {
+	display: flex;
+	width: max-content;
+}
+
+.vs-of-mark__kind {
+	padding: 1px 9px 1px 8px;
+}
+
+.vs-of-mark__time {
+	margin-left: -6px;
+	padding: 1px 8px 1px 13px;
+	color: #fff;
+	background: var(--of-muted);
+	clip-path: polygon(7px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.vs-of-mark.is-fortid .vs-of-mark__time {
+	background: #9a4a17;
+}
+
+.vs-of-mark.is-framtid .vs-of-mark__time {
+	background: #5a3cc0;
+}
+
 .vs-of__note {
 	margin-top: 8px;
 	padding-top: 8px;

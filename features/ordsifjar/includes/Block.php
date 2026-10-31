@@ -191,8 +191,17 @@ final class Block {
 		return $html . '</ul>';
 	}
 
-	/** The marking for a special kind (Tímaflækingur), or ''. */
+	/** The marking for a special kind (Tímaflækingur · Fortíð), or ''. Same markup as Mark.jsx. */
 	private static function mark_html( array $e ): string {
-		return $e['serstakt'] ? '<span class="vs-of-mark">' . esc_html( $e['serstakt'] ) . '</span>' : '';
+		if ( ! $e['serstakt'] ) {
+			return '';
+		}
+		$parts = explode( ' · ', $e['serstakt'], 2 );
+		if ( ! isset( $parts[1] ) ) {
+			return '<span class="vs-of-mark">' . esc_html( $parts[0] ) . '</span>';
+		}
+		$time = array( 'Fortíð' => ' is-fortid', 'Framtíð' => ' is-framtid' )[ $parts[1] ] ?? '';
+		return '<span class="vs-of-mark is-split' . $time . '"><span class="vs-of-mark__kind">' . esc_html( $parts[0] )
+			. '</span> <span class="vs-of-mark__time">' . esc_html( $parts[1] ) . '</span></span>';
 	}
 }
