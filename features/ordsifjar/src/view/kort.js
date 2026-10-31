@@ -117,21 +117,24 @@ function fitSize( ctx, text, width, max, min, fam, style ) {
 	return size;
 }
 
-/** The text panel: name parts, then fun facts in a tinted box. Returns the height used at `size`. */
+/** The text panel: name parts, fun facts in a tinted box, then the family. Returns the height used at `size`. */
 function textBlock( ctx, parts, width, size, fam, colors, draw, x0 = 0, y0 = 0 ) {
 	const lh = size * 1.32;
 	const gap = size * 0.55;
 	let y = y0;
-	for ( const line of parts.ordsifjar ) {
-		for ( const l of wrap( ctx, line, width, size, fam ) ) {
-			if ( draw ) {
-				ctx.fillStyle = INK;
-				drawLine( ctx, l, x0, y + size, size, fam );
+	const plain = ( lines ) => {
+		for ( const line of lines ) {
+			for ( const l of wrap( ctx, line, width, size, fam ) ) {
+				if ( draw ) {
+					ctx.fillStyle = INK;
+					drawLine( ctx, l, x0, y + size, size, fam );
+				}
+				y += lh;
 			}
-			y += lh;
+			y += gap * 0.4;
 		}
-		y += gap * 0.4;
-	}
+	};
+	plain( parts.ordsifjar );
 	if ( parts.frodleikur.length ) {
 		if ( parts.ordsifjar.length ) {
 			y += gap;
@@ -160,6 +163,12 @@ function textBlock( ctx, parts, width, size, fam, colors, draw, x0 = 0, y0 = 0 )
 			yy += gap * 0.4;
 		}
 		y += h;
+	}
+	if ( parts.fjolskylda.length ) {
+		if ( parts.ordsifjar.length || parts.frodleikur.length ) {
+			y += gap;
+		}
+		plain( parts.fjolskylda );
 	}
 	return y - y0;
 }
@@ -272,7 +281,7 @@ export function drawCard( canvas, entry, info, images, fam ) {
 	const uppruni = parseRich( entry.uppruni ).flat();
 	const hasOrigin = uppruni.length > 0 && plainLine( uppruni ) !== '–';
 	const parts = sections( boldSelf( entry.thyding, htmlToText( entry.forma?.grunn ?? entry.nafn ) ), entry.uppruni );
-	const hasText = parts.ordsifjar.length + parts.frodleikur.length > 0;
+	const hasText = parts.ordsifjar.length + parts.frodleikur.length + parts.fjolskylda.length > 0;
 	const footer = 54;
 	const stages = info?.k ?? [];
 	const evoH = stages.length ? 250 : 96; // A short line saying it does not evolve.

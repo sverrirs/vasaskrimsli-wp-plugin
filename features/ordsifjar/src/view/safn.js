@@ -149,15 +149,15 @@ const fold = ( s ) => s.toLowerCase().normalize( 'NFD' ).replace( /[̀-ͯ]/g, ''
 
 /**
  * Splits Þýðing into the lines that explain the name's parts (their label starts like a part of
- * Upprunaorð: "Klaki:" for "Klaka—gæs") and the fun facts (Náttúra:, Goðafræði:, Íslenska: ...).
- * Unlabelled lines go with the section before them.
+ * Upprunaorð: "Klaki:" for "Klaka—gæs"), the fun facts (Náttúra:, Goðafræði:, Íslenska: ...) and the
+ * Fjölskylda: line. Unlabelled lines go with the section before them.
  */
 export function sections( thydingHtml, upprunaHtml ) {
 	const parts = plainLine( parseRich( upprunaHtml ).flat() )
 		.split( /[\s—–\-·|/+]+/ )
 		.map( fold )
 		.filter( ( p ) => p.length >= 2 );
-	const out = { ordsifjar: [], frodleikur: [] };
+	const out = { ordsifjar: [], frodleikur: [], fjolskylda: [] };
 	let last = 'ordsifjar';
 	for ( const line of parseRich( thydingHtml ) ) {
 		const m = plainLine( line ).match( /^([^:]{1,28}):/ );
@@ -167,7 +167,11 @@ export function sections( thydingHtml, upprunaHtml ) {
 				const n = Math.min( 3, label.length, p.length ); // "Sær:" explains "Sæ".
 				return n >= 2 && p.slice( 0, n ) === label.slice( 0, n );
 			};
-			last = parts.some( explains ) ? 'ordsifjar' : 'frodleikur';
+			if ( label === 'fjolskylda' ) {
+				last = 'fjolskylda';
+			} else {
+				last = parts.some( explains ) ? 'ordsifjar' : 'frodleikur';
+			}
 		}
 		out[ last ].push( line );
 	}

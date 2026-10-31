@@ -88,6 +88,9 @@ test( 'sections split the name parts from the fun facts on real entries', () => 
 	assert.equal( sections( '<strong>-ungur:</strong> smátt', 'Netl–ungur' ).ordsifjar.length, 1 );
 	const sae = sections( '<strong>Skrín:</strong> kista.<br><strong>Sær:</strong> sjór.<br><strong>Íslenska:</strong> helgir dómar.', 'Sæ—skrín' );
 	assert.deepEqual( sae.ordsifjar.map( plainLine ), [ 'Skrín: kista.', 'Sær: sjór.' ] );
+	const sand = sections( '<strong>Sandur:</strong> jarðefni.<br><em>Dýrafræði: snjáldurmús.</em><br><strong>Fjölskylda:</strong> Sandsnjáldur → Svöðusandur (#28).', 'Sand—snjáldur' );
+	assert.deepEqual( sand.frodleikur.map( plainLine ), [ 'Dýrafræði: snjáldurmús.' ] );
+	assert.deepEqual( sand.fjolskylda.map( plainLine ), [ 'Fjölskylda: Sandsnjáldur → Svöðusandur (#28).' ] );
 } );
 
 /** Smallest valid-looking JPEG header: SOI, SOF0 with the size, EOI. */
