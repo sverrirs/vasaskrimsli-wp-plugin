@@ -289,14 +289,20 @@ if ( file_exists( $tfile ) ) {
 }
 
 // --- special kinds: Tímaflækingar are the Paradox Pokémon
-$tima = array();
-for ( $n = 900; $n <= 1025; $n++ ) {
-	if ( 'Tímaflækingur' === Format::serstakt( (string) $n ) ) {
-		$tima[] = $n;
+$tima = array( 'Tímaflækingur · Fortíð' => array(), 'Tímaflækingur · Framtíð' => array() );
+for ( $n = 1; $n <= 1025; $n++ ) {
+	$k = Format::serstakt( (string) $n );
+	if ( '' !== $k ) {
+		$tima[ $k ][] = $n;
 	}
 }
-check( 'Tímaflækingar: the 20 Paradox Pokémon', $tima, array_merge( range( 984, 995 ), range( 1005, 1010 ), range( 1020, 1023 ) ) );
-check( 'serstakt: a form number counts as its base number', Format::serstakt( '1007a' ), 'Tímaflækingur' );
+check( 'Tímaflækingar: the 22 Paradox Pokémon, 11 from the past and 11 from the future', $tima, array(
+	'Tímaflækingur · Fortíð'  => array( 984, 985, 986, 987, 988, 989, 1005, 1007, 1009, 1020, 1021 ),
+	'Tímaflækingur · Framtíð' => array( 990, 991, 992, 993, 994, 995, 1006, 1008, 1010, 1022, 1023 ),
+) );
+check( 'serstakt: a form number counts as its base number',
+	array( Format::serstakt( '1007a' ), Format::serstakt( '1008a' ) ),
+	array( 'Tímaflækingur · Fortíð', 'Tímaflækingur · Framtíð' ) );
 check( 'serstakt: ordinary entry has none', Format::serstakt( '1' ), '' );
 check( 'serstakt: placeholder number has none', Format::serstakt( '–' ), '' );
 

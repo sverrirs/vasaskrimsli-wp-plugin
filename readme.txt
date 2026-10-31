@@ -14,6 +14,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 
 == Changelog ==
 
+= 1.5.4 =
+* Tímaflækingar: merkið segir nú hvort skrímslið er úr fortíðinni eða framtíðinni („Tímaflækingur · Fortíð“ eða „Tímaflækingur · Framtíð“), 11 í hvorum hópi. Leit að „Fortíð“ eða „Framtíð“ finnur hvorn hóp og leit að „Tímaflækingur“ finnur alla 22.
+
 = 1.5.3 =
 * Skrímslaskrá: „+N form“ stendur sem látlaus texti neðst í hægra horni spjaldsins, svo það skyggir ekki lengur á myndina.
 
