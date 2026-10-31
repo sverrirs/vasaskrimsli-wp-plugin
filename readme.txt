@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.4.6 =
+* Sprettiglugginn heldur spjöldunum kyrrum þegar smellt er á form: stóra spjaldið er alltaf skrímslið sjálft og formin í sömu röð. Spjöld í safninu eru merkt „✓ Í safninu“ og það sem síðasti smellur bætti við fær þykkari ramma og „✓ Bætt í safnið“.
 
 = 1.4.5 =
 * Safnið mitt: hver smellur á skrímsli bætir næsta formi þess við safnið, svo hægt er að eiga mörg form sama skrímslis. Smellir taka ekkert úr safninu; það gerir × í safnspjaldinu.
