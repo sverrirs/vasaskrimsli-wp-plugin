@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { htmlToText } from '../../../../shared/js/search.js';
-import { itemOf, variant } from './safn.js';
+import { itemOf } from './safn.js';
 
 const LARGE = 256;
 const GAP = 12;
@@ -38,8 +38,8 @@ export function Thumb( { entry, onShow, onHide } ) {
 /**
  * The single floating card, rendered into <body> so table overflow never clips it.
  * With `detail` (Skrímslaskrá grid) it also shows Upprunaorð and Þýðing, which the grid has no room for,
- * and the large card is tip.form (the form being picked, highlighted when in `chosen`, the collection);
- * the monster itself and its other forms are then the small cards, each marked when in the collection.
+ * and every card in `chosen` (the collection) is marked; tip.added ('' the monster itself, a form's id, or
+ * undefined) is the one the click just added, marked more strongly. The cards themselves never move.
  */
 export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 	const [ , force ] = useState( 0 );
@@ -84,10 +84,11 @@ export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 	if ( ! tip ) {
 		return null;
 	}
-	const { entry: base, rect, form = '' } = tip;
-	const entry = variant( base, form ) ?? base;
-	const inSafn = ( f ) => chosen.includes( itemOf( base.numer, f ) );
-	const big = detail && inSafn( form );
+	const { entry, rect, added } = tip;
+	const inSafn = ( f ) => detail && chosen.includes( itemOf( entry.numer, f ) );
+	const mark = ( f ) => ( added === f ? ' is-picked is-new' : inSafn( f ) ? ' is-picked' : '' );
+	const label = ( f ) =>
+		added === f ? <span className="vs-of-tip__picked">✓ Bætt í safnið</span> : inSafn( f ) && <span className="vs-of-tip__picked">✓ Í safninu</span>;
 	const width = detail ? 340 : LARGE + 32;
 	// Right of the anchor, or left of it when there is no room; vertically centred, kept on screen.
 	let left = rect.right + GAP;
@@ -98,12 +99,7 @@ export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 	const enska = htmlToText( entry.enska );
 	const nafn = htmlToText( entry.nafn );
 	const has = ( html ) => html && htmlToText( html ) !== '–';
-	const all = base.formir ?? [];
-	// Small cards: every form but the large one, and the monster itself when a form is the large one.
-	const formir = [
-		...( form ? [ { id: '', heiti: htmlToText( base.nafn ) !== '–' && htmlToText( base.nafn ) ? htmlToText( base.nafn ) : htmlToText( base.enska ), mynd: base.mynd_stor || base.mynd } ] : [] ),
-		...all.filter( ( f ) => f.id !== form ),
-	];
+	const formir = entry.formir ?? [];
 	// Every form as its own card, all at once, in the larger free area beside the entry card and the anchor;
 	// below the entry card when neither side has room for one card.
 	const mainLeft = Math.min( left, rect.left );
@@ -130,12 +126,12 @@ export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 		formsLeft = Math.max( 8, Math.min( window.innerWidth - formsWidth - 8, left ) );
 		formsTop = Math.max( 8, Math.min( top + height + 8, window.innerHeight - shown - 8 ) );
 	}
-	const baseName = htmlToText( base.nafn ) !== '–' && htmlToText( base.nafn ) ? htmlToText( base.nafn ) : htmlToText( base.enska );
+	const name = nafn && nafn !== '–' ? nafn : enska;
 
 	return createPortal(
 		<>
-		<div ref={ card } className={ 'vs-of-tip' + ( big ? ' is-picked' : '' ) } role="tooltip" style={ { left, top, width } }>
-			{ big && <p className="vs-of-tip__picked">✓ Í safninu</p> }
+		<div ref={ card } className={ 'vs-of-tip' + mark( '' ) } role="tooltip" style={ { left, top, width } }>
+			{ label( '' ) }
 			<img src={ entry.mynd_stor || entry.mynd } width={ LARGE } height={ LARGE } alt="" decoding="async" />
 			<p className="vs-of-tip__name">
 				<span className="vs-of-tip__num">#{ entry.numer }</span> { nafn && nafn !== '–' ? nafn : enska }
@@ -151,19 +147,16 @@ export function SpriteTooltip( { tip, onHide, detail = false, chosen = [] } ) {
 		</div>
 		{ formir.length > 0 && (
 			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide + ( compact ? ' is-compact' : '' ) } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px`, transform: scale < 1 ? `scale(${ scale })` : undefined, transformOrigin: formsSide ? 'top right' : 'top left' } }>
-				{ formir.map( ( f ) => {
-					const mine = detail && inSafn( f.id );
-					return (
-						<div className={ 'vs-of-forms__card' + ( mine ? ' is-picked' : '' ) } key={ f.id || 'base' }>
-							{ mine && <span className="vs-of-forms__check" aria-label="Í safninu">✓</span> }
-							{ f.mynd ? <img src={ f.mynd } width="180" height="180" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
-							<p className="vs-of-tip__name">{ f.heiti }</p>
-							<p className="vs-of-tip__en">
-								{ f.id ? `Form ${ all.indexOf( f ) + 1 } af ${ all.length } · #${ base.numer } ${ baseName }` : `#${ base.numer } · grunnform` }
-							</p>
-						</div>
-					);
-				} ) }
+				{ formir.map( ( f, i ) => (
+					<div className={ 'vs-of-forms__card' + mark( f.id ) } key={ f.id }>
+						{ label( f.id ) }
+						{ f.mynd ? <img src={ f.mynd } width="180" height="180" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
+						<p className="vs-of-tip__name">{ f.heiti }</p>
+						<p className="vs-of-tip__en">
+							Form { i + 1 } af { formir.length } · #{ entry.numer } { name }
+						</p>
+					</div>
+				) ) }
 			</div>
 		) }
 		</>,

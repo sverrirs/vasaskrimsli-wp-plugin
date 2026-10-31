@@ -49,8 +49,8 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 	const [ flokkur, setFlokkur ] = useState( initial.flokkur );
 	const query = useDeferredValue( q );
 	const [ tip, setTip ] = useState( null );
-	// form: the form shown on the large card ('' the monster itself), on the Skrímslaskrá grid.
-	const showTip = useCallback( ( entry, rect, form = '' ) => setTip( { entry, rect, form } ), [] );
+	// added (Skrímslaskrá grid): what the click put in the collection, '' the monster itself or a form's id.
+	const showTip = useCallback( ( entry, rect, added ) => setTip( { entry, rect, added } ), [] );
 	const hideTip = useCallback( () => setTip( null ), [] );
 	// The visitor's collection (Skrímslaskrá only): Númer, or Númer:form, in the order they were added.
 	const [ safn, setSafn ] = useState( () => ( skra ? load( storage() ) : [] ) );

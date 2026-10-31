@@ -1,5 +1,5 @@
 import { htmlToText } from '../../../../shared/js/search.js';
-import { add, itemsOf, split, variant } from './safn.js';
+import { add, itemsOf, split } from './safn.js';
 
 /** Tile image size in the Skrímslaskrá grid (from the 256 px image, so sharp on high-density screens). */
 const IMG = 112;
@@ -33,8 +33,8 @@ function moveFocus( key, from ) {
 
 /**
  * One generation's tiles. Hover, focus or a tap shows the entry in the popup; a click (or Enter) also puts
- * it in the visitor's collection. Further clicks add its forms one by one (the tile then shows the form added
- * last); clicks never take anything out, the × in the collection panel does.
+ * it in the visitor's collection. Further clicks add its forms one by one (the popup marks the one added);
+ * clicks never take anything out, the × in the collection panel does.
  */
 export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 	return (
@@ -43,12 +43,11 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 				const items = itemsOf( chosen, e.numer );
 				const picked = items.length > 0;
 				const total = 1 + ( e.formir?.length ?? 0 );
-				const v = ( picked && variant( e, split( items.at( -1 ) ).form ) ) || e;
-				const nafn = htmlToText( v.nafn );
-				const enska = htmlToText( v.enska );
+				const nafn = htmlToText( e.nafn );
+				const enska = htmlToText( e.enska );
 				const icelandic = nafn && nafn !== '–';
-				// The popup's large card is the form the tile shows; on a click, the one the click adds.
-				const show = ( ev, form = picked ? split( items.at( -1 ) ).form : '' ) => onShow( e, ev.currentTarget.getBoundingClientRect(), form );
+				// added: on a click, the form ('' the monster itself) the click puts in the collection.
+				const show = ( ev, added ) => onShow( e, ev.currentTarget.getBoundingClientRect(), added );
 				return (
 					<li key={ `${ e.kynslod }-${ e.numer }-${ i }` }>
 						<button
@@ -61,7 +60,7 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 							onBlur={ onHide }
 							onClick={ ( ev ) => {
 								const added = add( chosen, e.numer, ( e.formir ?? [] ).map( ( f ) => f.id ) ).list.find( ( x ) => ! chosen.includes( x ) );
-								show( ev, added ? split( added ).form : undefined );
+								show( ev, added === undefined ? undefined : split( added ).form );
 								onPick?.( e );
 							} }
 							onKeyDown={ ( ev ) => {
@@ -71,8 +70,8 @@ export function Grid( { rows, onShow, onHide, chosen = [], onPick } ) {
 								}
 							} }
 						>
-							{ v.mynd_stor || v.mynd ? (
-								<img src={ v.mynd_stor || v.mynd } width={ IMG } height={ IMG } alt="" loading="lazy" decoding="async" />
+							{ e.mynd_stor || e.mynd ? (
+								<img src={ e.mynd_stor || e.mynd } width={ IMG } height={ IMG } alt="" loading="lazy" decoding="async" />
 							) : (
 								<span className="vs-of-tile__noimg" aria-hidden="true" />
 							) }
