@@ -83,6 +83,43 @@ final class Format {
 		return $out;
 	}
 
+	/**
+	 * Þýðing with a "Fjölskylda:" line at the end, built from the evolution chain, when the text has none:
+	 * "Fjölskylda: Laufmjási → Blómkisi (#907) → Blómblöff (#908)." The monster itself has no number;
+	 * stages with several monsters read "A eða B" / "A, B eða C". Unchanged for monsters that do not evolve.
+	 *
+	 * @param int   $self   The monster's national number.
+	 * @param array $stages Its "k" in throun.json: national numbers at each stage.
+	 * @param array $names  National number => plain-text name; numbers without one are left out.
+	 */
+	public static function with_family( string $thyding, int $self, array $stages, array $names ): string {
+		if ( preg_match( '/Fjölskylda\s*:/u', Csv::plain( $thyding ) ) ) {
+			return $thyding;
+		}
+		$parts = array();
+		$count = 0;
+		foreach ( $stages as $stage ) {
+			$labels = array();
+			foreach ( $stage as $n ) {
+				if ( ! isset( $names[ (int) $n ] ) || '' === $names[ (int) $n ] ) {
+					continue;
+				}
+				$labels[] = htmlspecialchars( $names[ (int) $n ], ENT_QUOTES | ENT_HTML5, 'UTF-8' ) . ( (int) $n === $self ? '' : ' (#' . (int) $n . ')' );
+				++$count;
+			}
+			if ( $labels ) {
+				$last    = array_pop( $labels );
+				$parts[] = $labels ? implode( ', ', $labels ) . ' eða ' . $last : $last;
+			}
+		}
+		if ( $count < 2 ) {
+			return $thyding;
+		}
+		$line  = '<strong>Fjölskylda:</strong> ' . implode( ' → ', $parts ) . '.';
+		$plain = trim( Csv::plain( $thyding ) );
+		return ( '' === $plain || '–' === $plain ) ? $line : rtrim( $thyding ) . '<br>' . $line;
+	}
+
 	/** Applies the normalisation that belongs to a field, if any. */
 	public static function field( string $field, string $html ): string {
 		return 'uppruni' === $field ? self::separators( $html ) : $html;

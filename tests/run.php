@@ -110,6 +110,26 @@ check( 'en dash between tags becomes em dash, href hyphens untouched',
 	"<strong><a href=\"https://x.is/a-b-c\" rel=\"noreferrer noopener\">Lauk</a></strong>{$em}<a href=\"https://x.is/2965\">eðla</a>" );
 check( 'entity dashes and spaces around them', Format::separators( 'Lauk &ndash; eðla &#8211;x' ), "Lauk{$em}eðla{$em}x" );
 check( 'a lone placeholder dash stays as it is', Format::separators( '–' ), '–' );
+$fam_names = array( 906 => 'Laufmjási', 907 => 'Blómkisi', 908 => 'Blómblöff', 280 => 'Árari', 281 => 'Spádans', 282 => 'Hjartaborg', 475 => 'Bjargvættur', 133 => 'Evi', 134 => 'A', 135 => 'B', 136 => 'C' );
+check( 'family line added for the first member, the monster itself without a number',
+	Format::with_family( '<strong>Lauf:</strong> blað.', 906, array( array( 906 ), array( 907 ), array( 908 ) ), $fam_names ),
+	'<strong>Lauf:</strong> blað.<br><strong>Fjölskylda:</strong> Laufmjási → Blómkisi (#907) → Blómblöff (#908).' );
+check( 'family line: branches read "eða", three or more with commas',
+	array(
+		Format::with_family( 'x', 281, array( array( 280 ), array( 281 ), array( 282, 475 ) ), $fam_names ),
+		Format::with_family( 'x', 134, array( array( 133 ), array( 134, 135, 136 ) ), $fam_names ),
+	),
+	array(
+		'x<br><strong>Fjölskylda:</strong> Árari (#280) → Spádans → Hjartaborg (#282) eða Bjargvættur (#475).',
+		'x<br><strong>Fjölskylda:</strong> Evi (#133) → A, B (#135) eða C (#136).',
+	) );
+check( 'family line: a written one is kept, a lone monster gets none, an empty text gets only the line',
+	array(
+		Format::with_family( 'x<br><strong>Fjölskylda:</strong> handskrifað.', 906, array( array( 906 ), array( 907 ) ), $fam_names ),
+		Format::with_family( 'x', 906, array( array( 906 ) ), $fam_names ),
+		Format::with_family( '', 907, array( array( 906 ), array( 907 ) ), $fam_names ),
+	),
+	array( 'x<br><strong>Fjölskylda:</strong> handskrifað.', 'x', '<strong>Fjölskylda:</strong> Laufmjási (#906) → Blómkisi.' ) );
 check( 'already normalised text is unchanged', Format::separators( "Lauk{$em}eðla" ), "Lauk{$em}eðla" );
 check( 'only Upprunaorð is normalised', Format::field( 'thyding', 'Kam-eld' ), 'Kam-eld' );
 

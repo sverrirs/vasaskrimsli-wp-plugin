@@ -66,6 +66,30 @@ final class Block {
 		return ( '' !== $nafn && '–' !== $nafn ) ? $nafn : Csv::plain( (string) ( $e['enska'] ?? '' ) );
 	}
 
+	/**
+	 * Adds a "Fjölskylda:" line to the Þýðing of every monster that evolves and has none written
+	 * (data/throun.json), so the whole family shows it, not only the members someone wrote it for.
+	 */
+	private static function with_families( array $entries ): array {
+		$file   = VASASKRIMSLI_DIR . 'features/ordsifjar/data/throun.json';
+		$throun = is_readable( $file ) ? ( json_decode( (string) file_get_contents( $file ), true ) ?: array() ) : array();
+		$names  = array();
+		foreach ( $entries as $e ) {
+			$n = (int) $e['numer'];
+			if ( $n && ! isset( $names[ $n ] ) ) {
+				$names[ $n ] = self::plain_name( $e );
+			}
+		}
+		foreach ( $entries as &$e ) {
+			$stages = $throun[ (string) (int) $e['numer'] ]['k'] ?? array();
+			if ( $stages ) {
+				$e['thyding'] = Format::with_family( (string) ( $e['thyding'] ?? '' ), (int) $e['numer'], $stages, $names );
+			}
+		}
+		unset( $e );
+		return $entries;
+	}
+
 	/** data/formir.json, read once per request. */
 	private static function formir_data(): array {
 		static $data = null;
@@ -95,7 +119,7 @@ final class Block {
 	private static function render_view( string $syn ): string {
 		\Vasaskrimsli\Assets::module( 'view' );
 
-		$entries   = array_map( array( self::class, 'with_sprite' ), array_values( Store::all() ) );
+		$entries   = self::with_families( array_map( array( self::class, 'with_sprite' ), array_values( Store::all() ) ) );
 		$kynslodir = Store::kynslodir();
 		$data      = array(
 			'entries'   => array_map( static function ( $e ) {
