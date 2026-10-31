@@ -267,30 +267,11 @@
 	margin: 0 auto 8px;
 }
 
-/* In the grid the form cards also carry the entry's Upprunaorð and Þýðing, like the entry card. */
-.vs-of-forms.is-detail .vs-of-forms__card {
-	text-align: left;
-}
-
-.vs-of-forms.is-detail .vs-of-forms__card img,
-.vs-of-forms.is-detail .vs-of-forms__noimg {
-	width: min(140px, calc(var(--form-w, 280px) - 32px));
-	height: min(140px, calc(var(--form-w, 280px) - 32px));
-}
-
+/* Form cards too tall for the window (small screens): smaller pictures. */
 .vs-of-forms.is-compact .vs-of-forms__card img,
 .vs-of-forms.is-compact .vs-of-forms__noimg {
 	width: 96px;
 	height: 96px;
-}
-
-.vs-of-forms.is-detail .vs-of-tip__name,
-.vs-of-forms.is-detail .vs-of-tip__en {
-	text-align: center;
-}
-
-.vs-of-forms.is-detail .vs-of-tip__text {
-	font-size: 0.8125rem;
 }
 
 .vs-of-tile__forms {

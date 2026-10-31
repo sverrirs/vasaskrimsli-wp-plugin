@@ -4,8 +4,7 @@ import { htmlToText } from '../../../../shared/js/search.js';
 
 const LARGE = 256;
 const GAP = 12;
-const FORM_W = 212; // Width of one form card;
-const FORM_DETAIL = 280; // wider when it also carries Upprunaorð and Þýðing.
+const FORM = 212; // Width of one form card.
 const FORM_GAP = 8;
 const THUMB = 96; // Table picture, from the 256 px image so it stays sharp.
 
@@ -94,7 +93,6 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 	const nafn = htmlToText( entry.nafn );
 	const has = ( html ) => html && htmlToText( html ) !== '–';
 	const formir = entry.formir ?? [];
-	const FORM = detail ? FORM_DETAIL : FORM_W;
 	// Every form as its own card, all at once, in the larger free area beside the entry card and the anchor;
 	// below the entry card when neither side has room for one card.
 	const mainLeft = Math.min( left, rect.left );
@@ -125,7 +123,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 
 	return createPortal(
 		<>
-		<div ref={ card } className={ 'vs-of-tip' + ( detail ? ' is-detail' : '' ) } role="tooltip" style={ { left, top, width } }>
+		<div ref={ card } className={ 'vs-of-tip' } role="tooltip" style={ { left, top, width } }>
 			<img src={ entry.mynd_stor || entry.mynd } width={ LARGE } height={ LARGE } alt="" decoding="async" />
 			<p className="vs-of-tip__name">
 				<span className="vs-of-tip__num">#{ entry.numer }</span> { nafn && nafn !== '–' ? nafn : enska }
@@ -140,7 +138,7 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 			) }
 		</div>
 		{ formir.length > 0 && (
-			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide + ( detail ? ' is-detail' : '' ) + ( compact ? ' is-compact' : '' ) } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px`, transform: scale < 1 ? `scale(${ scale })` : undefined, transformOrigin: formsSide ? 'top right' : 'top left' } }>
+			<div ref={ formsCard } className={ 'vs-of-forms' + formsSide + ( compact ? ' is-compact' : '' ) } role="tooltip" style={ { left: formsLeft, top: formsTop, width: formsWidth, '--form-w': `${ formW }px`, transform: scale < 1 ? `scale(${ scale })` : undefined, transformOrigin: formsSide ? 'top right' : 'top left' } }>
 				{ formir.map( ( f, i ) => (
 					<div className="vs-of-forms__card" key={ f.heiti }>
 						{ f.mynd ? <img src={ f.mynd } width="180" height="180" alt="" decoding="async" /> : <span className="vs-of-forms__noimg" /> }
@@ -148,12 +146,6 @@ export function SpriteTooltip( { tip, onHide, detail = false } ) {
 						<p className="vs-of-tip__en">
 							Form { i + 1 } af { formir.length } · #{ entry.numer } { name }
 						</p>
-						{ detail && has( entry.uppruni ) && (
-							<p className="vs-of-tip__origin" dangerouslySetInnerHTML={ { __html: entry.uppruni } } />
-						) }
-						{ detail && has( entry.thyding ) && (
-							<div className="vs-of-tip__text" dangerouslySetInnerHTML={ { __html: entry.thyding } } />
-						) }
 					</div>
 				) ) }
 			</div>
