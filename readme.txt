@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.4.3 =
+* Formspjöld sýna ekki lengur upprunaorð og þýðingu aftur, aðeins mynd og nafn formsins. Nöfn formanna koma nú úr vasaskrimsli-dict.
 
 = 1.4.2 =
 * Form skrímsla bera nú íslensk nöfn eins og í bókunum (t.d. Rottóttur Alóla, Funhundur Hisui, Mega Bálormur X) og hvert formspjald sýnir upprunaorð og þýðingu skrímslisins.
