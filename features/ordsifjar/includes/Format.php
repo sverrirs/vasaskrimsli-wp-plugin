@@ -32,7 +32,9 @@ final class Format {
 	/**
 	 * Special kinds of vasaskrímsli, shown as a marking in the Skrímslaskrá and the Orðsifjafræði table.
 	 * Tímaflækingar are the Paradox Pokémon: travellers from the past (ancient) or the future (Koraidon and Miraidon
-	 * included). The label says which, so a search for "Fortíð" or "Framtíð" finds each group.
+	 * included). The label says which, so a search for "Fortíð" or "Framtíð" finds each group. The split is the
+	 * "List of Paradox Pokémon" on Bulbapedia's Paradox Pokémon page (saved in vasaskrimsli-dict as
+	 * inbox/bulbapedia/Paradox Pokémon-Bulbapedia-20261031225414.xml).
 	 */
 	const SERSTAKT = array(
 		'Tímaflækingur · Fortíð'  => array( 984, 985, 986, 987, 988, 989, 1005, 1007, 1009, 1020, 1021 ),
