@@ -41,6 +41,9 @@ SIZE = 256
 SOURCE = "https://img.pokemondb.net/sprites/home/normal/{slug}.png"
 # The newest forms (Legends Z-A Megas) have no HOME sprite yet: use the official artwork, on white, instead.
 ARTWORK = "https://img.pokemondb.net/artwork/avif/{slug}.avif"
+# Monsters whose main picture is one of their forms (national.py MAIN_FORM): that form is replaced in the list by the
+# base form, under its own HOME sprite slug and Icelandic name.
+SWAP = {"964": ("palafin-hero", {"s": "palafin", "h": "Zero Form", "i": "{n} núllform"})}
 GALLERY = re.compile(r'href="https://img\.pokemondb\.net/artwork/large/([a-z0-9-]+)\.jpg" data-title="([^"]+?) official artwork"')
 
 
@@ -75,6 +78,8 @@ def parse(base):
     for rows in out.values():
         for f in rows:
             f["i"] = names[f["s"]]
+    for numer, (shown, base) in SWAP.items():
+        out[numer] = [dict(base, t=f["t"]) if f["s"] == shown else f for f in out.get(numer, [])]
     return {k: v for k, v in out.items() if v}
 
 

@@ -31,6 +31,13 @@ UA = "Mozilla/5.0 (vasaskrimsli.is one-time sprite copy; contact sverrirs@gmail.
 CRAWL_DELAY = 2.0
 SIZES = {"": 96, "large": 256}  # sub-folder -> px; thumbnails show at 48 px, the tooltip at the full 256 px
 SOURCE = "https://img.pokemondb.net/sprites/home/normal/{slug}.png"
+# Monsters whose main picture is one of their forms: Palafin's Zero Form is drawn the same as Finizen (#963), so
+# #964 shows its Hero Form (formir.py lists the Zero Form instead). Cached as <nnnn>-<slug>.png.
+MAIN_FORM = {964: "palafin-hero"}
+
+
+def cached(e):
+    return CACHE / (f"{e['numer']:04d}-{e['slug']}.png" if e["numer"] in MAIN_FORM else f"{e['numer']:04d}.png")
 
 
 def parse():
@@ -40,19 +47,19 @@ def parse():
         for card in re.findall(r'<div class="infocard ">(.*?)</div>', section, re.S):
             num = int(re.search(r"<small>#(\d+)</small>", card).group(1))
             name = re.search(r'<a class="ent-name" href="/pokedex/([^"]+)">([^<]+)</a>', card)
-            entries.append({"numer": num, "kynslod": int(gen), "slug": name.group(1), "enska": html.unescape(name.group(2))})
+            entries.append({"numer": num, "kynslod": int(gen), "slug": MAIN_FORM.get(num, name.group(1)), "enska": html.unescape(name.group(2))})
     return entries
 
 
 def download(entries):
     CACHE.mkdir(exist_ok=True)
-    todo = [e for e in entries if not (CACHE / f"{e['numer']:04d}.png").exists()]
+    todo = [e for e in entries if not cached(e).exists()]
     print(f"{len(entries) - len(todo)} cached, {len(todo)} to download (~{len(todo) * CRAWL_DELAY / 60:.0f} min)", flush=True)
     for i, e in enumerate(todo, 1):
         url = SOURCE.format(slug=e["slug"])
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA})
-            (CACHE / f"{e['numer']:04d}.png").write_bytes(urllib.request.urlopen(req, timeout=30).read())
+            cached(e).write_bytes(urllib.request.urlopen(req, timeout=30).read())
         except Exception as err:
             print(f"  #{e['numer']} {url}: {err}", flush=True)
         time.sleep(CRAWL_DELAY)
@@ -67,7 +74,7 @@ def convert(entries):
         (OUT / sub).mkdir(parents=True, exist_ok=True)
     missing, opaque = [], []
     for e in entries:
-        src = CACHE / f"{e['numer']:04d}.png"
+        src = cached(e)
         if not src.exists():
             missing.append(e["numer"])
             continue
