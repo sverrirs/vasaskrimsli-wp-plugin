@@ -309,18 +309,19 @@
 	height: 96px;
 }
 
+/* Room under the English name for "+N form" in the lower right corner. */
+.vs-of-tile:has(.vs-of-tile__forms) {
+	padding-bottom: 22px;
+}
+
 .vs-of-tile__forms {
 	position: absolute;
-	top: 6px;
-	left: 6px;
-	padding: 1px 6px;
+	right: 8px;
+	bottom: 4px;
 	font-size: 0.6875rem;
 	font-weight: 600;
 	line-height: 1.5;
 	color: var(--of-accent);
-	background: #fff;
-	border: 1px solid var(--of-accent);
-	border-radius: 9px;
 }
 
 @keyframes vs-of-tip-in {
