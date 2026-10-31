@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.5.3 =
+* Skrímslaskrá: „+N form“ stendur sem látlaus texti neðst í hægra horni spjaldsins, svo það skyggir ekki lengur á myndina.
 
 = 1.5.2 =
 * PDF-kort: Fjölskylda stendur í eigin línu fyrir neðan „Vissir þú?“ boxið en ekki inni í því.
