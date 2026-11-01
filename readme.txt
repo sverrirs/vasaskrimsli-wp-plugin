@@ -14,6 +14,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 
 == Changelog ==
 
+= 1.5.8 =
+* Form frá Hisúí-svæðinu heita nú „… Hisúí“ (eins og í Lestrarbók 8) í stað „… Hisui“, t.d. „Blysrakki Hisúí“. 16 form.
+
 = 1.5.7 =
 * Gagnaútgáfa 9: Þýðingar 228 skrímsla lagaðar, þar af 21 í 1. og 2. kynslóð. Tilvísanir í ensk heiti eru teknar út (t.d. #28 „Djúpt sár“ í stað „Djúpt sár (vísar í Slash)“). Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
 
