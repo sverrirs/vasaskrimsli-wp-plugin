@@ -14,7 +14,8 @@ card in the Skrímslaskrá grid and the Orðsifjafræði table.
      "i" is the Icelandic name with {n} for the monster's Icelandic name (Format::formir fills it in), the
      "snid" of vasaskrimsli-dict ideas/formheiti.json (rules in ideas/formheiti-reglur.json, named the way the
      published books do it: "Rottóttur Alóla", "Stórþjór Paldea Bardagakyn", "Mega Tvímýta X"; run
-     tools/formheiti.py there first). The base form itself is not listed.
+     tools/formheiti.py there first). The base form itself is not listed. Gígamax forms come last, from
+     ideas/flokksheiti/gigamax-tillogur.json.
 
   python -X utf8 migration/formir.py [path/to/vasaskrimsli-dict]
 """
@@ -44,6 +45,13 @@ ARTWORK = "https://img.pokemondb.net/artwork/avif/{slug}.avif"
 # Monsters whose main picture is one of their forms (national.py MAIN_FORM): that form is replaced in the list by the
 # base form, under its own HOME sprite slug and Icelandic name.
 SWAP = {"964": ("palafin-hero", {"s": "palafin", "h": "Zero Form", "i": "{n} núllform"})}
+# Gigantamax (and Eternamax) forms are not in the Pokédex pages' galleries: names and types from vasaskrimsli-dict.
+GIGAMAX = Path("ideas") / "flokksheiti" / "gigamax-tillogur.json"
+TEGUNDIR = {
+    "Algengur": "Normal", "Eldur": "Fire", "Vatn": "Water", "Rafmagn": "Electric", "Gras": "Grass", "Frost": "Ice",
+    "Áflog": "Fighting", "Eitur": "Poison", "Jörð": "Ground", "Flýgur": "Flying", "Sálrænn": "Psychic", "Padda": "Bug",
+    "Grjót": "Rock", "Draugur": "Ghost", "Drekakyn": "Dragon", "Sorti": "Dark", "Stál": "Steel", "Álfakyn": "Fairy",
+}
 GALLERY = re.compile(r'href="https://img\.pokemondb\.net/artwork/large/([a-z0-9-]+)\.jpg" data-title="([^"]+?) official artwork"')
 
 
@@ -78,9 +86,21 @@ def parse(base):
     for rows in out.values():
         for f in rows:
             f["i"] = names[f["s"]]
-    for numer, (shown, base) in SWAP.items():
-        out[numer] = [dict(base, t=f["t"]) if f["s"] == shown else f for f in out.get(numer, [])]
+    for numer, (shown, swap) in SWAP.items():
+        out[numer] = [dict(swap, t=f["t"]) if f["s"] == shown else f for f in out.get(numer, [])]
+    for g in json.loads((base / GIGAMAX).read_text(encoding="utf-8")):
+        out.setdefault(str(g["numer"]), []).append(
+            {"s": gmax_slug(g["english"]), "h": g["english"], "t": [TEGUNDIR[t] for t in g["tegundir"]], "i": g["snid"]}
+        )
     return {k: v for k, v in out.items() if v}
+
+
+def gmax_slug(english):
+    """pokemondb's slug: "Gigantamax Charizard" -> charizard-gigantamax,
+    "Gigantamax Rapid Strike Style Urshifu" -> urshifu-rapid-strike-gigantamax, "Eternamax Eternatus" -> eternatus-eternamax."""
+    kind, *words = english.lower().split()
+    style = [w for w in words[:-1] if w != "style"]
+    return "-".join([words[-1], *style, kind])
 
 
 def download(forms):

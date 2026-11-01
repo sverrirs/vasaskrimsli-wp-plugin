@@ -324,7 +324,7 @@ check( 'formir.json: Raichu has its Alolan form, Bulbasaur has none', array( $re
 check( 'formir.json: every form has an Icelandic name', array_filter( array_merge( ...array_values( $real ) ), static function ( $f ) {
 	return empty( $f['i'] ) || false === strpos( $f['i'], '{n}' );
 } ), array() );
-check( 'formir.json: named as the books do', array_column( Format::formir( $real, array(), '6', 'Bálormur' ), 'heiti' ), array( 'Mega Bálormur X', 'Mega Bálormur Y' ) );
+check( 'formir.json: named as the books do', array_column( Format::formir( $real, array(), '6', 'Bálormur' ), 'heiti' ), array( 'Mega Bálormur X', 'Mega Bálormur Y', 'Gígamax Bálormur' ) );
 
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text
 $v4    = array(

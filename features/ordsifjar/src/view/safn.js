@@ -34,12 +34,37 @@ export function add( list, numer, forms = [] ) {
 	if ( next === undefined ) {
 		return { list, full: false, all: true };
 	}
+	return insert( list, next );
+}
+
+/** One click on one form's tile (the Mega or Gígamax view): adds that form only, same results as add(). */
+export function addForm( list, numer, form ) {
+	const item = itemOf( numer, form );
+	return list.includes( item ) ? { list, full: false, all: true } : insert( list, item );
+}
+
+function insert( list, item ) {
 	if ( list.length >= MAX ) {
 		return { list, full: true, all: false };
 	}
+	const n = split( item ).numer;
 	const last = list.findLastIndex( ( x ) => split( x ).numer === n );
 	const at = last < 0 ? list.length : last + 1;
-	return { list: [ ...list.slice( 0, at ), next, ...list.slice( at ) ], full: false, all: false };
+	return { list: [ ...list.slice( 0, at ), item, ...list.slice( at ) ], full: false, all: false };
+}
+
+/** The views of the Skrímslaskrá grid: every monster, or only its Mega or Gígamax forms (by English name). */
+export const SYNIR = {
+	mega: { heiti: 'Mega', er: ( f ) => /^Mega\b/.test( f.enska ?? '' ) },
+	gigamax: { heiti: 'Gígamax', er: ( f ) => /^(Gigantamax|Eternamax)\b/.test( f.enska ?? '' ) },
+};
+
+/** The tiles of one view: entries as they are, or one tile per matching form (variant() plus base and form). */
+export function tiles( entries, syn ) {
+	if ( ! SYNIR[ syn ] ) {
+		return entries;
+	}
+	return entries.flatMap( ( e ) => ( e.formir ?? [] ).filter( SYNIR[ syn ].er ).map( ( f ) => ( { ...variant( e, f.id ), base: e, form: f.id } ) ) );
 }
 
 /** Takes one item out of the list. */

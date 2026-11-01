@@ -14,6 +14,11 @@ Gagnvirkir hlutar vasaskrimsli.is.
 
 == Changelog ==
 
+= 1.5.6 =
+* Skrímslaskrá: hnappar efst sýna öll skrímsli, aðeins Mega-form (93) eða aðeins Gígamax-form (34, Eilífmax Ginnormur meðtalinn). Í Mega- og Gígamax-sýn er hvert form sinn reitur og smellur bætir einmitt því formi í safnið.
+* Gígamax-form bætast við aukaform skrímslanna, með myndum og íslenskum heitum („Gígamax Bálormur“).
+* Skrímslaskrá: heiti kynslóðarinnar sem er á skjánum helst efst á meðan skrunað er.
+
 = 1.5.5 =
 * #964 Hafkappi sýnir hetjuformið sem aðalmynd, því núllformið er teiknað eins og #963 Hnísill; núllformið er nú aukaformið („Hafkappi núllform“).
 * Tímaflækingar: merkið er klofið, „Tímaflækingur“ á gulu og síðan skáskorið „Fortíð“ (ryðbrúnt) eða „Framtíð“ (fjólublátt).

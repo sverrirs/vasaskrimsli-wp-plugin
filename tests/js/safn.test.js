@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { MAX, add, boldSelf, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
+import { MAX, add, addForm, tiles, boldSelf, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
 import { jpegSize, makePdf } from '../../features/ordsifjar/src/view/pdf.js';
 
 test( 'add stops at MAX and remove takes one item out', () => {
@@ -128,4 +128,30 @@ test( 'boldSelf bolds the monster\'s own name on the Fjölskylda line only', () 
 	// The PDF card reads it as a bold run.
 	const line = parseRich( boldSelf( html, 'Þríbý' ) )[ 1 ];
 	assert.deepEqual( line.filter( ( r ) => r.b ).map( ( r ) => r.t.trim() ), [ 'Fjölskylda:', 'Þríbý' ] );
+} );
+
+test( 'the Mega and Gígamax views show one tile per matching form, and a click adds only that form', () => {
+	const charizard = {
+		numer: '6',
+		nafn: 'Bálormur',
+		formir: [
+			{ id: 'charizard-mega-x', heiti: 'Mega Bálormur X', enska: 'Mega Charizard X', mynd: 'x.webp' },
+			{ id: 'charizard-mega-y', heiti: 'Mega Bálormur Y', enska: 'Mega Charizard Y', mynd: 'y.webp' },
+			{ id: 'charizard-gigantamax', heiti: 'Gígamax Bálormur', enska: 'Gigantamax Charizard', mynd: 'g.webp' },
+		],
+	};
+	const raichu = { numer: '26', formir: [ { id: 'raichu-alolan', heiti: 'Rottóttur Alóla', enska: 'Alolan Raichu' } ] };
+	const entries = [ charizard, raichu, { numer: '1' } ];
+	assert.equal( tiles( entries, '' ), entries );
+	assert.deepEqual( tiles( entries, 'mega' ).map( ( t ) => [ t.form, t.nafn, t.mynd, t.base.numer ] ), [
+		[ 'charizard-mega-x', 'Mega Bálormur X', 'x.webp', '6' ],
+		[ 'charizard-mega-y', 'Mega Bálormur Y', 'y.webp', '6' ],
+	] );
+	assert.deepEqual( tiles( entries, 'gigamax' ).map( ( t ) => t.form ), [ 'charizard-gigantamax' ] );
+
+	let r = addForm( [ '1', '6' ], 6, 'charizard-mega-y' );
+	assert.deepEqual( r.list, [ '1', '6', '6:charizard-mega-y' ] );
+	r = addForm( r.list, 6, 'charizard-mega-y' );
+	assert.equal( r.all, true );
+	assert.deepEqual( r.list, [ '1', '6', '6:charizard-mega-y' ] );
 } );

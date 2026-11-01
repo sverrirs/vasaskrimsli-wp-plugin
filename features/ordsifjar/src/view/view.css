@@ -879,3 +879,29 @@
 	width: 112px;
 	height: 112px;
 }
+
+/* Skrímslaskrá: the view switch (every monster / Mega / Gígamax) and the generation name kept in view while scrolling. */
+.vs-of__syn {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 16px;
+	margin-bottom: 8px;
+}
+
+.vs-of.is-skra .vs-of__gen > h3 {
+	position: sticky;
+	top: var(--wp-admin--admin-bar--height, 0px);
+	z-index: 2;
+	margin-bottom: 0;
+	padding: 10px 0;
+	background: var(--of-surface);
+	box-shadow: 0 1px 0 var(--of-line);
+}
+
+/* Narrow screens: WordPress lets the admin bar scroll away, so nothing to stay below. */
+@media (max-width: 600px) {
+	.vs-of.is-skra .vs-of__gen > h3 {
+		top: 0;
+	}
+}

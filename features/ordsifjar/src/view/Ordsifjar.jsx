@@ -4,7 +4,7 @@ import { SpriteTooltip, Thumb } from './Sprite.jsx';
 import { Grid } from './Skra.jsx';
 import Safn from './Safn.jsx';
 import Mark from './Mark.jsx';
-import { add, load, remove, save, split, variant } from './safn.js';
+import { SYNIR, add, addForm, load, remove, save, split, tiles, variant } from './safn.js';
 
 const storage = () => {
 	try {
@@ -66,6 +66,17 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 			return r.list;
 		} );
 	}, [] );
+	const pickForm = useCallback( ( entry, form ) => {
+		setSafn( ( list ) => {
+			const r = addForm( list, entry.numer, form );
+			if ( r.full || r.all ) {
+				setNote( { why: r.full ? 'full' : 'all', at: Date.now() } );
+			}
+			return r.list;
+		} );
+	}, [] );
+	// Skrímslaskrá view: '' every monster, 'mega' or 'gigamax' only those forms (SYNIR).
+	const [ utlit, setUtlit ] = useState( '' );
 	useEffect( () => {
 		if ( skra ) {
 			save( storage(), safn );
@@ -110,8 +121,29 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 		setFlokkur( '' );
 	};
 
+	const synTiles = useMemo( () => ( utlit ? tiles( entries, utlit ) : null ), [ entries, utlit ] );
+
 	return (
 		<div className={ 'vs-of' + ( skra ? ' is-skra' : '' ) }>
+			{ skra && (
+				<div className="vs-of__syn">
+					<div className="vs-of__gens" role="group" aria-label="Sýna">
+						<button type="button" aria-pressed={ ! utlit } onClick={ () => setUtlit( '' ) }>
+							Öll skrímsli
+						</button>
+						{ Object.entries( SYNIR ).map( ( [ key, s ] ) => (
+							<button type="button" key={ key } aria-pressed={ utlit === key } onClick={ () => setUtlit( utlit === key ? '' : key ) }>
+								{ s.heiti }
+							</button>
+						) ) }
+					</div>
+					{ synTiles && (
+						<p className="vs-of__count" aria-live="polite">
+							{ synTiles.length } { SYNIR[ utlit ].heiti }-form
+						</p>
+					) }
+				</div>
+			) }
 			{ ! skra && (
 			<div className="vs-of__tools" role="search">
 				<label className="vs-of__search">
@@ -179,15 +211,15 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 			) }
 
 			{ generations.map( ( k ) => {
-				const rows = shown.filter( ( e ) => e.kynslod === k.kynslod );
-				if ( rows.length === 0 && filtering ) {
+				const rows = ( synTiles ?? shown ).filter( ( e ) => e.kynslod === k.kynslod );
+				if ( rows.length === 0 && ( filtering || synTiles ) ) {
 					return null;
 				}
 				return (
 					<section className="vs-of__gen" key={ k.kynslod }>
 						<Html as="h3" className="wp-block-heading" id={ k.akkeri || undefined } html={ k.heiti_html } />
 						{ k.skyring_html && <Html as="p" html={ k.skyring_html } /> }
-						{ rows.length > 0 && skra && <Grid rows={ rows } onShow={ showTip } onHide={ hideTip } chosen={ safn } onPick={ pick } /> }
+						{ rows.length > 0 && skra && <Grid rows={ rows } onShow={ showTip } onHide={ hideTip } chosen={ safn } onPick={ pick } onPickForm={ pickForm } /> }
 						{ rows.length > 0 && ! skra && (
 							<figure className="wp-block-table vs-of__table">
 								<table>
