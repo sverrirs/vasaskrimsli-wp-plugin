@@ -14,6 +14,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 
 == Changelog ==
 
+= 1.5.7 =
+* Gagnaútgáfa 9: Þýðingar 228 skrímsla lagaðar, þar af 21 í 1. og 2. kynslóð. Tilvísanir í ensk heiti eru teknar út (t.d. #28 „Djúpt sár“ í stað „Djúpt sár (vísar í Slash)“). Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
+
 = 1.5.6 =
 * Skrímslaskrá: hnappar efst sýna öll skrímsli, aðeins Mega-form (93) eða aðeins Gígamax-form (34, Eilífmax Ginnormur meðtalinn). Í Mega- og Gígamax-sýn er hvert form sinn reitur og smellur bætir einmitt því formi í safnið.
 * Gígamax-form bætast við aukaform skrímslanna, með myndum og íslenskum heitum („Gígamax Bálormur“).
