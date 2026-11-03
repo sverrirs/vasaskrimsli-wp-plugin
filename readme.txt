@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.8
+Stable tag: 1.5.9
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,10 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.5.9 =
+* Safnið mitt: nýr hnappur, Bókamerki, sækir PDF skjal með bókamerkjum til að prenta og klippa. Fimm bókamerki á hverri A4 síðu, 52 × 190 mm, með mynd efst, númeri, nafninu niður eftir bókamerkinu og mynstri eftir tegund skrímslisins. Form nota eigin tegundir.
+* PDF-kort: myndir skrímsla eru nú miðjaðar eftir miðju skrímslisins sjálfs, eins og í bókunum, en ekki eftir miðju myndskrárinnar. Það á líka við um þróunarmyndirnar.
 
 = 1.5.8 =
 * Form frá Hisúí-svæðinu heita nú „… Hisúí“ (eins og í Lestrarbók 8) í stað „… Hisui“, t.d. „Blysrakki Hisúí“. 16 form.
