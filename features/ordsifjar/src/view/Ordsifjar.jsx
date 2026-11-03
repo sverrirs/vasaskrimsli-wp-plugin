@@ -281,6 +281,7 @@ export default function Ordsifjar( { data, syn = 'tafla' } ) {
 					onRemove={ ( item ) => setSafn( ( list ) => remove( list, item ) ) }
 					onClear={ () => setSafn( [] ) }
 					throunUrl={ data.throun }
+					midjurUrl={ data.midjur }
 					all={ entries }
 				/>
 			) }

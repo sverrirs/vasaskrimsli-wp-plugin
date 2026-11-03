@@ -307,11 +307,11 @@ check( 'serstakt: ordinary entry has none', Format::serstakt( '1' ), '' );
 check( 'serstakt: placeholder number has none', Format::serstakt( '–' ), '' );
 
 // --- special and regional forms
-$formir = array( '26' => array( array( 's' => 'raichu-alolan', 'h' => 'Alolan Raichu' ), array( 's' => 'raichu-mega-x', 'h' => 'Mega Raichu X' ) ) );
+$formir = array( '26' => array( array( 's' => 'raichu-alolan', 'h' => 'Alolan Raichu', 't' => array( 'Electric', 'Psychic' ) ), array( 's' => 'raichu-mega-x', 'h' => 'Mega Raichu X' ) ) );
 $have   = array( 'raichu-alolan' => 0 );
 check( 'formir: forms in order, slug only where there is a picture', Format::formir( $formir, $have, '26' ), array(
-	array( 'id' => 'raichu-alolan', 'heiti' => 'Alolan Raichu', 'enska' => 'Alolan Raichu', 'slug' => 'raichu-alolan' ),
-	array( 'id' => 'raichu-mega-x', 'heiti' => 'Mega Raichu X', 'enska' => 'Mega Raichu X', 'slug' => '' ),
+	array( 'id' => 'raichu-alolan', 'heiti' => 'Alolan Raichu', 'enska' => 'Alolan Raichu', 'slug' => 'raichu-alolan', 'tegundir' => array( 'Electric', 'Psychic' ) ),
+	array( 'id' => 'raichu-mega-x', 'heiti' => 'Mega Raichu X', 'enska' => 'Mega Raichu X', 'slug' => '', 'tegundir' => array() ),
 ) );
 check( 'formir: "26a" counts as 26', count( Format::formir( $formir, $have, '26a' ) ), 2 );
 check( 'formir: none for others and placeholders', array( Format::formir( $formir, $have, '25' ), Format::formir( $formir, $have, '–' ) ), array( array(), array() ) );

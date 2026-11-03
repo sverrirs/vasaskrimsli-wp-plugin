@@ -76,10 +76,11 @@ final class Format {
 			$slug  = (string) ( $f['s'] ?? '' );
 			$heiti = '' !== $name && ! empty( $f['i'] ) ? str_replace( '{n}', $name, (string) $f['i'] ) : (string) ( $f['h'] ?? '' );
 			$out[] = array(
-				'id'    => $slug,
-				'heiti' => $heiti,
-				'enska' => (string) ( $f['h'] ?? '' ),
-				'slug'  => isset( $have[ $slug ] ) ? $slug : '',
+				'id'       => $slug,
+				'heiti'    => $heiti,
+				'enska'    => (string) ( $f['h'] ?? '' ),
+				'slug'     => isset( $have[ $slug ] ) ? $slug : '',
+				'tegundir' => (array) ( $f['t'] ?? array() ),
 			);
 		}
 		return $out;

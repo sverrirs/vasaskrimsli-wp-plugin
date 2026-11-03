@@ -225,5 +225,23 @@ export function boldSelf( thydingHtml, nafn ) {
 		.join( '' );
 }
 
+/** The share of a circle's radius left free round its picture, the same as in the book. */
+const HRING_BIL = 0.06;
+
+/** A sprite's row in data/midjur.json, found from its URL: [ cx, cy, r ], or undefined. */
+export const midjaOf = ( midjur, src ) => midjur?.[ String( src ?? '' ).match( /\/sprites\/(.+?)\.webp/ )?.[ 1 ] ];
+
+/**
+ * Where to draw a picture of w x h so it fills the circle: its own midpoint in the middle, its farthest point a
+ * little inside the rim, as the book does (i_hring in vasaskrimsli-ordsifjaskra). Without a midpoint, the file centred.
+ * @param {number[]|undefined} midja Its row in data/midjur.json.
+ * @return {{ x: number, y: number, w: number, h: number }}
+ */
+export function iHring( midja, w, h, cx, cy, radius ) {
+	const [ mx, my, r ] = midja ?? [ 0.5, 0.5, 0.5 ];
+	const k = ( radius * ( 1 - HRING_BIL ) ) / ( r * Math.max( w, h ) );
+	return { x: cx - mx * w * k, y: cy - my * h * k, w: w * k, h: h * k };
+}
+
 /** "905" -> 905, "351a" -> 351. */
 export const national = ( numer ) => parseInt( String( numer ), 10 );

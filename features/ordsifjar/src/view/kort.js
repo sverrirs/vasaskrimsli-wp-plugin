@@ -9,25 +9,25 @@
 
 import { htmlToText } from '../../../../shared/js/search.js';
 import { makePdf } from './pdf.js';
-import { boldSelf, national, parseRich, plainLine, sections } from './safn.js';
+import { boldSelf, iHring, midjaOf, national, parseRich, plainLine, sections } from './safn.js';
 
 const W = 1240; // A6 at 300 dpi.
 const H = 1748;
 const M = 64;
 const INK = '#1f1b24';
 
-const TYPE = {
+export const TYPE = {
 	Normal: '#a8a77a', Fire: '#ee8130', Water: '#6390f0', Electric: '#f7d02c', Grass: '#7ac74c', Ice: '#96d9d6',
 	Fighting: '#c22e28', Poison: '#a33ea1', Ground: '#e2bf65', Flying: '#a98ff3', Psychic: '#f95587', Bug: '#a6b91a',
 	Rock: '#b6a136', Ghost: '#735797', Dragon: '#6f35fc', Dark: '#705746', Steel: '#b7b7ce', Fairy: '#d685ad',
 };
 
-const rgb = ( hex ) => [ 1, 3, 5 ].map( ( i ) => parseInt( hex.slice( i, i + 2 ), 16 ) );
-const css = ( c, a = 1 ) => `rgba(${ c.map( Math.round ).join( ',' ) },${ a })`;
+export const rgb = ( hex ) => [ 1, 3, 5 ].map( ( i ) => parseInt( hex.slice( i, i + 2 ), 16 ) );
+export const css = ( c, a = 1 ) => `rgba(${ c.map( Math.round ).join( ',' ) },${ a })`;
 /** t = 0 gives a, t = 1 gives b. */
-const mix = ( a, b, t ) => a.map( ( v, i ) => v + ( b[ i ] - v ) * t );
-const WHITE = [ 255, 255, 255 ];
-const BLACK = [ 0, 0, 0 ];
+export const mix = ( a, b, t ) => a.map( ( v, i ) => v + ( b[ i ] - v ) * t );
+export const WHITE = [ 255, 255, 255 ];
+export const BLACK = [ 0, 0, 0 ];
 
 function palette( types ) {
 	const a = rgb( TYPE[ types?.[ 0 ] ] ?? '#9aa7b8' );
@@ -35,7 +35,7 @@ function palette( types ) {
 	return { top: mix( a, WHITE, 0.55 ), bottom: mix( b, WHITE, 0.12 ), accent: mix( a, BLACK, 0.35 ), soft: mix( a, WHITE, 0.82 ) };
 }
 
-function loadImage( src ) {
+export function loadImage( src ) {
 	return new Promise( ( resolve ) => {
 		if ( ! src ) {
 			resolve( null );
@@ -174,7 +174,7 @@ function textBlock( ctx, parts, width, size, fam, colors, draw, x0 = 0, y0 = 0 )
 }
 
 /** Evolution line inside the box x, y, w, h. */
-function drawEvolution( ctx, stages, current, x, y, w, h, fam, colors, images ) {
+function drawEvolution( ctx, stages, current, x, y, w, h, fam, colors, images, midjur ) {
 	const arrow = 56;
 	// Stages with several branches (Eevee) get wider columns.
 	const weights = stages.map( ( st ) => Math.ceil( Math.sqrt( st.length ) ) );
@@ -206,7 +206,8 @@ function drawEvolution( ctx, stages, current, x, y, w, h, fam, colors, images ) 
 			ctx.restore();
 			const pic = images.get( n );
 			if ( pic ) {
-				ctx.drawImage( pic, ix + img * 0.08, iy + img * 0.08, img * 0.84, img * 0.84 );
+				const at = iHring( midjaOf( midjur, pic.src ), pic.naturalWidth, pic.naturalHeight, ix + img / 2, iy + img / 2, img / 2 );
+				ctx.drawImage( pic, at.x, at.y, at.w, at.h );
 			}
 			ctx.fillStyle = n === current ? css( colors.accent ) : INK;
 			ctx.font = fontOf( fam, label, { b: n === current } );
@@ -235,8 +236,9 @@ function drawEvolution( ctx, stages, current, x, y, w, h, fam, colors, images ) 
  * @param {Object} info   Its row in throun.json: { t: types, k: stages }.
  * @param {Map} images    National number -> loaded picture (256 px); 'forma': the chosen form's picture.
  * @param {string} fam    CSS font family.
+ * @param {Object} midjur data/midjur.json.
  */
-export function drawCard( canvas, entry, info, images, fam ) {
+export function drawCard( canvas, entry, info, images, fam, midjur = {} ) {
 	const ctx = canvas.getContext( '2d' );
 	const colors = palette( info?.t );
 	const num = national( entry.numer );
@@ -331,7 +333,8 @@ export function drawCard( canvas, entry, info, images, fam ) {
 		ctx.shadowBlur = 36;
 		ctx.shadowOffsetY = 18;
 		ctx.imageSmoothingQuality = 'high';
-		ctx.drawImage( pic, px, py, S, S );
+		const at = iHring( midjaOf( midjur, pic.src ), pic.naturalWidth, pic.naturalHeight, W / 2, py + S / 2, S / 2 );
+		ctx.drawImage( pic, at.x, at.y, at.w, at.h );
 		ctx.restore();
 	}
 
@@ -362,7 +365,7 @@ export function drawCard( canvas, entry, info, images, fam ) {
 	ctx.fillStyle = css( colors.accent );
 	if ( stages.length ) {
 		ctx.fillText( 'ÞRÓUN', M + 32, evoY + 46 );
-		drawEvolution( ctx, stages, num, M + 24, evoY + 56, W - M * 2 - 48, evoH - 66, fam, colors, images );
+		drawEvolution( ctx, stages, num, M + 24, evoY + 56, W - M * 2 - 48, evoH - 66, fam, colors, images, midjur );
 	} else {
 		ctx.fillText( 'ÞRÓUN', M + 32, evoY + 58 );
 		ctx.font = fontOf( fam, 34 );
@@ -393,7 +396,16 @@ export function drawCard( canvas, entry, info, images, fam ) {
 	ctx.textAlign = 'left';
 }
 
-function toJpeg( canvas ) {
+/** The JSON file at url, or {} when it can not be had. */
+export async function fetchJson( url ) {
+	try {
+		return await ( await fetch( url ) ).json();
+	} catch {
+		return {};
+	}
+}
+
+export function toJpeg( canvas ) {
 	return new Promise( ( resolve, reject ) => {
 		canvas.toBlob(
 			( blob ) => ( blob ? blob.arrayBuffer().then( ( b ) => resolve( new Uint8Array( b ) ), reject ) : reject( new Error( 'toBlob' ) ) ),
@@ -408,17 +420,14 @@ function toJpeg( canvas ) {
  * @param {Object[]} chosen    Entries in collection order.
  * @param {Object[]} all       All entries on the page (for the evolution pictures).
  * @param {string}   throunUrl URL of throun.json.
+ * @param {string}   midjurUrl URL of midjur.json.
  * @param {string}   fam       CSS font family of the page.
  * @param {Function} progress  Called with the number of cards done.
  * @return {Promise<Blob>}
  */
-export async function buildPdf( chosen, all, throunUrl, fam, progress = () => {} ) {
-	let throun = {};
-	try {
-		throun = await ( await fetch( throunUrl ) ).json();
-	} catch {
-		// Cards without types or evolutions are still useful.
-	}
+export async function buildPdf( chosen, all, throunUrl, midjurUrl, fam, progress = () => {} ) {
+	// Cards without types, evolutions or midpoints are still useful.
+	const [ throun, midjur ] = await Promise.all( [ fetchJson( throunUrl ), fetchJson( midjurUrl ) ] );
 	const pictures = new Map();
 	for ( const e of all ) {
 		const n = national( e.numer );
@@ -448,7 +457,7 @@ export async function buildPdf( chosen, all, throunUrl, fam, progress = () => {}
 				}
 			} )
 		);
-		drawCard( canvas, entry, info, images, fam );
+		drawCard( canvas, entry, info, images, fam, midjur );
 		pages.push( await toJpeg( canvas ) );
 		progress( pages.length );
 	}

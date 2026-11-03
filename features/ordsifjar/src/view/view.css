@@ -749,6 +749,7 @@
 
 .vs-safn__actions {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 8px;
 }
 
@@ -781,6 +782,7 @@
 
 .vs-safn__clear {
 	position: relative;
+	flex-basis: 100%;
 	overflow: hidden;
 	color: #fff;
 	background: var(--of-danger);

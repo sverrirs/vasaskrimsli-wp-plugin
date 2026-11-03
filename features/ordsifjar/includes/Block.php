@@ -51,10 +51,11 @@ final class Block {
 		$e['serstakt']  = Format::serstakt( (string) $e['numer'] );
 		$e['formir']    = array_map( static function ( $f ) use ( $base ) {
 			return array(
-				'id'    => $f['id'],
-				'heiti' => $f['heiti'],
-				'enska' => $f['enska'],
-				'mynd'  => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '',
+				'id'       => $f['id'],
+				'heiti'    => $f['heiti'],
+				'enska'    => $f['enska'],
+				'mynd'     => '' !== $f['slug'] ? $base . 'formir/' . $f['slug'] . '.webp' : '',
+				'tegundir' => $f['tegundir'],
 			);
 		}, Format::formir( self::formir_data(), self::formir_have(), (string) $e['numer'], self::plain_name( $e ) ) );
 		return $e;
@@ -131,6 +132,7 @@ final class Block {
 		if ( 'skra' === $syn ) {
 			// Types and evolution chains for the collection's PDF cards, fetched only when one is made.
 			$data['throun'] = VASASKRIMSLI_URL . 'features/ordsifjar/data/throun.json?ver=' . VASASKRIMSLI_VERSION;
+			$data['midjur'] = VASASKRIMSLI_URL . 'features/ordsifjar/data/midjur.json?ver=' . VASASKRIMSLI_VERSION;
 		}
 
 		$by_gen = array();

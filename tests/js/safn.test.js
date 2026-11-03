@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { MAX, add, addForm, tiles, boldSelf, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
+import { readFileSync, readdirSync } from 'node:fs';
+import { MAX, add, addForm, iHring, midjaOf, tiles, boldSelf, itemsOf, load, parseRich, plainLine, remove, save, sections, variant } from '../../features/ordsifjar/src/view/safn.js';
 import { jpegSize, makePdf } from '../../features/ordsifjar/src/view/pdf.js';
+import { PER_SHEET, columns, nameLines, sheets } from '../../features/ordsifjar/src/view/bokamerki.js';
 
 test( 'add stops at MAX and remove takes one item out', () => {
 	let list = [];
@@ -154,4 +155,63 @@ test( 'the Mega and Gígamax views show one tile per matching form, and a click 
 	r = addForm( r.list, 6, 'charizard-mega-y' );
 	assert.equal( r.all, true );
 	assert.deepEqual( r.list, [ '1', '6', '6:charizard-mega-y' ] );
+} );
+
+test( 'bookmarks: five to a sheet, inside the page and not overlapping', () => {
+	assert.deepEqual( sheets( [ 1, 2, 3, 4, 5, 6, 7 ] ), [ [ 1, 2, 3, 4, 5 ], [ 6, 7 ] ] );
+	assert.deepEqual( sheets( [] ), [] );
+	const xs = columns();
+	assert.equal( xs.length, PER_SHEET );
+	assert.ok( xs[ 0 ] > 0 && xs[ PER_SHEET - 1 ] + 52 < 297 );
+	xs.slice( 1 ).forEach( ( x, i ) => assert.ok( x >= xs[ i ] + 52 ) );
+} );
+
+test( 'bookmarks: the name fits down the length, on two lines only when one would be too small', () => {
+	const measure = ( t ) => t.length * 0.55;
+	const fits = ( r ) => r.lines.every( ( l ) => measure( l ) * r.size <= 93 + 1e-9 );
+
+	const short = nameLines( 'Púpisti', 93, measure );
+	assert.deepEqual( short, { lines: [ 'Púpisti' ], size: 21 } );
+
+	const medium = nameLines( 'Galdursforseti', 93, measure );
+	assert.equal( medium.lines.length, 1 );
+	assert.ok( medium.size < 21 && fits( medium ) );
+
+	// The longest name there is: split where the two lines are most even.
+	const long = nameLines( 'Gígamax Hólmbersi hraðhöggsstíll', 93, measure );
+	assert.deepEqual( long.lines, [ 'Gígamax Hólmbersi', 'hraðhöggsstíll' ] );
+	assert.ok( fits( long ) );
+
+	// A word that can not be split still fits.
+	const word = 'x'.repeat( 40 );
+	const unsplit = nameLines( word, 93, measure );
+	assert.deepEqual( unsplit.lines, [ word ] );
+	assert.ok( fits( unsplit ) );
+} );
+
+test( 'a picture in a circle: its midpoint in the middle, its farthest point inside the rim', () => {
+	// #11 leans left and down in its file.
+	const midja = [ 0.4362, 0.6666, 0.4738 ];
+	const at = iHring( midja, 256, 256, 100, 200, 50 );
+	assert.ok( Math.abs( at.x + midja[ 0 ] * at.w - 100 ) < 1e-9 );
+	assert.ok( Math.abs( at.y + midja[ 1 ] * at.h - 200 ) < 1e-9 );
+	const reach = midja[ 2 ] * Math.max( at.w, at.h );
+	assert.ok( reach < 50 && reach > 45 );
+
+	// Without a midpoint the file stays centred.
+	const plain = iHring( undefined, 256, 256, 100, 200, 50 );
+	assert.equal( plain.x + plain.w / 2, 100 );
+	assert.equal( plain.y + plain.h / 2, 200 );
+} );
+
+test( 'midjur.json has every large and form sprite, found from the URL the page uses', () => {
+	const midjur = JSON.parse( readFileSync( new URL( '../../features/ordsifjar/data/midjur.json', import.meta.url ), 'utf8' ) );
+	for ( const sub of [ 'large', 'formir' ] ) {
+		const dir = new URL( `../../features/ordsifjar/assets/sprites/${ sub }/`, import.meta.url );
+		for ( const f of readdirSync( dir ).filter( ( x ) => x.endsWith( '.webp' ) ) ) {
+			const row = midjaOf( midjur, `https://example.is/wp-content/plugins/v/features/ordsifjar/assets/sprites/${ sub }/${ f }` );
+			assert.ok( row?.length === 3 && row.every( ( v ) => v > 0 && v < 1 ), `${ sub }/${ f }` );
+		}
+	}
+	assert.equal( midjaOf( midjur, '' ), undefined );
 } );

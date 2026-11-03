@@ -11,15 +11,17 @@ const Icon = ( { d } ) => (
 	</svg>
 );
 const DOWNLOAD = [ 'M12 3v12', 'M7 10l5 5 5-5', 'M5 21h14' ];
+const BOOKMARK = [ 'M6 3h12v18l-6-4-6 4z' ];
 const TRASH = [ 'M3 6h18', 'M8 6V4h8v2', 'M19 6l-1 14H6L5 6', 'M10 11v6', 'M14 11v6' ];
 
 /**
  * The collection panel on the left edge of the Skrímslaskrá page. Collapsed to a tab until the mouse
  * is over it or it has keyboard focus; a tap on the tab opens and closes it on touch screens.
  */
-export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all } ) {
+export default function Safn( { chosen, note, onRemove, onClear, throunUrl, midjurUrl, all } ) {
 	const [ open, setOpen ] = useState( false );
 	const [ busy, setBusy ] = useState( null ); // null, or the number of cards drawn so far.
+	const [ making, setMaking ] = useState( '' ); // Which file is being made: 'kort' or 'merki'.
 	const [ error, setError ] = useState( '' );
 	const [ shownNote, setShownNote ] = useState( '' );
 	const [ confirming, setConfirming ] = useState( false );
@@ -58,21 +60,28 @@ export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all 
 		onClear();
 	};
 
-	const download = async () => {
+	const download = async ( what ) => {
 		if ( busyRef.current || ! chosen.length ) {
 			return;
 		}
 		busyRef.current = true;
+		setMaking( what );
 		setBusy( 0 );
 		setError( '' );
 		try {
-			const { buildPdf } = await import( './kort.js' );
 			const fam = getComputedStyle( root.current ).fontFamily || 'sans-serif';
-			const blob = await buildPdf( chosen, all, throunUrl, fam, setBusy );
+			let blob;
+			if ( what === 'merki' ) {
+				const { buildBookmarks } = await import( './bokamerki.js' );
+				blob = await buildBookmarks( chosen, throunUrl, midjurUrl, fam, setBusy );
+			} else {
+				const { buildPdf } = await import( './kort.js' );
+				blob = await buildPdf( chosen, all, throunUrl, midjurUrl, fam, setBusy );
+			}
 			const url = URL.createObjectURL( blob );
 			const a = document.createElement( 'a' );
 			a.href = url;
-			a.download = 'vasaskrimsli-safn.pdf';
+			a.download = what === 'merki' ? 'vasaskrimsli-bokamerki.pdf' : 'vasaskrimsli-safn.pdf';
 			document.body.append( a );
 			a.click();
 			a.remove();
@@ -129,9 +138,13 @@ export default function Safn( { chosen, note, onRemove, onClear, throunUrl, all 
 					</p>
 				) }
 				<div className="vs-safn__actions">
-					<button type="button" className="vs-safn__pdf" disabled={ ! n || busy !== null } aria-busy={ busy !== null } onClick={ download }>
+					<button type="button" className="vs-safn__pdf" disabled={ ! n || busy !== null } aria-busy={ busy !== null && making === 'kort' } onClick={ () => download( 'kort' ) }>
 						<Icon d={ DOWNLOAD } />
-						<span>{ busy !== null ? `${ busy }/${ n }` : 'Sækja PDF' }</span>
+						<span>{ busy !== null && making === 'kort' ? `${ busy }/${ n }` : 'Sækja PDF' }</span>
+					</button>
+					<button type="button" className="vs-safn__pdf" disabled={ ! n || busy !== null } aria-busy={ busy !== null && making === 'merki' } title="Sækja bókamerki til að prenta og klippa" onClick={ () => download( 'merki' ) }>
+						<Icon d={ BOOKMARK } />
+						<span>{ busy !== null && making === 'merki' ? `${ busy }/${ n }` : 'Bókamerki' }</span>
 					</button>
 					<button
 						type="button"
