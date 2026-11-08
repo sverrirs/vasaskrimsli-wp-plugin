@@ -308,15 +308,6 @@
   }
  },
  {
-  "numer": 221,
-  "fyrri": {
-   "lysing": "Lubbagöltur er stór og loðinn göltur með kryppu á bakinu og tvær vígtennur úr ís. Hárið er svo sítt að hann sér ekkert og þarf að treysta á næmt nefið, og því æðir hann bara beint áfram. Þykkur feldurinn heldur á honum hita í frosti, og með vígtönnunum grefur hann upp mat undan ísnum."
-  },
-  "nytt": {
-   "lysing": "Lubbagöltur er stór og loðinn göltur með kryppu á bakinu og tvær vígtennur úr ís. Hárið er svo sítt að það sér ekkert og þarf að treysta á næmt nefið, og því æðir það bara beint áfram. Þykkur feldurinn heldur á því hita í frosti, og með vígtönnunum grefur það upp mat undan ísnum."
-  }
- },
- {
   "numer": 233,
   "fyrri": {
    "uppruni": "<strong>**Grafík**-ja</strong>—tvö"
@@ -377,15 +368,6 @@
   },
   "nytt": {
    "lysing": "Grímumölur er ljósblátt skordýr með fjóra vængi og tvo stóra fálmara sem líta út eins og reið augu. Með þessum gerviaugum hræðir hann óvini sína. Hann getur flogið í allar áttir, jafnvel aftur á bak, en þegar vængirnir blotna kemst hann ekki á loft og leitar því skjóls undir trjám í rigningu."
-  }
- },
- {
-  "numer": 293,
-  "fyrri": {
-   "lysing": "Pískur er lítil, kringlótt, fjólublá vera með löng eyru sem minna á kanínueyru. Venjulega er röddin svo lág að hún heyrist varla, rétt eins og hvísl. En ef hann skynjar hættu fer hann að gráta ærandi hátt, verður hræddur við sinn eigin grát og grætur þá enn hærra."
-  },
-  "nytt": {
-   "lysing": "Pískur er lítil, kringlótt, fjólublá vera með löng eyru sem minna á kanínueyru. Venjulega er röddin svo lág að hún heyrist varla, rétt eins og hvísl. En ef það skynjar hættu fer það að gráta ærandi hátt, verður hrætt við sinn eigin grát og grætur þá enn hærra."
   }
  },
  {
@@ -494,15 +476,6 @@
   },
   "nytt": {
    "lysing": "Leirgoð er stór, svört vera sem líkist styttu úr leir, með mörg bleik augu allan hringinn í kringum höfuðið. Sagt er að fornar þjóðir hafi mótað það úr leir og að dularfullur geisli hafi blásið í það lífi. Það svífur um loftið, og handleggirnir svífa líka lausir frá búknum."
-  }
- },
- {
-  "numer": 347,
-  "fyrri": {
-   "lysing": "Fornkló er grágræn, forn sjávarvera með augu á stilkum og tvær stórar klær undir höfðinu. Hún lifði í hlýjum sjó fyrir um hundrað milljón árum og var vakin aftur til lífs úr steingervingi. Hún syndir með því að bylgja átta vængjum á hliðunum og grípur æti fast milli klónna."
-  },
-  "nytt": {
-   "lysing": "Fornkló er grágræn, forn sjávarvera með augu á stilkum og tvær stórar klær undir höfðinu. Það lifði í hlýjum sjó fyrir um hundrað milljón árum og var vakið aftur til lífs úr steingervingi. Það syndir með því að bylgja átta vængjum á hliðunum og grípur æti fast milli klónna."
   }
  },
  {
@@ -709,7 +682,7 @@
    "lysing": "Slækló er grár og lipur vera sem líkist ketti og hreysiketti, með rauða fjaðrakórónu og hvassar klær. Hann býr á köldum svæðum og veiðir í hópum fjögurra eða fimm sem vinna vel saman. Hann er lúmskur og klókur, og með klónum ristir hann tákn í hrímuð tré, ís og steina til að senda öðrum skilaboð."
   },
   "nytt": {
-   "lysing": "Slækló er grá og lipur vera sem líkist ketti og hreysiketti, með rauða fjaðrakórónu og hvassar klær. Það býr á köldum svæðum og veiðir í hópum fjögurra eða fimm sem vinna vel saman. Það er lúmskt og klókt, og með klónum ristir það tákn í hrímuð tré, ís og steina til að senda öðrum skilaboð."
+   "lysing": "Slækló er grá og lipur vera sem líkist ketti og hreysiketti, með rauða fjaðrakórónu og hvassar klær. Hún býr á köldum svæðum og veiðir í hópum fjögurra eða fimm sem vinna vel saman. Hún er lúmsk og klók, og með klónum ristir hún tákn í hrímuð tré, ís og steina til að senda öðrum skilaboð."
   }
  },
  {
@@ -791,15 +764,6 @@
   },
   "nytt": {
    "lysing": "Tvískel er ljósblár otur með löng hvít veiðihár og tvær skeljar á lærunum. Hún tekur skeljarnar af sér og berst með þeim báðum í einu, og hún æfir sig daglega af mikilli alvöru. Hreyfingar hennar flæða eins og vatn þegar hann sveiflar skeljunum."
-  }
- },
- {
-  "numer": 504,
-  "fyrri": {
-   "lysing": "Skimill er lítið, brúnt nagdýr með eina stóra framtönn og kinnapoka fullan af mat. Hann er mjög varkár og stendur vörð um búið dögum saman, og hópurinn skiptist á að vaka. Með halanum gefur hann hinum merki, en hann tekur ekki eftir óvini sem kemur aftan að honum."
-  },
-  "nytt": {
-   "lysing": "Skimill er lítið, brúnt nagdýr með eina stóra framtönn og kinnapoka fullan af mat. Það er mjög varkárt og stendur vörð um búið dögum saman, og hópurinn skiptist á að vaka. Með halanum gefur það hinum merki, en það tekur ekki eftir óvini sem kemur aftan að því."
   }
  },
  {
@@ -1248,15 +1212,6 @@
   }
  },
  {
-  "numer": 782,
-  "fyrri": {
-   "lysing": "Klingkló er lítil, ferfætt drekavera með gulan hjartalaga hreisturskjöld á enninu. Hreistrið er úr feldi sem hefur harðnað eins og málmur, og þegar hún slær því saman klingir hátt um fjöllin. Þannig tjáir hún tilfinningar og talar við félagana. Hún er hugrökk og snýr aldrei baki í óvin."
-  },
-  "nytt": {
-   "lysing": "Klingkló er lítil, ferfætt drekavera með gulan hjartalaga hreisturskjöld á enninu. Hreistrið er úr feldi sem hefur harðnað eins og málmur, og þegar það slær því saman klingir hátt um fjöllin. Þannig tjáir það tilfinningar og talar við félagana. Það er hugrakkt og snýr aldrei baki í óvin."
-  }
- },
- {
   "numer": 783,
   "fyrri": {
    "lysing": "Glamurstapp er tvífætt drekavera þakin hreisturplötum. Áður en hún ræðst á óvini glamrar hún hreistrinu saman og öskrar, og þegar takturinn nær hámarki lætur hún til skarar skríða. Hreistrið dettur af og vex aftur, harðara og beittara í hvert sinn. Berir handleggir eru merki um hugrekki."
@@ -1298,7 +1253,7 @@
    "lysing": "Þrumukló er gulur og svartur köttur sem stendur uppréttur, með bláa eldingarlaga veiðihár. Hann býr ekki til rafmagn sjálfur heldur safnar því frá öðru og geymir í líkamanum. Rafmagnið neistar úr klónum og þófunum, og hann hleypur hratt eins og elding. Hvar sem hann fer leiftrar og þrumur bergmála."
   },
   "nytt": {
-   "lysing": "Þrumukló er gulur og svartur köttur sem stendur uppréttur, með bláa eldingarlaga veiðihár. Það býr ekki til rafmagn sjálfur heldur safnar því frá öðru og geymir í líkamanum. Rafmagnið neistar úr klónum og þófunum, og það hleypur hratt eins og elding. Hvar sem það fer leiftrar og þrumur bergmála."
+   "lysing": "Þrumukló er gulur og svartur köttur sem stendur uppréttur, með bláa eldingarlaga veiðihár. Hún býr ekki til rafmagn sjálf heldur safnar því frá öðru og geymir í líkamanum. Rafmagnið neistar úr klónum og þófunum, og hún hleypur hratt eins og elding. Hvar sem hún fer leiftrar og þrumur bergmála."
   }
  },
  {
@@ -1727,7 +1682,7 @@
   },
   "nytt": {
    "thyding": "<strong>Bjarg:</strong> hár klettaveggur.<br><strong>Kló:</strong> krabbakló. Það er krabbi sem hangir í klettum og bíður eftir bráð.<br><strong>Náttúra:</strong> Látrabjarg á Vestfjörðum er stærsta fuglabjarg Evrópu.",
-   "lysing": "Bjargkló er appelsínugulur krabbi með hrjúfa skel, augu á stilkum og tvær sterkar klær. Það býr í bröttum klettum og hangir þar á hvolfi eða á hlið á meðan það bíður eftir bráð. Ef það hangir of lengi á hvolfi stígur blóðið því til höfuðs og það sundlar."
+   "lysing": "Bjargkló er appelsínugulur krabbi með hrjúfa skel, augu á stilkum og tvær sterkar klær. Hún býr í bröttum klettum og hangir þar á hvolfi eða á hlið á meðan hún bíður eftir bráð. Ef hún hangir of lengi á hvolfi stígur blóðið henni til höfuðs og hana sundlar."
   }
  },
  {
