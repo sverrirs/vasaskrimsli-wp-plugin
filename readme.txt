@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.9
+Stable tag: 1.5.10
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,10 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.5.10 =
+* Gagnaútgáfa 10: fornöfn og lýsingarorð fylgja nú kyni nafnsins (t.d. „Það“ um Kameldljón). Lýsingu 188 skrímsla og Þýðingu 35 skrímsla breytt, og Upprunaorð #233 Grafíkju² lagfærð. Engin nöfn breytast. Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
+* Formheiti: Skjöldungur sverðsstaða, Fiskívaf lafandi form, Hringla óbundin og Eilífur Ginnormur.
 
 = 1.5.9 =
 * Safnið mitt: nýr hnappur, Bókamerki, sækir PDF skjal með bókamerkjum til að prenta og klippa. Fimm bókamerki á hverri A4 síðu, 52 × 190 mm, með mynd efst, númeri, nafninu niður eftir bókamerkinu og mynstri eftir tegund skrímslisins. Form nota eigin tegundir.
