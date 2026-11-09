@@ -31,7 +31,48 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   changes cells whose text you edited; unchanged cells keep their formatting. Every import first saves
   a backup (downloadable from the import dialog); importing that backup undoes the import.
 
-## Nöfn 2026
+### Skrímslaskrá (`features/ordsifjar/block-skra/`, same data)
+- **Block "Skrímslaskrá"** (or shortcode `[skrimslaskra]`): a picture grid of every entry with a popup card.
+  Buttons at the top show every monster, only Mega forms or only Gígamax forms (`SYNIR` in `src/view/safn.js`).
+  The heading of the generation in view stays at the top while scrolling.
+- **Forms**: special and regional forms with Icelandic names (`data/formir.json`, `assets/sprites/formir/`).
+- **Safnið mitt**: visitors collect up to 50 monsters or forms (kept in their browser only) and download them as
+  - *Sækja PDF*: one A6 card per monster (`src/view/kort.js`), or
+  - *Bókamerki*: A4 landscape sheets of five 52 x 190 mm bookmarks with cut marks (`src/view/bokamerki.js`).
+  Both are drawn on a canvas in the browser and written by `src/view/pdf.js`; no PDF library.
+- **Pictures in circles** are placed by each sprite's own midpoint (`data/midjur.json`, `iHring()` in
+  `src/view/safn.js`), the same calculation as the printed books.
+
+## Data from vasaskrimsli-dict
+
+All names and texts come from `../vasaskrimsli-dict` (local only). The Claude session working there
+("Pokémon monster data index") sends a message when something changed; rebuild here, then report back to it.
+Never release without the owner's go.
+
+| Plugin file | Script | Reads in vasaskrimsli-dict | Reaches live sites |
+|---|---|---|---|
+| `data/breytingar-<N>.json` | `migration/breytingar.py N`, then `migration/lysing.py N` | `ideas/lokalisti/lokalisti.json` (nafn, upprunaord_html, thyding_html), `ideas/lysing-2026/` | by data version N (below) |
+| `data/formir.json` + `assets/sprites/formir/` | `migration/formir.py` | `ideas/formheiti.json`, `ideas/gigamax.json`, saved pokemondb pages | shipped as it is with each release |
+| `data/throun.json` | `migration/throun.py` | `data/monsters/*/pokemondb.json` | shipped as it is |
+| `data/midjur.json` | `migration/midjur.py` | `ideas/myndir/midjur.json` (run `tools/midjur.py` there after changing sprites) | shipped as it is |
+
+The plugin does not read the Pokédex texts (`lokalisti.json` → `pokedex`) at all.
+
+**Data versions** (`Upgrade::VERSION`, now 10) change entries already on live sites. They run once, on the first
+wp-admin page load after an update: a backup CSV is written first, and a field changes **only where the site still
+shows the released text** (`fyrri`), so anything edited in wp-admin is kept and listed as skipped in the notice.
+
+- A released `breytingar-<N>.json`, `nofn-2026.json` or `thyding-2026.json` must **never be edited**: together
+  they are the baseline the next version is compared with.
+- New dict changes after a release: `python -X utf8 migration/breytingar.py <N+1>`, then
+  `python -X utf8 migration/lysing.py <N+1>` (it adds to the same file), set `Upgrade::VERSION` to N+1.
+- Changes before a version is released: delete `breytingar-<N>.json` and run both scripts again for N.
+- Check that no field gains or loses a `<br>` (the dict has lost line breaks before), and that names only change
+  when the dict session says so.
+- `tests/run.php` applies every `breytingar-<N>.json` in order to a simulated live site and fails if any field
+  would be skipped.
+
+### Nöfn 2026 (data versions 3 and 4, history)
 
 Version 0.3.0 brings the owner's 2026 decisions on Icelandic names (#252 to #1025). They are bundled as
 `features/ordsifjar/data/nofn-2026.json` and applied once by the data update (data version 3) the first
@@ -76,24 +117,30 @@ The live page is not changed by installing the plugin. Snapshots of it as it was
 
 ## Releasing an update
 
-1. Bump the version in `vasaskrimsli.php` (header `Version:` and `VASASKRIMSLI_VERSION`) and
-   `Stable tag` in `readme.txt`.
-2. Commit, then `git tag v0.2.0 && git push --tags`.
-3. The Release workflow tests, builds and publishes `vasaskrimsli.zip`. The site then shows
-   "Update available" under Plugins.
+Only after the owner says yes in chat. The branch is `main`.
+
+1. Add an entry at the top of `== Changelog ==` in `readme.txt` (Icelandic). Check `git log` since the last tag
+   for commits made by other sessions, so they are in the entry too.
+2. Bump the version in `vasaskrimsli.php` (header `Version:` and `VASASKRIMSLI_VERSION`), `Stable tag` in
+   `readme.txt` and `version` in `package.json`.
+3. Run the PHP and JS tests, `npm run build` and `python -X utf8 -I scripts/package.py --expect-version X.Y.Z`.
+4. Commit "Version X.Y.Z", `git push origin main`, then `git tag vX.Y.Z && git push origin vX.Y.Z`.
+5. The Release workflow tests, builds and publishes `vasaskrimsli.zip` (`gh run watch`, `gh release view vX.Y.Z`).
+   The site then shows "Update available" under Plugins; a new data version runs on the first wp-admin load.
 
 ## Development
 
 ```bash
 npm install
 npm run build                      # React apps -> build/
-npm test                           # JS search tests
+npm test                           # JS tests (search, collection, bookmarks, midpoints)
 "E:\SDKs\php\8.3.7\php.exe" tests/run.php   # CSV/import tests (pure PHP)
 python -X utf8 migration/verify.py          # seed vs. the original page, cell by cell
 python scripts/package.py          # -> dist/vasaskrimsli.zip
 ```
 
-A local test WordPress with the plugin: see `tests/playground/README.md`.
+A local test WordPress with the plugin: see `tests/playground/README.md`. On 2026-11-08 Playground hung at
+startup (502 for 10 minutes) and was not used for data version 10; the PHP tests cover the upgrade itself.
 
 ## Layout
 
@@ -103,8 +150,10 @@ includes/                 shared PHP (asset loading, GitHub updater)
 shared/js/                shared JS (Icelandic search folding)
 features/ordsifjar/
   includes/               Csv, Format, Nofn (pure PHP), Sanitize, Store, Import, Upgrade, Rest, Admin, Block
-  block/                  block.json and editor placeholder
-  src/admin, src/view     React apps
-  data/                   seed.csv and kynslodir.json from the original page, national.json, nofn-2026.json
-migration/                extract.py, verify.py, national.py, nofn.py and the page snapshots
+  block/, block-skra/     block.json and editor placeholders (Orðsifjafræði, Skrímslaskrá)
+  src/admin, src/view     React apps; view also has kort.js (A6 cards), bokamerki.js, pdf.js, safn.js
+  data/                   seed.csv and kynslodir.json from the original page, national.json, nofn-2026.json,
+                          thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
+  assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
+migration/                one script per data file (see "Data from vasaskrimsli-dict") and the page snapshots
 ```
