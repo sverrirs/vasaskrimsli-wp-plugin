@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.10
+Stable tag: 1.6.0
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,11 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.6.0 =
+* Ný blokk, Verslun: allar bækur og spjöld á einni síðu, fyrir Verslunarsíðuna. Auk þess ein blokk fyrir hvern flokk: Vasaskrímslabækurnar, Lestrarbækurnar, Auðlesið, Orðsifjaskrá Vasaskrímslanna, Verkefnahefti, og Veggspjöld og smáspjöld.
+* Hver flokkur sýnir lýsingu, síu (allar, fáanlegar, væntanlegar), leit eftir bók eða skrímsli og forsíður bókanna. Smellur á forsíðu opnar bókina: forsíðu og sýnishorn af síðum, blaðsíðufjölda, brot og ISBN, og kaupahnapp vefverslunar Háskólaprents þar sem bókin er fáanleg.
+* Verð kemur úr vefversluninni og er uppfært á sex klukkustunda fresti.
 
 = 1.5.10 =
 * Gagnaútgáfa 10: fornöfn og lýsingarorð fylgja nú kyni nafnsins (t.d. „Það“ um Kameldljón). Lýsingu 188 skrímsla og Þýðingu 35 skrímsla breytt, og Upprunaorð #233 Grafíkju² lagfærð. Engin nöfn breytast. Aðeins skipt um texta sem er enn eins og hann var birtur; texti sem hefur verið breytt í stjórnborðinu er látinn vera og kemur fram í tilkynningunni. Afrit er tekið fyrst.
