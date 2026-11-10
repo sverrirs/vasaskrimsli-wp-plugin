@@ -1,0 +1,507 @@
+/* The book catalogue (Verslun page). Colours and fonts come from the site's theme presets, as in Orðsifjafræði. */
+
+.vs-bk,
+.vs-bk-skodari {
+	--bk-ink: var(--wp--preset--color--contrast, #1c2930);
+	--bk-muted: var(--wp--preset--color--contrast-2, #37505d);
+	--bk-line: var(--wp--preset--color--contrast-3, #96a5b2);
+	--bk-surface: var(--wp--preset--color--base, #ebebef);
+	--bk-surface-2: var(--wp--preset--color--base-2, #dce0e6);
+	--bk-accent: var(--wp--preset--color--pokemon-2, #2162aa);
+	--bk-mark: var(--wp--preset--color--pokemon-1, #ffd800);
+	--bk-ok: #1f7a3a;
+	color: var(--bk-ink);
+}
+
+.vs-bk__nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-bk__nav ul a {
+	display: inline-flex;
+	gap: 6px;
+	align-items: baseline;
+	padding: 6px 12px;
+	color: var(--bk-ink);
+	text-decoration: none;
+	border: 1px solid var(--bk-line);
+	border-radius: 6px;
+}
+
+.vs-bk__nav ul a:hover,
+.vs-bk__nav ul a:focus-visible {
+	border-color: var(--bk-accent);
+	color: var(--bk-accent);
+}
+
+.vs-bk__nav ul a span {
+	font-size: 0.8em;
+	color: var(--bk-muted);
+}
+
+.vs-bk__pontun {
+	margin: 0 0 8px;
+	font-size: 0.9375rem;
+	color: var(--bk-muted);
+}
+
+.vs-bk__rod {
+	padding-top: 32px;
+	scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + 16px);
+}
+
+.vs-bk__rod > h2 {
+	margin: 0 0 12px;
+}
+
+.vs-bk__rod > p {
+	max-width: 68ch;
+}
+
+.vs-bk__atridi {
+	max-width: 68ch;
+	margin: 0 0 16px;
+	padding-left: 1.2em;
+}
+
+.vs-bk__tools {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	margin: 0 0 16px;
+}
+
+.vs-bk__syn {
+	display: inline-flex;
+	gap: 0;
+	border: 1px solid var(--bk-line);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.vs-bk__syn button {
+	padding: 6px 12px;
+	font: inherit;
+	font-size: 0.9375rem;
+	color: var(--bk-ink);
+	background: transparent;
+	border: 0;
+	border-left: 1px solid var(--bk-line);
+	cursor: pointer;
+}
+
+.vs-bk__syn button:first-child {
+	border-left: 0;
+}
+
+.vs-bk__syn button[aria-pressed="true"] {
+	color: #fff;
+	background: var(--bk-accent);
+}
+
+.vs-bk__syn span {
+	opacity: 0.75;
+	font-size: 0.85em;
+}
+
+.vs-bk__leit input {
+	min-width: min(320px, 100%);
+	padding: 6px 10px;
+	font: inherit;
+	color: var(--bk-ink);
+	background: #fff;
+	border: 1px solid var(--bk-line);
+	border-radius: 6px;
+}
+
+.vs-bk__leit input:focus-visible,
+.vs-bk__syn button:focus-visible,
+.vs-bk__bok button:focus-visible {
+	outline: 2px solid var(--bk-accent);
+	outline-offset: 2px;
+}
+
+.vs-bk__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 28px 20px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-bk__bok button,
+.vs-bk__bok {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	text-align: left;
+}
+
+.vs-bk__bok button {
+	width: 100%;
+	padding: 0;
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.vs-bk__kapa {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	aspect-ratio: 3 / 4;
+	margin-bottom: 6px;
+}
+
+.vs-bk__kapa img,
+.vs-bk__bok > img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 0, 0, 0.14);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vs-bk__bok button:hover img,
+.vs-bk__bok button:focus-visible img {
+	transform: translateY(-3px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.vs-bk__bok strong {
+	font-size: 1rem;
+	line-height: 1.25;
+}
+
+.vs-bk__efni {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	font-size: 0.875rem;
+	line-height: 1.35;
+	color: var(--bk-muted);
+}
+
+.vs-bk__stada {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--bk-muted);
+}
+
+.vs-bk__stada::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--bk-line);
+}
+
+.vs-bk__stada.is-faanleg {
+	color: var(--bk-ok);
+}
+
+.vs-bk__stada.is-faanleg::before {
+	background: var(--bk-ok);
+}
+
+.vs-bk__bok.is-vaentanleg img {
+	filter: saturate(0.85);
+}
+
+.vs-bk__ekkert {
+	color: var(--bk-muted);
+}
+
+/* The viewer. */
+html.vs-bk-opin {
+	overflow: hidden;
+}
+
+.vs-bk-skodari__bak {
+	position: fixed;
+	inset: 0;
+	z-index: 99990;
+	background: rgba(15, 22, 28, 0.72);
+}
+
+.vs-bk-skodari {
+	position: fixed;
+	inset: 0;
+	z-index: 99991;
+	margin: auto;
+	width: min(1120px, calc(100vw - 32px));
+	height: fit-content;
+	max-height: calc(100vh - 32px);
+	padding: 0;
+	background: #fff;
+	border: 0;
+	border-radius: 10px;
+	box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.vs-bk-skodari__inner {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+	max-height: calc(100vh - 32px);
+}
+
+.vs-bk-skodari__svid {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-height: 0;
+	padding: 20px;
+	background: var(--bk-surface);
+}
+
+.vs-bk-skodari__svid figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+	min-height: 0;
+	margin: 0;
+}
+
+.vs-bk-skodari__svid figure img {
+	max-width: 100%;
+	max-height: calc(100vh - 220px);
+	object-fit: contain;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.vs-bk-skodari__svid figcaption {
+	font-size: 0.875rem;
+	color: var(--bk-muted);
+}
+
+.vs-bk-skodari__or {
+	position: absolute;
+	top: calc(50% - 48px);
+	width: 44px;
+	height: 44px;
+	font-size: 28px;
+	line-height: 1;
+	color: var(--bk-ink);
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid var(--bk-line);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.vs-bk-skodari__or.is-fyrri {
+	left: 12px;
+}
+
+.vs-bk-skodari__or.is-naesta {
+	right: 12px;
+}
+
+.vs-bk-skodari__smamyndir {
+	display: flex;
+	gap: 8px;
+	margin: 0;
+	padding: 0 0 4px;
+	overflow-x: auto;
+	list-style: none;
+}
+
+.vs-bk-skodari__smamyndir button {
+	display: block;
+	padding: 0;
+	background: none;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.vs-bk-skodari__smamyndir button[aria-current="true"] {
+	border-color: var(--bk-accent);
+}
+
+.vs-bk-skodari__smamyndir img {
+	display: block;
+	height: 64px;
+	width: auto;
+}
+
+.vs-bk-skodari__upplysingar {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 28px 24px 20px;
+	overflow-y: auto;
+}
+
+.vs-bk-skodari__upplysingar h2 {
+	margin: 0;
+	font-size: 1.6rem;
+	line-height: 1.2;
+}
+
+.vs-bk-skodari__upplysingar p {
+	margin: 0;
+}
+
+.vs-bk-skodari__rod {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--bk-muted);
+}
+
+.vs-bk-skodari dl {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 4px 12px;
+	margin: 6px 0;
+	font-size: 0.9375rem;
+}
+
+.vs-bk-skodari dt {
+	color: var(--bk-muted);
+}
+
+.vs-bk-skodari dd {
+	margin: 0;
+}
+
+.vs-bk-skodari__kaupa {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-top: 12px;
+	border-top: 1px solid var(--bk-surface-2);
+}
+
+.vs-bk-skodari__kaupa ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9375rem;
+}
+
+.vs-bk-skodari__kaupa li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 3px 0;
+	border-bottom: 1px dotted var(--bk-surface-2);
+}
+
+.vs-bk__takki {
+	display: inline-flex;
+	align-self: flex-start;
+	justify-content: center;
+	padding: 10px 18px;
+	font-weight: 600;
+	color: #fff !important;
+	text-decoration: none;
+	background: var(--bk-accent);
+	border-radius: 6px;
+}
+
+.vs-bk__takki:hover,
+.vs-bk__takki:focus-visible {
+	background: color-mix(in srgb, var(--bk-accent) 82%, black);
+}
+
+.vs-bk-kaupa {
+	min-height: 120px;
+}
+
+.vs-bk__tengill {
+	font-size: 0.875rem;
+	color: var(--bk-accent);
+}
+
+.vs-bk-skodari:focus {
+	outline: none;
+}
+
+.vs-bk-skodari__vaentanleg {
+	padding-top: 12px;
+	border-top: 1px solid var(--bk-surface-2);
+	color: var(--bk-muted);
+}
+
+.vs-bk-skodari__flett {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: auto;
+	padding-top: 16px;
+}
+
+.vs-bk-skodari__flett button {
+	padding: 6px 10px;
+	font: inherit;
+	font-size: 0.875rem;
+	color: var(--bk-accent);
+	background: none;
+	border: 1px solid var(--bk-line);
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.vs-bk-skodari__flett button:only-child:last-child {
+	margin-left: auto;
+}
+
+.vs-bk-skodari__loka {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 40px;
+	height: 40px;
+	font-size: 26px;
+	line-height: 1;
+	color: var(--bk-ink);
+	background: #fff;
+	border: 1px solid var(--bk-line);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+@media (max-width: 760px) {
+	.vs-bk-skodari__inner {
+		grid-template-columns: minmax(0, 1fr);
+		overflow-y: auto;
+	}
+
+	.vs-bk-skodari__svid {
+		padding: 12px;
+	}
+
+	.vs-bk-skodari__svid figure img {
+		max-height: 60vh;
+	}
+
+	.vs-bk__grid {
+		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+		gap: 20px 14px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vs-bk__kapa img {
+		transition: none;
+	}
+}

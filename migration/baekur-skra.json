@@ -1,0 +1,1156 @@
+{
+ "_um": "Bókaskráin: frumgögn sem eru lagfærð í höndunum. migration/baekur.py býr til features/baekur/data/baekur.json og myndirnar úr þessu og PDF-skjölum bókanna. stada: faanleg (til sölu, vara er slóð vörunnar í vefversluninni), vaentanleg eða falin.",
+ "verslun": {
+  "heiti": "Vefverslun Háskólaprents",
+  "slod": "https://www.haskolaprent.is",
+  "pontun": "/pantanir/",
+  "magnafslattur": "/gjaldskra-barnastarfs/",
+  "kaupahnappur": {
+   "_um": "Kaupahnappur Shopify (Buy Button) eins og Háskólaprent lætur í té, með breytingum eigandans (2026-11-10): blár hnappur, compareAt falið, stærra verð. Bókaskoðarinn bætir við að mynd og titill vörunnar sjáist ekki og að varan fylli breiddina.",
+   "skrifta": "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js",
+   "domain": "haskolaprent.myshopify.com",
+   "storefrontAccessToken": "2d67d35beeced61db9ae0068cb8c613f",
+   "moneyFormat": "%7B%7B%20amount_no_decimals%20%7D%7D%20kr",
+   "options": {
+    "product": {
+     "styles": {
+      "product": {
+       "@media (min-width: 601px)": {
+        "max-width": "calc(25% - 20px)",
+        "margin-left": "20px",
+        "margin-bottom": "50px"
+       }
+      },
+      "title": {
+       "font-family": "Raleway, sans-serif",
+       "color": "#0b0b0b"
+      },
+      "button": {
+       ":hover": {
+        "background-color": "#2954bd"
+       },
+       "background-color": "#2e5dd2",
+       ":focus": {
+        "background-color": "#2954bd"
+       },
+       "border-radius": "8px"
+      },
+      "price": {
+       "font-family": "Raleway, sans-serif",
+       "font-weight": "bold",
+       "font-size": "1.4em"
+      },
+      "compareAt": {
+       "font-family": "Raleway, sans-serif",
+       "font-weight": "bold",
+       "font-size": "1.4em",
+       "display": "none"
+      },
+      "unitPrice": {
+       "font-family": "Raleway, sans-serif",
+       "font-weight": "bold",
+       "font-size": "1.4em"
+      }
+     },
+     "text": {
+      "button": "Bæta í körfu"
+     },
+     "googleFonts": [
+      "Raleway"
+     ]
+    },
+    "productSet": {
+     "styles": {
+      "products": {
+       "@media (min-width: 601px)": {
+        "margin-left": "-20px"
+       }
+      }
+     }
+    },
+    "modalProduct": {
+     "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+     },
+     "styles": {
+      "product": {
+       "@media (min-width: 601px)": {
+        "max-width": "100%",
+        "margin-left": "0px",
+        "margin-bottom": "0px"
+       }
+      },
+      "button": {
+       ":hover": {
+        "background-color": "#2954bd"
+       },
+       "background-color": "#2e5dd2",
+       ":focus": {
+        "background-color": "#2954bd"
+       },
+       "border-radius": "8px"
+      },
+      "title": {
+       "font-family": "Helvetica Neue, sans-serif",
+       "font-weight": "bold",
+       "font-size": "26px",
+       "color": "#4c4c4c"
+      },
+      "price": {
+       "font-family": "Helvetica Neue, sans-serif",
+       "font-weight": "normal",
+       "font-size": "18px",
+       "color": "#4c4c4c"
+      },
+      "compareAt": {
+       "font-family": "Helvetica Neue, sans-serif",
+       "font-weight": "normal",
+       "font-size": "15.299999999999999px",
+       "color": "#4c4c4c",
+       "display": "none"
+      },
+      "unitPrice": {
+       "font-family": "Helvetica Neue, sans-serif",
+       "font-weight": "normal",
+       "font-size": "15.299999999999999px",
+       "color": "#4c4c4c"
+      }
+     },
+     "text": {
+      "button": "Add to cart"
+     }
+    },
+    "option": {},
+    "cart": {
+     "styles": {
+      "button": {
+       ":hover": {
+        "background-color": "#2954bd"
+       },
+       "background-color": "#2e5dd2",
+       ":focus": {
+        "background-color": "#2954bd"
+       },
+       "border-radius": "8px"
+      },
+      "title": {
+       "color": "#161616"
+      },
+      "header": {
+       "color": "#161616"
+      },
+      "lineItems": {
+       "color": "#161616"
+      },
+      "subtotalText": {
+       "color": "#161616"
+      },
+      "subtotal": {
+       "color": "#161616"
+      },
+      "notice": {
+       "color": "#161616"
+      },
+      "currency": {
+       "color": "#161616"
+      },
+      "close": {
+       "color": "#161616",
+       ":hover": {
+        "color": "#161616"
+       }
+      },
+      "empty": {
+       "color": "#161616"
+      },
+      "noteDescription": {
+       "color": "#161616"
+      },
+      "discountText": {
+       "color": "#161616"
+      },
+      "discountIcon": {
+       "fill": "#161616"
+      },
+      "discountAmount": {
+       "color": "#161616"
+      }
+     },
+     "text": {
+      "title": "Karfa",
+      "total": "Samtals",
+      "empty": "Karfan er tóm",
+      "notice": "Afhendingarmáti er valinn í greiðsluferli",
+      "button": "Greiða"
+     }
+    },
+    "toggle": {
+     "styles": {
+      "toggle": {
+       "background-color": "#2e5dd2",
+       ":hover": {
+        "background-color": "#2954bd"
+       },
+       ":focus": {
+        "background-color": "#2954bd"
+       }
+      }
+     }
+    },
+    "lineItem": {
+     "styles": {
+      "variantTitle": {
+       "color": "#161616"
+      },
+      "title": {
+       "color": "#161616"
+      },
+      "price": {
+       "color": "#161616"
+      },
+      "fullPrice": {
+       "color": "#161616"
+      },
+      "discount": {
+       "color": "#161616"
+      },
+      "discountIcon": {
+       "fill": "#161616"
+      },
+      "quantity": {
+       "color": "#161616"
+      },
+      "quantityIncrement": {
+       "color": "#161616",
+       "border-color": "#161616"
+      },
+      "quantityDecrement": {
+       "color": "#161616",
+       "border-color": "#161616"
+      },
+      "quantityInput": {
+       "color": "#161616",
+       "border-color": "#161616"
+      }
+     }
+    }
+   }
+  }
+ },
+ "radir": [
+  {
+   "id": "storubaekur",
+   "akkeri": "baekur",
+   "heiti": "Vasaskrímslabækurnar",
+   "lysing": [
+    "Bækurnar um Vasaskrímslin eru gefnar út eftir kynslóðum. Hver bók inniheldur íslensk nöfn og lýsingar á íslensku af öllum Vasaskrímslum viðkomandi kynslóðar ásamt öllum þekktum sérþróunum og svæðisútgáfum þeirra.",
+    "Við hvert skrímsli er mynd af því ásamt þróunarupplýsingum og tegundareiginleikum þess."
+   ],
+   "atridi": [
+    "Gormaðar og í almanaksbroti: liggja alveg flatar eða standa sjálfar á borði.",
+    "Íslensk nöfn og lýsingar á öllum skrímslum kynslóðarinnar.",
+    "Prentaðar á Íslandi hjá Háskólaprenti."
+   ],
+   "heimild": {
+    "repo": "vasaskrimsli-storubaekur",
+    "bok": "build/baekur/bok-{n}-HQ.pdf",
+    "kapa": "build/kapur/kapa-{n}.pdf"
+   },
+   "baekur": [
+    {
+     "id": "kynslod-1",
+     "n": 1,
+     "heiti": "Fyrsta kynslóð",
+     "efni": "214 vasaskrímsli: upprunalegu 151 skrímslin og öll þekkt svæðisform þeirra (Alóla, Galar, Hisúí og Paldea), sérþróanir og útgáfur.",
+     "isbn": "978-9935-25-661-4",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod"
+    },
+    {
+     "id": "kynslod-2",
+     "n": 2,
+     "heiti": "Önnur kynslóð",
+     "efni": "112 vasaskrímsli úr annarri kynslóð ásamt svæðisformum og sérþróunum.",
+     "isbn": "978-9935-25-662-1",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-onnur-kynslod-copy"
+    },
+    {
+     "id": "kynslod-3",
+     "n": 3,
+     "heiti": "Þriðja kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-50-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-4",
+     "n": 4,
+     "heiti": "Fjórða kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-71-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-5",
+     "n": 5,
+     "heiti": "Fimmta kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-72-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-6",
+     "n": 6,
+     "heiti": "Sjötta kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-73-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-7",
+     "n": 7,
+     "heiti": "Sjöunda kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-74-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-8",
+     "n": 8,
+     "heiti": "Áttunda kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-75-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "kynslod-9",
+     "n": 9,
+     "heiti": "Níunda kynslóð",
+     "efni": "",
+     "isbn": "978-9935-562-76-0",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
+   "id": "lestrarbaekur",
+   "akkeri": "lestrarbaekur",
+   "heiti": "Lestrarbækurnar",
+   "lysing": [
+    "Lestrarbækurnar eru sérstaklega ætlaðar krökkum sem eru aðeins lengra komin í heimalestri. Textinn er einfaldur og mikið um endurtekningar, þannig að lesandinn finnur fyrir getu sinni og sjálfstraust eykst.",
+    "Bækurnar innihalda einfaldað efni upp úr stóru Vasaskrímslabókunum og allur texti hefur verið aðlagaður að þörfum barna sem eru að styrkja sig í lestri. Bækur 1 til 10 fást saman í pakka."
+   ],
+   "atridi": [
+    "Hugsaðar fyrir nemendur í 3. til 5. bekk.",
+    "Sérstaklega erfið orð eru feitletruð og löng orð brotin upp með bandstrikum.",
+    "Mikið um endurtekningar sem efla færni og sjálfstraust.",
+    "Aukinn orðaforði og áhersla á stigbreytingu lýsingarorða.",
+    "Talnalæsi og samanburður á hæð og þyngd."
+   ],
+   "heimild": {
+    "repo": "vasaskrimsli-lestrarbaekur",
+    "bok": "build/baekur/lestrarbok-{nn}-LQ.pdf",
+    "kapa": "build/kapur/lestrarbok-{nn}-kapa-LQ.pdf"
+   },
+   "baekur": [
+    {
+     "id": "lestrarbok-1",
+     "n": 1,
+     "heiti": "Lestrarbók 1",
+     "efni": "Laukeðla, Netlungur, Arfagálkn",
+     "isbn": "978-9935-9817-0-7",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-2",
+     "n": 2,
+     "heiti": "Lestrarbók 2",
+     "efni": "Glóðmandra, Kameldljón, Bálormur",
+     "isbn": "978-9935-9817-1-4",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-3",
+     "n": 3,
+     "heiti": "Lestrarbók 3",
+     "efni": "Sprautill, Skjaldborgari, Brynbaka",
+     "isbn": "978-9935-9817-2-1",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-4",
+     "n": 4,
+     "heiti": "Lestrarbók 4",
+     "efni": "Lirfingur, Púpisti, Frírildi",
+     "isbn": "978-9935-9817-3-8",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-5",
+     "n": 5,
+     "heiti": "Lestrarbók 5",
+     "efni": "Vasaboltar",
+     "isbn": "978-9935-9817-4-5",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-6",
+     "n": 6,
+     "heiti": "Lestrarbók 6",
+     "efni": "Stuðstúfa, Leifturskotta, Þrumumús",
+     "isbn": "978-9935-9817-5-2",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-7",
+     "n": 7,
+     "heiti": "Lestrarbók 7",
+     "efni": "Sniðdýr og þróanir þess",
+     "isbn": "978-9935-9817-6-9",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-8",
+     "n": 8,
+     "heiti": "Lestrarbók 8",
+     "efni": "Svæðin í heimi Vasaskrímslanna",
+     "isbn": "978-9935-9817-7-6",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-9",
+     "n": 9,
+     "heiti": "Lestrarbók 9",
+     "efni": "Hrollur, Reimnir, Vofursti",
+     "isbn": "978-9935-9817-8-3",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-10",
+     "n": 10,
+     "heiti": "Lestrarbók 10",
+     "efni": "Gígamax 1",
+     "isbn": "978-9935-9817-9-0",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbok-11",
+     "n": 11,
+     "heiti": "Lestrarbók 11",
+     "efni": "Dreksprek, Grandormur, Drekvaxinn",
+     "isbn": "978-9935-562-05-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-12",
+     "n": 12,
+     "heiti": "Lestrarbók 12",
+     "efni": "Þrekangi, Aflgarpur, Fermundur",
+     "isbn": "978-9935-562-06-7",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-13",
+     "n": 13,
+     "heiti": "Lestrarbók 13",
+     "efni": "Aurgaur, Möldungur, Bergjöfur",
+     "isbn": "978-9935-562-07-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-14",
+     "n": 14,
+     "heiti": "Lestrarbók 14",
+     "efni": "Blakildi, Skoltblaka, Spellblaka",
+     "isbn": "978-9935-562-08-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-15",
+     "n": 15,
+     "heiti": "Lestrarbók 15",
+     "efni": "Éljaskarfur, Þórshani, Blossagaukur",
+     "isbn": "978-9935-562-09-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-16",
+     "n": 16,
+     "heiti": "Lestrarbók 16",
+     "efni": "Pottgormur, Hringekill, Spíralofsi",
+     "isbn": "978-9935-562-10-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-17",
+     "n": 17,
+     "heiti": "Lestrarbók 17",
+     "efni": "Greysleppa, Brimskratti, Lagargandur",
+     "isbn": "978-9935-562-11-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-18",
+     "n": 18,
+     "heiti": "Lestrarbók 18",
+     "efni": "Mýta og Tvímýta",
+     "isbn": "978-9935-562-12-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-19",
+     "n": 19,
+     "heiti": "Lestrarbók 19",
+     "efni": "Krabbakútur, Krabbarbari, Bleikhyrna, Fiskikóngur",
+     "isbn": "978-9935-562-13-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-20",
+     "n": 20,
+     "heiti": "Lestrarbók 20",
+     "efni": "Gígamax 2",
+     "isbn": "978-9935-562-14-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-21",
+     "n": 21,
+     "heiti": "Lestrarbók 21",
+     "efni": "Raketturnar, R-liðið, talandi Mjágjarn",
+     "isbn": "978-9935-562-30-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-22",
+     "n": 22,
+     "heiti": "Lestrarbók 22",
+     "efni": "Bleðill, Þistilgumi, Laufjöfur",
+     "isbn": "978-9935-562-31-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-23",
+     "n": 23,
+     "heiti": "Lestrarbók 23",
+     "efni": "Brímir, Gosi, Bálhamur og Bálhamur Hisúí",
+     "isbn": "978-9935-562-32-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-24",
+     "n": 24,
+     "heiti": "Lestrarbók 24",
+     "efni": "Smádíll, Krókald, Skolthrotti",
+     "isbn": "978-9935-562-33-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-25",
+     "n": 25,
+     "heiti": "Lestrarbók 25",
+     "efni": "Skærgemsi, Hnykilvægur, Standlambi og Mega Standlambi",
+     "isbn": "978-9935-562-34-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-26",
+     "n": 26,
+     "heiti": "Lestrarbók 26",
+     "efni": "Mardvali, Glótrana, Gróðursæll",
+     "isbn": "978-9935-562-35-7",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-27",
+     "n": 27,
+     "heiti": "Lestrarbók 27",
+     "efni": "Fenjapeð, Mýrarbolti, Fenjapeð Paldea, Moldarhnaus",
+     "isbn": "978-9935-562-36-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-28",
+     "n": 28,
+     "heiti": "Lestrarbók 28",
+     "efni": "Sólkarn, Sumarbrá, Tvíraffi, Raffatvíri",
+     "isbn": "978-9935-562-37-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-29",
+     "n": 29,
+     "heiti": "Lestrarbók 29",
+     "efni": "Sljón, Sljóannes og Galar-formin",
+     "isbn": "978-9935-562-38-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-30",
+     "n": 30,
+     "heiti": "Lestrarbók 30",
+     "efni": "Megaþróun",
+     "isbn": "978-9935-562-39-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-31",
+     "n": 31,
+     "heiti": "Lestrarbók 31",
+     "efni": "Kvíkki, Þrekfífill, Köngulhaus, Barrvígi",
+     "isbn": "978-9935-562-40-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-32",
+     "n": 32,
+     "heiti": "Lestrarbók 32",
+     "efni": "Stálnamaðkur og Mega Stálnamaðkur, Urriði, Gjammbítur",
+     "isbn": "978-9935-562-41-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-33",
+     "n": 33,
+     "heiti": "Lestrarbók 33",
+     "efni": "Ljáspretta, Stálspretta, Ígulhnöttur og Broddhnöttur",
+     "isbn": "978-9935-562-42-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-34",
+     "n": 34,
+     "heiti": "Lestrarbók 34",
+     "efni": "Skífuhúnn, Baugbjörn og Mánabjörn",
+     "isbn": "978-9935-562-43-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-35",
+     "n": 35,
+     "heiti": "Lestrarbók 35",
+     "efni": "Svíli, Lubbagöltur og Lubbafíll",
+     "isbn": "978-9935-562-44-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-36",
+     "n": 36,
+     "heiti": "Lestrarbók 36",
+     "efni": "Agnarögn, Daggarögn og Úðingur",
+     "isbn": "978-9935-562-45-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-37",
+     "n": 37,
+     "heiti": "Lestrarbók 37",
+     "efni": "Hornhuxi, Letiglóð og Kvikuhetta",
+     "isbn": "978-9935-562-46-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-38",
+     "n": 38,
+     "heiti": "Lestrarbók 38",
+     "efni": "Slævar, Slækló, Slævarri og Kóralsunna",
+     "isbn": "978-9935-562-47-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-39",
+     "n": 39,
+     "heiti": "Lestrarbók 39",
+     "efni": "Suguggi, Skolkrabbi, Brosskata og Breiðskata",
+     "isbn": "978-9935-562-48-7",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbok-40",
+     "n": 40,
+     "heiti": "Lestrarbók 40",
+     "efni": "Goðsagnaskrímsli",
+     "isbn": "978-9935-562-49-4",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
+   "id": "audlesid",
+   "akkeri": "audlesid",
+   "heiti": "Auðlesið",
+   "lysing": [
+    "Auðlesnu bækurnar eru fyrir þau yngstu, 6 til 7 ára, sem eru að læra að hljóða sig í gegnum orð. Erfið orð eru brotin í hljóð, punktur er undir hverju hljóði og lestrarör undir orðinu.",
+    "Hver bók fylgir lestrarbókinni með sama númeri, einfaldari og styttri: Auðlesið A fylgir lestrarbók 1, Auðlesið Á lestrarbók 2 og svo framvegis."
+   ],
+   "atridi": [
+    "32 bækur, ein fyrir hvern staf frá A til Ö.",
+    "Byggðar á PALS-aðferðinni við lestrarkennslu.",
+    "Sömu skrímsli og í lestrarbókunum."
+   ],
+   "heimild": {
+    "repo": "vasaskrimsli-audlesid",
+    "bok": "build/baekur/Audlesid-{nn}-{stafur}-LQ.pdf",
+    "kapa": "build/kapur/Audlesid-{nn}-{stafur}-kapa-HQ.pdf"
+   },
+   "baekur": [
+    {
+     "id": "audlesid-1",
+     "n": 1,
+     "heiti": "Auðlesið A",
+     "efni": "Laukeðla, Netlungur, Arfagálkn",
+     "isbn": "978-9935-562-00-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-2",
+     "n": 2,
+     "heiti": "Auðlesið Á",
+     "efni": "Glóðmandra, Kameldljón, Bálormur",
+     "isbn": "978-9935-562-01-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-3",
+     "n": 3,
+     "heiti": "Auðlesið B",
+     "efni": "Sprautill, Skjaldborgari, Brynbaka",
+     "isbn": "978-9935-562-02-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-4",
+     "n": 4,
+     "heiti": "Auðlesið D",
+     "efni": "Lirfingur, Púpisti, Frírildi",
+     "isbn": "978-9935-562-03-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-5",
+     "n": 5,
+     "heiti": "Auðlesið Ð",
+     "efni": "Vasaboltar",
+     "isbn": "978-9935-562-04-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-6",
+     "n": 6,
+     "heiti": "Auðlesið E",
+     "efni": "Stuðstúfa, Leifturskotta, Þrumumús",
+     "isbn": "978-9935-562-15-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-7",
+     "n": 7,
+     "heiti": "Auðlesið É",
+     "efni": "Sniðdýr og þróanir þess",
+     "isbn": "978-9935-562-16-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-8",
+     "n": 8,
+     "heiti": "Auðlesið F",
+     "efni": "Svæðin í heimi Vasaskrímslanna",
+     "isbn": "978-9935-562-17-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-9",
+     "n": 9,
+     "heiti": "Auðlesið G",
+     "efni": "Hrollur, Reimnir, Vofursti",
+     "isbn": "978-9935-562-18-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-10",
+     "n": 10,
+     "heiti": "Auðlesið H",
+     "efni": "Gígamax 1",
+     "isbn": "978-9935-562-19-7",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-11",
+     "n": 11,
+     "heiti": "Auðlesið I",
+     "efni": "Dreksprek, Grandormur, Drekvaxinn",
+     "isbn": "978-9935-562-20-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-12",
+     "n": 12,
+     "heiti": "Auðlesið Í",
+     "efni": "Þrekangi, Aflgarpur, Fermundur",
+     "isbn": "978-9935-562-21-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-13",
+     "n": 13,
+     "heiti": "Auðlesið J",
+     "efni": "Aurgaur, Möldungur, Bergjöfur",
+     "isbn": "978-9935-562-22-7",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-14",
+     "n": 14,
+     "heiti": "Auðlesið K",
+     "efni": "Blakildi, Skoltblaka, Spellblaka",
+     "isbn": "978-9935-562-23-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-15",
+     "n": 15,
+     "heiti": "Auðlesið L",
+     "efni": "Éljaskarfur, Þórshani, Blossagaukur",
+     "isbn": "978-9935-562-24-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-16",
+     "n": 16,
+     "heiti": "Auðlesið M",
+     "efni": "Pottgormur, Hringekill, Spíralofsi",
+     "isbn": "978-9935-562-25-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-17",
+     "n": 17,
+     "heiti": "Auðlesið N",
+     "efni": "Greysleppa, Brimskratti, Lagargandur",
+     "isbn": "978-9935-562-26-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-18",
+     "n": 18,
+     "heiti": "Auðlesið O",
+     "efni": "Mýta og Tvímýta",
+     "isbn": "978-9935-562-27-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-19",
+     "n": 19,
+     "heiti": "Auðlesið Ó",
+     "efni": "Krabbakútur, Krabbarbari, Bleikhyrna, Fiskikóngur",
+     "isbn": "978-9935-562-28-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-20",
+     "n": 20,
+     "heiti": "Auðlesið P",
+     "efni": "Gígamax 2",
+     "isbn": "978-9935-562-29-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-21",
+     "n": 21,
+     "heiti": "Auðlesið R",
+     "efni": "Raketturnar, R-liðið, talandi Mjágjarn",
+     "isbn": "978-9935-562-81-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-22",
+     "n": 22,
+     "heiti": "Auðlesið S",
+     "efni": "Bleðill, Þistilgumi, Laufjöfur",
+     "isbn": "978-9935-562-82-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-23",
+     "n": 23,
+     "heiti": "Auðlesið T",
+     "efni": "Brímir, Gosi, Bálhamur og Bálhamur Hisúí",
+     "isbn": "978-9935-562-83-8",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-24",
+     "n": 24,
+     "heiti": "Auðlesið U",
+     "efni": "Smádíll, Krókald, Skolthrotti",
+     "isbn": "978-9935-562-84-5",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-25",
+     "n": 25,
+     "heiti": "Auðlesið Ú",
+     "efni": "Skærgemsi, Hnykilvægur, Standlambi og Mega Standlambi",
+     "isbn": "978-9935-562-85-2",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-26",
+     "n": 26,
+     "heiti": "Auðlesið V",
+     "efni": "Mardvali, Glótrana, Gróðursæll",
+     "isbn": "978-9935-562-86-9",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-27",
+     "n": 27,
+     "heiti": "Auðlesið X",
+     "efni": "Fenjapeð, Mýrarbolti, Fenjapeð Paldea, Moldarhnaus",
+     "isbn": "978-9935-562-87-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-28",
+     "n": 28,
+     "heiti": "Auðlesið Y",
+     "efni": "Sólkarn, Sumarbrá, Tvíraffi, Raffatvíri",
+     "isbn": "978-9935-562-88-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-29",
+     "n": 29,
+     "heiti": "Auðlesið Ý",
+     "efni": "Sljón, Sljóannes og Galar-formin",
+     "isbn": "978-9935-562-89-0",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-30",
+     "n": 30,
+     "heiti": "Auðlesið Þ",
+     "efni": "Megaþróun",
+     "isbn": "978-9935-562-90-6",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-31",
+     "n": 31,
+     "heiti": "Auðlesið Æ",
+     "efni": "Kvíkki, Þrekfífill, Köngulhaus, Barrvígi",
+     "isbn": "978-9935-562-91-3",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-32",
+     "n": 32,
+     "heiti": "Auðlesið Ö",
+     "efni": "Stálnamaðkur og Mega Stálnamaðkur, Urriði, Gjammbítur",
+     "isbn": "978-9935-562-92-0",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
+   "id": "ordsifjaskra",
+   "akkeri": "ordsifjaskra",
+   "heiti": "Orðsifjaskrá Vasaskrímslanna",
+   "lysing": [
+    "Orðsifjaskráin segir frá uppruna allra 1025 íslensku nafnanna á Vasaskrímslunum: hvaðan orðin koma, hvað þau merkja og hvers vegna skrímslið heitir því nafni.",
+    "Hún er í þremur bindum og ætluð lesendum á aldrinum 5 til 13 ára. Hvert skrímsli fær sína síðu með stórri mynd."
+   ],
+   "atridi": [
+    "Þrjú bindi: 1. til 3., 4. til 6. og 7. til 9. kynslóð.",
+    "Ein færsla á hverri síðu, í númeraröð innan kynslóðar.",
+    "Nafnaskrár aftast í hverju bindi."
+   ],
+   "heimild": {
+    "repo": "vasaskrimsli-ordsifjaskra",
+    "bok": "build/Ordsifjaskra-{n}-HQ.pdf",
+    "kapa": "build/Kapa-{n}-HQ.pdf"
+   },
+   "baekur": [
+    {
+     "id": "ordsifjaskra-1",
+     "n": 1,
+     "heiti": "1. bindi",
+     "efni": "1. til 3. kynslóð",
+     "isbn": "978-9935-562-78-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "ordsifjaskra-2",
+     "n": 2,
+     "heiti": "2. bindi",
+     "efni": "4. til 6. kynslóð",
+     "isbn": "978-9935-562-79-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "ordsifjaskra-3",
+     "n": 3,
+     "heiti": "3. bindi",
+     "efni": "7. til 9. kynslóð",
+     "isbn": "978-9935-562-80-7",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
+   "id": "verkefnahefti",
+   "akkeri": "verkefnahefti",
+   "heiti": "Verkefnahefti",
+   "lysing": [
+    "Verkefnaheftin fylgja lestrarbókunum, eitt hefti með hverri bók. Í þeim eru verkefni í íslensku sem byggja á texta bókarinnar og skrímslunum í henni."
+   ],
+   "atridi": [
+    "Eitt málfræðiatriði í hverju hefti.",
+    "Lausnir fylgja hverju hefti."
+   ],
+   "heimild": {
+    "repo": "vasaskrimsli-excerises",
+    "bok": "build/hefti-{nn}-nemandi.pdf"
+   },
+   "baekur": [
+    {
+     "id": "verkefnahefti-1",
+     "n": 1,
+     "heiti": "Verkefnahefti 1",
+     "efni": "Laukeðla, Netlungur og Arfagálkn. Málfræði: sérnöfn.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-2",
+     "n": 2,
+     "heiti": "Verkefnahefti 2",
+     "efni": "Glóðmandra, Kameldljón og Bálormur. Málfræði: samnöfn.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-3",
+     "n": 3,
+     "heiti": "Verkefnahefti 3",
+     "efni": "Sprautill, Skjaldborgari og Brynbaka. Málfræði: eintala og fleirtala.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-4",
+     "n": 4,
+     "heiti": "Verkefnahefti 4",
+     "efni": "Lirfingur, Púpisti og Frírildi. Málfræði: greinir.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-5",
+     "n": 5,
+     "heiti": "Verkefnahefti 5",
+     "efni": "Vasaboltar. Málfræði: samsett orð.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-6",
+     "n": 6,
+     "heiti": "Verkefnahefti 6",
+     "efni": "Stuðstúfa, Leifturskotta og Þrumumús. Málfræði: fallbeyging.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-7",
+     "n": 7,
+     "heiti": "Verkefnahefti 7",
+     "efni": "Sniðdýr og afbrigði þess. Málfræði: kyn.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-8",
+     "n": 8,
+     "heiti": "Verkefnahefti 8",
+     "efni": "Heimur Vasaskrímslanna. Málfræði: sérnöfn: örnefni, staðir og lönd.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-9",
+     "n": 9,
+     "heiti": "Verkefnahefti 9",
+     "efni": "Hrollur, Reimnir og Vofursti. Málfræði: lýsingarorð og andheiti.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "verkefnahefti-10",
+     "n": 10,
+     "heiti": "Verkefnahefti 10",
+     "efni": "Gígamax. Málfræði: sagnorð.",
+     "isbn": "",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
+   "id": "spjold",
+   "akkeri": "veggspjold",
+   "heiti": "Veggspjöld og smáspjöld",
+   "lysing": [
+    "Veggspjöldin eru gefin út eftir kynslóðum, eins og bækurnar. Þau sýna mynd af hverju Vasaskrímsli ásamt númeri og nafni þess á íslensku. Á þeim eru einungis upphaflegu myndir skrímslanna, engar sérútgáfur eða svæðisútgáfur.",
+    "Smáspjöldin eru eins og veggspjöldin nema minni, í A4-stærð og alltaf plöstuð. Það má krota á þau með töflutússi og strjúka af með rökum klút."
+   ],
+   "atridi": [
+    "Veggspjöld í A2, A3, 30 × 40 cm og 50 × 70 cm.",
+    "Hægt að fá veggspjöldin plöstuð í matt plast.",
+    "30 × 40 og 50 × 70 passa í ramma frá IKEA eða JYSK."
+   ],
+   "baekur": [
+    {
+     "id": "veggspjald-1",
+     "n": 1,
+     "heiti": "Veggspjald: fyrsta kynslóð",
+     "efni": "Öll 151 skrímsli fyrstu kynslóðar með mynd, númeri og nafni.",
+     "isbn": "",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-veggspjald-fyrsta-kynslod",
+     "myndir": [
+      "https://vasaskrimsli.is/wp-content/uploads/2024/07/poster-wall-03-1024x1024.jpg",
+      "https://vasaskrimsli.is/wp-content/uploads/2024/07/poster-wall-01-1-1024x1024.jpg",
+      "https://vasaskrimsli.is/wp-content/uploads/2024/07/poster-wall-04-1024x1024.jpg"
+     ]
+    },
+    {
+     "id": "smaspjald-1",
+     "n": 2,
+     "heiti": "Smáspjald: fyrsta kynslóð",
+     "efni": "Öll 151 skrímsli fyrstu kynslóðar á plöstuðu A4-spjaldi.",
+     "isbn": "",
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-smaspjald-fyrsta-kynslod",
+     "myndir": [
+      "https://vasaskrimsli.is/wp-content/uploads/2024/07/handout-02-1024x1024.jpg",
+      "https://vasaskrimsli.is/wp-content/uploads/2024/07/handout-04-1024x1024.jpg"
+     ]
+    }
+   ]
+  }
+ ]
+}

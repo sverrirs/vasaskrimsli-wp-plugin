@@ -43,6 +43,38 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 - **Pictures in circles** are placed by each sprite's own midpoint (`data/midjur.json`, `iHring()` in
   `src/view/safn.js`), the same calculation as the printed books.
 
+### Bókaskrá: the Verslun page (`features/baekur/`)
+- **Block "Verslun: allar bækur"** (or `[verslun]`): every series with links between them, for the Verslun page.
+  **One block per series** (or `[baekur rod="lestrarbaekur"]`): Vasaskrímslabækurnar, Lestrarbækurnar, Auðlesið,
+  Orðsifjaskrá Vasaskrímslanna, Verkefnahefti, Veggspjöld og smáspjöld. The anchors of the old page (`#baekur`,
+  `#lestrarbaekur`, `#veggspjold`) still work.
+- Each series: its text, a filter (all, on sale, coming), search by book or monster name, and a grid of covers. A cover
+  opens the viewer: the cover and sample pages, page count, size, ISBN, and for a book on sale the shop's own **Buy
+  Button** (options, price, "Bæta í körfu", the cart on this page). The address becomes `…#bok=<id>`, so a book can
+  be linked to directly.
+- **No database.** The catalogue is `data/baekur.json` and the pictures in `assets/`, both made by
+  `migration/baekur.py` from the hand-edited `migration/baekur-skra.json` and the books' print PDFs in their own
+  repositories (`../vasaskrimsli-storubaekur`, `../vasaskrimsli-lestrarbaekur`, `../vasaskrimsli-audlesid`,
+  `../vasaskrimsli-ordsifjaskra`, `../vasaskrimsli-excerises`). Posters use pictures downloaded once.
+- **Prices** come from Háskólaprent's Shopify store: the plugin reads each product every six hours
+  (`includes/Verslun.php`), and the copy in `baekur.json` is the fallback, so the page never waits on the store.
+
+**Maintaining it** (edit `migration/baekur-skra.json`, then run `python -X utf8 migration/baekur.py`):
+
+| To | Do |
+|---|---|
+| Put a book on sale | set its `"stada": "faanleg"` and `"vara"` to the product's handle in the shop (the end of its address, `haskolaprent.is/products/<handle>`) |
+| Hide a book | `"stada": "falin"` (`"vaentanleg"` shows it as coming) |
+| Add a book | add it to its series' `baekur` with a new `id` (a-z, 0-9 and dashes), after building it in its repository |
+| Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise they are picked evenly |
+| Change a series' text | its `lysing` (paragraphs) and `atridi` (bullets) |
+| Change the Buy Button's look | `verslun.kaupahnappur.options`: the `options` of Háskólaprent's embed code, with the owner's changes |
+| Add a series | a new entry in `radir` with a `heimild` (where its PDFs are), and a line in `Block::RADIR` for its own block |
+
+The script renders only pictures whose PDF changed, keeps the last pictures of a book whose PDF is being rebuilt (with
+a warning), and removes pictures no book uses. The store answers Python's own HTTP client with 429, so it reads the
+products through `curl`.
+
 ## Data from vasaskrimsli-dict
 
 All names and texts come from `../vasaskrimsli-dict` (local only). The Claude session working there
@@ -155,5 +187,6 @@ features/ordsifjar/
   data/                   seed.csv and kynslodir.json from the original page, national.json, nofn-2026.json,
                           thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
   assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
-migration/                one script per data file (see "Data from vasaskrimsli-dict") and the page snapshots
+features/baekur/          the Verslun page's catalogue: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
+migration/                one script per data file (see "Data from vasaskrimsli-dict"), baekur.py and baekur-skra.json
 ```

@@ -9,6 +9,7 @@
 require __DIR__ . '/../features/ordsifjar/includes/Csv.php';
 require __DIR__ . '/../features/ordsifjar/includes/Format.php';
 require __DIR__ . '/../features/ordsifjar/includes/Nofn.php';
+require __DIR__ . '/../features/baekur/includes/Verslun.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
 use Vasaskrimsli\Ordsifjar\Format;
@@ -325,6 +326,22 @@ check( 'formir.json: every form has an Icelandic name', array_filter( array_merg
 	return empty( $f['i'] ) || false === strpos( $f['i'], '{n}' );
 } ), array() );
 check( 'formir.json: named as the books do', array_column( Format::formir( $real, array(), '6', 'Bálormur' ), 'heiti' ), array( 'Mega Bálormur X', 'Mega Bálormur Y', 'Gígamax Bálormur' ) );
+
+// --- book catalogue: the web shop's products
+use Vasaskrimsli\Baekur\Verslun;
+$shopify = array( 'product' => array( 'id' => 7202611363943, 'title' => 'Vasaskrímsli - Bækur 1 - 10', 'variants' => array(
+	array( 'title' => '1 pakki', 'price' => '12800.00' ),
+	array( 'title' => '2 pakkar', 'price' => '22400.00' ),
+) ) );
+check( 'Verslun::parse: name, address and every option with its price', Verslun::parse( $shopify, 'https://www.haskolaprent.is', 'pakki' ), array(
+	'id'       => '7202611363943',
+	'heiti'    => 'Vasaskrímsli - Bækur 1 - 10',
+	'slod'     => 'https://www.haskolaprent.is/products/pakki',
+	'afbrigdi' => array( array( 'heiti' => '1 pakki', 'verd' => 12800 ), array( 'heiti' => '2 pakkar', 'verd' => 22400 ) ),
+) );
+check( 'Verslun::parse: a product with one option has no option name', Verslun::parse( array( 'product' => array( 'title' => 'X', 'variants' => array( array( 'title' => 'Default Title', 'price' => '6900.00' ) ) ) ), 'https://s.is', 'x' )['afbrigdi'], array( array( 'heiti' => '', 'verd' => 6900 ) ) );
+check( 'Verslun::parse: not a product (an error page, nothing) is null', array( Verslun::parse( null, 's', 'x' ), Verslun::parse( array( 'errors' => 'Not Found' ), 's', 'x' ), Verslun::parse( array( 'product' => array( 'variants' => array() ) ), 's', 'x' ) ), array( null, null, null ) );
+check( 'Verslun::verd: one price, "frá" the lowest, nothing without prices', array( Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 6900 ) ) ) ), Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 3900 ), array( 'verd' => 2900 ) ) ) ), Verslun::verd( null ) ), array( '6.900 kr.', 'frá 2.900 kr.', '' ) );
 
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text
 $v4    = array(
