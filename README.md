@@ -43,15 +43,16 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 - **Pictures in circles** are placed by each sprite's own midpoint (`data/midjur.json`, `iHring()` in
   `src/view/safn.js`), the same calculation as the printed books.
 
-### Bókaskrá: the Verslun page (`features/baekur/`)
-- **Block "Verslun: allar bækur"** (or `[verslun]`): every series with links between them, for the Verslun page.
-  **One block per series** (or `[baekur rod="lestrarbaekur"]`): Vasaskrímslabækurnar, Lestrarbækurnar, Auðlesið,
-  Orðsifjaskrá Vasaskrímslanna, Verkefnahefti, Veggspjöld og smáspjöld. The anchors of the old page (`#baekur`,
-  `#lestrarbaekur`, `#veggspjold`) still work.
-- Each series: its text, a filter (all, on sale, coming), search by book or monster name, and a grid of covers. A cover
-  opens the viewer: the cover and sample pages, page count, size, ISBN, and for a book on sale the shop's own **Buy
-  Button** (options, price, "Bæta í körfu", the cart on this page). The address becomes `…#bok=<id>`, so a book can
-  be linked to directly.
+### Bókaskrá: the book lists (`features/baekur/`)
+- **One block per series** (or `[baekur rod="lestrarbaekur"]`): Orðsifjaskrá Vasaskrímslanna, Vasaskrímslabækurnar,
+  Lestrarbækurnar, Auðlesið, Verkefnahefti, Veggspjöld og smáspjöld. A block is only the series' list and its filter
+  (all, on sale, coming): the headings and texts about the books are written on the WordPress page around it, so they
+  can be edited without a new plugin version. Verkefnahefti go on a page of their own.
+- **Lots:** Lestrarbækurnar are sold ten to a lot, so their list shows the lots (1 to 10, 11 to 20, ...); a lot's viewer
+  lists its books and shows each one.
+- A cover opens the viewer: the cover and three pages, page count, size, ISBN, and for what is on sale the shop's own
+  **Buy Button** (options, price, "Bæta í körfu", the cart on this page). The address becomes `…#bok=<id>`, so a book
+  or lot can be linked to directly.
 - **No database.** The catalogue is `data/baekur.json` and the pictures in `assets/`, both made by
   `migration/baekur.py` from the hand-edited `migration/baekur-skra.json` and the books' print PDFs in their own
   repositories (`../vasaskrimsli-storubaekur`, `../vasaskrimsli-lestrarbaekur`, `../vasaskrimsli-audlesid`,
@@ -64,10 +65,10 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 | To | Do |
 |---|---|
 | Put a book on sale | set its `"stada": "faanleg"` and `"vara"` to the product's handle in the shop (the end of its address, `haskolaprent.is/products/<handle>`) |
+| Put a lot on sale | the same, on the lot in the series' `pakkar` (its `baekur` are the numbers of its books) |
 | Hide a book | `"stada": "falin"` (`"vaentanleg"` shows it as coming) |
 | Add a book | add it to its series' `baekur` with a new `id` (a-z, 0-9 and dashes), after building it in its repository |
-| Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise they are picked evenly |
-| Change a series' text | its `lysing` (paragraphs) and `atridi` (bullets) |
+| Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise three are picked evenly |
 | Change the Buy Button's look | `verslun.kaupahnappur.options`: the `options` of Háskólaprent's embed code, with the owner's changes |
 | Add a series | a new entry in `radir` with a `heimild` (where its PDFs are), and a line in `Block::RADIR` for its own block |
 
@@ -187,6 +188,6 @@ features/ordsifjar/
   data/                   seed.csv and kynslodir.json from the original page, national.json, nofn-2026.json,
                           thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
   assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
-features/baekur/          the Verslun page's catalogue: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
+features/baekur/          the book lists: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
 migration/                one script per data file (see "Data from vasaskrimsli-dict"), baekur.py and baekur-skra.json
 ```

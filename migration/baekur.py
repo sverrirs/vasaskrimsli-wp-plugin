@@ -4,7 +4,7 @@
      status ("faanleg" on sale, "vaentanleg" coming, "falin" left out), ISBN, contents and product in the web shop.
   2. for every book that is not "falin": opens its print PDFs in the book's own repository (next to this one, the paths
      in the series' "heimild"), cuts the front cover out of the cover PDF (a wraparound cover's right-hand page) and
-     renders the cover and some interior pages ("synishorn": page numbers, or picked evenly) as WebP. A book with
+     renders the cover and three interior pages ("synishorn": page numbers, or picked evenly) as WebP. A book with
      "myndir" (posters) gets those pictures instead, downloaded once into .sprite-cache/baekur/.
   3. reads every product in the web shop (the Shopify store's public product JSON) for its name, address, options
      and prices; the site refreshes them itself (Verslun.php), these are the fallback.
@@ -36,6 +36,7 @@ CACHE = ROOT / ".sprite-cache" / "baekur"
 UA = "Mozilla/5.0 (vasaskrimsli.is book catalogue)"
 COVER_PX = 600
 PAGE_PX = 900
+SAMPLES = 3  # Interior pages shown for each book, after its cover.
 MM = 25.4 / 72
 
 
@@ -108,9 +109,8 @@ def from_pdfs(rod, book, used):
     else:  # No cover file: the first page is the cover.
         out["kapa"] = render(doc[0], trim, COVER_PX, base.with_name(f"{book['id']}-kapa.webp"), 80, interior)
     used.add(out["kapa"])
-    want = 6 if book["stada"] == "faanleg" else 4
     out["synishorn"] = []
-    for n in book.get("synishorn") or picks(doc.page_count, want):
+    for n in book.get("synishorn") or picks(doc.page_count, SAMPLES):
         page = doc[n - 1]
         rel = render(page, page.trimbox, PAGE_PX, base.with_name(f"{book['id']}-s{n}.webp"), 72, interior)
         used.add(rel)
@@ -150,6 +150,20 @@ def product(shop, handle):
     }
 
 
+def lots(rod, books):
+    """The series' lots (books sold together): their books by id, in order, leaving out hidden books."""
+    by_n = {b["n"]: b["id"] for b in books}
+    out = []
+    for lot in rod["pakkar"]:
+        if lot["stada"] == "falin":
+            continue
+        ids = [by_n[n] for n in lot["baekur"] if n in by_n]
+        if not ids:
+            raise SystemExit(f"{lot['id']}: none of its books is shown")
+        out.append({k: v for k, v in lot.items() if k != "baekur"} | {"baekur": ids, "efni": f"{len(ids)} bækur"})
+    return out
+
+
 def main():
     skra = json.loads(SKRA.read_text(encoding="utf-8"))
     before = {b["id"]: b for r in json.loads(DATA.read_text(encoding="utf-8"))["radir"] for b in r["baekur"]} if DATA.exists() else {}
@@ -170,13 +184,18 @@ def main():
                     raise SystemExit(f"{err} (build the book first, or set it \"falin\")")
                 print(f"  WARNING {err}: kept from the last run", flush=True)
                 extra = {k: old[k] for k in ("sidur", "snid", "kapa", "synishorn") if k in old}
+                extra["synishorn"] = (book.get("synishorn") and [s for s in extra["synishorn"] if s["sida"] in book["synishorn"]]) or extra["synishorn"][:SAMPLES]
                 used.update([extra["kapa"], *(s["mynd"] for s in extra["synishorn"])])
             b = {k: v for k, v in book.items() if k not in ("myndir", "synishorn")} | extra
             books.append(b)
             if b.get("vara"):
                 handles.add(b["vara"])
             print(f"  {b['id']}: {b.get('sidur', '-')} pages, {len(b['synishorn'])} samples", flush=True)
-        radir.append({k: v for k, v in rod.items() if k not in ("baekur", "heimild")} | {"baekur": books})
+        out = {k: v for k, v in rod.items() if k not in ("baekur", "heimild", "pakkar")} | {"baekur": books}
+        if rod.get("pakkar"):
+            out["pakkar"] = lots(rod, books)
+            handles.update(p["vara"] for p in out["pakkar"] if p.get("vara"))
+        radir.append(out)
     vorur = {h: product(skra["verslun"]["slod"], h) for h in sorted(handles)}
     DATA.parent.mkdir(parents=True, exist_ok=True)
     DATA.write_text(json.dumps({"verslun": skra["verslun"], "vorur": vorur, "radir": radir}, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")

@@ -1,5 +1,5 @@
 {
- "_um": "Bókaskráin: frumgögn sem eru lagfærð í höndunum. migration/baekur.py býr til features/baekur/data/baekur.json og myndirnar úr þessu og PDF-skjölum bókanna. stada: faanleg (til sölu, vara er slóð vörunnar í vefversluninni), vaentanleg eða falin.",
+ "_um": "Bókaskráin: frumgögn sem eru lagfærð í höndunum. migration/baekur.py býr til features/baekur/data/baekur.json og myndirnar úr þessu og PDF-skjölum bókanna. stada: faanleg (til sölu, vara er slóð vörunnar í vefversluninni), vaentanleg eða falin. Röð með pakkar (bækur seldar saman) sýnir pakkana; baekur eru númer bókanna í pakkanum.",
  "verslun": {
   "heiti": "Vefverslun Háskólaprents",
   "slod": "https://www.haskolaprent.is",
@@ -242,18 +242,45 @@
  },
  "radir": [
   {
+   "id": "ordsifjaskra",
+   "akkeri": "ordsifjaskra",
+   "heiti": "Orðsifjaskrá Vasaskrímslanna",
+   "heimild": {
+    "repo": "vasaskrimsli-ordsifjaskra",
+    "bok": "build/Ordsifjaskra-{n}-HQ.pdf",
+    "kapa": "build/Kapa-{n}-HQ.pdf"
+   },
+   "baekur": [
+    {
+     "id": "ordsifjaskra-1",
+     "n": 1,
+     "heiti": "1. bindi",
+     "efni": "1. til 3. kynslóð",
+     "isbn": "978-9935-562-78-4",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "ordsifjaskra-2",
+     "n": 2,
+     "heiti": "2. bindi",
+     "efni": "4. til 6. kynslóð",
+     "isbn": "978-9935-562-79-1",
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "ordsifjaskra-3",
+     "n": 3,
+     "heiti": "3. bindi",
+     "efni": "7. til 9. kynslóð",
+     "isbn": "978-9935-562-80-7",
+     "stada": "vaentanleg"
+    }
+   ]
+  },
+  {
    "id": "storubaekur",
    "akkeri": "baekur",
    "heiti": "Vasaskrímslabækurnar",
-   "lysing": [
-    "Bækurnar um Vasaskrímslin eru gefnar út eftir kynslóðum. Hver bók inniheldur íslensk nöfn og lýsingar á íslensku af öllum Vasaskrímslum viðkomandi kynslóðar ásamt öllum þekktum sérþróunum og svæðisútgáfum þeirra.",
-    "Við hvert skrímsli er mynd af því ásamt þróunarupplýsingum og tegundareiginleikum þess."
-   ],
-   "atridi": [
-    "Gormaðar og í almanaksbroti: liggja alveg flatar eða standa sjálfar á borði.",
-    "Íslensk nöfn og lýsingar á öllum skrímslum kynslóðarinnar.",
-    "Prentaðar á Íslandi hjá Háskólaprenti."
-   ],
    "heimild": {
     "repo": "vasaskrimsli-storubaekur",
     "bok": "build/baekur/bok-{n}-HQ.pdf",
@@ -340,17 +367,6 @@
    "id": "lestrarbaekur",
    "akkeri": "lestrarbaekur",
    "heiti": "Lestrarbækurnar",
-   "lysing": [
-    "Lestrarbækurnar eru sérstaklega ætlaðar krökkum sem eru aðeins lengra komin í heimalestri. Textinn er einfaldur og mikið um endurtekningar, þannig að lesandinn finnur fyrir getu sinni og sjálfstraust eykst.",
-    "Bækurnar innihalda einfaldað efni upp úr stóru Vasaskrímslabókunum og allur texti hefur verið aðlagaður að þörfum barna sem eru að styrkja sig í lestri. Bækur 1 til 10 fást saman í pakka."
-   ],
-   "atridi": [
-    "Hugsaðar fyrir nemendur í 3. til 5. bekk.",
-    "Sérstaklega erfið orð eru feitletruð og löng orð brotin upp með bandstrikum.",
-    "Mikið um endurtekningar sem efla færni og sjálfstraust.",
-    "Aukinn orðaforði og áhersla á stigbreytingu lýsingarorða.",
-    "Talnalæsi og samanburður á hæð og þyngd."
-   ],
    "heimild": {
     "repo": "vasaskrimsli-lestrarbaekur",
     "bok": "build/baekur/lestrarbok-{nn}-LQ.pdf",
@@ -687,21 +703,83 @@
      "isbn": "978-9935-562-49-4",
      "stada": "vaentanleg"
     }
+   ],
+   "pakkar": [
+    {
+     "id": "lestrarbaekur-1-10",
+     "heiti": "Lestrarbækur 1 til 10",
+     "baekur": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "stada": "faanleg",
+     "vara": "vasaskrimsli-fyrsta-kynslod-copy"
+    },
+    {
+     "id": "lestrarbaekur-11-20",
+     "heiti": "Lestrarbækur 11 til 20",
+     "baekur": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+     ],
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbaekur-21-30",
+     "heiti": "Lestrarbækur 21 til 30",
+     "baekur": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+     ],
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "lestrarbaekur-31-40",
+     "heiti": "Lestrarbækur 31 til 40",
+     "baekur": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+     ],
+     "stada": "vaentanleg"
+    }
    ]
   },
   {
    "id": "audlesid",
    "akkeri": "audlesid",
    "heiti": "Auðlesið",
-   "lysing": [
-    "Auðlesnu bækurnar eru fyrir þau yngstu, 6 til 7 ára, sem eru að læra að hljóða sig í gegnum orð. Erfið orð eru brotin í hljóð, punktur er undir hverju hljóði og lestrarör undir orðinu.",
-    "Hver bók fylgir lestrarbókinni með sama númeri, einfaldari og styttri: Auðlesið A fylgir lestrarbók 1, Auðlesið Á lestrarbók 2 og svo framvegis."
-   ],
-   "atridi": [
-    "32 bækur, ein fyrir hvern staf frá A til Ö.",
-    "Byggðar á PALS-aðferðinni við lestrarkennslu.",
-    "Sömu skrímsli og í lestrarbókunum."
-   ],
    "heimild": {
     "repo": "vasaskrimsli-audlesid",
     "bok": "build/baekur/Audlesid-{nn}-{stafur}-LQ.pdf",
@@ -967,61 +1045,9 @@
    ]
   },
   {
-   "id": "ordsifjaskra",
-   "akkeri": "ordsifjaskra",
-   "heiti": "Orðsifjaskrá Vasaskrímslanna",
-   "lysing": [
-    "Orðsifjaskráin segir frá uppruna allra 1025 íslensku nafnanna á Vasaskrímslunum: hvaðan orðin koma, hvað þau merkja og hvers vegna skrímslið heitir því nafni.",
-    "Hún er í þremur bindum og ætluð lesendum á aldrinum 5 til 13 ára. Hvert skrímsli fær sína síðu með stórri mynd."
-   ],
-   "atridi": [
-    "Þrjú bindi: 1. til 3., 4. til 6. og 7. til 9. kynslóð.",
-    "Ein færsla á hverri síðu, í númeraröð innan kynslóðar.",
-    "Nafnaskrár aftast í hverju bindi."
-   ],
-   "heimild": {
-    "repo": "vasaskrimsli-ordsifjaskra",
-    "bok": "build/Ordsifjaskra-{n}-HQ.pdf",
-    "kapa": "build/Kapa-{n}-HQ.pdf"
-   },
-   "baekur": [
-    {
-     "id": "ordsifjaskra-1",
-     "n": 1,
-     "heiti": "1. bindi",
-     "efni": "1. til 3. kynslóð",
-     "isbn": "978-9935-562-78-4",
-     "stada": "vaentanleg"
-    },
-    {
-     "id": "ordsifjaskra-2",
-     "n": 2,
-     "heiti": "2. bindi",
-     "efni": "4. til 6. kynslóð",
-     "isbn": "978-9935-562-79-1",
-     "stada": "vaentanleg"
-    },
-    {
-     "id": "ordsifjaskra-3",
-     "n": 3,
-     "heiti": "3. bindi",
-     "efni": "7. til 9. kynslóð",
-     "isbn": "978-9935-562-80-7",
-     "stada": "vaentanleg"
-    }
-   ]
-  },
-  {
    "id": "verkefnahefti",
    "akkeri": "verkefnahefti",
    "heiti": "Verkefnahefti",
-   "lysing": [
-    "Verkefnaheftin fylgja lestrarbókunum, eitt hefti með hverri bók. Í þeim eru verkefni í íslensku sem byggja á texta bókarinnar og skrímslunum í henni."
-   ],
-   "atridi": [
-    "Eitt málfræðiatriði í hverju hefti.",
-    "Lausnir fylgja hverju hefti."
-   ],
    "heimild": {
     "repo": "vasaskrimsli-excerises",
     "bok": "build/hefti-{nn}-nemandi.pdf"
@@ -1113,15 +1139,6 @@
    "id": "spjold",
    "akkeri": "veggspjold",
    "heiti": "Veggspjöld og smáspjöld",
-   "lysing": [
-    "Veggspjöldin eru gefin út eftir kynslóðum, eins og bækurnar. Þau sýna mynd af hverju Vasaskrímsli ásamt númeri og nafni þess á íslensku. Á þeim eru einungis upphaflegu myndir skrímslanna, engar sérútgáfur eða svæðisútgáfur.",
-    "Smáspjöldin eru eins og veggspjöldin nema minni, í A4-stærð og alltaf plöstuð. Það má krota á þau með töflutússi og strjúka af með rökum klút."
-   ],
-   "atridi": [
-    "Veggspjöld í A2, A3, 30 × 40 cm og 50 × 70 cm.",
-    "Hægt að fá veggspjöldin plöstuð í matt plast.",
-    "30 × 40 og 50 × 70 passa í ramma frá IKEA eða JYSK."
-   ],
    "baekur": [
     {
      "id": "veggspjald-1",

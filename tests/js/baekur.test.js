@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
-import { fjoldi, hnappastillingar, kr, myndir, synilegar, urHash, verd } from '../../features/baekur/src/leit.js';
+import { atridi, fjoldi, hnappastillingar, kr, myndir, synilegar, urHash, verd } from '../../features/baekur/src/leit.js';
 
 const BAEKUR = [
 	{ id: 'lestrarbok-2', heiti: 'Lestrarbók 2', efni: 'Glóðmandra, Kameldljón, Bálormur', isbn: '978-9935-9817-1-4', stada: 'faanleg' },
@@ -19,15 +19,24 @@ test( 'prices in Icelandic crowns, "frá" when the options differ', () => {
 	assert.equal( verd( { afbrigdi: [] } ), '' );
 } );
 
-test( 'filters by status and searches names, contents and ISBN, Icelandic-aware', () => {
+test( 'filters by status', () => {
 	assert.deepEqual( fjoldi( BAEKUR ), { allar: 3, faanleg: 1, vaentanleg: 2 } );
-	assert.deepEqual( synilegar( BAEKUR, { stada: 'vaentanleg' } ).map( ( b ) => b.id ), [ 'lestrarbok-11', 'lestrarbok-12' ] );
-	assert.deepEqual( synilegar( BAEKUR, { leit: 'glodmandra' } ).map( ( b ) => b.id ), [ 'lestrarbok-2' ] );
-	assert.deepEqual( synilegar( BAEKUR, { leit: 'threkangi' } ).map( ( b ) => b.id ), [ 'lestrarbok-12' ] );
-	assert.deepEqual( synilegar( BAEKUR, { leit: '562-05' } ).map( ( b ) => b.id ), [ 'lestrarbok-11' ] );
-	assert.deepEqual( synilegar( BAEKUR, { leit: 'lestrarbók dreksprek' } ).map( ( b ) => b.id ), [ 'lestrarbok-11' ] );
-	assert.deepEqual( synilegar( BAEKUR, { stada: 'faanleg', leit: 'dreksprek' } ), [] );
-	assert.equal( synilegar( BAEKUR, { leit: '  ' } ).length, 3 );
+	assert.deepEqual( synilegar( BAEKUR, 'vaentanleg' ).map( ( b ) => b.id ), [ 'lestrarbok-11', 'lestrarbok-12' ] );
+	assert.deepEqual( synilegar( BAEKUR, 'faanleg' ).map( ( b ) => b.id ), [ 'lestrarbok-2' ] );
+	assert.equal( synilegar( BAEKUR, '' ).length, 3 );
+} );
+
+test( 'a series sold in lots lists its lots, each with its books and the first three covers', () => {
+	const baekur = Array.from( { length: 12 }, ( _, i ) => ( { id: `b${ i + 1 }`, kapa: `k${ i + 1 }.webp`, stada: 'vaentanleg' } ) );
+	const lots = atridi( { baekur, pakkar: [ { id: 'p1', stada: 'faanleg', baekur: [ 'b1', 'b2', 'b3', 'b4' ] }, { id: 'p2', stada: 'vaentanleg', baekur: [ 'b11', 'b12', 'gone' ] } ] } );
+	assert.deepEqual( lots.map( ( p ) => p.id ), [ 'p1', 'p2' ] );
+	assert.deepEqual( lots[ 0 ].baekur.map( ( b ) => b.id ), [ 'b1', 'b2', 'b3', 'b4' ] );
+	assert.deepEqual( [ lots[ 0 ].kapa, lots[ 0 ].kapur ], [ 'k1.webp', [ 'k1.webp', 'k2.webp', 'k3.webp' ] ] );
+	assert.deepEqual( lots[ 1 ].baekur.map( ( b ) => b.id ), [ 'b11', 'b12' ] );
+	assert.deepEqual( fjoldi( lots ), { allar: 2, faanleg: 1, vaentanleg: 1 } );
+	// Without lots the list is the books.
+	assert.equal( atridi( { baekur } ), baekur );
+	assert.equal( atridi( { baekur, pakkar: [] } ), baekur );
 } );
 
 test( 'pictures in viewing order and the open book from the address', () => {
@@ -37,11 +46,10 @@ test( 'pictures in viewing order and the open book from the address', () => {
 		{ mynd: 'b.webp', heiti: 'Bls. 3' },
 		{ mynd: 'c.webp', heiti: 'Mynd 3' },
 	] );
-	const radir = [ { id: 'lestrarbaekur', baekur: BAEKUR } ];
-	assert.deepEqual( urHash( '#bok=lestrarbok-11', radir ), { rod: 'lestrarbaekur', bok: 'lestrarbok-11' } );
-	assert.equal( urHash( '#bok=engin', radir ), null );
-	assert.equal( urHash( '#lestrarbaekur', radir ), null );
-	assert.equal( urHash( '', radir ), null );
+	assert.equal( urHash( '#bok=lestrarbok-11', BAEKUR ), 'lestrarbok-11' );
+	assert.equal( urHash( '#bok=engin', BAEKUR ), null ); // Another block's book, or none.
+	assert.equal( urHash( '#lestrarbaekur', BAEKUR ), null );
+	assert.equal( urHash( '', BAEKUR ), null );
 } );
 
 test( 'baekur.json: every book has a cover and samples that exist, and a known status and product', () => {
@@ -60,6 +68,10 @@ test( 'baekur.json: every book has a cover and samples that exist, and a known s
 			if ( b.stada === 'faanleg' ) {
 				assert.ok( data.vorur[ b.vara ]?.slod, `${ b.id }: on sale without a product` );
 			}
+		}
+		for ( const p of r.pakkar ?? [] ) {
+			assert.ok( p.baekur.length && p.baekur.every( ( id ) => r.baekur.some( ( b ) => b.id === id ) ), `${ p.id }: books` );
+			assert.ok( p.stada !== 'faanleg' || data.vorur[ p.vara ]?.slod, `${ p.id }: on sale without a product` );
 		}
 	}
 } );

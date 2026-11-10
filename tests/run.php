@@ -10,6 +10,7 @@ require __DIR__ . '/../features/ordsifjar/includes/Csv.php';
 require __DIR__ . '/../features/ordsifjar/includes/Format.php';
 require __DIR__ . '/../features/ordsifjar/includes/Nofn.php';
 require __DIR__ . '/../features/baekur/includes/Verslun.php';
+require __DIR__ . '/../features/baekur/includes/Block.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
 use Vasaskrimsli\Ordsifjar\Format;
@@ -341,6 +342,9 @@ check( 'Verslun::parse: name, address and every option with its price', Verslun:
 ) );
 check( 'Verslun::parse: a product with one option has no option name', Verslun::parse( array( 'product' => array( 'title' => 'X', 'variants' => array( array( 'title' => 'Default Title', 'price' => '6900.00' ) ) ) ), 'https://s.is', 'x' )['afbrigdi'], array( array( 'heiti' => '', 'verd' => 6900 ) ) );
 check( 'Verslun::parse: not a product (an error page, nothing) is null', array( Verslun::parse( null, 's', 'x' ), Verslun::parse( array( 'errors' => 'Not Found' ), 's', 'x' ), Verslun::parse( array( 'product' => array( 'variants' => array() ) ), 's', 'x' ) ), array( null, null, null ) );
+$rod = array( 'baekur' => array( array( 'id' => 'b1', 'kapa' => 'k1.webp' ), array( 'id' => 'b2', 'kapa' => 'k2.webp' ) ), 'pakkar' => array( array( 'id' => 'p1', 'baekur' => array( 'b2', 'b1' ) ) ) );
+check( "Block::items: a series sold in lots lists its lots, each with its first book's cover", \Vasaskrimsli\Baekur\Block::items( $rod ), array( array( 'id' => 'p1', 'baekur' => array( 'b2', 'b1' ), 'kapa' => 'k2.webp' ) ) );
+check( 'Block::items: without lots, the books', \Vasaskrimsli\Baekur\Block::items( array( 'baekur' => $rod['baekur'] ) ), $rod['baekur'] );
 check( 'Verslun::verd: one price, "frá" the lowest, nothing without prices', array( Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 6900 ) ) ) ), Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 3900 ), array( 'verd' => 2900 ) ) ) ), Verslun::verd( null ) ), array( '6.900 kr.', 'frá 2.900 kr.', '' ) );
 
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text

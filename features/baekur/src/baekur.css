@@ -13,72 +13,9 @@
 	color: var(--bk-ink);
 }
 
-.vs-bk__nav ul {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin: 0 0 12px;
-	padding: 0;
-	list-style: none;
-}
-
-.vs-bk__nav ul a {
-	display: inline-flex;
-	gap: 6px;
-	align-items: baseline;
-	padding: 6px 12px;
-	color: var(--bk-ink);
-	text-decoration: none;
-	border: 1px solid var(--bk-line);
-	border-radius: 6px;
-}
-
-.vs-bk__nav ul a:hover,
-.vs-bk__nav ul a:focus-visible {
-	border-color: var(--bk-accent);
-	color: var(--bk-accent);
-}
-
-.vs-bk__nav ul a span {
-	font-size: 0.8em;
-	color: var(--bk-muted);
-}
-
-.vs-bk__pontun {
-	margin: 0 0 8px;
-	font-size: 0.9375rem;
-	color: var(--bk-muted);
-}
-
-.vs-bk__rod {
-	padding-top: 32px;
-	scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + 16px);
-}
-
-.vs-bk__rod > h2 {
-	margin: 0 0 12px;
-}
-
-.vs-bk__rod > p {
-	max-width: 68ch;
-}
-
-.vs-bk__atridi {
-	max-width: 68ch;
-	margin: 0 0 16px;
-	padding-left: 1.2em;
-}
-
-.vs-bk__tools {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-	align-items: center;
-	margin: 0 0 16px;
-}
-
 .vs-bk__syn {
 	display: inline-flex;
+	margin: 0 0 20px;
 	gap: 0;
 	border: 1px solid var(--bk-line);
 	border-radius: 6px;
@@ -110,17 +47,6 @@
 	font-size: 0.85em;
 }
 
-.vs-bk__leit input {
-	min-width: min(320px, 100%);
-	padding: 6px 10px;
-	font: inherit;
-	color: var(--bk-ink);
-	background: #fff;
-	border: 1px solid var(--bk-line);
-	border-radius: 6px;
-}
-
-.vs-bk__leit input:focus-visible,
 .vs-bk__syn button:focus-visible,
 .vs-bk__bok button:focus-visible {
 	outline: 2px solid var(--bk-accent);
@@ -221,8 +147,33 @@
 	filter: saturate(0.85);
 }
 
-.vs-bk__ekkert {
-	color: var(--bk-muted);
+/* A lot: the covers of its first three books, fanned. */
+.vs-bk__bok.is-pakki .vs-bk__kapa {
+	position: relative;
+}
+
+.vs-bk__bok.is-pakki .vs-bk__kapa img {
+	position: absolute;
+	bottom: 0;
+	max-height: 86%;
+}
+
+.vs-bk__bok.is-pakki .vs-bk__kapa img:nth-child(1) {
+	transform: translateX(11%) rotate(5deg);
+}
+
+.vs-bk__bok.is-pakki .vs-bk__kapa img:nth-child(2) {
+	transform: translateX(-11%) rotate(-5deg);
+}
+
+.vs-bk__bok.is-pakki button:hover .vs-bk__kapa img:nth-child(1),
+.vs-bk__bok.is-pakki button:focus-visible .vs-bk__kapa img:nth-child(1) {
+	transform: translateX(15%) rotate(7deg);
+}
+
+.vs-bk__bok.is-pakki button:hover .vs-bk__kapa img:nth-child(2),
+.vs-bk__bok.is-pakki button:focus-visible .vs-bk__kapa img:nth-child(2) {
+	transform: translateX(-15%) rotate(-7deg);
 }
 
 /* The viewer. */
@@ -339,6 +290,66 @@ html.vs-bk-opin {
 	display: block;
 	height: 64px;
 	width: auto;
+}
+
+.vs-bk-skodari__baekur {
+	display: flex;
+	gap: 6px;
+	margin: 0;
+	padding: 0 0 4px;
+	overflow-x: auto;
+	list-style: none;
+}
+
+.vs-bk-skodari__baekur button {
+	display: block;
+	padding: 0;
+	background: none;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.vs-bk-skodari__baekur button[aria-current="true"] {
+	border-color: var(--bk-accent);
+	opacity: 1;
+}
+
+.vs-bk-skodari__baekur img {
+	display: block;
+	height: 72px;
+	width: auto;
+}
+
+.vs-bk-skodari__innihald ol {
+	margin: 4px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vs-bk-skodari__innihald button {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 5px 8px;
+	font: inherit;
+	font-size: 0.875rem;
+	text-align: left;
+	color: var(--bk-ink);
+	background: none;
+	border: 0;
+	border-left: 3px solid transparent;
+	cursor: pointer;
+}
+
+.vs-bk-skodari__innihald button span {
+	color: var(--bk-muted);
+}
+
+.vs-bk-skodari__innihald button[aria-current="true"] {
+	background: var(--bk-surface);
+	border-left-color: var(--bk-accent);
 }
 
 .vs-bk-skodari__upplysingar {

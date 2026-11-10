@@ -1,9 +1,7 @@
 /**
- * The catalogue's pure helpers: prices, filters, search and the address of an open book. No DOM here, so they are
- * tested in node (tests/js/baekur.test.js).
+ * The catalogue's pure helpers: prices, the list and its filter, and the address of an open book. No DOM here, so
+ * they are tested in node (tests/js/baekur.test.js).
  */
-
-import { fold } from '../../../shared/js/search.js';
 
 /** 12800 -> "12.800 kr." */
 export const kr = ( verd ) => `${ String( Math.round( verd ) ).replace( /\B(?=(\d{3})+(?!\d))/g, '.' ) } kr.`;
@@ -27,18 +25,21 @@ export function fjoldi( baekur ) {
 	return out;
 }
 
+/** The books (or lots) of one status, or all of them for ''. */
+export const synilegar = ( items, stada = '' ) => ( stada ? items.filter( ( b ) => b.stada === stada ) : items );
+
 /**
- * The books to show: of one status ('' for all), and matching every word of the search in the name, the contents or
- * the ISBN, Icelandic-aware ("gloðmandra" and "glodmandra" both find Glóðmandra).
+ * What a series' list shows: its lots when it is sold in lots (each with its books, and the covers of the first three
+ * for its card), else its books. Same as Block::items() in PHP.
  */
-export function synilegar( baekur, { stada = '', leit = '' } = {} ) {
-	const words = fold( leit ).split( /\s+/ ).filter( Boolean );
-	return baekur.filter( ( b ) => {
-		if ( stada && b.stada !== stada ) {
-			return false;
-		}
-		const text = fold( `${ b.heiti } ${ b.efni ?? '' } ${ b.isbn ?? '' }` );
-		return words.every( ( w ) => text.includes( w ) );
+export function atridi( rod ) {
+	if ( ! rod.pakkar?.length ) {
+		return rod.baekur;
+	}
+	const byId = Object.fromEntries( rod.baekur.map( ( b ) => [ b.id, b ] ) );
+	return rod.pakkar.map( ( p ) => {
+		const baekur = p.baekur.map( ( id ) => byId[ id ] ).filter( Boolean );
+		return { ...p, baekur, kapa: baekur[ 0 ]?.kapa, kapur: baekur.slice( 0, 3 ).map( ( b ) => b.kapa ) };
 	} );
 }
 
@@ -47,15 +48,10 @@ export function myndir( bok ) {
 	return [ { mynd: bok.kapa, heiti: bok.sidur ? 'Forsíða' : 'Mynd 1' }, ...( bok.synishorn ?? [] ).map( ( s, i ) => ( { mynd: s.mynd, heiti: s.sida ? `Bls. ${ s.sida }` : `Mynd ${ i + 2 }` } ) ) ];
 }
 
-/** The open book in an address's hash ("#bok=lestrarbok-3"): { rod, bok } ids, or null. */
-export function urHash( hash, radir ) {
+/** The id of this list's item (a book or a lot) in an address's hash ("#bok=lestrarbok-3"), or null. */
+export function urHash( hash, items ) {
 	const id = decodeURIComponent( String( hash ?? '' ).match( /(?:^#|&)bok=([^&]+)/ )?.[ 1 ] ?? '' );
-	for ( const r of radir ) {
-		if ( r.baekur.some( ( b ) => b.id === id ) ) {
-			return { rod: r.id, bok: id };
-		}
-	}
-	return null;
+	return items.some( ( b ) => b.id === id ) ? id : null;
 }
 
 /**
