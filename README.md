@@ -90,6 +90,7 @@ products through `curl`.
   shipping address, Dropp acknowledgement, billing details and notes.
 - **Pantanir in wp-admin** lists orders and lets editors view, update their status, delete or download all orders
   as a UTF-8 CSV. Deletion removes the order details and reserves its number so it cannot be issued again.
+- Both status forms offer an optional email to the customer when the order moves to a different status.
 - **Printer access** uses a published WordPress page containing the shortcode `[pantanir_prentsmidju]`. Create a
   WordPress user for each printer staff member and assign **Prentsmiðja (Pantanir)**. They can sign in on the page,
   view orders and mark new or invoiced orders **Afgreidd**. Existing order editors can use the same page.
@@ -100,8 +101,9 @@ products through `curl`.
 - Before replacing the old form, check its latest order number and set **Lægsta pöntunarnúmer** to the next number.
   Enter the existing staff and printer addresses and check the confirmation setting. Forminator submissions stay
   in their original tables. The new list starts with orders placed through the new form.
-- Edit `data/pontun.json` to maintain the product choices and Dropp copy. The same choices drive the form
-  and server validation. Orders are stored in the site's `{prefix}vs_pantanir` table.
+- Edit `data/pontun.json` to maintain the product choices, cover thumbnails and Dropp copy. Covers use the
+  existing catalogue assets. The same choices drive the form and server validation. Orders are stored in the
+  site's `{prefix}vs_pantanir` table.
 
 ## Data from vasaskrimsli-dict
 

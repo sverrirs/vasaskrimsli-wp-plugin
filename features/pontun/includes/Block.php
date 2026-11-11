@@ -47,6 +47,7 @@ final class Block {
 			'maxFjoldi' => Pontun::MAX_FJOLDI,
 			'maxLinur'  => Pontun::MAX_LINUR,
 			'flokkar'   => self::config()['flokkar'] ?? array(),
+			'kapaslod'  => VASASKRIMSLI_URL . 'features/baekur/assets/',
 			'sending'   => self::config()['sending'] ?? array(),
 		);
 		return '<div class="vs-pontun">'

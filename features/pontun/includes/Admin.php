@@ -33,8 +33,13 @@ final class Admin {
 			wp_die( 'Ógild beiðni.', '', array( 'response' => 405 ) );
 		}
 		if ( 'stada' === $do ) {
-			Store::set_status( $numer, sanitize_key( $_POST['stada'] ?? '' ) );
-			wp_safe_redirect( self::url( array( 'numer' => $numer, 'skilabod' => 'stada' ) ) );
+			$status  = sanitize_key( $_POST['stada'] ?? '' );
+			$changed = Store::set_status( $numer, $status );
+			if ( false === $changed ) {
+				wp_die( 'Ekki tókst að vista stöðuna.', '', array( 'response' => 500 ) );
+			}
+			$result = StatusChange::finish( $numer, $status, $changed, '1' === ( $_POST['senda_stodu'] ?? '' ) );
+			wp_safe_redirect( self::url( array( 'numer' => $numer, 'skilabod' => $result ) ), 303 );
 		} elseif ( 'eyda' === $do ) {
 			Store::delete( $numer );
 			wp_safe_redirect( self::url( array( 'skilabod' => 'eytt' ) ) );
@@ -84,10 +89,16 @@ final class Admin {
 
 	public static function render(): void {
 		Store::install();
-		$msg = array( 'stada' => 'Staðan var uppfærð.', 'eytt' => 'Pöntuninni var eytt.', 'stillingar' => 'Stillingarnar voru vistaðar.' )[ sanitize_key( $_GET['skilabod'] ?? '' ) ] ?? '';
+		$key = sanitize_key( $_GET['skilabod'] ?? '' );
+		$msg = ( StatusChange::MESSAGES + array( 'eytt' => 'Pöntuninni var eytt.', 'stillingar' => 'Stillingarnar voru vistaðar.' ) )[ $key ] ?? '';
 		echo '<div class="wrap"><h1 class="wp-heading-inline">Pantanir</h1>';
 		if ( $msg ) {
-			echo '<div class="notice notice-success"><p>' . esc_html( $msg ) . '</p></div>';
+			$type = match ( $key ) {
+				'stada_postvilla', 'stada_netfangvantar' => 'warning',
+				'stada_obreytt' => 'info',
+				default => 'success',
+			};
+			echo '<div class="notice notice-' . esc_attr( $type ) . '"><p>' . esc_html( $msg ) . '</p></div>';
 		}
 		$numer = (int) ( $_GET['numer'] ?? 0 );
 		$order = $numer ? Store::get( $numer ) : null;
@@ -104,7 +115,13 @@ final class Admin {
 		echo '<h2>Pöntun nr. ' . (int) $o['numer'] . '</h2>';
 		echo '<pre style="white-space:pre-wrap;font-size:14px;background:#fff;padding:16px;border:1px solid #dcdcde;max-width:760px">'
 			. esc_html( Pontun::texti( $o['numer'], mysql2date( 'j.n.Y H:i', $o['stofnad'] ), $o['gogn'] ) ) . '</pre>';
-		echo self::form( 'stada', '<input type="hidden" name="numer" value="' . (int) $o['numer'] . '"><p><label>Staða ' . self::status_select( $o ) . '</label> <button class="button button-primary">Vista stöðu</button></p>' );
+		echo self::form(
+			'stada',
+			'<input type="hidden" name="numer" value="' . (int) $o['numer'] . '">'
+			. '<p><label>Staða ' . self::status_select( $o ) . '</label></p>'
+			. StatusChange::checkbox( $o )
+			. '<p><button class="button button-primary">Vista stöðu</button></p>'
+		);
 		echo self::form(
 			'eyda',
 			'<input type="hidden" name="numer" value="' . (int) $o['numer'] . '"><p><button class="button button-link-delete">Eyða pöntuninni</button></p>',

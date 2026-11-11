@@ -92,18 +92,27 @@ final class Store {
 		return $row ? self::decode( $row ) : null;
 	}
 
-	public static function set_status( int $numer, string $stada ): void {
-		global $wpdb;
-		if ( isset( self::STADA[ $stada ] ) ) {
-			$wpdb->query( $wpdb->prepare( 'UPDATE ' . self::table() . ' SET stada = %s WHERE numer = %d AND stada <> %s', $stada, $numer, self::DELETED ) );
+	/** Returns the number of orders changed, or false on a database error. */
+	public static function set_status( int $numer, string $stada ): int|false {
+		if ( ! isset( self::STADA[ $stada ] ) ) {
+			return 0;
 		}
+		global $wpdb;
+		// Exclude unchanged rows in SQL so simultaneous submissions cannot both send a notification.
+		return $wpdb->query( $wpdb->prepare(
+			'UPDATE ' . self::table() . ' SET stada = %s WHERE numer = %d AND stada NOT IN (%s, %s)',
+			$stada,
+			$numer,
+			self::DELETED,
+			$stada
+		) );
 	}
 
 	/** The printer can complete open orders. A concurrent cancellation or deletion takes precedence. */
-	public static function complete( int $numer ): bool {
+	public static function complete( int $numer ): int|false {
 		global $wpdb;
 		$placeholders = implode( ', ', array_fill( 0, count( self::OPEN_STATUSES ), '%s' ) );
-		return false !== $wpdb->query( $wpdb->prepare(
+		return $wpdb->query( $wpdb->prepare(
 			'UPDATE ' . self::table() . " SET stada = %s WHERE numer = %d AND stada IN ({$placeholders})",
 			'afgreidd',
 			$numer,

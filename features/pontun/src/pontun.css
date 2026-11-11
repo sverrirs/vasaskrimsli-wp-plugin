@@ -91,6 +91,19 @@
 	border-block-end: 1px solid var(--vs-pontun-line);
 }
 
+.vs-pontun__flokksheiti {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.vs-pontun__flokksheiti img {
+	flex: none;
+	width: 64px;
+	height: 72px;
+	object-fit: contain;
+}
+
 .vs-pontun__lina {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) auto;

@@ -89,10 +89,12 @@ final class Portal {
 			wp_die( 'Ógild beiðni.', '', array( 'response' => 400 ) );
 		}
 		check_admin_referer( self::nonce_action( $page_id, $numer ) );
-		if ( ! Store::complete( $numer ) ) {
+		$changed = Store::complete( $numer );
+		if ( false === $changed ) {
 			wp_die( 'Ekki tókst að vista stöðuna.', '', array( 'response' => 500 ) );
 		}
-		wp_safe_redirect( self::url( $page_id, $numer ), 303 );
+		$result = StatusChange::finish( $numer, 'afgreidd', $changed, '1' === ( $_POST['senda_stodu'] ?? '' ) );
+		wp_safe_redirect( add_query_arg( 'skilabod', $result, self::url( $page_id, $numer ) ), 303 );
 		exit;
 	}
 
@@ -150,8 +152,12 @@ final class Portal {
 		if ( ! $order ) {
 			return $html . '<p>Pöntunin fannst ekki.</p>';
 		}
-		$html .= '<h2>Pöntun nr. ' . $numer . '</h2>'
-			. '<p>Staða: <strong>' . esc_html( Store::STADA[ $order['stada'] ] ?? $order['stada'] ) . '</strong></p>'
+		$html .= '<h2>Pöntun nr. ' . $numer . '</h2>';
+		$message = StatusChange::MESSAGES[ sanitize_key( $_GET['skilabod'] ?? '' ) ] ?? '';
+		if ( $message ) {
+			$html .= '<p role="status">' . esc_html( $message ) . '</p>';
+		}
+		$html .= '<p>Staða: <strong>' . esc_html( Store::STADA[ $order['stada'] ] ?? $order['stada'] ) . '</strong></p>'
 			. '<pre class="vs-prent__pontun">' . esc_html( Pontun::texti( $numer, mysql2date( 'j.n.Y H:i', $order['stofnad'] ), $order['gogn'] ) ) . '</pre>';
 		if ( in_array( $order['stada'], Store::OPEN_STATUSES, true ) ) {
 			$html .= '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">'
@@ -159,6 +165,7 @@ final class Portal {
 				. '<input type="hidden" name="sida" value="' . self::$page_id . '">'
 				. '<input type="hidden" name="pontun" value="' . $numer . '">'
 				. wp_nonce_field( self::nonce_action( self::$page_id, $numer ), '_wpnonce', false, false )
+				. StatusChange::checkbox( $order )
 				. '<button class="wp-element-button" type="submit">Merkja sem afgreidda</button></form>';
 		}
 		return $html;

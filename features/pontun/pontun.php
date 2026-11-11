@@ -8,6 +8,7 @@ defined( 'ABSPATH' ) || exit;
 
 require __DIR__ . '/includes/Pontun.php';
 require __DIR__ . '/includes/Store.php';
+require __DIR__ . '/includes/StatusChange.php';
 require __DIR__ . '/includes/Rest.php';
 require __DIR__ . '/includes/Block.php';
 require __DIR__ . '/includes/Admin.php';

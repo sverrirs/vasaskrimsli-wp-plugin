@@ -244,7 +244,12 @@ export default function Pontun( { data } ) {
 						const vorur = linur.filter( ( lina ) => lina.flokkur === flokkur.id );
 						return (
 							<div className="vs-pontun__flokkur" key={ flokkur.id }>
-								<h3>{ flokkur.heiti }</h3>
+								<h3 className="vs-pontun__flokksheiti">
+									{ data.kapaslod && flokkur.kapa && (
+										<img src={ data.kapaslod + flokkur.kapa } alt="" width="64" height="72" loading="lazy" decoding="async" />
+									) }
+									<span>{ flokkur.heiti }</span>
+								</h3>
 								{ flokkur.skyring && <p className="vs-pontun__hjalp">{ flokkur.skyring }</p> }
 								{ vorur.map( ( lina, index ) => (
 									<Vorulina
