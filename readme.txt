@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,12 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.6.2 =
+* Bókablokkirnar heita nú „Verslun: …“ svo auðvelt er að finna þær. Veggspjöld og smáspjöld eru hvort í sinni blokk; settu þær tvær í stað blokkarinnar „Veggspjöld og smáspjöld“ ef hún er komin á síðu.
+* Stillingar á hverri blokk: jöfnun til vinstri, á miðju eða til hægri, láréttar raðir eða lóðréttur listi, bil á milli og stærð mynda og texta (lítil, miðlungs, stór).
+* Staðan beygist eftir því sem er til sölu: bók er „Fáanleg“, bækur í pakka „Fáanlegar“ og bindi, hefti og spjöld „Fáanlegt“.
+* Bókaskoðarinn: síðurnar sem sýndar eru eru ekki þær sömu í öllum bókum og síður með texta einum eru sjaldnar valdar. Nánari upplýsingar um bókina eru í samanbrjótanlegum hluta undir myndunum, og örvarnar fletta í gegnum allar bækur pakkans.
 
 = 1.6.1 =
 * Bókalistar: ein blokk fyrir hvern flokk, með bókalistanum og síu (allar, fáanlegar, væntanlegar) og engu öðru. Fyrirsagnir og texta um bækurnar skrifar þú sjálf(ur) á síðuna. Blokkin „Verslun: allar bækur“ og leitarreiturinn eru tekin út; settu blokkir flokkanna í stað Verslunarblokkarinnar ef hún er komin á síðu.
