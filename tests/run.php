@@ -345,6 +345,12 @@ check( 'Verslun::parse: not a product (an error page, nothing) is null', array( 
 $rod = array( 'baekur' => array( array( 'id' => 'b1', 'kapa' => 'k1.webp' ), array( 'id' => 'b2', 'kapa' => 'k2.webp' ) ), 'pakkar' => array( array( 'id' => 'p1', 'baekur' => array( 'b2', 'b1' ) ) ) );
 check( "Block::items: a series sold in lots lists its lots, each with its first book's cover", \Vasaskrimsli\Baekur\Block::items( $rod ), array( array( 'id' => 'p1', 'baekur' => array( 'b2', 'b1' ), 'kapa' => 'k2.webp' ) ) );
 check( 'Block::items: without lots, the books', \Vasaskrimsli\Baekur\Block::items( array( 'baekur' => $rod['baekur'] ) ), $rod['baekur'] );
+check( 'Block::settings: the defaults, and unknown values fall back to them', array( \Vasaskrimsli\Baekur\Block::settings( array() ), \Vasaskrimsli\Baekur\Block::settings( array( 'jofnun' => 'justify', 'stefna' => 'x', 'bil' => 999, 'staerd' => 'risa' ) ) ), array(
+	array( 'jofnun' => 'left', 'stefna' => 'larett', 'bil' => 24, 'staerd' => 'litil' ),
+	array( 'jofnun' => 'left', 'stefna' => 'larett', 'bil' => 120, 'staerd' => 'litil' ),
+) );
+check( 'Block::settings: what the editor sets is kept', \Vasaskrimsli\Baekur\Block::settings( array( 'jofnun' => 'center', 'stefna' => 'lodrett', 'bil' => 40, 'staerd' => 'stor' ) ), array( 'jofnun' => 'center', 'stefna' => 'lodrett', 'bil' => 40, 'staerd' => 'stor' ) );
+check( 'Block::ORD: books, books sold in lots and posters agree with what they are', array_map( static fn( $k ) => \Vasaskrimsli\Baekur\Block::ORD[ $k ]['faanleg'], array( 'kvk', 'ft', 'hk' ) ), array( 'Fáanleg', 'Fáanlegar', 'Fáanlegt' ) );
 check( 'Verslun::verd: one price, "frá" the lowest, nothing without prices', array( Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 6900 ) ) ) ), Verslun::verd( array( 'afbrigdi' => array( array( 'verd' => 3900 ), array( 'verd' => 2900 ) ) ) ), Verslun::verd( null ) ), array( '6.900 kr.', 'frá 2.900 kr.', '' ) );
 
 // --- data version 5 and up: later decisions change a field only where the site still shows the released text

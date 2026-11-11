@@ -32,9 +32,9 @@ export default function Baekur( { data } ) {
 			{ count.faanleg > 0 && count.vaentanleg > 0 && (
 				<div className="vs-bk__syn" role="group" aria-label="Sýna">
 					{ [
-						[ '', 'Allar', count.allar ],
-						[ 'faanleg', 'Fáanlegar', count.faanleg ],
-						[ 'vaentanleg', 'Væntanlegar', count.vaentanleg ],
+						[ '', data.ord.oll, count.allar ],
+						[ 'faanleg', data.ord.faanlegar, count.faanleg ],
+						[ 'vaentanleg', data.ord.vaentanlegar, count.vaentanleg ],
 					].map( ( [ key, label, n ] ) => (
 						<button key={ key } type="button" aria-pressed={ stada === key } onClick={ () => setStada( key ) }>
 							{ label } <span>{ n }</span>
@@ -56,9 +56,11 @@ export default function Baekur( { data } ) {
 									<img src={ data.grunnur + b.kapa } alt="" loading="lazy" decoding="async" />
 								) }
 							</span>
-							<strong>{ b.heiti }</strong>
-							{ b.efni && <span className="vs-bk__efni">{ b.efni }</span> }
-							<Stada bok={ b } data={ data } />
+							<span className="vs-bk__texti">
+								<strong>{ b.heiti }</strong>
+								{ b.efni && <span className="vs-bk__efni">{ b.efni }</span> }
+								<Stada bok={ b } data={ data } />
+							</span>
 						</button>
 					</li>
 				) ) }
@@ -72,7 +74,7 @@ export function Stada( { bok, data } ) {
 	const price = bok.stada === 'faanleg' ? verd( data.vorur[ bok.vara ] ) : '';
 	return (
 		<span className={ `vs-bk__stada is-${ bok.stada }` }>
-			{ data.stada[ bok.stada ] }
+			{ data.ord[ bok.stada ] }
 			{ price && `, ${ price }` }
 		</span>
 	);

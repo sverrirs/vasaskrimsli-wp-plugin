@@ -1,5 +1,5 @@
 {
- "_um": "Bókaskráin: frumgögn sem eru lagfærð í höndunum. migration/baekur.py býr til features/baekur/data/baekur.json og myndirnar úr þessu og PDF-skjölum bókanna. stada: faanleg (til sölu, vara er slóð vörunnar í vefversluninni), vaentanleg eða falin. Röð með pakkar (bækur seldar saman) sýnir pakkana; baekur eru númer bókanna í pakkanum.",
+ "_um": "Bókaskráin: frumgögn sem eru lagfærð í höndunum. migration/baekur.py býr til features/baekur/data/baekur.json og myndirnar úr þessu og PDF-skjölum bókanna. stada: faanleg (til sölu, vara er slóð vörunnar í vefversluninni), vaentanleg eða falin. Röð með pakkar (bækur seldar saman) sýnir pakkana; baekur eru númer bókanna í pakkanum. kyn: kyn þess sem listinn sýnir (kvk bók, ft bækur í pakka, hk bindi, hefti eða spjald), svo stöðuorðin beygist rétt: Fáanleg, Fáanlegar, Fáanlegt.",
  "verslun": {
   "heiti": "Vefverslun Háskólaprents",
   "slod": "https://www.haskolaprent.is",
@@ -245,6 +245,7 @@
    "id": "ordsifjaskra",
    "akkeri": "ordsifjaskra",
    "heiti": "Orðsifjaskrá Vasaskrímslanna",
+   "kyn": "hk",
    "heimild": {
     "repo": "vasaskrimsli-ordsifjaskra",
     "bok": "build/Ordsifjaskra-{n}-HQ.pdf",
@@ -281,6 +282,7 @@
    "id": "storubaekur",
    "akkeri": "baekur",
    "heiti": "Vasaskrímslabækurnar",
+   "kyn": "kvk",
    "heimild": {
     "repo": "vasaskrimsli-storubaekur",
     "bok": "build/baekur/bok-{n}-HQ.pdf",
@@ -367,6 +369,7 @@
    "id": "lestrarbaekur",
    "akkeri": "lestrarbaekur",
    "heiti": "Lestrarbækurnar",
+   "kyn": "ft",
    "heimild": {
     "repo": "vasaskrimsli-lestrarbaekur",
     "bok": "build/baekur/lestrarbok-{nn}-LQ.pdf",
@@ -780,6 +783,7 @@
    "id": "audlesid",
    "akkeri": "audlesid",
    "heiti": "Auðlesið",
+   "kyn": "ft",
    "heimild": {
     "repo": "vasaskrimsli-audlesid",
     "bok": "build/baekur/Audlesid-{nn}-{stafur}-LQ.pdf",
@@ -1103,6 +1107,7 @@
    "id": "verkefnahefti",
    "akkeri": "verkefnahefti",
    "heiti": "Verkefnahefti",
+   "kyn": "hk",
    "heimild": {
     "repo": "vasaskrimsli-excerises",
     "bok": "build/hefti-{nn}-nemandi.pdf"
@@ -1191,9 +1196,10 @@
    ]
   },
   {
-   "id": "spjold",
+   "id": "veggspjold",
    "akkeri": "veggspjold",
-   "heiti": "Veggspjöld og smáspjöld",
+   "heiti": "Veggspjöld",
+   "kyn": "hk",
    "baekur": [
     {
      "id": "veggspjald-1",
@@ -1208,10 +1214,18 @@
       "https://vasaskrimsli.is/wp-content/uploads/2024/07/poster-wall-01-1-1024x1024.jpg",
       "https://vasaskrimsli.is/wp-content/uploads/2024/07/poster-wall-04-1024x1024.jpg"
      ]
-    },
+    }
+   ]
+  },
+  {
+   "id": "smaspjold",
+   "akkeri": "smaspjold",
+   "heiti": "Smáspjöld",
+   "kyn": "hk",
+   "baekur": [
     {
      "id": "smaspjald-1",
-     "n": 2,
+     "n": 1,
      "heiti": "Smáspjald: fyrsta kynslóð",
      "efni": "Öll 151 skrímsli fyrstu kynslóðar á plöstuðu A4-spjaldi.",
      "isbn": "",

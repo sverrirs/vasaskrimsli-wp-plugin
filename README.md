@@ -44,10 +44,16 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   `src/view/safn.js`), the same calculation as the printed books.
 
 ### Bókaskrá: the book lists (`features/baekur/`)
-- **One block per series** (or `[baekur rod="lestrarbaekur"]`): Orðsifjaskrá Vasaskrímslanna, Vasaskrímslabækurnar,
-  Lestrarbækurnar, Auðlesið, Verkefnahefti, Veggspjöld og smáspjöld. A block is only the series' list and its filter
-  (all, on sale, coming): the headings and texts about the books are written on the WordPress page around it, so they
-  can be edited without a new plugin version. Verkefnahefti go on a page of their own.
+- **One block per series**, all named "Verslun: …" (or `[baekur rod="lestrarbaekur"]`): Orðsifjaskrá Vasaskrímslanna,
+  Vasaskrímslabækurnar, Lestrarbækurnar, Auðlesið, Verkefnahefti, Veggspjöld, Smáspjöld. A block is only the series'
+  list and its filter (all, on sale, coming): the headings and texts about the books are written on the WordPress page
+  around it, so they can be edited without a new plugin version. Verkefnahefti go on a page of their own.
+- **Each block's settings** (toolbar and the "Útlit listans" panel): alignment left, center or right; horizontal rows
+  or a vertical list; the gap between items (0 to 120 px, 24 by default); the size of the pictures and text (small,
+  medium, large). The shortcode takes the same: `jofnun`, `stefna` (`larett`, `lodrett`), `bil`, `staerd`
+  (`litil`, `midlungs`, `stor`).
+- **Status words** agree with what a list shows (`kyn` of the series): books "Fáanleg", lots of books "Fáanlegar",
+  volumes, booklets and posters "Fáanlegt" (`Block::ORD`).
 - **Lots:** Lestrarbækurnar are sold ten to a lot (1 to 10, 11 to 20, ...) and Auðlesið in three (A to H, I to R and
   S to Ö: 10, 11 and 11 books), so their lists show the lots; a lot's viewer lists its books and shows each one.
 - A cover opens the viewer: the cover and three pages (in a lot the arrows go on through every book, and round), the

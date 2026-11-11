@@ -53,13 +53,94 @@
 	outline-offset: 2px;
 }
 
+/* The block's settings: size (small, medium, large), gap, alignment and direction. */
+.vs-baekur {
+	--bk-breidd: 150px;
+	--bk-titill: 1rem;
+	--bk-texti: 0.875rem;
+}
+
+.vs-baekur.is-midlungs {
+	--bk-breidd: 200px;
+	--bk-titill: 1.125rem;
+	--bk-texti: 0.9375rem;
+}
+
+.vs-baekur.is-stor {
+	--bk-breidd: 260px;
+	--bk-titill: 1.3rem;
+	--bk-texti: 1.0625rem;
+}
+
 .vs-bk__grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	gap: 28px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--bk-bil, 24px);
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+
+.vs-bk__grid > li {
+	width: var(--bk-breidd);
+	max-width: 100%;
+}
+
+.vs-baekur.is-center .vs-bk__grid {
+	justify-content: center;
+}
+
+.vs-baekur.is-right .vs-bk__grid {
+	justify-content: flex-end;
+}
+
+.vs-baekur.is-center .vs-bk__syn {
+	display: flex;
+	width: fit-content;
+	margin-inline: auto;
+}
+
+.vs-baekur.is-right .vs-bk__syn {
+	display: flex;
+	width: fit-content;
+	margin-left: auto;
+}
+
+/* A vertical list: one item to a line, the cover beside its text. */
+.vs-baekur.is-lodrett .vs-bk__grid {
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.vs-baekur.is-lodrett.is-center .vs-bk__grid {
+	align-items: center;
+}
+
+.vs-baekur.is-lodrett.is-right .vs-bk__grid {
+	align-items: flex-end;
+}
+
+.vs-baekur.is-lodrett .vs-bk__grid > li {
+	width: min(100%, calc(var(--bk-breidd) * 3.2));
+}
+
+.vs-baekur.is-lodrett .vs-bk__bok button {
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+}
+
+.vs-baekur.is-lodrett .vs-bk__kapa {
+	flex: none;
+	width: var(--bk-breidd);
+	margin-bottom: 0;
+}
+
+.vs-bk__texti {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
 }
 
 .vs-bk__bok button,
@@ -104,7 +185,7 @@
 }
 
 .vs-bk__bok strong {
-	font-size: 1rem;
+	font-size: var(--bk-titill);
 	line-height: 1.25;
 }
 
@@ -113,7 +194,7 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
-	font-size: 0.875rem;
+	font-size: var(--bk-texti);
 	line-height: 1.35;
 	color: var(--bk-muted);
 }
@@ -122,7 +203,7 @@
 	display: inline-flex;
 	gap: 6px;
 	align-items: center;
-	font-size: 0.875rem;
+	font-size: var(--bk-texti);
 	font-weight: 600;
 	color: var(--bk-muted);
 }
@@ -521,9 +602,12 @@ html.vs-bk-opin {
 		max-height: 60vh;
 	}
 
-	.vs-bk__grid {
-		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-		gap: 20px 14px;
+	.vs-baekur.is-stor {
+		--bk-breidd: 200px;
+	}
+
+	.vs-baekur.is-lodrett .vs-bk__kapa {
+		width: min(var(--bk-breidd), 40%);
 	}
 }
 

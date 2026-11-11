@@ -178,7 +178,7 @@ export default function Skodari( { items, id, data, onOpen } ) {
 							</div>
 						) : (
 							<p className="vs-bk-skodari__vaentanleg">
-								{ lot ? 'Þessi pakki er væntanlegur og fæst ekki enn.' : 'Þessi bók er væntanleg og fæst ekki enn.' }
+								{ data.ord.kemur }
 								{ data.verslun?.pontun && (
 									<>
 										{ ' ' }Skólar og bókasöfn geta sent fyrirspurn með <a href={ data.verslun.pontun }>pöntunarforminu</a>.
