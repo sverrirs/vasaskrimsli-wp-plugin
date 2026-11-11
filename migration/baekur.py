@@ -69,13 +69,30 @@ def render(page, clip, width, path, quality, source):
     return save(page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=clip), path, width, quality)
 
 
-def picks(count, want):
-    """Interior pages to show: evenly spread, after the title pages and before the last."""
+def colour(page):
+    """How much of the page is in colour (0 to 1), from a small rendering: a picture page scores high, a page of text
+    (title page, imprint, notes) close to 0."""
+    pix = page.get_pixmap(matrix=fitz.Matrix(0.15, 0.15), colorspace=fitz.csRGB, alpha=False)
+    s = pix.samples
+    return sum(1 for i in range(0, len(s), 3) if max(s[i:i + 3]) - min(s[i:i + 3]) > 40) / max(1, len(s) // 3)
+
+
+def picks(doc, want, seed):
+    """Interior pages to show: one from each of `want` equal stretches of the book (after the title pages, before the
+    last), the most colourful of a few pages the book's number (`seed`) points at in that stretch, so books of the same
+    length do not all show the same page numbers and pages of plain text are passed over."""
+    count = doc.page_count
     first, last = min(3, count), max(min(3, count), count - 1)
-    if last - first + 1 <= want:
-        return list(range(first, last + 1))
-    step = (last - first) / (want - 1)
-    return sorted({round(first + i * step) for i in range(want)})
+    pages = list(range(first, last + 1))
+    if len(pages) <= want:
+        return pages
+    out = []
+    for i in range(want):
+        stretch = pages[len(pages) * i // want: len(pages) * (i + 1) // want]
+        start = (seed * 37 + i * 11) % len(stretch)
+        tried = [stretch[(start + k) % len(stretch)] for k in range(max(1, min(4, len(stretch) - 1)))]
+        out.append(max(tried, key=lambda n: colour(doc[n - 1])))
+    return sorted(out)
 
 
 def fill(pattern, book):
@@ -110,7 +127,7 @@ def from_pdfs(rod, book, used):
         out["kapa"] = render(doc[0], trim, COVER_PX, base.with_name(f"{book['id']}-kapa.webp"), 80, interior)
     used.add(out["kapa"])
     out["synishorn"] = []
-    for n in book.get("synishorn") or picks(doc.page_count, SAMPLES):
+    for n in book.get("synishorn") or picks(doc, SAMPLES, book["n"]):
         page = doc[n - 1]
         rel = render(page, page.trimbox, PAGE_PX, base.with_name(f"{book['id']}-s{n}.webp"), 72, interior)
         used.add(rel)

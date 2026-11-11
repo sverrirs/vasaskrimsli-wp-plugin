@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
-import { atridi, fjoldi, hnappastillingar, kr, myndir, synilegar, urHash, verd } from '../../features/baekur/src/leit.js';
+import { atridi, fjoldi, hnappastillingar, kr, myndir, skref, synilegar, urHash, verd } from '../../features/baekur/src/leit.js';
 
 const BAEKUR = [
 	{ id: 'lestrarbok-2', heiti: 'Lestrarbók 2', efni: 'Glóðmandra, Kameldljón, Bálormur', isbn: '978-9935-9817-1-4', stada: 'faanleg' },
@@ -93,4 +93,14 @@ test( 'Buy Button settings: the owner\'s styles stay, the viewer hides picture a
 	assert.equal( 'option' in fromPhp, false );
 	assert.equal( 'x' in fromPhp.product.styles, false );
 	assert.deepEqual( fromPhp.product.googleFonts, [ 'Raleway' ] );
+} );
+
+test( 'the arrows go through every book of a lot and round', () => {
+	const counts = [ 4, 4, 2 ];
+	assert.deepEqual( skref( counts, [ 0, 1 ], 1 ), [ 0, 2 ] );
+	assert.deepEqual( skref( counts, [ 0, 3 ], 1 ), [ 1, 0 ] ); // Last page of a book: the next book's cover.
+	assert.deepEqual( skref( counts, [ 1, 0 ], -1 ), [ 0, 3 ] ); // Cover: the previous book's last page.
+	assert.deepEqual( skref( counts, [ 2, 1 ], 1 ), [ 0, 0 ] ); // The last book's last page: the first book's cover.
+	assert.deepEqual( skref( counts, [ 0, 0 ], -1 ), [ 2, 1 ] );
+	assert.deepEqual( skref( [ 1 ], [ 0, 0 ], 1 ), [ 0, 0 ] );
 } );

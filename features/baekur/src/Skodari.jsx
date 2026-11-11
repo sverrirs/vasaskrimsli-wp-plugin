@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { kr, myndir } from './leit.js';
+import { kr, myndir, skref } from './leit.js';
 import { Stada } from './Baekur.jsx';
 import Kaupahnappur from './Kaupahnappur.jsx';
 
 /**
  * The viewer: a dialog over the page (not a modal one: Shopify's cart must be able to open above it) with a book's
- * cover and sample pages (arrow keys or the buttons page through them), its details and where to buy it. For a lot
+ * cover and sample pages (arrow keys or the buttons page through them), its details (folded away under the pictures)
+ * and where to buy it. For a lot
  * it lists the lot's books; choosing one shows that book. The previous and next item of the list are one click away.
  */
 export default function Skodari( { items, id, data, onOpen } ) {
@@ -39,7 +40,16 @@ export default function Skodari( { items, id, data, onOpen } ) {
 		setValin( k );
 		setAt( 0 );
 	};
-	const step = ( by ) => setAt( ( a ) => ( a + by + pics.length ) % pics.length );
+	// In a lot the arrows go on through every book's pictures; for one book they go round its own.
+	const step = ( by ) => {
+		if ( ! lot ) {
+			setAt( ( a ) => ( a + by + pics.length ) % pics.length );
+			return;
+		}
+		const [ b, a ] = skref( lot.map( ( x ) => myndir( x ).length ), [ valin, at ], by );
+		setValin( b );
+		setAt( a );
+	};
 	const onKey = ( e ) => {
 		if ( e.target.closest?.( 'a, button' ) && ( e.key === 'Enter' || e.key === ' ' ) ) {
 			return;
@@ -86,7 +96,7 @@ export default function Skodari( { items, id, data, onOpen } ) {
 								{ pics[ at ].heiti } <span>({ at + 1 } af { pics.length })</span>
 							</figcaption>
 						</figure>
-						{ pics.length > 1 && (
+						{ ( lot || pics.length > 1 ) && (
 							<>
 								<button type="button" className="vs-bk-skodari__or is-fyrri" onClick={ () => step( -1 ) } aria-label="Fyrri mynd">
 									‹
@@ -105,6 +115,30 @@ export default function Skodari( { items, id, data, onOpen } ) {
 								</ol>
 							</>
 						) }
+						<details className="vs-bk-skodari__nanar">
+							<summary>Nánar um { bok.heiti }</summary>
+							{ lot && bok.efni && <p>{ bok.efni }</p> }
+							<dl>
+								{ bok.sidur > 0 && (
+									<>
+										<dt>Blaðsíður</dt>
+										<dd>{ bok.sidur }</dd>
+									</>
+								) }
+								{ bok.snid && (
+									<>
+										<dt>Brot</dt>
+										<dd>{ bok.snid }</dd>
+									</>
+								) }
+								{ bok.isbn && (
+									<>
+										<dt>ISBN</dt>
+										<dd>{ bok.isbn }</dd>
+									</>
+								) }
+							</dl>
+						</details>
 					</div>
 					<div className="vs-bk-skodari__upplysingar">
 						<p className="vs-bk-skodari__rod">{ data.rod.heiti }</p>
@@ -126,29 +160,6 @@ export default function Skodari( { items, id, data, onOpen } ) {
 								</ol>
 							</div>
 						) }
-						<dl>
-							{ bok.sidur > 0 && (
-								<>
-									<dt>Blaðsíður</dt>
-									<dd>
-										{ bok.sidur }
-										{ lot && ' í hverri bók' }
-									</dd>
-								</>
-							) }
-							{ bok.snid && (
-								<>
-									<dt>Brot</dt>
-									<dd>{ bok.snid }</dd>
-								</>
-							) }
-							{ ! lot && bok.isbn && (
-								<>
-									<dt>ISBN</dt>
-									<dd>{ bok.isbn }</dd>
-								</>
-							) }
-						</dl>
 						{ item.stada === 'faanleg' && vara ? (
 							<div className="vs-bk-skodari__kaupa">
 								<p>

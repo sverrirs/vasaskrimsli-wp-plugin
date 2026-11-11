@@ -50,7 +50,8 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   can be edited without a new plugin version. Verkefnahefti go on a page of their own.
 - **Lots:** Lestrarbækurnar are sold ten to a lot (1 to 10, 11 to 20, ...) and Auðlesið in three (A to H, I to R and
   S to Ö: 10, 11 and 11 books), so their lists show the lots; a lot's viewer lists its books and shows each one.
-- A cover opens the viewer: the cover and three pages, page count, size, ISBN, and for what is on sale the shop's own
+- A cover opens the viewer: the cover and three pages (in a lot the arrows go on through every book, and round), the
+  page count, size and ISBN folded away under the pictures, and for what is on sale the shop's own
   **Buy Button** (options, price, "Bæta í körfu", the cart on this page). The address becomes `…#bok=<id>`, so a book
   or lot can be linked to directly.
 - **No database.** The catalogue is `data/baekur.json` and the pictures in `assets/`, both made by
@@ -68,7 +69,7 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 | Put a lot on sale | the same, on the lot in the series' `pakkar` (its `baekur` are the numbers of its books) |
 | Hide a book | `"stada": "falin"` (`"vaentanleg"` shows it as coming) |
 | Add a book | add it to its series' `baekur` with a new `id` (a-z, 0-9 and dashes), after building it in its repository |
-| Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise three are picked evenly |
+| Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise three are picked, one from each third of the book, the most colourful of a few pages that differ from book to book |
 | Change the Buy Button's look | `verslun.kaupahnappur.options`: the `options` of Háskólaprent's embed code, with the owner's changes |
 | Add a series | a new entry in `radir` with a `heimild` (where its PDFs are), and a line in `Block::RADIR` for its own block |
 

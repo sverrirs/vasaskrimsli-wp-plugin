@@ -378,6 +378,22 @@ html.vs-bk-opin {
 	color: var(--bk-muted);
 }
 
+.vs-bk-skodari__nanar {
+	padding: 8px 12px;
+	font-size: 0.9375rem;
+	background: #fff;
+	border-radius: 6px;
+}
+
+.vs-bk-skodari__nanar summary {
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.vs-bk-skodari__nanar p {
+	margin: 8px 0 0;
+}
+
 .vs-bk-skodari dl {
 	display: grid;
 	grid-template-columns: auto 1fr;

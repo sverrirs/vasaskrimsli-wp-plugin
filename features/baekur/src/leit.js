@@ -79,3 +79,25 @@ export function hnappastillingar( options, onAdded ) {
 	o.product.events = { ...( o.product.events ?? {} ), addVariantToCart: () => onAdded?.() };
 	return o;
 }
+
+/**
+ * One step through every picture of a lot's books: past a book's last picture to the next book's cover, before its
+ * cover to the previous book's last picture, and round from the last book to the first.
+ * @param {number[]} counts How many pictures each book has.
+ * @param {number[]} where  [ book, picture ] now.
+ * @return {number[]} [ book, picture ] after the step.
+ */
+export function skref( counts, [ book, at ], by ) {
+	let b = book;
+	let a = at + by;
+	while ( a < 0 || a >= counts[ b ] ) {
+		if ( a < 0 ) {
+			b = ( b - 1 + counts.length ) % counts.length;
+			a += counts[ b ];
+		} else {
+			a -= counts[ b ];
+			b = ( b + 1 ) % counts.length;
+		}
+	}
+	return [ b, a ];
+}
