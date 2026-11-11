@@ -73,6 +73,7 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 					</div>
 				) ) }
 			</div>
+			<div className="vs-pontun__magn">
 			<div className="vs-pontun__reitur">
 				<label htmlFor={ id + '-fjoldi' }>Fjöldi</label>
 				<div className="vs-pontun__skref">
@@ -91,10 +92,13 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 				</div>
 			</div>
 			{ fjarlaegja && (
-				<button className="vs-pontun__textahnappur" type="button" aria-label={ 'Fjarlægja: ' + samhengi } onClick={ fjarlaegja }>
-					Fjarlægja línu
+				<button className="vs-pontun__eyda" type="button" aria-label={ 'Fjarlægja línu: ' + samhengi } title="Fjarlægja línu" onClick={ fjarlaegja }>
+					<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+						<path fill="currentColor" d="M9 3h6l1 2h4v2H4V5h4l1-2Zm-3 6h12l-1 12H7L6 9Zm4 2v8h2v-8h-2Zm4 0v8h2v-8h-2Z" />
+					</svg>
 				</button>
 			) }
+			</div>
 		</div>
 	);
 }

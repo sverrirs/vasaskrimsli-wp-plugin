@@ -138,7 +138,7 @@
 	margin: 0;
 }
 
-.vs-pontun :is(.vs-pontun__skref button, .vs-pontun__baeta, .vs-pontun__textahnappur) {
+.vs-pontun :is(.vs-pontun__skref button, .vs-pontun__baeta, .vs-pontun__eyda) {
 	min-height: 44px;
 	border: 1px solid var(--vs-pontun-line);
 	border-radius: 4px;
@@ -152,16 +152,25 @@
 	font-size: .875em;
 }
 
-.vs-pontun .vs-pontun__textahnappur {
-	grid-column: 1 / -1;
-	justify-self: start;
-	margin: -4px 0 8px;
-	padding-inline: 0;
-	border-color: transparent;
-	background: transparent;
-	font-size: .875em;
-	text-decoration: underline;
-	text-underline-offset: .16em;
+.vs-pontun__magn {
+	display: flex;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.vs-pontun button.vs-pontun__eyda {
+	display: inline-grid;
+	place-items: center;
+	flex: none;
+	width: 44px;
+	padding: 0;
+	margin-block-end: 12px; /* The same as the quantity field beside it, so the two line up. */
+	color: var(--vs-pontun-error);
+}
+
+.vs-pontun button.vs-pontun__eyda:hover {
+	border-color: var(--vs-pontun-error);
+	background: color-mix(in srgb, var(--vs-pontun-error), white 92%);
 }
 
 .vs-pontun button:disabled {

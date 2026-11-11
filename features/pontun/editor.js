@@ -6,7 +6,8 @@
 		icon: 'cart',
 		category: 'widgets',
 		keywords: [ 'verslun', 'pöntun', 'pantanir' ],
-		supports: { html: false, multiple: false },
+		supports: { html: false, multiple: false, align: [ 'wide', 'full' ] },
+		attributes: { align: { type: 'string', default: 'wide' } },
 		edit: function () {
 			return el(
 				'div',
