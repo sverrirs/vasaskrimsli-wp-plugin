@@ -17,6 +17,7 @@ final class Store {
 		'reikningur' => 'Reikningur sendur',
 		'haett'     => 'Hætt við',
 	);
+	public const OPEN_STATUSES = array( 'ny', 'reikningur' );
 	private const OPTION_DB    = 'vs_pontun_db';
 	private const DELETED      = 'eytt';
 	public const OPTION_UPPHAF = 'vs_pontun_upphaf';    // The lowest number an order may get.
@@ -96,6 +97,18 @@ final class Store {
 		if ( isset( self::STADA[ $stada ] ) ) {
 			$wpdb->query( $wpdb->prepare( 'UPDATE ' . self::table() . ' SET stada = %s WHERE numer = %d AND stada <> %s', $stada, $numer, self::DELETED ) );
 		}
+	}
+
+	/** The printer can complete open orders. A concurrent cancellation or deletion takes precedence. */
+	public static function complete( int $numer ): bool {
+		global $wpdb;
+		$placeholders = implode( ', ', array_fill( 0, count( self::OPEN_STATUSES ), '%s' ) );
+		return false !== $wpdb->query( $wpdb->prepare(
+			'UPDATE ' . self::table() . " SET stada = %s WHERE numer = %d AND stada IN ({$placeholders})",
+			'afgreidd',
+			$numer,
+			...self::OPEN_STATUSES
+		) );
 	}
 
 	public static function delete( int $numer ): void {

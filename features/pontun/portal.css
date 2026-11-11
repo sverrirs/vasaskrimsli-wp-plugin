@@ -1,0 +1,81 @@
+.vs-prent {
+	--vs-prent-line: var(--wp--preset--color--contrast-3, #96a5b2);
+	--vs-prent-muted: var(--wp--preset--color--contrast-2, #37505d);
+	--vs-prent-accent: var(--wp--preset--color--pokemon-2, #2162aa);
+}
+
+.vs-prent__innskraning :is(label, input[type="text"], input[type="password"]) {
+	display: block;
+}
+
+.vs-prent__innskraning :is(input[type="text"], input[type="password"]) {
+	box-sizing: border-box;
+	width: min(100%, 26rem);
+	min-height: 44px;
+	margin-block-start: 4px;
+	padding: 8px 12px;
+	border: 1px solid var(--vs-prent-line);
+	border-radius: 4px;
+	font: inherit;
+}
+
+.vs-prent__innskraning input[type="submit"],
+.vs-prent button {
+	min-height: 44px;
+	cursor: pointer;
+}
+
+.vs-prent__innskraning input[type="submit"] {
+	padding: 8px 16px;
+	border: 1px solid currentColor;
+	border-radius: 4px;
+	color: var(--wp--preset--color--contrast, #1c2930);
+	background: var(--wp--preset--color--pokemon-1, #ffd800);
+	font: inherit;
+	font-weight: 600;
+}
+
+.vs-prent__stjorn {
+	display: flex;
+	justify-content: flex-end;
+	margin-block-end: 16px;
+}
+
+.vs-prent .vs-prent__pantanir {
+	padding: 0;
+	list-style: none;
+	border-block-start: 1px solid var(--vs-prent-line);
+}
+
+.vs-prent__pantanir > li {
+	padding: 16px 0;
+	border-block-end: 1px solid var(--vs-prent-line);
+}
+
+.vs-prent__haus {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 4px 16px;
+	font-weight: 600;
+}
+
+.vs-prent__lysing {
+	margin: 4px 0 8px;
+	color: var(--vs-prent-muted);
+	font-size: .875em;
+}
+
+.vs-prent__pontun {
+	box-sizing: border-box;
+	padding: 16px;
+	border: 1px solid var(--vs-prent-line);
+	font: inherit;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.vs-prent :is(a, input, button):focus-visible {
+	outline: 2px solid var(--vs-prent-accent);
+	outline-offset: 3px;
+}

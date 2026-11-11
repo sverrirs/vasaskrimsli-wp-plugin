@@ -90,6 +90,11 @@ products through `curl`.
   shipping address, Dropp acknowledgement, billing details and notes.
 - **Pantanir in wp-admin** lists orders and lets editors view, update their status, delete or download all orders
   as a UTF-8 CSV. Deletion removes the order details and reserves its number so it cannot be issued again.
+- **Printer access** uses a published WordPress page containing the shortcode `[pantanir_prentsmidju]`. Create a
+  WordPress user for each printer staff member and assign **Prentsmiðja (Pantanir)**. They can sign in on the page,
+  view orders and mark new or invoiced orders **Afgreidd**. Existing order editors can use the same page.
+  CSV, deletion and settings stay in the editor's order screen.
+  The portal sends private, no-store cache headers and only displays orders after checking the signed-in user's role.
 - **Stillingar** controls the recipient addresses (one per line), the lowest order number and whether customers get
   a confirmation. Orders are saved before email is sent. Staff email uses the orderer's address for replies.
 - Before replacing the old form, check its latest order number and set **Lægsta pöntunarnúmer** to the next number.
