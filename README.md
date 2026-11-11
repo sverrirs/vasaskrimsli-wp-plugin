@@ -48,8 +48,8 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
   Lestrarbækurnar, Auðlesið, Verkefnahefti, Veggspjöld og smáspjöld. A block is only the series' list and its filter
   (all, on sale, coming): the headings and texts about the books are written on the WordPress page around it, so they
   can be edited without a new plugin version. Verkefnahefti go on a page of their own.
-- **Lots:** Lestrarbækurnar are sold ten to a lot, so their list shows the lots (1 to 10, 11 to 20, ...); a lot's viewer
-  lists its books and shows each one.
+- **Lots:** Lestrarbækurnar are sold ten to a lot (1 to 10, 11 to 20, ...) and Auðlesið in three (A to H, I to R and
+  S to Ö: 10, 11 and 11 books), so their lists show the lots; a lot's viewer lists its books and shows each one.
 - A cover opens the viewer: the cover and three pages, page count, size, ISBN, and for what is on sale the shop's own
   **Buy Button** (options, price, "Bæta í körfu", the cart on this page). The address becomes `…#bok=<id>`, so a book
   or lot can be linked to directly.

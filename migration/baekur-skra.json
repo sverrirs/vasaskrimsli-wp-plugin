@@ -1042,6 +1042,61 @@
      "isbn": "978-9935-562-92-0",
      "stada": "vaentanleg"
     }
+   ],
+   "pakkar": [
+    {
+     "id": "audlesid-1-10",
+     "heiti": "Auðlesið A til H",
+     "baekur": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-11-21",
+     "heiti": "Auðlesið I til R",
+     "baekur": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+     ],
+     "stada": "vaentanleg"
+    },
+    {
+     "id": "audlesid-22-32",
+     "heiti": "Auðlesið S til Ö",
+     "baekur": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+     ],
+     "stada": "vaentanleg"
+    }
    ]
   },
   {
