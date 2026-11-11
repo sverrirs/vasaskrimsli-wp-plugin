@@ -1,0 +1,41 @@
+{
+ "_um": "Pöntunarformið (blokkin Verslun: Pöntunarform). flokkar: vöruflokkarnir sem má panta, hver með sínum valkostum (val) og fjölda. Sami texti og var í gamla forminu. Viðtakendur pantana og næsta pöntunarnúmer eru stillt í stjórnborðinu undir Pantanir.",
+ "flokkar": [
+  {
+   "id": "storubaekur",
+   "heiti": "Vasaskrímslabækur",
+   "val": [
+    {"id": "tegund", "heiti": "Tegund bókar", "kostir": ["Kynslóð 1", "Kynslóð 2"]}
+   ]
+  },
+  {
+   "id": "lestrarbaekur",
+   "heiti": "Lestrarbækur",
+   "val": [
+    {"id": "pakki", "heiti": "Tegund bókapakka", "kostir": ["Lestrarbækur 1 til 10 (ath pakki af tíu bókum)", "Lestrarbækur 1 til 5 (ath pakki af fimm bókum)", "Lestrarbækur 6 til 10 (ath pakki af fimm bókum)"]}
+   ]
+  },
+  {
+   "id": "veggspjold",
+   "heiti": "Veggspjöld",
+   "val": [
+    {"id": "tegund", "heiti": "Tegund", "kostir": ["Kynslóð 1"]},
+    {"id": "staerd", "heiti": "Stærð", "kostir": ["A2", "A3", "30 x 40 cm", "50 x 70 cm"]},
+    {"id": "fragangur", "heiti": "Frágangur", "kostir": ["Plasthúðað", "Ekki plasthúðað"]}
+   ]
+  },
+  {
+   "id": "smaspjold",
+   "heiti": "Smáspjöld (innplöstuð A4)",
+   "skyring": "Smáspjöldin eru einungis fáanleg í A4 stærð og plasthúðuð.",
+   "val": [
+    {"id": "tegund", "heiti": "Tegund smáspjalds", "kostir": ["Kynslóð 1"]}
+   ]
+  }
+ ],
+ "sending": {
+  "heiti": "Hvernig við sendum þér vörurnar",
+  "samthykki": "Ég skil að vörurnar eru einungis sendar með Dropp",
+  "skyring": "Dropp býður upp á heimsendingu á Höfuðborgarsvæðinu og á Suðvesturhorninu (Reykjanesbæ, Sandgerði, Hveragerði, Selfossi, Þorlákshöfn, Stokkseyri, Eyrarbakka og Akranesi). Á öðrum stöðum verður sendingin þín afgreidd á afhendingarstað Dropp, sjá lista yfir afgreiðslustaði á landinu á dropp.is/kort."
+ }
+}

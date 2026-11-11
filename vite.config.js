@@ -17,6 +17,7 @@ export default defineConfig( {
 				admin: 'features/ordsifjar/src/admin/main.jsx',
 				view: 'features/ordsifjar/src/view/main.jsx',
 				baekur: 'features/baekur/src/main.jsx',
+				pontun: 'features/pontun/src/main.jsx',
 			},
 			output: {
 				entryFileNames: '[name].js',

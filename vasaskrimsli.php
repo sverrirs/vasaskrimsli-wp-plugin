@@ -23,5 +23,6 @@ require VASASKRIMSLI_DIR . 'includes/Assets.php';
 require VASASKRIMSLI_DIR . 'includes/Updater.php';
 require VASASKRIMSLI_DIR . 'features/ordsifjar/ordsifjar.php';
 require VASASKRIMSLI_DIR . 'features/baekur/baekur.php';
+require VASASKRIMSLI_DIR . 'features/pontun/pontun.php';
 
 Vasaskrimsli\Updater::register();

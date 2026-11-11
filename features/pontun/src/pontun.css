@@ -1,0 +1,231 @@
+/* Inherit typography and the palette of the Pantanir page. */
+.vs-pontun {
+	--vs-pontun-ink: var(--wp--preset--color--contrast, #1c2930);
+	--vs-pontun-muted: var(--wp--preset--color--contrast-2, #37505d);
+	--vs-pontun-line: var(--wp--preset--color--contrast-3, #96a5b2);
+	--vs-pontun-base: var(--wp--preset--color--base, #ebebef);
+	--vs-pontun-control: color-mix(in srgb, var(--vs-pontun-base), white 72%);
+	--vs-pontun-accent: var(--wp--preset--color--pokemon-2, #2162aa);
+	--vs-pontun-error: #95242c;
+	color: var(--vs-pontun-ink);
+}
+
+.vs-pontun__reitir {
+	min-inline-size: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.vs-pontun__hluti {
+	margin-block-end: 32px;
+}
+
+.vs-pontun h2 {
+	margin: 0 0 12px;
+	font-size: 1.375em;
+	line-height: 1.25;
+}
+
+.vs-pontun h3 {
+	margin: 0 0 12px;
+	font-size: 1em;
+	line-height: 1.35;
+}
+
+.vs-pontun__hjalp {
+	margin: 0 0 12px;
+	font-size: .875em;
+	color: var(--vs-pontun-muted);
+}
+
+.vs-pontun__grid,
+.vs-pontun__val {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 16px;
+}
+
+.vs-pontun__val {
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 112px), 1fr));
+}
+
+.vs-pontun__reitur {
+	min-inline-size: 0;
+	margin-block-end: 12px;
+}
+
+.vs-pontun__reitur label {
+	display: block;
+	margin-block-end: 4px;
+	font-size: .875em;
+	font-weight: 600;
+}
+
+.vs-pontun :is(input:not([type="checkbox"]), select, textarea, button) {
+	box-sizing: border-box;
+	font: inherit;
+}
+
+.vs-pontun__reitur :is(input, select, textarea) {
+	width: 100%;
+	min-height: 44px;
+	padding: 8px 12px;
+	border: 1px solid var(--vs-pontun-line);
+	border-radius: 4px;
+	color: var(--vs-pontun-ink);
+	background: var(--vs-pontun-control, #f8f8fa);
+}
+
+.vs-pontun__reitur textarea {
+	display: block;
+	resize: vertical;
+}
+
+.vs-pontun__flokkur {
+	padding: 16px 0;
+	border-block-start: 1px solid var(--vs-pontun-line);
+}
+
+.vs-pontun__flokkur:last-child {
+	border-block-end: 1px solid var(--vs-pontun-line);
+}
+
+.vs-pontun__lina {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 0 16px;
+	align-items: start;
+}
+
+.vs-pontun__lina--fleirval {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.vs-pontun__lina + .vs-pontun__lina {
+	padding-block-start: 12px;
+	border-block-start: 1px solid var(--vs-pontun-line);
+}
+
+.vs-pontun__skref {
+	display: grid;
+	grid-template-columns: 44px 64px 44px;
+	gap: 4px;
+}
+
+.vs-pontun__skref input {
+	text-align: center;
+	padding-inline: 4px;
+	appearance: textfield;
+}
+
+.vs-pontun__skref input::-webkit-inner-spin-button,
+.vs-pontun__skref input::-webkit-outer-spin-button {
+	appearance: none;
+	margin: 0;
+}
+
+.vs-pontun :is(.vs-pontun__skref button, .vs-pontun__baeta, .vs-pontun__textahnappur) {
+	min-height: 44px;
+	border: 1px solid var(--vs-pontun-line);
+	border-radius: 4px;
+	color: var(--vs-pontun-ink);
+	background: var(--vs-pontun-control, #f8f8fa);
+	cursor: pointer;
+}
+
+.vs-pontun .vs-pontun__baeta {
+	padding-inline: 12px;
+	font-size: .875em;
+}
+
+.vs-pontun .vs-pontun__textahnappur {
+	grid-column: 1 / -1;
+	justify-self: start;
+	margin: -4px 0 8px;
+	padding-inline: 0;
+	border-color: transparent;
+	background: transparent;
+	font-size: .875em;
+	text-decoration: underline;
+	text-underline-offset: .16em;
+}
+
+.vs-pontun button:disabled {
+	opacity: .55;
+	cursor: default;
+}
+
+.vs-pontun__hak {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	width: fit-content;
+	min-height: 44px;
+	cursor: pointer;
+}
+
+.vs-pontun__hak input {
+	flex: 0 0 20px;
+	width: 20px;
+	height: 20px;
+	margin: 4px 0 0;
+	accent-color: var(--vs-pontun-accent);
+}
+
+.vs-pontun__senda {
+	min-height: 48px;
+	cursor: pointer;
+}
+
+.vs-pontun :is(input, select, textarea, button, a):focus-visible,
+.vs-pontun :is(.vs-pontun__villur, .vs-pontun__mottekin, .vs-pontun__hluti):focus {
+	outline: 2px solid var(--vs-pontun-accent);
+	outline-offset: 3px;
+}
+
+.vs-pontun :is(input, select, textarea, .vs-pontun__hluti) {
+	scroll-margin-block-start: 64px;
+}
+
+.vs-pontun [aria-invalid="true"] {
+	border-color: var(--vs-pontun-error);
+}
+
+.vs-pontun__villa {
+	margin: 4px 0 8px;
+	color: var(--vs-pontun-error);
+	font-size: .875em;
+}
+
+.vs-pontun__villur,
+.vs-pontun__mottekin {
+	padding: 16px;
+	border: 1px solid var(--vs-pontun-line);
+	background: var(--vs-pontun-control, #f8f8fa);
+}
+
+.vs-pontun__villur {
+	margin-block-end: 24px;
+	border-inline-start: 4px solid var(--vs-pontun-error);
+}
+
+.vs-pontun__villur ul,
+.vs-pontun__mottekin p {
+	margin-block: 0;
+}
+
+@media (max-width: 600px) {
+	.vs-pontun__grid,
+	.vs-pontun__lina {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.vs-pontun__lina--fleirval .vs-pontun__val {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.vs-pontun__lina--fleirval .vs-pontun__val > :last-child {
+		grid-column: 1 / -1;
+	}
+}

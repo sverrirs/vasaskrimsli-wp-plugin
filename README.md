@@ -83,6 +83,21 @@ The script renders only pictures whose PDF changed, keeps the last pictures of a
 a warning), and removes pictures no book uses. The store answers Python's own HTTP client with 429, so it reads the
 products through `curl`.
 
+### Pöntunarform (`features/pontun/`)
+
+- **Block "Verslun: Pöntunarform"** (or shortcode `[pontunarform]`) replaces the Forminator block on
+  Pantanir. Keep the existing introduction on the page. The form collects the orderer, products and quantities,
+  shipping address, Dropp acknowledgement, billing details and notes.
+- **Pantanir in wp-admin** lists orders and lets editors view, update their status, delete or download all orders
+  as a UTF-8 CSV. Deletion removes the order details and reserves its number so it cannot be issued again.
+- **Stillingar** controls the recipient addresses (one per line), the lowest order number and whether customers get
+  a confirmation. Orders are saved before email is sent. Staff email uses the orderer's address for replies.
+- Before replacing the old form, check its latest order number and set **Lægsta pöntunarnúmer** to the next number.
+  Enter the existing staff and printer addresses and check the confirmation setting. Forminator submissions stay
+  in their original tables. The new list starts with orders placed through the new form.
+- Edit `data/pontun.json` to maintain the product choices and Dropp copy. The same choices drive the form
+  and server validation. Orders are stored in the site's `{prefix}vs_pantanir` table.
+
 ## Data from vasaskrimsli-dict
 
 All names and texts come from `../vasaskrimsli-dict` (local only). The Claude session working there
@@ -196,5 +211,6 @@ features/ordsifjar/
                           thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
   assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
 features/baekur/          the book lists: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
+features/pontun/          the order form: includes/ (validation, storage, REST, block, admin), src/ (React), data/pontun.json
 migration/                one script per data file (see "Data from vasaskrimsli-dict"), baekur.py and baekur-skra.json
 ```

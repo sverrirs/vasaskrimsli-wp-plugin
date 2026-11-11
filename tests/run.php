@@ -11,10 +11,12 @@ require __DIR__ . '/../features/ordsifjar/includes/Format.php';
 require __DIR__ . '/../features/ordsifjar/includes/Nofn.php';
 require __DIR__ . '/../features/baekur/includes/Verslun.php';
 require __DIR__ . '/../features/baekur/includes/Block.php';
+require __DIR__ . '/../features/pontun/includes/Pontun.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
 use Vasaskrimsli\Ordsifjar\Format;
 use Vasaskrimsli\Ordsifjar\Nofn;
+use Vasaskrimsli\Pontun\Pontun;
 
 $failures = 0;
 $count    = 0;
@@ -400,6 +402,91 @@ if ( file_exists( $tfile ) ) {
 	}
 	check( 'breytingar-5.json exists and #752 is Kafekkja after all versions', Csv::plain( current( array_filter( $install, static fn( $e ) => '752' === (string) $e['numer'] ) )['nafn'] ?? '' ), 'Kafekkja' );
 }
+
+// A malformed active line must block the entire order, even with a good line present.
+// If these checks fail, inspect the boundary between zero-quantity rows and lines that would be saved or emailed.
+$pontun_config = json_decode( file_get_contents( __DIR__ . '/../features/pontun/data/pontun.json' ), true );
+$pontun_input = array(
+	'reitir' => array(
+		'nafn' => '  Sigríður   Jónsdóttir ',
+		'netfang' => 'pantandi@example.com',
+		'simi' => '555 1234',
+		'vidtakandi' => 'Bókasafnið',
+		'heimilisfang' => 'Bókagata 3',
+		'stadur' => 'Reykjavík',
+		'postnumer' => '101',
+		'greidandi' => 'Bókasafnið',
+		'kennitala' => '1234567890',
+		'netfang_greid' => 'reikningar@example.com',
+		'aths' => "Fyrsta lína\r\nÖnnur lína",
+	),
+	'linur' => array(
+		array( 'flokkur' => 'veggspjold', 'val' => array( 'tegund' => 'Kynslóð 1', 'staerd' => 'A3', 'fragangur' => 'Plasthúðað' ), 'fjoldi' => 3 ),
+		array( 'flokkur' => 'storubaekur', 'val' => array(), 'fjoldi' => 0 ),
+	),
+	'dropp' => true,
+);
+$pontun_checked = Pontun::check( $pontun_input, $pontun_config );
+check( 'Pöntun: a valid order has no errors', $pontun_checked['villur'], array() );
+check( 'Pöntun: zero-quantity rows are omitted', count( $pontun_checked['pontun']['linur'] ), 1 );
+check( 'Pöntun: the active row retains its category, choices and quantity', Pontun::lina( $pontun_checked['pontun']['linur'][0] ), '3 × Veggspjöld: Kynslóð 1, A3, Plasthúðað' );
+check( 'Pöntun: kennitala is normalized', $pontun_checked['pontun']['reitir']['kennitala'], '123456-7890' );
+check( 'Pöntun: spaces in single-line fields are normalized', $pontun_checked['pontun']['reitir']['nafn'], 'Sigríður Jónsdóttir' );
+$test_order = $pontun_input;
+$test_order['reitir']['aths'] = str_repeat( 'á', 2001 );
+check( 'Pöntun: long Icelandic notes are truncated without splitting UTF-8 characters', Pontun::check( $test_order, $pontun_config )['pontun']['reitir']['aths'], str_repeat( 'á', 2000 ) );
+
+foreach ( Pontun::REITIR as $key => [ $label, $required ] ) {
+	$test_order = $pontun_input;
+	unset( $test_order['reitir'][ $key ] );
+	check( 'Pöntun: missing field ' . $key, isset( Pontun::check( $test_order, $pontun_config )['villur'][ $key ] ), $required );
+}
+foreach ( array(
+	'netfang' => 'not-an-email',
+	'netfang_greid' => 'not-an-email',
+	'simi' => '555',
+	'postnumer' => '10A',
+	'kennitala' => '1234',
+) as $key => $value ) {
+	$test_order = $pontun_input;
+	$test_order['reitir'][ $key ] = $value;
+	check( 'Pöntun: invalid ' . $key, isset( Pontun::check( $test_order, $pontun_config )['villur'][ $key ] ), true );
+}
+$test_order = $pontun_input;
+$test_order['reitir']['kennitala'] = '123456AB7890';
+check( 'Pöntun: kennitala rejects letters even with ten digits', isset( Pontun::check( $test_order, $pontun_config )['villur']['kennitala'] ), true );
+$test_order['reitir']['kennitala'] = '123456 7890';
+check( 'Pöntun: kennitala accepts a space', Pontun::check( $test_order, $pontun_config )['pontun']['reitir']['kennitala'], '123456-7890' );
+
+$test_order = $pontun_input;
+$test_order['linur'][0]['fjoldi'] = 0;
+check( 'Pöntun: at least one active line is required', isset( Pontun::check( $test_order, $pontun_config )['villur']['linur'] ), true );
+$test_order = $pontun_input;
+$test_order['dropp'] = false;
+check( 'Pöntun: Dropp acknowledgement is required', isset( Pontun::check( $test_order, $pontun_config )['villur']['dropp'] ), true );
+$test_order['dropp'] = 'false';
+check( 'Pöntun: a string cannot acknowledge Dropp', isset( Pontun::check( $test_order, $pontun_config )['villur']['dropp'] ), true );
+
+$test_order = $pontun_input;
+$test_order['linur'][1] = array( 'flokkur' => 'storubaekur', 'val' => array( 'tegund' => 'Kynslóð 99' ), 'fjoldi' => 2 );
+check( 'Pöntun: a forged choice is refused even alongside a valid line', isset( Pontun::check( $test_order, $pontun_config )['villur']['linur'] ), true );
+$test_order['linur'][1]['flokkur'] = 'unknown';
+check( 'Pöntun: an unknown category with positive quantity is refused', isset( Pontun::check( $test_order, $pontun_config )['villur']['linur'] ), true );
+$test_order['linur'][1] = $pontun_input['linur'][0];
+foreach ( array( -1, 1.5, Pontun::MAX_FJOLDI + 1 ) as $fjoldi ) {
+	$test_order['linur'][1]['fjoldi'] = $fjoldi;
+	check( 'Pöntun: quantity outside the allowed range is refused (' . $fjoldi . ')', isset( Pontun::check( $test_order, $pontun_config )['villur']['linur'] ), true );
+}
+$test_order['linur'] = array_fill( 0, Pontun::MAX_LINUR + 1, $pontun_input['linur'][0] );
+check( 'Pöntun: too many lines cannot be silently truncated', isset( Pontun::check( $test_order, $pontun_config )['villur']['linur'] ), true );
+
+// The email and admin view must identify the same order and preserve line breaks in instructions.
+$pontun_text = Pontun::texti( 270, '11.11.2026 10:30', $pontun_checked['pontun'] );
+check( 'Pöntun text: order number and date', str_starts_with( $pontun_text, "Pöntun nr. 270\nDagsetning: 11.11.2026 10:30\n" ), true );
+check( 'Pöntun text: quantity and choices', str_contains( $pontun_text, '3 × Veggspjöld: Kynslóð 1, A3, Plasthúðað' ), true );
+check( 'Pöntun text: invoice information', str_contains( $pontun_text, 'Kennitala á reikning: 123456-7890' ), true );
+check( 'Pöntun text: comments keep both lines', str_contains( $pontun_text, "Fyrsta lína\n    Önnur lína" ), true );
+check( 'Pöntun text: empty optional fields are omitted', str_contains( $pontun_text, 'Inngangur' ), false );
 
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );
