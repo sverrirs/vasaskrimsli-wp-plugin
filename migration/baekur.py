@@ -36,7 +36,7 @@ CACHE = ROOT / ".sprite-cache" / "baekur"
 UA = "Mozilla/5.0 (vasaskrimsli.is book catalogue)"
 COVER_PX = 600
 PAGE_PX = 900
-SAMPLES = 3  # Interior pages shown for each book, after its cover.
+SAMPLES = 3  # Interior pages shown for each book, after its cover, unless the series sets its own ("synishorn": N).
 MM = 25.4 / 72
 
 
@@ -127,7 +127,7 @@ def from_pdfs(rod, book, used):
         out["kapa"] = render(doc[0], trim, COVER_PX, base.with_name(f"{book['id']}-kapa.webp"), 80, interior)
     used.add(out["kapa"])
     out["synishorn"] = []
-    for n in book.get("synishorn") or picks(doc, SAMPLES, book["n"]):
+    for n in book.get("synishorn") or picks(doc, rod.get("synishorn", SAMPLES), book["n"]):
         page = doc[n - 1]
         rel = render(page, page.trimbox, PAGE_PX, base.with_name(f"{book['id']}-s{n}.webp"), 72, interior)
         used.add(rel)
@@ -201,14 +201,14 @@ def main():
                     raise SystemExit(f"{err} (build the book first, or set it \"falin\")")
                 print(f"  WARNING {err}: kept from the last run", flush=True)
                 extra = {k: old[k] for k in ("sidur", "snid", "kapa", "synishorn") if k in old}
-                extra["synishorn"] = (book.get("synishorn") and [s for s in extra["synishorn"] if s["sida"] in book["synishorn"]]) or extra["synishorn"][:SAMPLES]
+                extra["synishorn"] = (book.get("synishorn") and [s for s in extra["synishorn"] if s["sida"] in book["synishorn"]]) or extra["synishorn"][:rod.get("synishorn", SAMPLES)]
                 used.update([extra["kapa"], *(s["mynd"] for s in extra["synishorn"])])
             b = {k: v for k, v in book.items() if k not in ("myndir", "synishorn")} | extra
             books.append(b)
             if b.get("vara"):
                 handles.add(b["vara"])
             print(f"  {b['id']}: {b.get('sidur', '-')} pages, {len(b['synishorn'])} samples", flush=True)
-        out = {k: v for k, v in rod.items() if k not in ("baekur", "heimild", "pakkar")} | {"baekur": books}
+        out = {k: v for k, v in rod.items() if k not in ("baekur", "heimild", "pakkar", "synishorn")} | {"baekur": books}
         if rod.get("pakkar"):
             out["pakkar"] = lots(rod, books)
             handles.update(p["vara"] for p in out["pakkar"] if p.get("vara"))

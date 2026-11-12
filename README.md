@@ -76,6 +76,7 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 | Hide a book | `"stada": "falin"` (`"vaentanleg"` shows it as coming) |
 | Add a book | add it to its series' `baekur` with a new `id` (a-z, 0-9 and dashes), after building it in its repository |
 | Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise three are picked, one from each third of the book, the most colourful of a few pages that differ from book to book |
+| Show more or fewer sample pages for a whole series | `"synishorn": 10` on the series (Orðsifjaskrá has 10); the default is 3, picked the same way from that many equal stretches of the book |
 | Change the Buy Button's look | `verslun.kaupahnappur.options`: the `options` of Háskólaprent's embed code, with the owner's changes |
 | Add a series | a new entry in `radir` with a `heimild` (where its PDFs are), and a line in `Block::RADIR` for its own block |
 

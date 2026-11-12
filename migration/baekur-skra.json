@@ -244,6 +244,7 @@
   {
    "id": "ordsifjaskra",
    "akkeri": "ordsifjaskra",
+   "synishorn": 10,
    "heiti": "Orðsifjaskrá Vasaskrímslanna",
    "kyn": "hk",
    "heimild": {
