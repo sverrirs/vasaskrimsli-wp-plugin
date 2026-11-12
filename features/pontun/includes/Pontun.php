@@ -106,7 +106,7 @@ final class Pontun {
 				$villur['linur'] = 'Fjöldinn er of mikill. Hafðu samband ef pöntunin er svo stór.';
 				continue;
 			}
-			$linur[] = array( 'flokkur' => $f['id'], 'heiti' => $f['heiti'], 'val' => $val, 'fjoldi' => $fjoldi ) + ( $pakki > 0 ? array( 'pakki' => $pakki ) : array() );
+			$linur[] = array( 'flokkur' => $f['id'], 'heiti' => $f['heiti'], 'val' => $val, 'fjoldi' => $fjoldi ) + ( $pakki > 1 ? array( 'pakki' => $pakki ) : array() );
 		}
 		if ( ! $linur && ! isset( $villur['linur'] ) ) {
 			$villur['linur'] = 'Veldu að minnsta kosti eina vöru og fjölda.';
@@ -124,7 +124,7 @@ final class Pontun {
 	public static function lina( array $l ): string {
 		$text  = implode( ', ', array_column( $l['val'], 1 ) );
 		$pakki = (int) ( $l['pakki'] ?? 0 );
-		if ( $pakki <= 0 ) {
+		if ( $pakki <= 1 ) {
 			return $l['fjoldi'] . ' × ' . $l['heiti'] . ': ' . $text;
 		}
 		$n = (int) $l['fjoldi'];

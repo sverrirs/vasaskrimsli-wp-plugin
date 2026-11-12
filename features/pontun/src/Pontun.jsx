@@ -53,7 +53,8 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 	const samhengi = flokkur.heiti + ', lína ' + ( index + 1 );
 	const className = flokkur.val.length > 1 ? 'vs-pontun__lina vs-pontun__lina--fleirval' : 'vs-pontun__lina';
 	const fjoldi = Number( lina.fjoldi );
-	const pakki = baekurIPakka( flokkur, lina );
+	const iPakka = baekurIPakka( flokkur, lina );
+	const pakki = iPakka > 1 ? iPakka : 0; // A single book is not a pack.
 	const skref = ( breyting ) => {
 		uppfaera( { fjoldi: String( Math.max( 0, Math.min( max, Math.trunc( fjoldi ) + breyting ) ) ) } );
 	};

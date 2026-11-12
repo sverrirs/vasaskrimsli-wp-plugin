@@ -1,6 +1,14 @@
 {
- "_um": "Pöntunarformið (blokkin Verslun: Pöntunarform). flokkar: vöruflokkarnir sem má panta, hver með sínum valkostum (val) og fjölda. Þar sem pantaðir eru bókapakkar segir baekur hve margar bækur eru í pakka hvers kosts (í sömu röð og kostir): þá stendur Fjöldi pakka á forminu og fjöldi bóka alls í pöntuninni. Sami texti og var í gamla forminu. Viðtakendur pantana og næsta pöntunarnúmer eru stillt í stjórnborðinu undir Pantanir.",
+ "_um": "Pöntunarformið (blokkin Verslun: Pöntunarform). flokkar: vöruflokkarnir sem má panta, hver með sínum valkostum (val) og fjölda. Þar sem pantaðir eru bókapakkar segir baekur hve margar bækur eru í pakka hvers kosts (í sömu röð og kostir; 1 er stök bók): þegar fleiri en ein bók er í pakka stendur Fjöldi pakka á forminu og fjöldi bóka alls í pöntuninni. Sami texti og var í gamla forminu. Viðtakendur pantana og næsta pöntunarnúmer eru stillt í stjórnborðinu undir Pantanir.",
  "flokkar": [
+  {
+   "id": "ordsifjaskra",
+   "heiti": "Orðsifjaskrá Vasaskrímslanna",
+   "kapa": "ordsifjaskra/ordsifjaskra-1-kapa.webp",
+   "val": [
+    {"id": "bindi", "heiti": "Bindi", "kostir": ["Öll þrjú bindin, 1 til 3 (ath pakki af þremur bókum)", "1. bindi", "2. bindi", "3. bindi"], "baekur": [3, 1, 1, 1]}
+   ]
+  },
   {
    "id": "storubaekur",
    "heiti": "Vasaskrímslabækur",

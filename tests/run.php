@@ -440,6 +440,13 @@ check( 'Pöntun: a pack line says packs and adds up the books', Pontun::lina( $p
 $test_order['linur'][0]['val']['pakki'] = 'Lestrarbækur 6 til 10 (ath pakki af fimm bókum)';
 $test_order['linur'][0]['fjoldi'] = 21;
 check( 'Pöntun: a five-book pack counts five, and 21 takes the singular', Pontun::lina( Pontun::check( $test_order, $pontun_config )['pontun']['linur'][0] ), '21 pakki × Lestrarbækur: Lestrarbækur 6 til 10 (ath pakki af fimm bókum), 5 bækur í pakka, 105 bækur alls' );
+$test_order['linur'] = array(
+	array( 'flokkur' => 'ordsifjaskra', 'val' => array( 'bindi' => 'Öll þrjú bindin, 1 til 3 (ath pakki af þremur bókum)' ), 'fjoldi' => 2 ),
+	array( 'flokkur' => 'ordsifjaskra', 'val' => array( 'bindi' => '2. bindi' ), 'fjoldi' => 4 ),
+);
+$bindi = Pontun::check( $test_order, $pontun_config )['pontun']['linur'];
+check( 'Pöntun: the Orðsifjaskrá set is a pack of three', Pontun::lina( $bindi[0] ), '2 pakkar × Orðsifjaskrá Vasaskrímslanna: Öll þrjú bindin, 1 til 3 (ath pakki af þremur bókum), 3 bækur í pakka, 6 bækur alls' );
+check( 'Pöntun: a single volume is not a pack', Pontun::lina( $bindi[1] ), '4 × Orðsifjaskrá Vasaskrímslanna: 2. bindi' );
 check( 'Pöntun: 11 takes the plural', Pontun::fjoldi( 11, 'pakki', 'pakkar' ), '11 pakkar' );
 check( 'Pöntun: a line saved before packs keeps its old text', Pontun::lina( array( 'fjoldi' => 2, 'heiti' => 'Lestrarbækur', 'val' => array( array( 'Tegund bókapakka', 'Lestrarbækur 1 til 10' ) ) ) ), '2 × Lestrarbækur: Lestrarbækur 1 til 10' );
 $test_order = $pontun_input;
