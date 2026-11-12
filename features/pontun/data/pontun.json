@@ -1,5 +1,5 @@
 {
- "_um": "Pöntunarformið (blokkin Verslun: Pöntunarform). flokkar: vöruflokkarnir sem má panta, hver með sínum valkostum (val) og fjölda. Sami texti og var í gamla forminu. Viðtakendur pantana og næsta pöntunarnúmer eru stillt í stjórnborðinu undir Pantanir.",
+ "_um": "Pöntunarformið (blokkin Verslun: Pöntunarform). flokkar: vöruflokkarnir sem má panta, hver með sínum valkostum (val) og fjölda. Þar sem pantaðir eru bókapakkar segir baekur hve margar bækur eru í pakka hvers kosts (í sömu röð og kostir): þá stendur Fjöldi pakka á forminu og fjöldi bóka alls í pöntuninni. Sami texti og var í gamla forminu. Viðtakendur pantana og næsta pöntunarnúmer eru stillt í stjórnborðinu undir Pantanir.",
  "flokkar": [
   {
    "id": "storubaekur",
@@ -14,7 +14,7 @@
    "heiti": "Lestrarbækur",
    "kapa": "lestrarbaekur/lestrarbok-1-kapa.webp",
    "val": [
-    {"id": "pakki", "heiti": "Tegund bókapakka", "kostir": ["Lestrarbækur 1 til 10 (ath pakki af tíu bókum)", "Lestrarbækur 1 til 5 (ath pakki af fimm bókum)", "Lestrarbækur 6 til 10 (ath pakki af fimm bókum)"]}
+    {"id": "pakki", "heiti": "Tegund bókapakka", "kostir": ["Lestrarbækur 1 til 10 (ath pakki af tíu bókum)", "Lestrarbækur 1 til 5 (ath pakki af fimm bókum)", "Lestrarbækur 6 til 10 (ath pakki af fimm bókum)"], "baekur": [10, 5, 5]}
    ]
   },
   {

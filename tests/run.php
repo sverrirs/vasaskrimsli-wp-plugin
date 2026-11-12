@@ -433,6 +433,16 @@ check( 'Pöntun: the active row retains its category, choices and quantity', Pon
 check( 'Pöntun: kennitala is normalized', $pontun_checked['pontun']['reitir']['kennitala'], '123456-7890' );
 check( 'Pöntun: spaces in single-line fields are normalized', $pontun_checked['pontun']['reitir']['nafn'], 'Sigríður Jónsdóttir' );
 $test_order = $pontun_input;
+$test_order['linur'] = array( array( 'flokkur' => 'lestrarbaekur', 'val' => array( 'pakki' => 'Lestrarbækur 1 til 10 (ath pakki af tíu bókum)' ), 'fjoldi' => 3 ) );
+$pakkar = Pontun::check( $test_order, $pontun_config )['pontun']['linur'][0];
+check( 'Pöntun: a pack line carries the books in each pack', $pakkar['pakki'] ?? null, 10 );
+check( 'Pöntun: a pack line says packs and adds up the books', Pontun::lina( $pakkar ), '3 pakkar × Lestrarbækur: Lestrarbækur 1 til 10 (ath pakki af tíu bókum), 10 bækur í pakka, 30 bækur alls' );
+$test_order['linur'][0]['val']['pakki'] = 'Lestrarbækur 6 til 10 (ath pakki af fimm bókum)';
+$test_order['linur'][0]['fjoldi'] = 21;
+check( 'Pöntun: a five-book pack counts five, and 21 takes the singular', Pontun::lina( Pontun::check( $test_order, $pontun_config )['pontun']['linur'][0] ), '21 pakki × Lestrarbækur: Lestrarbækur 6 til 10 (ath pakki af fimm bókum), 5 bækur í pakka, 105 bækur alls' );
+check( 'Pöntun: 11 takes the plural', Pontun::fjoldi( 11, 'pakki', 'pakkar' ), '11 pakkar' );
+check( 'Pöntun: a line saved before packs keeps its old text', Pontun::lina( array( 'fjoldi' => 2, 'heiti' => 'Lestrarbækur', 'val' => array( array( 'Tegund bókapakka', 'Lestrarbækur 1 til 10' ) ) ) ), '2 × Lestrarbækur: Lestrarbækur 1 til 10' );
+$test_order = $pontun_input;
 $test_order['reitir']['aths'] = str_repeat( 'á', 2001 );
 check( 'Pöntun: long Icelandic notes are truncated without splitting UTF-8 characters', Pontun::check( $test_order, $pontun_config )['pontun']['reitir']['aths'], str_repeat( 'á', 2000 ) );
 

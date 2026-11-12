@@ -53,6 +53,7 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 	const samhengi = flokkur.heiti + ', lína ' + ( index + 1 );
 	const className = flokkur.val.length > 1 ? 'vs-pontun__lina vs-pontun__lina--fleirval' : 'vs-pontun__lina';
 	const fjoldi = Number( lina.fjoldi );
+	const pakki = baekurIPakka( flokkur, lina );
 	const skref = ( breyting ) => {
 		uppfaera( { fjoldi: String( Math.max( 0, Math.min( max, Math.trunc( fjoldi ) + breyting ) ) ) } );
 	};
@@ -75,7 +76,7 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 			</div>
 			<div className="vs-pontun__magn">
 			<div className="vs-pontun__reitur">
-				<label htmlFor={ id + '-fjoldi' }>Fjöldi</label>
+				<label htmlFor={ id + '-fjoldi' }>{ pakki ? 'Fjöldi pakka' : 'Fjöldi' }</label>
 				<div className="vs-pontun__skref">
 					<button type="button" aria-label={ 'Fækka um einn: ' + samhengi } disabled={ fjoldi <= 0 } onClick={ () => skref( -1 ) }>−</button>
 					<input
@@ -86,10 +87,18 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 						max={ max }
 						step={ 1 }
 						value={ lina.fjoldi }
+						aria-describedby={ pakki ? id + '-pakki' : undefined }
 						onChange={ ( e ) => uppfaera( { fjoldi: e.target.value } ) }
 					/>
 					<button type="button" aria-label={ 'Fjölga um einn: ' + samhengi } disabled={ fjoldi >= max } onClick={ () => skref( 1 ) }>+</button>
 				</div>
+				{ pakki > 0 && (
+					<p className="vs-pontun__pakki" id={ id + '-pakki' }>
+						{ fjoldi > 0 && Number.isInteger( fjoldi )
+							? fjoldaord( fjoldi, 'pakki', 'pakkar' ) + ' = ' + fjoldaord( fjoldi * pakki, 'bók', 'bækur' )
+							: 'Hver pakki: ' + fjoldaord( pakki, 'bók', 'bækur' ) }
+					</p>
+				) }
 			</div>
 			{ fjarlaegja && (
 				<button className="vs-pontun__eyda" type="button" aria-label={ 'Fjarlægja línu: ' + samhengi } title="Fjarlægja línu" onClick={ fjarlaegja }>
@@ -101,6 +110,17 @@ function Vorulina( { id, flokkur, lina, index, max, uppfaera, fjarlaegja } ) {
 			</div>
 		</div>
 	);
+}
+
+/** Books in each pack for the line's choice, or 0 when the category is not sold in packs (data/pontun.json: baekur). */
+function baekurIPakka( flokkur, lina ) {
+	const v = flokkur.val.find( ( x ) => Array.isArray( x.baekur ) );
+	return v ? Number( v.baekur[ v.kostir.indexOf( lina.val[ v.id ] ) ] ) || 0 : 0;
+}
+
+/** "1 pakki", "21 pakki", "3 pakkar": the same rule as Pontun::fjoldi in PHP. */
+function fjoldaord( n, eintala, fleirtala ) {
+	return n + ' ' + ( n % 10 === 1 && n % 100 !== 11 ? eintala : fleirtala );
 }
 
 function nyLina( flokkur, id ) {

@@ -89,7 +89,8 @@ final class Pontun {
 				continue;
 			}
 			$choices = is_array( $l['val'] ?? null ) ? $l['val'] : array();
-			$val = array();
+			$val   = array();
+			$pakki = 0; // Books in each pack, when the category is sold in packs.
 			foreach ( $f['val'] as $v ) {
 				$choice = $choices[ $v['id'] ] ?? '';
 				if ( ! in_array( $choice, $v['kostir'], true ) ) {
@@ -97,12 +98,15 @@ final class Pontun {
 					continue 2;
 				}
 				$val[] = array( $v['heiti'], $choice );
+				if ( isset( $v['baekur'] ) ) {
+					$pakki = (int) ( $v['baekur'][ array_search( $choice, $v['kostir'], true ) ] ?? 0 );
+				}
 			}
 			if ( $fjoldi > self::MAX_FJOLDI ) {
 				$villur['linur'] = 'Fjöldinn er of mikill. Hafðu samband ef pöntunin er svo stór.';
 				continue;
 			}
-			$linur[] = array( 'flokkur' => $f['id'], 'heiti' => $f['heiti'], 'val' => $val, 'fjoldi' => $fjoldi );
+			$linur[] = array( 'flokkur' => $f['id'], 'heiti' => $f['heiti'], 'val' => $val, 'fjoldi' => $fjoldi ) + ( $pakki > 0 ? array( 'pakki' => $pakki ) : array() );
 		}
 		if ( ! $linur && ! isset( $villur['linur'] ) ) {
 			$villur['linur'] = 'Veldu að minnsta kosti eina vöru og fjölda.';
@@ -113,9 +117,24 @@ final class Pontun {
 		return array( 'villur' => $villur, 'pontun' => array( 'reitir' => $reitir, 'linur' => $linur ) );
 	}
 
-	/** One order line as text: "3 × Veggspjöld: Kynslóð 1, A3, Plasthúðað". */
+	/**
+	 * One order line as text: "3 × Veggspjöld: Kynslóð 1, A3, Plasthúðað". A line of book packs says so and adds up the
+	 * books: "2 pakkar × Lestrarbækur: Lestrarbækur 1 til 10 (ath pakki af tíu bókum), 10 bækur í pakka, 20 bækur alls".
+	 */
 	public static function lina( array $l ): string {
-		return $l['fjoldi'] . ' × ' . $l['heiti'] . ': ' . implode( ', ', array_column( $l['val'], 1 ) );
+		$text  = implode( ', ', array_column( $l['val'], 1 ) );
+		$pakki = (int) ( $l['pakki'] ?? 0 );
+		if ( $pakki <= 0 ) {
+			return $l['fjoldi'] . ' × ' . $l['heiti'] . ': ' . $text;
+		}
+		$n = (int) $l['fjoldi'];
+		return self::fjoldi( $n, 'pakki', 'pakkar' ) . ' × ' . $l['heiti'] . ': ' . $text . ', '
+			. self::fjoldi( $pakki, 'bók', 'bækur' ) . ' í pakka, ' . self::fjoldi( $n * $pakki, 'bók', 'bækur' ) . ' alls';
+	}
+
+	/** "1 pakki", "21 pakki", "11 pakkar", "3 pakkar": Icelandic takes the singular after numbers ending in 1, except 11. */
+	public static function fjoldi( int $n, string $eintala, string $fleirtala ): string {
+		return $n . ' ' . ( 1 === $n % 10 && 11 !== $n % 100 ? $eintala : $fleirtala );
 	}
 
 	/** The order as plain text for the emails: number, date, the lines, then every field that was filled in. */
