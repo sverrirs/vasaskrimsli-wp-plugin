@@ -1,6 +1,6 @@
 /*
- * Download counter (block "Námsefni: Niðurhalsteljari"): reports a person's click on a link to a ZIP file on this
- * site to the plugin, which counts it (includes/Rest.php). A click by the left or the middle button counts; a script's
+ * Download counter (block "Námsefni: Niðurhalsteljari"): reports a person's click on a download link (/s/1) or a
+ * link to a ZIP file on this site to the plugin, which counts it (includes/Rest.php). A click by the left or the middle button counts; a script's
  * click or a browser driven by automation does not. One report per file and page every five seconds at most.
  */
 ( function () {
@@ -23,7 +23,7 @@
 		} catch ( x ) {
 			return;
 		}
-		if ( u.hostname.replace( /^www\./, '' ) !== location.hostname.replace( /^www\./, '' ) || ! /\.zip$/i.test( u.pathname ) ) {
+		if ( u.hostname.replace( /^www\./, '' ) !== location.hostname.replace( /^www\./, '' ) || ! ( /\.zip$/i.test( u.pathname ) || /^\/s\/[^/]+\/?$/.test( u.pathname ) || u.searchParams.has( 'vs_saekja' ) ) ) {
 			return;
 		}
 		var now = Date.now();

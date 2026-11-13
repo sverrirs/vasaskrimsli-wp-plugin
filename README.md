@@ -106,21 +106,30 @@ products through `curl`.
   existing catalogue assets. The same choices drive the form and server validation. Orders are stored in the
   site's `{prefix}vs_pantanir` table.
 
-### Niðurhal: download counter (`features/nidurhal/`)
+### Niðurhal: download links and counts (`features/nidurhal/`)
 
-- **Block "Námsefni: Niðurhalsteljari"** (or shortcode `[nidurhalsteljari]`): put it once on a page with links
-  to ZIP files (the Námsefni page). It shows nothing; it adds `teljari.js`, which reports a person's left or
-  middle click on a link to a `.zip` file on this site to `POST /wp-json/vasaskrimsli/v1/nidurhal`.
-- The web server serves the ZIP files itself, so WordPress never sees a download: **the click is counted**,
-  not whether the download finished.
-- Counted only when it looks like a person: a real click (not a script's) in a browser not driven by
-  automation, the page's signed stamp, a user agent that is not a bot's (`Nidurhal::velmenni`), a ZIP file
-  that exists on the site, and not the same visitor and file again within 30 minutes (at most 60 an hour).
-  Editors' own clicks are not counted: the script is left out for anyone logged in who can edit posts.
-- Stored: a count per file per day in `{prefix}vs_nidurhal`. Nothing about the visitors; their repeat clicks
-  are recognised by a keyed hash kept in a transient for 30 minutes.
-- **wp-admin → Niðurhal**: today, 7 days, 30 days and in all for each file, the last 30 days as bars, and a
-  CSV of every day. A short table is a widget on the Dashboard.
+- **Short download links**: every ZIP file in `namsefnispakkar/` (under the site root) gets one, e.g.
+  `https://vasaskrimsli.is/s/1` for `vasaskrimsli-namsefni-pakki-01.zip` and `/s/klubbur-og-safnmappa` for
+  `vasaskrimsli-namsefni-klubbur-og-safnmappa.zip` (`Nidurhal::kort`: the file name without `.zip` and
+  `vasaskrimsli-namsefni-`, and `pakki-01` as `1`). The link counts the download and sends the browser on to the
+  file with a 302 (not a 301, which browsers keep and would skip the count next time); the web server delivers
+  the file as before. It counts the download starting, not whether it finished. Put these links on the page in
+  place of the files' own addresses. Without pretty permalinks the link is `/?vs_saekja=1`.
+- Counted: a GET from a user agent that is not a bot's (`Nidurhal::velmenni`), by a visitor not logged in as an
+  editor, and not the same visitor and file again within 30 minutes. A HEAD request is not counted.
+- **Block "Námsefni: Niðurhalsteljari"** (shortcode `[nidurhalsteljari]`): put it once on the page with the
+  links. It shows nothing; `teljari.js` reports people's real clicks on the links (left or middle button, not a
+  script's click, not a browser driven by automation) to `POST /wp-json/vasaskrimsli/v1/nidurhal`, with the page's
+  signed stamp. Counted separately, as clicks on the page: the gap to the downloads is roughly what came from
+  links shared elsewhere and from programs that fetch links.
+- **Block "Námsefni: Fjöldi niðurhala"** (`vasaskrimsli/nidurhal-fjoldi`): one file's downloads in all, as
+  `<span class="vs-nidurhal-fjoldi">42</span>` in the page's own text style. The file is chosen in the block's
+  settings, by short name or file name. Inside a sentence, use the shortcode: `[nidurhal skra="1"]`.
+- Stored: per file and day, the downloads and the clicks, in `{prefix}vs_nidurhal`. Nothing about the visitors;
+  their repeats are recognised by a keyed hash kept in a transient for 30 minutes.
+- **wp-admin → Niðurhal**: every file with its short link to copy, its downloads today, in 7 and 30 days and in
+  all, its clicks on the page, the last 30 days as bars, and a CSV of every day. A short table is a widget on the
+  Dashboard.
 
 ## Data from vasaskrimsli-dict
 
@@ -235,7 +244,7 @@ features/ordsifjar/
                           thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
   assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
 features/baekur/          the book lists: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
-features/nidurhal/        the download counter: includes/ (links, storage, REST, block, admin), teljari.js
+features/nidurhal/        download links and counts: includes/ (short links, storage, REST, blocks, admin), teljari.js
 features/pontun/          the order form: includes/ (validation, storage, REST, block, admin), src/ (React), data/pontun.json
 migration/                one script per data file (see "Data from vasaskrimsli-dict"), baekur.py and baekur-skra.json
 ```

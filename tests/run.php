@@ -509,15 +509,22 @@ check( 'Pöntun text: empty optional fields are omitted', str_contains( $pontun_
 
 // Niðurhal: which links count, and who is a bot.
 $home = 'https://vasaskrimsli.is/';
-check( 'Niðurhal: a ZIP on the site counts', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/vasaskrimsli-namsefni-pakki-01.zip', $home ), '/namsefnispakkar/vasaskrimsli-namsefni-pakki-01.zip' );
-check( 'Niðurhal: www is the same site', Nidurhal::slod( 'https://www.vasaskrimsli.is/namsefnispakkar/a.zip?x=1', $home ), '/namsefnispakkar/a.zip' );
-check( 'Niðurhal: upper-case .ZIP counts', Nidurhal::slod( 'https://vasaskrimsli.is/a/B.ZIP', $home ), '/a/B.ZIP' );
-check( 'Niðurhal: another site does not', Nidurhal::slod( 'https://example.com/namsefnispakkar/a.zip', $home ), null );
-check( 'Niðurhal: a look-alike host does not', Nidurhal::slod( 'https://vasaskrimsli.is.example.com/a.zip', $home ), null );
-check( 'Niðurhal: a PDF does not', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/a.pdf', $home ), null );
-check( 'Niðurhal: climbing out of the folder does not', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/%2e%2e/a.zip', $home ), null );
-check( 'Niðurhal: odd characters do not', Nidurhal::slod( 'https://vasaskrimsli.is/a%20b.zip', $home ), null );
-check( 'Niðurhal: no URL does not', Nidurhal::slod( 'nonsense', $home ), null );
+check( 'Niðurhal: a pack has the shortest name', Nidurhal::kort( 'vasaskrimsli-namsefni-pakki-01.zip' ), '1' );
+check( 'Niðurhal: pack 10 keeps both digits', Nidurhal::kort( 'vasaskrimsli-namsefni-pakki-10.zip' ), '10' );
+check( 'Niðurhal: the club pack keeps its words', Nidurhal::kort( 'vasaskrimsli-namsefni-klubbur-og-safnmappa.zip' ), 'klubbur-og-safnmappa' );
+check( 'Niðurhal: another name is only lower-cased', Nidurhal::kort( 'Annad-Efni.ZIP' ), 'annad-efni' );
+check( 'Niðurhal: the short link counts', Nidurhal::skra( 'https://vasaskrimsli.is/s/1', $home ), '1' );
+check( 'Niðurhal: with a slash too', Nidurhal::skra( 'https://www.vasaskrimsli.is/s/klubbur-og-safnmappa/', $home ), 'klubbur-og-safnmappa' );
+check( 'Niðurhal: the link without pretty permalinks', Nidurhal::skra( 'https://vasaskrimsli.is/?vs_saekja=3', $home ), '3' );
+check( 'Niðurhal: a link to the file itself', Nidurhal::skra( 'https://vasaskrimsli.is/namsefnispakkar/vasaskrimsli-namsefni-pakki-02.zip', $home ), '2' );
+check( 'Niðurhal: another site does not', Nidurhal::skra( 'https://example.com/s/1', $home ), null );
+check( 'Niðurhal: a look-alike host does not', Nidurhal::skra( 'https://vasaskrimsli.is.example.com/s/1', $home ), null );
+check( 'Niðurhal: a page under /s/ deeper does not', Nidurhal::skra( 'https://vasaskrimsli.is/s/1/2', $home ), null );
+check( 'Niðurhal: a PDF does not', Nidurhal::skra( 'https://vasaskrimsli.is/namsefnispakkar/a.pdf', $home ), null );
+check( 'Niðurhal: climbing out of the folder does not', Nidurhal::skra( 'https://vasaskrimsli.is/s/%2e%2e', $home ), null );
+check( 'Niðurhal: odd characters do not', Nidurhal::skra( 'https://vasaskrimsli.is/s/a%20b', $home ), null );
+check( 'Niðurhal: a hidden file does not', Nidurhal::heiti( '.htaccess.zip' ), null );
+check( 'Niðurhal: no URL does not', Nidurhal::skra( 'nonsense', $home ), null );
 check( 'Niðurhal: Chrome is a person', Nidurhal::velmenni( 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' ), false );
 check( 'Niðurhal: Safari on an iPhone is a person', Nidurhal::velmenni( 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1' ), false );
 check( 'Niðurhal: Googlebot is a bot', Nidurhal::velmenni( 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' ), true );

@@ -1,7 +1,8 @@
 <?php
 /**
- * wp-admin → Niðurhal: downloads of each ZIP file today, in the last 7 and 30 days and in all, the last 30 days as
- * bars, and a CSV of every day. A short version of the table is a widget on the Dashboard (Stjórnborð).
+ * wp-admin → Niðurhal: every ZIP file in the folder with its short download link to copy onto a page, its downloads
+ * today, in the last 7 and 30 days and in all, and its clicks on the page; the last 30 days as bars; and a CSV of
+ * every day. A short version of the table is a widget on the Dashboard (Stjórnborð).
  */
 
 namespace Vasaskrimsli\Nidurhal;
@@ -22,11 +23,6 @@ final class Admin {
 		add_action( 'admin_post_vs_nidurhal_csv', array( self::class, 'csv' ) );
 	}
 
-	/** "vasaskrimsli-namsefni-pakki-01.zip" from "/namsefnispakkar/vasaskrimsli-namsefni-pakki-01.zip". */
-	private static function heiti( string $skra ): string {
-		return basename( $skra );
-	}
-
 	public static function csv(): void {
 		if ( ! current_user_can( Store::CAPABILITY ) ) {
 			wp_die( 'Þú hefur ekki aðgang að þessu.' );
@@ -37,32 +33,53 @@ final class Admin {
 		header( 'Content-Disposition: attachment; filename="nidurhal-' . gmdate( 'Y-m-d' ) . '.csv"' );
 		$out = fopen( 'php://output', 'w' );
 		fwrite( $out, "\xEF\xBB\xBF" ); // So Excel reads it as UTF-8.
-		fputcsv( $out, array( 'Dagur', 'Skrá', 'Niðurhal' ), ',', '"', '' );
+		fputcsv( $out, array( 'Dagur', 'Skrá', 'Niðurhal', 'Smellir á síðunni' ), ',', '"', '' );
 		foreach ( Store::allt() as $r ) {
-			fputcsv( $out, array( $r['dagur'], $r['skra'], (int) $r['fjoldi'] ), ',', '"', '' );
+			fputcsv( $out, array( $r['dagur'], $r['skra'], (int) $r['nidurhal'], (int) $r['smellir'] ), ',', '"', '' );
 		}
 		fclose( $out );
 		exit;
 	}
 
-	private static function tafla( array $skrar, bool $stutt ): string {
+	/** Every file in the folder, and any file counted that is gone from it, with its counts (0 when none). */
+	private static function rodir(): array {
+		$counts = Store::skrar();
+		$rows   = array();
+		$zero   = array( 'idag' => 0, 'vika' => 0, 'manudur' => 0, 'alls' => 0, 'smellir' => 0, 'fyrst' => '' );
+		foreach ( array_unique( array_merge( Saekja::skrar(), array_keys( $counts ) ) ) as $name ) {
+			$rows[ $name ] = ( $counts[ $name ] ?? $zero ) + array( 'til' => in_array( $name, Saekja::skrar(), true ) );
+		}
+		ksort( $rows, SORT_NATURAL );
+		return $rows;
+	}
+
+	private static function tafla( array $rows, bool $stutt ): string {
 		$cols = $stutt
-			? array( 'idag' => 'Í dag', 'vika' => '7 dagar', 'alls' => 'Alls' )
-			: array( 'idag' => 'Í dag', 'vika' => '7 dagar', 'manudur' => '30 dagar', 'alls' => 'Alls' );
-		$html = '<table class="widefat striped"><thead><tr><th>Skrá</th>';
+			? array( 'vika' => '7 dagar', 'alls' => 'Alls' )
+			: array( 'idag' => 'Í dag', 'vika' => '7 dagar', 'manudur' => '30 dagar', 'alls' => 'Alls', 'smellir' => 'Smellir á síðunni' );
+		$html = '<table class="widefat striped"><thead><tr><th>' . ( $stutt ? 'Skrá' : 'Skrá og hlekkur' ) . '</th>';
 		foreach ( $cols as $label ) {
 			$html .= '<th style="text-align:right">' . esc_html( $label ) . '</th>';
 		}
 		$html .= $stutt ? '' : '<th>Fyrst talið</th>';
 		$html .= '</tr></thead><tbody>';
 		$sum   = array_fill_keys( array_keys( $cols ), 0 );
-		foreach ( $skrar as $s ) {
-			$html .= '<tr><td title="' . esc_attr( $s['skra'] ) . '">' . esc_html( self::heiti( $s['skra'] ) ) . '</td>';
-			foreach ( array_keys( $cols ) as $k ) {
-				$sum[ $k ] += $s[ $k ];
-				$html      .= '<td style="text-align:right">' . number_format_i18n( $s[ $k ] ) . '</td>';
+		foreach ( $rows as $name => $r ) {
+			$html .= '<tr><td>';
+			if ( $stutt ) {
+				$html .= esc_html( Nidurhal::kort( $name ) );
+			} else {
+				$html .= '<code>' . esc_html( $name ) . '</code>';
+				$html .= $r['til']
+					? '<br><input type="text" readonly value="' . esc_attr( Saekja::url( $name ) ) . '" onfocus="this.select()" style="width:100%;max-width:320px;margin-top:4px" aria-label="' . esc_attr( 'Niðurhalshlekkur fyrir ' . $name ) . '">'
+					: '<br><em>Skráin er ekki lengur í möppunni.</em>';
 			}
-			$html .= $stutt ? '' : '<td>' . esc_html( mysql2date( 'j.n.Y', $s['fyrst'] ) ) . '</td>';
+			$html .= '</td>';
+			foreach ( array_keys( $cols ) as $k ) {
+				$sum[ $k ] += $r[ $k ];
+				$html      .= '<td style="text-align:right">' . number_format_i18n( $r[ $k ] ) . '</td>';
+			}
+			$html .= $stutt ? '' : '<td>' . esc_html( $r['fyrst'] ? mysql2date( 'j.n.Y', $r['fyrst'] ) : '' ) . '</td>';
 			$html .= '</tr>';
 		}
 		$html .= '</tbody><tfoot><tr><th>Samtals</th>';
@@ -87,31 +104,32 @@ final class Admin {
 
 	public static function render(): void {
 		Store::install();
-		$skrar = Store::skrar();
+		$rows = self::rodir();
 		echo '<div class="wrap"><h1 class="wp-heading-inline">Niðurhal</h1>';
-		if ( $skrar ) {
+		if ( Store::skrar() ) {
 			echo ' <a class="page-title-action" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=vs_nidurhal_csv' ), 'vs_nidurhal_csv' ) ) . '">Sækja CSV</a>';
 		}
-		echo '<p style="max-width:760px">Hve oft fólk hefur smellt á tengla í ZIP-skrár á síðum með blokkinni <strong>Námsefni: Niðurhalsteljari</strong>. '
-			. 'Vefþjónninn afhendir skrárnar sjálfur, svo það er smellurinn sem er talinn, ekki hvort niðurhalinu lauk. '
-			. 'Ekki talið: leitarvélar og önnur forrit, sami gestur aftur á sömu skrá innan 30 mínútna, og smellir þeirra sem eru innskráðir sem ritstjórar. '
-			. 'Ekkert er geymt um gestina sjálfa, aðeins fjöldi á dag fyrir hverja skrá.</p>';
-		if ( ! $skrar ) {
-			echo '<p><strong>Ekkert niðurhal talið enn.</strong> Settu blokkina Námsefni: Niðurhalsteljari á síðuna með ZIP-skránum (t.d. Námsefni).</p></div>';
+		echo '<div style="max-width:760px"><p>Hver ZIP-skrá í möppunni <code>' . esc_html( Nidurhal::MAPPA ) . '/</code> hefur stuttan niðurhalshlekk, t.d. <code>'
+			. esc_html( home_url( '/s/1' ) ) . '</code>. Settu þá hlekki á síðuna (í stað slóðar skrárinnar): hlekkurinn telur niðurhalið og sendir svo skrána. '
+			. 'Talið er þegar niðurhal hefst; hvort því lauk sést ekki.</p>'
+			. '<p><strong>Niðurhal</strong> telur alla sem nota hlekkinn, líka þá sem fengu hann sendan. <strong>Smellir á síðunni</strong> telur aðeins smelli fólks á síðu með blokkinni Námsefni: Niðurhalsteljari. '
+			. 'Ekki talið: leitarvélar og önnur forrit, sami gestur aftur á sömu skrá innan 30 mínútna, og þú sjálf(ur) þegar þú ert innskráð(ur). Ekkert er geymt um gestina, aðeins fjöldi á dag.</p></div>';
+		if ( ! $rows ) {
+			echo '<p><strong>Engar ZIP-skrár í möppunni ' . esc_html( Nidurhal::MAPPA ) . '/.</strong></p></div>';
 			return;
 		}
-		echo '<h2>Síðustu 30 dagar</h2>' . self::sulur( Store::dagar( 30 ) );
-		echo '<h2 style="margin-top:24px">Eftir skrám</h2>' . self::tafla( $skrar, false ) . '</div>';
+		echo '<h2>Niðurhal síðustu 30 daga</h2>' . self::sulur( Store::dagar( 30 ) );
+		echo '<h2 style="margin-top:24px">Eftir skrám</h2>' . self::tafla( $rows, false ) . '</div>';
 	}
 
 	public static function widget(): void {
 		Store::install();
-		$skrar = Store::skrar();
-		if ( ! $skrar ) {
+		$rows = array_filter( self::rodir(), static fn ( $r ) => $r['alls'] > 0 );
+		if ( ! $rows ) {
 			echo '<p>Ekkert niðurhal talið enn.</p>';
-			return;
+		} else {
+			echo self::tafla( $rows, true );
 		}
-		echo self::tafla( $skrar, true );
-		echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG ) ) . '">Nánar um niðurhal</a></p>';
+		echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG ) ) . '">Niðurhal og hlekkir</a></p>';
 	}
 }

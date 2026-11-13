@@ -14,7 +14,7 @@
 					style: { padding: '16px', border: '1px dashed currentColor', borderRadius: '4px' },
 				} ),
 				el( 'strong', null, 'Námsefni: Niðurhalsteljari' ),
-				el( 'p', { style: { margin: '8px 0 0' } }, 'Sést ekki á síðunni. Telur hve oft fólk smellir á tengla í ZIP-skrár á þessari síðu. Tölurnar eru undir Niðurhal í stjórnborðinu. Smellir þínir þegar þú ert innskráð(ur) eru ekki taldir.' )
+				el( 'p', { style: { margin: '8px 0 0' } }, 'Sést ekki á síðunni. Telur hve oft fólk smellir á niðurhalshlekkina (t.d. /s/1) á þessari síðu. Hlekkina og tölurnar finnur þú undir Niðurhal í stjórnborðinu. Smellir þínir þegar þú ert innskráð(ur) eru ekki taldir.' )
 			);
 		},
 		save: function () {

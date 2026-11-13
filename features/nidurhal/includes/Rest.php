@@ -1,10 +1,10 @@
 <?php
 /**
- * POST /wp-json/vasaskrimsli/v1/nidurhal: the page's script reports a click on a ZIP file here. The files are served
- * by the web server itself and WordPress never sees a download, so the click is what is counted.
+ * POST /wp-json/vasaskrimsli/v1/nidurhal: the page's script reports a click on a download link (/s/1) or a ZIP file
+ * here. Counted as a click ("smellir"), beside the downloads the download address counts itself (Saekja).
  *
  * Counted only when it looks like a person: the click came from the page's script in a real browser (not one driven
- * by automation), the page's signed stamp is with it, the user agent is not a bot's, the ZIP file exists on the site,
+ * by automation), the page's signed stamp is with it, the user agent is not a bot's, the ZIP file is in the folder,
  * and the same visitor has not already been counted for that file in the last 30 minutes (and at most 60 an hour).
  * The visitor is recognised by a keyed hash of address and browser that lives only as long as those limits.
  */
@@ -36,33 +36,24 @@ final class Rest {
 		return ctype_digit( $time ) && hash_equals( self::stamp( (int) $time ), $stamp ) ? time() - (int) $time : null;
 	}
 
-	/** The file on disk for a path on the site, or null when there is none. */
-	private static function finnst( string $path ): bool {
-		foreach ( array_unique( array_filter( array( ABSPATH, $_SERVER['DOCUMENT_ROOT'] ?? '' ) ) ) as $root ) {
-			if ( is_file( rtrim( $root, '/\\' ) . $path ) ) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public static function click( \WP_REST_Request $req ): \WP_REST_Response {
 		$in   = (array) $req->get_json_params();
 		$ua   = (string) ( $_SERVER['HTTP_USER_AGENT'] ?? '' );
 		$age  = is_string( $in['t'] ?? null ) ? self::age( $in['t'] ) : null;
-		$skra = is_string( $in['slod'] ?? null ) ? Nidurhal::slod( $in['slod'], home_url( '/' ) ) : null;
-		if ( null === $age || $age < 0 || $age > self::MAX_AGE || null === $skra || Nidurhal::velmenni( $ua ) || ! self::finnst( $skra ) ) {
+		$kort = is_string( $in['slod'] ?? null ) ? Nidurhal::skra( $in['slod'], home_url( '/' ) ) : null;
+		$skra = null === $kort ? null : Saekja::finna( $kort );
+		if ( null === $age || $age < 0 || $age > self::MAX_AGE || null === $skra || Nidurhal::velmenni( $ua ) ) {
 			return new \WP_REST_Response( array( 'talid' => false ) );
 		}
 		$gestur = Nidurhal::gestur( (string) ( $_SERVER['REMOTE_ADDR'] ?? '' ), $ua, wp_salt( 'auth' ) );
-		$aftur  = 'vs_nh_' . md5( $gestur . $skra );
+		$aftur  = 'vs_nh_s_' . md5( $gestur . $skra );
 		$klst   = 'vs_nh_k_' . $gestur;
 		$count  = (int) get_transient( $klst );
 		if ( get_transient( $aftur ) || $count >= self::PER_HOUR ) {
 			return new \WP_REST_Response( array( 'talid' => false ) );
 		}
 		Store::install(); // The table, if wp-admin has not been opened since the update.
-		if ( ! Store::add( $skra ) ) {
+		if ( ! Store::add( $skra, 'smellir' ) ) {
 			return new \WP_REST_Response( array( 'talid' => false ), 500 );
 		}
 		set_transient( $aftur, 1, self::AFTUR );
