@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,12 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.6.5 =
+* Niðurhal: hver ZIP-skrá í möppunni namsefnispakkar fær stuttan niðurhalshlekk, t.d. vasaskrimsli.is/s/1, sem telur niðurhalið og sendir svo skrána. Leitarvélar, þú sjálf(ur) innskráð(ur) og sami gestur aftur innan 30 mínútna eru ekki talin. Ekkert er geymt um gestina.
+* Ný síða í stjórnborðinu, Niðurhal: hlekkur hverrar skrár, niðurhal í dag, síðustu 7 og 30 daga og alls, súlurit og CSV. Stutt yfirlit á forsíðu stjórnborðsins.
+* Ný blokk, Námsefni: Niðurhalsteljari: sést ekki, en telur smelli fólks á hlekkina á síðunni.
+* Ný blokk, Námsefni: Fjöldi niðurhala: sýnir fjölda niðurhala einnar skráar sem venjulegan texta. Inni í setningu: [nidurhal skra="1"].
 
 = 1.6.4 =
 * Bókaskoðarinn: nýjar forsíður allra Auðlesið-bóka, skornar við rétta brún. Forsíður og sýnishorn Orðsifjaskrár Vasaskrímslanna eru líka skorin rétt; áður lentu 6 mm af kilinum á forsíðunni.
