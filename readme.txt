@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,13 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.6.3 =
+* Gagnaútgáfa 11: stórt V í Vasaskrímsli og Vasabolti (#151, 493, 542, 590, 591, 638, 679) og Þýðing #135 Rafbúa lagfærð.
+* Bókaskoðarinn: lokaforsíður allra bóka. Forsíður og sýnishorn Stóru Vasaskrímslabókanna koma úr prentskránum og forsíður Auðlesið eru nýjar.
+* Orðsifjaskrá Vasaskrímslanna sýnir tíu síður úr hverju bindi.
+* Stök bók eða spjald sýnir blaðsíðufjölda, brot og ISBN við hlið myndanna; pakkar sýna hverja bók í samanbrjótanlegum hluta eins og áður.
+* Pöntunarformið fylgir með en er ekki virkt enn.
 
 = 1.6.2 =
 * Bókablokkirnar heita nú „Verslun: …“ svo auðvelt er að finna þær. Veggspjöld og smáspjöld eru hvort í sinni blokk; settu þær tvær í stað blokkarinnar „Veggspjöld og smáspjöld“ ef hún er komin á síðu.
