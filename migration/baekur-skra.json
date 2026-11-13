@@ -286,8 +286,8 @@
    "kyn": "kvk",
    "heimild": {
     "repo": "vasaskrimsli-storubaekur",
-    "bok": "build/baekur/bok-{n}-HQ.pdf",
-    "kapa": "build/kapur/kapa-{n}.pdf"
+    "bok": "útgáfa/Vasaskrímsli {n}. kynslóð/Vasaskrimsli {n}. kynslóð - Bókefni * útgáfa 2026.pdf",
+    "kapa": "útgáfa/Vasaskrímsli {n}. kynslóð/Vasaskrimsli {n}. kynslóð - Forsida og baksida * útgáfa 2026.pdf"
    },
    "baekur": [
     {

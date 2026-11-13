@@ -78,7 +78,7 @@ block per feature. React 19 apps are bundled with Vite; WordPress itself stays a
 | Choose the sample pages | `"synishorn": [3, 10, 11]` (page numbers); otherwise three are picked, one from each third of the book, the most colourful of a few pages that differ from book to book |
 | Show more or fewer sample pages for a whole series | `"synishorn": 10` on the series (Orðsifjaskrá has 10); the default is 3, picked the same way from that many equal stretches of the book |
 | Change the Buy Button's look | `verslun.kaupahnappur.options`: the `options` of Háskólaprent's embed code, with the owner's changes |
-| Add a series | a new entry in `radir` with a `heimild` (where its PDFs are), and a line in `Block::RADIR` for its own block |
+| Add a series | a new entry in `radir` with a `heimild` (where its PDFs are; `{n}`, `{nn}`, `{stafur}` fill in the book, a `*` matches what varies, such as the edition), and a line in `Block::RADIR` for its own block |
 
 The script renders only pictures whose PDF changed, keeps the last pictures of a book whose PDF is being rebuilt (with
 a warning), and removes pictures no book uses. The store answers Python's own HTTP client with 429, so it reads the

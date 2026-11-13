@@ -101,6 +101,17 @@ def fill(pattern, book):
     return pattern.format(n=n, nn=f"{n:02d}", stafur=stafur)
 
 
+def source(repo, pattern, book):
+    """The book's file in its repository. A "*" in the path stands for what varies between books, such as the edition
+    in the Stórubækur's "… - Bókefni 2. útgáfa 2026.pdf": the last match by name is taken."""
+    path = fill(pattern, book)
+    if "*" in path:
+        hits = sorted(repo.glob(path))
+        if hits:
+            return hits[-1]
+    return repo / path
+
+
 class Missing(Exception):
     pass
 
@@ -108,7 +119,7 @@ class Missing(Exception):
 def from_pdfs(rod, book, used):
     h = rod["heimild"]
     repo = REPOS / h["repo"]
-    interior = repo / fill(h["bok"], book)
+    interior = source(repo, h["bok"], book)
     if not interior.exists():
         raise Missing(f"{book['id']}: no {interior.relative_to(REPOS)}")
     doc = fitz.open(interior)
@@ -116,7 +127,7 @@ def from_pdfs(rod, book, used):
     w, h_mm = mm(trim)
     out = {"sidur": doc.page_count, "snid": snid(w, h_mm)}
     base = ASSETS / rod["id"] / book["id"]
-    cover_pdf = repo / fill(h["kapa"], book) if "kapa" in h else None
+    cover_pdf = source(repo, h["kapa"], book) if "kapa" in h else None
     if cover_pdf and cover_pdf.exists():
         cover = fitz.open(cover_pdf)[0]
         ct = cover.trimbox
