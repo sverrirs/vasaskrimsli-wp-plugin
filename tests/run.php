@@ -12,11 +12,13 @@ require __DIR__ . '/../features/ordsifjar/includes/Nofn.php';
 require __DIR__ . '/../features/baekur/includes/Verslun.php';
 require __DIR__ . '/../features/baekur/includes/Block.php';
 require __DIR__ . '/../features/pontun/includes/Pontun.php';
+require __DIR__ . '/../features/nidurhal/includes/Nidurhal.php';
 
 use Vasaskrimsli\Ordsifjar\Csv;
 use Vasaskrimsli\Ordsifjar\Format;
 use Vasaskrimsli\Ordsifjar\Nofn;
 use Vasaskrimsli\Pontun\Pontun;
+use Vasaskrimsli\Nidurhal\Nidurhal;
 
 $failures = 0;
 $count    = 0;
@@ -504,6 +506,28 @@ check( 'Pöntun text: quantity and choices', str_contains( $pontun_text, '3 × V
 check( 'Pöntun text: invoice information', str_contains( $pontun_text, 'Kennitala á reikning: 123456-7890' ), true );
 check( 'Pöntun text: comments keep both lines', str_contains( $pontun_text, "Fyrsta lína\n    Önnur lína" ), true );
 check( 'Pöntun text: empty optional fields are omitted', str_contains( $pontun_text, 'Inngangur' ), false );
+
+// Niðurhal: which links count, and who is a bot.
+$home = 'https://vasaskrimsli.is/';
+check( 'Niðurhal: a ZIP on the site counts', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/vasaskrimsli-namsefni-pakki-01.zip', $home ), '/namsefnispakkar/vasaskrimsli-namsefni-pakki-01.zip' );
+check( 'Niðurhal: www is the same site', Nidurhal::slod( 'https://www.vasaskrimsli.is/namsefnispakkar/a.zip?x=1', $home ), '/namsefnispakkar/a.zip' );
+check( 'Niðurhal: upper-case .ZIP counts', Nidurhal::slod( 'https://vasaskrimsli.is/a/B.ZIP', $home ), '/a/B.ZIP' );
+check( 'Niðurhal: another site does not', Nidurhal::slod( 'https://example.com/namsefnispakkar/a.zip', $home ), null );
+check( 'Niðurhal: a look-alike host does not', Nidurhal::slod( 'https://vasaskrimsli.is.example.com/a.zip', $home ), null );
+check( 'Niðurhal: a PDF does not', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/a.pdf', $home ), null );
+check( 'Niðurhal: climbing out of the folder does not', Nidurhal::slod( 'https://vasaskrimsli.is/namsefnispakkar/%2e%2e/a.zip', $home ), null );
+check( 'Niðurhal: odd characters do not', Nidurhal::slod( 'https://vasaskrimsli.is/a%20b.zip', $home ), null );
+check( 'Niðurhal: no URL does not', Nidurhal::slod( 'nonsense', $home ), null );
+check( 'Niðurhal: Chrome is a person', Nidurhal::velmenni( 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' ), false );
+check( 'Niðurhal: Safari on an iPhone is a person', Nidurhal::velmenni( 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1' ), false );
+check( 'Niðurhal: Googlebot is a bot', Nidurhal::velmenni( 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' ), true );
+check( 'Niðurhal: Bingbot is a bot', Nidurhal::velmenni( 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)' ), true );
+check( 'Niðurhal: Headless Chrome is a bot', Nidurhal::velmenni( 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/142.0.0.0 Safari/537.36' ), true );
+check( 'Niðurhal: curl is a bot', Nidurhal::velmenni( 'curl/8.4.0' ), true );
+check( 'Niðurhal: no user agent is a bot', Nidurhal::velmenni( '' ), true );
+check( 'Niðurhal: the visitor key hides the address', str_contains( Nidurhal::gestur( '10.0.0.1', 'UA', 's' ), '10.0.0.1' ), false );
+check( 'Niðurhal: the visitor key is stable', Nidurhal::gestur( '10.0.0.1', 'UA', 's' ), Nidurhal::gestur( '10.0.0.1', 'UA', 's' ) );
+check( 'Niðurhal: another browser is another visitor', Nidurhal::gestur( '10.0.0.1', 'UA', 's' ) === Nidurhal::gestur( '10.0.0.1', 'UA2', 's' ), false );
 
 echo ( $failures ? "{$failures} of {$count} checks FAILED\n" : "OK: {$count} checks passed\n" );
 exit( $failures ? 1 : 0 );

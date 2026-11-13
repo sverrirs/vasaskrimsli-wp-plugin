@@ -23,6 +23,7 @@ require VASASKRIMSLI_DIR . 'includes/Assets.php';
 require VASASKRIMSLI_DIR . 'includes/Updater.php';
 require VASASKRIMSLI_DIR . 'features/ordsifjar/ordsifjar.php';
 require VASASKRIMSLI_DIR . 'features/baekur/baekur.php';
+require VASASKRIMSLI_DIR . 'features/nidurhal/nidurhal.php';
 // The order form (Pantanir) is not ready for the site yet: off unless wp-config.php says
 // define( 'VASASKRIMSLI_PONTUN', true ); A later release turns it on for everyone.
 if ( defined( 'VASASKRIMSLI_PONTUN' ) && VASASKRIMSLI_PONTUN ) {

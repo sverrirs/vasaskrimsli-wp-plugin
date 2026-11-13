@@ -106,6 +106,22 @@ products through `curl`.
   existing catalogue assets. The same choices drive the form and server validation. Orders are stored in the
   site's `{prefix}vs_pantanir` table.
 
+### Niðurhal: download counter (`features/nidurhal/`)
+
+- **Block "Námsefni: Niðurhalsteljari"** (or shortcode `[nidurhalsteljari]`): put it once on a page with links
+  to ZIP files (the Námsefni page). It shows nothing; it adds `teljari.js`, which reports a person's left or
+  middle click on a link to a `.zip` file on this site to `POST /wp-json/vasaskrimsli/v1/nidurhal`.
+- The web server serves the ZIP files itself, so WordPress never sees a download: **the click is counted**,
+  not whether the download finished.
+- Counted only when it looks like a person: a real click (not a script's) in a browser not driven by
+  automation, the page's signed stamp, a user agent that is not a bot's (`Nidurhal::velmenni`), a ZIP file
+  that exists on the site, and not the same visitor and file again within 30 minutes (at most 60 an hour).
+  Editors' own clicks are not counted: the script is left out for anyone logged in who can edit posts.
+- Stored: a count per file per day in `{prefix}vs_nidurhal`. Nothing about the visitors; their repeat clicks
+  are recognised by a keyed hash kept in a transient for 30 minutes.
+- **wp-admin → Niðurhal**: today, 7 days, 30 days and in all for each file, the last 30 days as bars, and a
+  CSV of every day. A short table is a widget on the Dashboard.
+
 ## Data from vasaskrimsli-dict
 
 All names and texts come from `../vasaskrimsli-dict` (local only). The Claude session working there
@@ -219,6 +235,7 @@ features/ordsifjar/
                           thyding-2026.json, breytingar-<N>.json, formir.json, throun.json, midjur.json
   assets/sprites/         <n>.webp (96 px), large/ (256 px), formir/ (forms)
 features/baekur/          the book lists: includes/ (Block, Verslun), src/ (React), data/baekur.json, assets/
+features/nidurhal/        the download counter: includes/ (links, storage, REST, block, admin), teljari.js
 features/pontun/          the order form: includes/ (validation, storage, REST, block, admin), src/ (React), data/pontun.json
 migration/                one script per data file (see "Data from vasaskrimsli-dict"), baekur.py and baekur-skra.json
 ```
