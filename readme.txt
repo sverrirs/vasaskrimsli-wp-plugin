@@ -3,7 +3,7 @@ Contributors: sverrirs
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: MIT
 
 Gagnvirkir hlutar vasaskrimsli.is.
@@ -13,6 +13,9 @@ Gagnvirkir hlutar vasaskrimsli.is.
 * Orðsifjafræði: blokk með leitanlegri töflu yfir uppruna nafna, ritill í stjórnborði (Orðsifjar) og CSV útflutningur/innflutningur.
 
 == Changelog ==
+
+= 1.6.6 =
+* Forsíða Auðlesið 27-X er nú eftir endanlegri kápu.
 
 = 1.6.5 =
 * Niðurhal: hver ZIP-skrá í möppunni namsefnispakkar fær stuttan niðurhalshlekk, t.d. vasaskrimsli.is/s/1, sem telur niðurhalið og sendir svo skrána. Leitarvélar, þú sjálf(ur) innskráð(ur) og sami gestur aftur innan 30 mínútna eru ekki talin. Ekkert er geymt um gestina.
