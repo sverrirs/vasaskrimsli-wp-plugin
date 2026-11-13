@@ -5,10 +5,33 @@ import Kaupahnappur from './Kaupahnappur.jsx';
 
 /**
  * The viewer: a dialog over the page (not a modal one: Shopify's cart must be able to open above it) with a book's
- * cover and sample pages (arrow keys or the buttons page through them), its details (folded away under the pictures)
+ * cover and sample pages (arrow keys or the buttons page through them), its details (beside the pictures for one book;
+ * folded away under them for each book of a lot)
  * and where to buy it. For a lot
  * it lists the lot's books; choosing one shows that book. The previous and next item of the list are one click away.
  */
+/** A book's pages, trim size and ISBN, as far as they are known; nothing when none is. */
+function Nanar( { bok } ) {
+	const rows = [
+		[ 'Blaðsíður', bok.sidur > 0 ? bok.sidur : null ],
+		[ 'Brot', bok.snid ],
+		[ 'ISBN', bok.isbn ],
+	].filter( ( [ , v ] ) => v );
+	if ( ! rows.length ) {
+		return null;
+	}
+	return (
+		<dl>
+			{ rows.map( ( [ dt, dd ] ) => (
+				<div key={ dt } className="vs-bk-skodari__lina">
+					<dt>{ dt }</dt>
+					<dd>{ dd }</dd>
+				</div>
+			) ) }
+		</dl>
+	);
+}
+
 export default function Skodari( { items, id, data, onOpen } ) {
 	const dialog = useRef( null );
 	const i = items.findIndex( ( b ) => b.id === id );
@@ -115,36 +138,20 @@ export default function Skodari( { items, id, data, onOpen } ) {
 								</ol>
 							</>
 						) }
-						<details className="vs-bk-skodari__nanar">
-							<summary>Nánar um { bok.heiti }</summary>
-							{ lot && bok.efni && <p>{ bok.efni }</p> }
-							<dl>
-								{ bok.sidur > 0 && (
-									<>
-										<dt>Blaðsíður</dt>
-										<dd>{ bok.sidur }</dd>
-									</>
-								) }
-								{ bok.snid && (
-									<>
-										<dt>Brot</dt>
-										<dd>{ bok.snid }</dd>
-									</>
-								) }
-								{ bok.isbn && (
-									<>
-										<dt>ISBN</dt>
-										<dd>{ bok.isbn }</dd>
-									</>
-								) }
-							</dl>
-						</details>
+						{ lot && (
+							<details className="vs-bk-skodari__nanar">
+								<summary>Nánar um { bok.heiti }</summary>
+								{ bok.efni && <p>{ bok.efni }</p> }
+								<Nanar bok={ bok } />
+							</details>
+						) }
 					</div>
 					<div className="vs-bk-skodari__upplysingar">
 						<p className="vs-bk-skodari__rod">{ data.rod.heiti }</p>
 						<h2 id="vs-bk-skodari-titill">{ item.heiti }</h2>
 						{ ! lot && item.efni && <p>{ item.efni }</p> }
 						<Stada bok={ item } data={ data } />
+						{ ! lot && <Nanar bok={ item } /> }
 						{ lot && (
 							<div className="vs-bk-skodari__innihald">
 								<p>Í pakkanum eru { lot.length } bækur:</p>

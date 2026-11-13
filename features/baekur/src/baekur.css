@@ -483,6 +483,10 @@ html.vs-bk-opin {
 	font-size: 0.9375rem;
 }
 
+.vs-bk-skodari__lina {
+	display: contents; /* Each dt/dd pair in its own div, laid out by the list's grid. */
+}
+
 .vs-bk-skodari dt {
 	color: var(--bk-muted);
 }
