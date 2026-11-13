@@ -61,6 +61,24 @@ def save(pix_or_img, path, width, quality):
     return f"{path.relative_to(FEATURE).as_posix()}"
 
 
+def trimbox(page):
+    """The page's trim box in the coordinates a clip is drawn in (page.rect: origin top left of the crop box). PyMuPDF's
+    own page.trimbox is wrong when the crop box does not start at 0: in the Auðlesið and Orðsifjaskrá cover files the
+    boxes start at -17 pt (the crop marks' margin) and page.trimbox then lies 17 pt (6 mm) left of the real trim, so the
+    front was cut 6 mm towards the spine. Read from the PDF's own boxes instead; the whole page when it sets none."""
+    doc = page.parent
+
+    def box(key):
+        kind, value = doc.xref_get_key(page.xref, key)
+        return [float(v) for v in value.strip("[]").split()] if kind == "array" else None
+
+    trim = box("TrimBox")
+    base = box("CropBox") or box("MediaBox")
+    if not trim or not base or page.rotation:
+        return page.trimbox
+    return fitz.Rect(trim[0] - base[0], base[3] - trim[3], trim[2] - base[0], base[3] - trim[1])
+
+
 def render(page, clip, width, path, quality, source):
     """The page (or part of it) as WebP, unless the picture is already newer than its PDF."""
     if path.exists() and path.stat().st_mtime >= source.stat().st_mtime:
@@ -123,14 +141,14 @@ def from_pdfs(rod, book, used):
     if not interior.exists():
         raise Missing(f"{book['id']}: no {interior.relative_to(REPOS)}")
     doc = fitz.open(interior)
-    trim = doc[0].trimbox
+    trim = trimbox(doc[0])
     w, h_mm = mm(trim)
     out = {"sidur": doc.page_count, "snid": snid(w, h_mm)}
     base = ASSETS / rod["id"] / book["id"]
     cover_pdf = source(repo, h["kapa"], book) if "kapa" in h else None
     if cover_pdf and cover_pdf.exists():
         cover = fitz.open(cover_pdf)[0]
-        ct = cover.trimbox
+        ct = trimbox(cover)
         if ct.width > trim.width * 1.5:  # Wraparound cover: the front is the right-hand page.
             ct = fitz.Rect(ct.x1 - trim.width, ct.y0, ct.x1, ct.y1)
         out["kapa"] = render(cover, ct, COVER_PX, base.with_name(f"{book['id']}-kapa.webp"), 80, cover_pdf)
@@ -140,7 +158,7 @@ def from_pdfs(rod, book, used):
     out["synishorn"] = []
     for n in book.get("synishorn") or picks(doc, rod.get("synishorn", SAMPLES), book["n"]):
         page = doc[n - 1]
-        rel = render(page, page.trimbox, PAGE_PX, base.with_name(f"{book['id']}-s{n}.webp"), 72, interior)
+        rel = render(page, trimbox(page), PAGE_PX, base.with_name(f"{book['id']}-s{n}.webp"), 72, interior)
         used.add(rel)
         out["synishorn"].append({"mynd": rel, "sida": n})
     return out
